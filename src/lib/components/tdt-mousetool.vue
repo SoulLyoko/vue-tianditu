@@ -2,16 +2,23 @@
 import componentMixin from "../mixins/component-mixin";
 import { capitalize, objectFilter } from "../utils/utils";
 import { toIcon } from "../utils/converter";
+const toolNames = [
+  "markTool",
+  "polygonTool",
+  "polylineTool",
+  "rectangleTool",
+  "circleTool"
+];
 
 export default {
   name: "tdt-mousetool",
   mixins: [componentMixin],
   props: {
-    mark: { type: Object }, //标点的配置项
-    polygon: { type: Object }, //多边形的配置项
-    polyline: { type: Object }, //折线的配置项
-    rectangle: { type: Object }, //矩形的配置项
-    circle: { type: Object } //圆形的配置项
+    markTool: { type: Object }, //标点的配置项
+    polygonTool: { type: Object }, //多边形的配置项
+    polylineTool: { type: Object }, //折线的配置项
+    rectangleTool: { type: Object }, //矩形的配置项
+    circleTool: { type: Object } //圆形的配置项
   },
   data() {
     return {
@@ -23,17 +30,17 @@ export default {
         circleTool: null
       },
       events: {
-        mark: [{ origin: "mouseup", new: "markend" }],
-        polygon: [
+        markTool: [{ origin: "mouseup", new: "markend" }],
+        polygonTool: [
           { origin: "draw", new: "polygon-draw" },
           { origin: "addpoint", new: "polygon-addpoint" }
         ],
-        polyline: [
+        polylineTool: [
           { origin: "draw", new: "polyline-draw" },
           { origin: "addpoint", new: "polyline-addpoint" }
         ],
-        rectangle: [{ origin: "draw", new: "rectangle-draw" }],
-        circle: [
+        rectangleTool: [{ origin: "draw", new: "rectangle-draw" }],
+        circleTool: [
           { origin: "draw", new: "circle-draw" },
           { origin: "drawend", new: "circle-drawend" }
         ]
@@ -48,29 +55,26 @@ export default {
             this.initComponent(option);
           });
         }
-        const tools = ["mark", "polygon", "polyline", "rectangle", "circle"];
-        tools.forEach(type => {
-          if (type === "mark") {
-            if (this.mark && this.mark.icon) {
+        toolNames.forEach(type => {
+          if (type === "markTool") {
+            if (this.markTool && this.markTool.icon) {
               this.tools.markTool = new T.MarkTool(
                 this.$tdtMap,
                 objectFilter({
-                  ...this.mark,
-                  icon: toIcon(this.mark.icon)
+                  ...this.markTool,
+                  icon: toIcon(this.markTool.icon)
                 })
               );
             } else {
-              this.tools.markTool = new T.MarkTool(this.$tdtMap, this.mark);
+              this.tools.markTool = new T.MarkTool(this.$tdtMap, this.markTool);
             }
-            this.addToolEvents("mark");
           } else {
-            const toolName = type + "Tool";
-            this.tools[toolName] = new T[capitalize(toolName)](
+            this.tools[type] = new T[capitalize(type)](
               this.$tdtMap,
               this[type]
             );
-            this.addToolEvents(type);
           }
+          this.addToolEvents(type);
         });
         resolve(this.tools);
       });
@@ -78,7 +82,7 @@ export default {
     addToolEvents(type) {
       //将原生事件映射为新的组件事件
       this.events[type].forEach(t => {
-        this.tools[type + "Tool"].addEventListener(t.origin, e => {
+        this.tools[type].addEventListener(t.origin, e => {
           this.$emit(t.new, e);
         });
       });
@@ -93,11 +97,10 @@ export default {
       this.tools[tool].clear();
     },
     clearAll() {
-      this.tools.markTool.clear();
-      this.tools.polygonTool.clear();
-      this.tools.polylineTool.clear();
-      this.tools.rectangleTool.clear();
-      this.tools.circleTool.clear();
+      toolNames.forEach(tool => {
+        this.close(tool);
+        this.clear(tool);
+      });
     }
   }
 };

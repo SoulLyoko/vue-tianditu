@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { guid, objectFilter } from "../utils/utils";
+import { guid, objectFilter, capitalize } from "../utils/utils";
 import componentMixin from "../mixins/component-mixin";
 import options from "../common/options";
 import { ApiLoaderInstance } from "../utils/api-loader-instance";
@@ -59,17 +59,31 @@ export default {
     addControls() {
       if (this.controls && this.controls.length) {
         this.controls.forEach(option => {
-          this.addControl(option);
+          if (typeof option === "string") {
+            this.addControlByName(option);
+          } else if (typeof option === "object") {
+            this.addControlByOption(option);
+          }
         });
       }
     },
-    addControl(option) {
-      if (!T.Control[option.name]) {
+    addControlByName(option) {
+      const controlName = capitalize(option);
+      if (!T.Control[controlName]) {
         return setTimeout(() => {
-          this.addControl(option);
+          this.addControlByName(option);
         });
       }
-      this.$tdtMap.addControl(new T.Control[option.name](option));
+      this.$tdtMap.addControl(new T.Control[controlName]());
+    },
+    addControlByOption(option) {
+      const controlName = capitalize(option.name);
+      if (!T.Control[controlName]) {
+        return setTimeout(() => {
+          this.addControlByOption(option);
+        });
+      }
+      this.$tdtMap.addControl(new T.Control[capitalize(controlName)](option));
     }
   }
 };

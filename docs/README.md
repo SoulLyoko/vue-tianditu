@@ -1,7 +1,3 @@
-# vue-tianditu
-
-天地图 vue 组件库
-
 ## 安装
 
 ### NPM
