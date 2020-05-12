@@ -1,7 +1,8 @@
 /**
  * 扩展 VuePress 应用
  */
-import VueTianditu from "../../src/lib";
+// import VueTianditu from "../../src/lib";
+import VueTianditu from "vue-tianditu";
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数

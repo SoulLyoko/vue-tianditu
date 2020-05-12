@@ -17,6 +17,9 @@
     "last 2 versions",
     "not ie <= 8"
   ],
+  "dependencies": {
+    "vue-tianditu": "^1.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
