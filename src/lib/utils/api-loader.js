@@ -13,23 +13,23 @@ export default class ApiLoader {
     this._window = window;
     this._pluginsUrl = {
       D3: [
-        "http://cdn.bootcss.com/d3/3.5.17/d3.js",
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js"
+        "https://cdn.bootcss.com/d3/3.5.17/d3.js",
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js"
       ],
       CarTrack: [
-        "http://cdn.bootcss.com/d3/3.5.17/d3.js",
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js",
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/CarTrack.js"
+        "https://cdn.bootcss.com/d3/3.5.17/d3.js",
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js",
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/CarTrack.js"
       ],
       HeatmapOverlay: [
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"
       ],
       BufferTool: [
-        "http://cdn.bootcss.com/Turf.js/3.0.14/turf.js",
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/BufferTool.js"
+        "https://cdn.bootcss.com/Turf.js/3.0.14/turf.js",
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/BufferTool.js"
       ],
       ImageOverLayer: [
-        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"
+        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"
       ]
     };
   }
@@ -43,7 +43,7 @@ export default class ApiLoader {
       script.type = "text/javascript";
       script.async = true;
       script.defer = true;
-      script.src = `http://api.tianditu.gov.cn/api?v=${this._config.v}&tk=${this._config.tk}`;
+      script.src = `https://api.tianditu.gov.cn/api?v=${this._config.v}&tk=${this._config.tk}`;
       this._document.body.appendChild(script);
       script.onload = () => {
         if (this._config.plugins && this._config.plugins.length) {
