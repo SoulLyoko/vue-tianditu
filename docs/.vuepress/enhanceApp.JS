@@ -3,6 +3,8 @@
  */
 // import VueTianditu from "../../src/lib";
 import VueTianditu from "vue-tianditu";
+import ElementUI from "element-ui";
+import 'element-ui/lib/theme-chalk/index.css';
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
@@ -11,6 +13,7 @@ export default ({
   siteData // 站点元数据
 }) => {
   // ...做一些其他的应用级别的优化
+  Vue.use(ElementUI);
   Vue.use(VueTianditu, {
     v: "4.0",
     tk: "7f013d0186775b063d6a046977bbefc6"

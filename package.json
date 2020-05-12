@@ -18,6 +18,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "element-ui": "^2.13.1",
     "vue-tianditu": "^1.0.0"
   },
   "devDependencies": {

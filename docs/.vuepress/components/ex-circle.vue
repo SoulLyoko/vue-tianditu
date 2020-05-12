@@ -3,7 +3,8 @@
     <tdt-map :center="center" :zoom="zoom">
       <tdt-circle :center="center" :radius="3000" :edit="edit" color="black" :opacity="1"></tdt-circle>
     </tdt-map>
-    <button @click="edit=!edit">editable</button>
+    <!-- <button @click="edit=!edit">editable</button> -->
+    <el-button type="primary" size="mini" @click="edit=!edit">editable</el-button>
   </div>
 </template>
 
