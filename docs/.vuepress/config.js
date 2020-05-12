@@ -1,4 +1,5 @@
 module.exports = {
+  base: "/vue-tianditu/",
   title: "vue-tianditu文档",
   description: "Just playing around",
   themeConfig: {
@@ -41,7 +42,7 @@ module.exports = {
         ]
       },
       {
-        title:"工具",
+        title: "工具",
         path: "/mousetool/mousetool",
         collapsable: false
       }
