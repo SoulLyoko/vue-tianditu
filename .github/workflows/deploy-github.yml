@@ -1,21 +1,37 @@
-name: Deploy Github
+# name: Deploy Github
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@master
+#     - name: Build and Deploy
+#       uses: JamesIves/github-pages-deploy-action@master
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#         BRANCH: gh-pages
+#         FOLDER: docs/.vuepress/dist
+#         BUILD_SCRIPT: yarn && yarn docs:build
+#         CLEAN: true
+
+name: Build and Deploy
+on: [push]
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: docs/.vuepress/dist
         BUILD_SCRIPT: yarn && yarn docs:build
-        CLEAN: true
+        BUILD_DIR: docs/.vuepress/dist/
