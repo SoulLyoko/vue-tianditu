@@ -49,8 +49,6 @@ module.exports = {
     ]
   },
   configureWebpack: {
-    output: {
-      publicPath: "//soullyoko.github.io/vue-tianditu/"
-    }
+    publicPath: "/vue-tianditu/"
   }
 };
