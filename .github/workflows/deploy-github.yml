@@ -15,7 +15,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: master
           FOLDER: docs/.vuepress/dist
           REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
           BUILD_SCRIPT: yarn && yarn docs:build
