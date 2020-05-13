@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@master
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
-          REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
           BUILD_SCRIPT: yarn && yarn docs:build
           CLEAN: true
