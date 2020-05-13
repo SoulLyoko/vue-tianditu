@@ -1,22 +1,43 @@
-name: Deploy Github
+# name: Deploy Github
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@master
+#       - name: Build and Deploy
+#         uses: JamesIves/github-pages-deploy-action@releases/v3
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#           BRANCH: gh-pages
+#           FOLDER: docs/.vuepress/dist
+#           REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
+#           BUILD_SCRIPT: yarn && yarn docs:build
+#           CLEAN: true
+
+name: Build and Deploy
+on: [push]
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Build and Deploy
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Install and Build
+        run: |
+          yarn 
+          yarn docs:build
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: master
+          BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
-          REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
-          BUILD_SCRIPT: yarn && yarn docs:build
-          CLEAN: true
