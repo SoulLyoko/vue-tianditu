@@ -18,8 +18,4 @@ export default ({
     v: "4.0",
     tk: "7f013d0186775b063d6a046977bbefc6"
   });
-  router.beforEach((to, from, next) => {
-    console.log("to,from", to, from);
-    next();
-  });
 };

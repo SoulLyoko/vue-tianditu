@@ -47,12 +47,5 @@ module.exports = {
         collapsable: false
       }
     ]
-  },
-  configureWebpack: (config, isServer) => {
-    return {
-      output: {
-        publicPath: "/vue-tianditu/"
-      }
-    };
   }
 };
