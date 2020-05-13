@@ -48,9 +48,9 @@ module.exports = {
       }
     ]
   },
-  configureWebpack:{
-    output:{
-      publicPath:"/vue-tianditu"
+  configureWebpack: {
+    output: {
+      publicPath: "/vue-tianditu/"
     }
   }
 };
