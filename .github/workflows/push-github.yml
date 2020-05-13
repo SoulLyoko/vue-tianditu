@@ -23,4 +23,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         directory: docs/.vuepress/dist
+        repository: soullyoko.github.io
         github_token: ${{ secrets.GITHUB_TOKEN }}
