@@ -42,3 +42,5 @@ jobs:
           REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
           BRANCH: master
           FOLDER: docs/.vuepress/dist
+          BASE_BRANCH: master
+          DEBUG: true
