@@ -4,7 +4,7 @@
 // import VueTianditu from "../../src/lib";
 import VueTianditu from "vue-tianditu";
 import ElementUI from "element-ui";
-import 'element-ui/lib/theme-chalk/index.css';
+import "element-ui/lib/theme-chalk/index.css";
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
@@ -17,5 +17,9 @@ export default ({
   Vue.use(VueTianditu, {
     v: "4.0",
     tk: "7f013d0186775b063d6a046977bbefc6"
+  });
+  router.beforEach((to, from, next) => {
+    console.log("to,from", to, from);
+    next();
   });
 };

@@ -39,8 +39,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
-          BRANCH: master
+          # REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
+          # BRANCH: master
+          BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
-          BASE_BRANCH: master
           DEBUG: true
