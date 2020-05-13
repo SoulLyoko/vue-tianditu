@@ -47,10 +47,10 @@ module.exports = {
         collapsable: false
       }
     ]
+  },
+  configureWebpack: {
+    output: {
+      publicPath: "//soullyoko.github.io/vue-tianditu/"
+    }
   }
-  // configureWebpack: {
-  //   output: {
-  //     publicPath: "/vue-tianditu/"
-  //   }
-  // }
 };
