@@ -9825,6 +9825,14 @@ vue-tianditu@^1.0.0:
   resolved "https://registry.npm.taobao.org/vue-tianditu/download/vue-tianditu-1.0.0.tgz#3bcf5a90d029a9337ef9c262a1ea250de0929ac6"
   integrity sha1-O89akNApqTN++cJioeolDeCSmsY=
 
+vue-tianditu@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/vue-tianditu/download/vue-tianditu-1.0.1.tgz#660685a5e7c61d8dff66246e17d5d59b5a2dbbfa"
+  integrity sha1-ZgaFpefGHY3/ZiRuF9XVm1otu/o=
+  dependencies:
+    element-ui "^2.13.1"
+    vue-tianditu "^1.0.0"
+
 vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz?cache=0&sync_timestamp=1582745937656&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

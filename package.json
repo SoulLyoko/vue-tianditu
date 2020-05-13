@@ -1,7 +1,7 @@
 {
   "name": "vue-tianditu",
   "description": "vue tianditu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Lyoko <519052532@qq.com>",
   "license": "MIT",
   "private": false,
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "element-ui": "^2.13.1",
-    "vue-tianditu": "^1.0.0"
+    "vue-tianditu": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
