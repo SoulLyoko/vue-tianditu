@@ -38,7 +38,8 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
+          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: 99ad38e85823e5750bd615fedc316ea6c792e31c
           REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
+          BRANCH: master
+          FOLDER: docs/.vuepress/dist
