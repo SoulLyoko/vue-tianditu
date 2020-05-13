@@ -10,7 +10,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs && bash deploy.sh"
+    "docs:build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
   },
   "browserslist": [
     "> 1%",

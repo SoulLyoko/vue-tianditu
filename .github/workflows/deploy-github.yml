@@ -17,5 +17,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
+          REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
           BUILD_SCRIPT: yarn && yarn docs:build
           CLEAN: true
