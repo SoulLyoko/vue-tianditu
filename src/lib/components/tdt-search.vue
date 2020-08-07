@@ -50,7 +50,7 @@
             readonly
             style="width:120px;"
           ></tdt-input>
-          <tdt-button type="text" size="mini" @click="endTool.clear();endTool.open()">设起点</tdt-button>
+          <tdt-button type="text" size="mini" @click="endTool.clear();endTool.open()">设终点</tdt-button>
         </p>
         <strong v-if="duration&&distance">总时间：{{duration}} ，总距离：{{distance}}</strong>
       </div>

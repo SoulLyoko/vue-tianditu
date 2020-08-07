@@ -14,8 +14,8 @@ export default {
     };
   },
   methods: {
-    mapClick(evt){
-      alert("click map")
+    mapClick(evt) {
+      alert("click map");
     }
   }
 };
