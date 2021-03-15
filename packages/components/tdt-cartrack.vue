@@ -14,13 +14,13 @@ export default {
     startOnInit: { type: Boolean } //初始化完成后车辆立刻开始移动
   },
   watch: {
-    Datas(val) {
+    Datas() {
       this.register();
     }
   },
   methods: {
     initComponent(option) {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         if (!T.CarTrack) {
           return setTimeout(() => {
             this.initComponent(option);
@@ -54,4 +54,3 @@ export default {
   }
 };
 </script>
-

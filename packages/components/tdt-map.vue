@@ -6,23 +6,22 @@
 </template>
 
 <script>
-import { guid, objectFilter, capitalize } from "../utils/utils";
+import { guid, capitalize } from "../utils/utils";
 import componentMixin from "../mixins/component-mixin";
-import options from "../common/options";
 import { ApiLoaderInstance } from "../utils/api-loader-instance";
 
 export default {
   name: "tdt-map",
   mixins: [componentMixin],
   props: {
-    drag: "", //启用地图拖拽，默认启用。
-    scrollWheelZoom: "", //启用滚轮放大缩小，默认启用。
-    doubleClickZoom: "", //启用双击放大，默认启用。
-    keyboard: "", //启用键盘操作，默认启用。
-    inertia: "", //启用地图惯性拖拽，默认启用。
-    continuousZoom: "", //启用连续缩放效果，默认启用。
-    pinchToZoom: "", //启用双指操作缩放，默认启用。
-    autoResize: "", //启用自动适应容器尺寸变化，默认启用。
+    drag: { type: Boolean, default: true }, //启用地图拖拽，默认启用。
+    scrollWheelZoom: { type: Boolean, default: true }, //启用滚轮放大缩小，默认启用。
+    doubleClickZoom: { type: Boolean, default: true }, //启用双击放大，默认启用。
+    keyboard: { type: Boolean, default: true }, //启用键盘操作，默认启用。
+    inertia: { type: Boolean, default: true }, //启用地图惯性拖拽，默认启用。
+    continuousZoom: { type: Boolean, default: true }, //启用连续缩放效果，默认启用。
+    pinchToZoom: { type: Boolean, default: true }, //启用双指操作缩放，默认启用。
+    autoResize: { type: Boolean, default: true }, //启用自动适应容器尺寸变化，默认启用。
     maxBounds: { type: Array }, //当这个选项被设置后，地图被限制在给定的地理边界内，当用户平移将地图拖动到视图以外的范围时会出现弹回的效果，并且也不允许缩小视图到给定范围以外的区域（这取决于地图的尺寸）。使用setMaxBounds方法可以动态地设置这种约束。
     mid: { type: String, default: guid() }, //地图容器id
     projection: { type: String }, //EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)
@@ -42,10 +41,7 @@ export default {
         return;
       }
       ApiLoaderInstance.load().then(() => {
-        this.$tdtMap = this.$tdtComponent = new T.Map(
-          this.mid,
-          this.setOption()
-        );
+        this.$tdtMap = this.$tdtComponent = new T.Map(this.mid, this.setOption());
         this.addEvents();
         this.setProps();
         this.addWatchers();

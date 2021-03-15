@@ -11,8 +11,8 @@ export default {
     opacity: { type: Number }, //折线的透明度（范围0-1 之间）。
     lineStyle: { type: String }, //折线的样式（solid或dashed）。
     path: { type: Array }, //坐标数组。
-    edit: "", //是否可编辑
-    extData: "" //自定义属性
+    edit: { type: Boolean, default: false }, //是否可编辑
+    extData: { type: [Object, String, Number], default: undefined } //自定义属性
   },
   methods: {
     initComponent(option) {
@@ -22,4 +22,3 @@ export default {
   }
 };
 </script>
-

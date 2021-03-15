@@ -16,11 +16,11 @@ export default {
     borderColor: { type: String }, //文本的边框颜色
     opacity: { type: Number }, //文本的显示不透明度。
     position: { type: Array }, //文本标注的地理位置。
-    extData: "" //自定义属性
+    extData: { type: [Object, String, Number], default: undefined } //自定义属性
   },
   methods: {
     initComponent(option) {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         if (!T.Label) {
           return setTimeout(() => {
             this.initComponent(option);
@@ -33,4 +33,3 @@ export default {
   }
 };
 </script>
-

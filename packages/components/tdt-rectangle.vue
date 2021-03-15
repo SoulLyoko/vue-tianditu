@@ -13,8 +13,8 @@ export default {
     fillOpacity: { type: Number }, //矩形填充的透明度（范围0-1 之间）。
     lineStyle: { type: String }, //矩形边线的样式（solid或dashed）。
     bounds: { type: Array }, //矩形范围。
-    edit: "", //是否可编辑
-    extData: "" //自定义属性
+    edit: { type: Boolean, default: false }, //是否可编辑
+    extData: { type: [Object, String, Number], default: undefined } //自定义属性
   },
   methods: {
     initComponent(option) {

@@ -10,7 +10,6 @@ export default {
     "autoResize"
   ],
   "tdt-marker": ["dragging"],
-  "tdt-infowindow": ["autoPan", "closeButton"],
   "tdt-polyline": ["edit"],
   "tdt-polygon": ["edit"],
   "tdt-rectangle": ["edit"],

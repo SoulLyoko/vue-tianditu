@@ -14,16 +14,12 @@ export default {
     lineStyle: { type: String }, //圆边线的样式（solid或dashed）。
     center: { type: Array }, //圆心经纬度坐标。
     radius: { type: Number }, //圆的半径，以米为单位。
-    edit: "", //是否可编辑
-    extData: "" //自定义属性
+    edit: { type: Boolean, default: false }, //是否可编辑
+    extData: { type: [Object, String, Number], default: undefined } //自定义属性
   },
   methods: {
     initComponent(option) {
-      this.$tdtComponent = new T.Circle(
-        toLngLat(this.center),
-        this.radius,
-        option
-      );
+      this.$tdtComponent = new T.Circle(toLngLat(this.center), this.radius, option);
     }
   }
 };

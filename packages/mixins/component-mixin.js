@@ -24,8 +24,7 @@ export default {
   },
   destroyed() {
     if (!this.$tdtComponent) return;
-    this.$tdtComponent.getType &&
-      this.$tdtMap.removeOverLay(this.$tdtComponent); //移除覆盖物
+    this.$tdtComponent.getType && this.$tdtMap.removeOverLay(this.$tdtComponent); //移除覆盖物
     this.$tdtComponent.setUrl && this.$tdtMap.removeLayer(this.$tdtComponent); //移除图层
   },
   render(h) {
@@ -48,10 +47,7 @@ export default {
     registerRest(instance) {
       if (!this.$tdtComponent && instance) this.$tdtComponent = instance;
       const { $tdtMap, $tdtComponent, extData } = this;
-      $tdtComponent &&
-        $tdtComponent.getType &&
-        $tdtComponent.getType() !== 3 &&
-        $tdtMap.addOverLay($tdtComponent); //添加覆盖物（除信息窗口）
+      $tdtComponent && $tdtComponent.getType && $tdtComponent.getType() !== 3 && $tdtMap.addOverLay($tdtComponent); //添加覆盖物（除信息窗口）
       this.addEvents();
       this.setProps();
       this.addWatchers();
@@ -81,9 +77,7 @@ export default {
       if (enableProps[tag]) {
         enableProps[tag].forEach(prop => {
           if (this[prop] !== undefined) {
-            this[prop]
-              ? $tdtComponent[`enable${capitalize(prop)}`]()
-              : $tdtComponent[`disable${capitalize(prop)}`]();
+            this[prop] ? $tdtComponent[`enable${capitalize(prop)}`]() : $tdtComponent[`disable${capitalize(prop)}`]();
           }
         });
       }
@@ -109,9 +103,7 @@ export default {
       if (enableProps[tag]) {
         enableProps[tag].forEach(prop => {
           this.$watch(prop, val => {
-            val
-              ? $tdtComponent[`enable${capitalize(prop)}`]()
-              : $tdtComponent[`disable${capitalize(prop)}`]();
+            val ? $tdtComponent[`enable${capitalize(prop)}`]() : $tdtComponent[`disable${capitalize(prop)}`]();
           });
         });
       }

@@ -21,16 +21,12 @@ export default class ApiLoader {
         "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js",
         "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/CarTrack.js"
       ],
-      HeatmapOverlay: [
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"
-      ],
+      HeatmapOverlay: ["https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"],
       BufferTool: [
         "https://cdn.bootcss.com/Turf.js/3.0.14/turf.js",
         "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/BufferTool.js"
       ],
-      ImageOverLayer: [
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"
-      ]
+      ImageOverLayer: ["https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"]
     };
   }
 
@@ -58,11 +54,11 @@ export default class ApiLoader {
   }
 
   loadPlugins() {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       const promises = [];
-      this._config.plugins.forEach((plugin, pindex) => {
+      this._config.plugins.forEach(plugin => {
         this._pluginsUrl[plugin] &&
-          this._pluginsUrl[plugin].forEach((url, uindex) => {
+          this._pluginsUrl[plugin].forEach(url => {
             promises.push(this.loadOneScript(url));
           });
       });

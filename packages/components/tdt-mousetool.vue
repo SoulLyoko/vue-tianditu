@@ -2,13 +2,7 @@
 import componentMixin from "../mixins/component-mixin";
 import { capitalize, objectFilter } from "../utils/utils";
 import { toIcon } from "../utils/converter";
-const toolNames = [
-  "markTool",
-  "polygonTool",
-  "polylineTool",
-  "rectangleTool",
-  "circleTool"
-];
+const toolNames = ["markTool", "polygonTool", "polylineTool", "rectangleTool", "circleTool"];
 
 export default {
   name: "tdt-mousetool",
@@ -49,7 +43,7 @@ export default {
   },
   methods: {
     initComponent(option) {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         if (!T.MarkTool) {
           return setTimeout(() => {
             this.initComponent(option);
@@ -69,10 +63,7 @@ export default {
               this.tools.markTool = new T.MarkTool(this.$tdtMap, this.markTool);
             }
           } else {
-            this.tools[type] = new T[capitalize(type)](
-              this.$tdtMap,
-              this[type]
-            );
+            this.tools[type] = new T[capitalize(type)](this.$tdtMap, this[type]);
           }
           this.addToolEvents(type);
         });
@@ -105,4 +96,3 @@ export default {
   }
 };
 </script>
-

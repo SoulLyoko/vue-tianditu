@@ -1,12 +1,12 @@
 <template>
   <div class="mapDiv">
     <tdt-map :center="center" :zoom="zoom">
-      <tdt-marker :position="marker1" @click="openInfowidow" extData="marker1"></tdt-marker>
-      <tdt-marker :position="marker2" @click="openInfowidow" extData="marker2"></tdt-marker>
+      <tdt-marker :position="marker1" @click="openInfowindow" extData="marker1"></tdt-marker>
+      <tdt-marker :position="marker2" @click="openInfowindow" extData="marker2"></tdt-marker>
       <tdt-infowindow
         :target="infowindow.target"
         :content="infowindow.content"
-        @close="infowindow.target=null"
+        @close="infowindow.target = null"
       ></tdt-infowindow>
     </tdt-map>
   </div>
