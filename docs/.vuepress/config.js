@@ -1,7 +1,7 @@
 module.exports = {
-  base: "",
+  base: "/",
   title: "vue-tianditu文档",
-  description: "Just playing around",
+  description: "vue-tianditu文档",
   themeConfig: {
     displayAllHeaders: true,
     sidebar: [
@@ -45,6 +45,12 @@ module.exports = {
         title: "工具",
         path: "/mousetool/mousetool",
         collapsable: false
+      },
+      {
+        title: "组件",
+        sidebarDepth: 0,
+        collapsable: false,
+        children: ["/component/search"]
       }
     ]
   }

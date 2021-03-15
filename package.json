@@ -10,9 +10,12 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib --name vue-tianditu --dest lib packages/index.js"
+    "build": "vue-cli-service build --target lib --name vue-tianditu --dest lib packages/index.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "async-validator": "1.11.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.1",
     "vue": "^2.6.11"
@@ -26,7 +29,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.32.8",
     "sass-loader": "^10.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.8.2"
   },
   "eslintConfig": {
     "root": true,

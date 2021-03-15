@@ -22,9 +22,11 @@ yarn-error.log*
 
 # 以下是新增的
 # 要忽略目录和指定文件
-src/
+.github/
+docs/
 packages/
 public/
+src/
 vue.config.js
 babel.config.js
 yarn.lock

@@ -2,7 +2,7 @@
  * 扩展 VuePress 应用
  */
 // import VueTianditu from "../../src/lib";
-import VueTianditu from "vue-tianditu";
+import VueTianditu from "../../packages";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
