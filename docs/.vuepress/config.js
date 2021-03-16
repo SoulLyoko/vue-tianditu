@@ -50,7 +50,7 @@ module.exports = {
         title: "组件",
         sidebarDepth: 0,
         collapsable: false,
-        children: ["/component/search"]
+        children: ["/component/search", "/component/cartrack"]
       }
     ]
   }

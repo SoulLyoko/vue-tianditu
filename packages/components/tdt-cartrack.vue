@@ -7,15 +7,20 @@ export default {
   props: {
     interval: { type: Number }, //从当前节点到下一节点的时间间隔。
     speed: { type: Number }, //一个时间间隔移动的距离，单位是米。 注：speed为0时，按照Datas数组中每个元素的坐标移动。
-    dynamicLine: { type: Boolean }, //为true时轨迹线随车移动，而变化。 false时，车辆运动轨迹提前画好且无动态变化。
+    dynamicLine: { type: Boolean, default: false }, //为true时轨迹线随车移动，而变化。 false时，车辆运动轨迹提前画好且无动态变化。
     Datas: { type: Array }, //数据来源。
     carstyle: { type: Object }, //车辆样式。
     polylinestyle: { type: Object }, //车辆轨迹线样式。
-    startOnInit: { type: Boolean } //初始化完成后车辆立刻开始移动
+    startOnInit: { type: Boolean, default: false } //初始化完成后车辆立刻开始移动
   },
   watch: {
-    Datas() {
-      this.register();
+    Datas(val) {
+      if (val?.length) {
+        if (this.$tdtComponent) {
+          this.clear();
+        }
+        this.register();
+      }
     }
   },
   methods: {

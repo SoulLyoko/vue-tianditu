@@ -28,7 +28,7 @@ export default {
     };
   },
   methods: {
-    openInfowidow({ target, extData }) {
+    openInfowindow({ target, extData }) {
       this.infowindow = {
         target,
         content: `<span>${extData}</span>`

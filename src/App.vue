@@ -15,9 +15,11 @@
       ></tdt-infowindow>
       <tdt-mousetool ref="mousetool" :markTool="{ follow: true }" :polygonTool="{ showLabel: true }"></tdt-mousetool>
       <tdt-search></tdt-search>
+      <tdt-cartrack :Datas="cartrack" :interval="5" :speed="10" :startOnInit="true"></tdt-cartrack>
     </tdt-map>
     <button @click="changeLayer">切换图层</button>
     <button @click="edit = !edit">编辑</button>
+    <button @click="startTrack">车辆轨迹</button>
     <br />
     <button @click="openTool('markTool')">标点</button>
     <button @click="openTool('polygonTool')">测面</button>
@@ -31,6 +33,7 @@
 <script>
 const tilelayerUrl =
   "http://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=7f013d0186775b063d6a046977bbefc6";
+import tracks from "./tracks";
 
 export default {
   name: "App",
@@ -71,7 +74,8 @@ export default {
         content: "",
         target: null
       },
-      edit: false
+      edit: false,
+      cartrack: []
     };
   },
   methods: {
@@ -89,6 +93,9 @@ export default {
         target,
         content: `<h3>${extData}</h3>`
       };
+    },
+    startTrack() {
+      this.cartrack = tracks;
     }
   }
 };
