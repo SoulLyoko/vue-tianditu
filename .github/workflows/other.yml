@@ -21,3 +21,5 @@ jobs:
           branch: master
           dir: docs
           token: ${{ secrets.publish }}
+          name: SoulLyoko
+          email: 519052532@qq.com
