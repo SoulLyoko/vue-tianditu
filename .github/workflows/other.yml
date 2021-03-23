@@ -20,6 +20,6 @@ jobs:
           repo: SoulLyoko/soullyoko.github.io
           branch: master
           dir: docs
-          token: ${{ secrets.publish }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           name: SoulLyoko
           email: 519052532@qq.com
