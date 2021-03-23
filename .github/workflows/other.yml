@@ -16,7 +16,7 @@ jobs:
       - name: publish
         uses: s0/git-publish-subdir-action@master
         env:
-          REPO: https://github.com/SoulLyoko/soullyoko.github.io.git
+          REPO: git@github.com:SoulLyoko/soullyoko.github.io.git
           BRANCH: master
           FOLDER: docs
           SSH_PRIVATE_KEY: ${{ secrets.publish }}
