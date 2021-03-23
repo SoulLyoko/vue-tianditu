@@ -14,12 +14,10 @@ jobs:
       #     yarn docs:build
 
       - name: publish
-        # uses: s0/git-publish-subdir-action@master
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        uses: s0/git-publish-subdir-action@master
+        # uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
         with:
-          repo: SoulLyoko/soullyoko.github.io
-          branch: master
-          dir: docs
-          token: ${{ secrets.ACCESS_TOKEN }}
-          name: SoulLyoko
-          email: 519052532@qq.com
+          REPO: git@github.com:SoulLyoko/soullyoko.github.io.git
+          BRANCH: master
+          FOLDER: docs
+          SSH_PRIVATE_KEY: ${{ secrets.PUBLISH }}
