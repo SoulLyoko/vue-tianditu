@@ -8,15 +8,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Install and Build
-        run: |
-          yarn 
-          yarn docs:build
+      # - name: Install and Build
+      #   run: |
+      #     yarn
+      #     yarn docs:build
 
       - name: publish
         uses: s0/git-publish-subdir-action@master
         env:
           REPO: https://github.com/SoulLyoko/soullyoko.github.io.git
           BRANCH: master
-          FOLDER: docs/.vuepress/dist
+          FOLDER: docs
           SSH_PRIVATE_KEY: ${{ secrets.publish }}
