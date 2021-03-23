@@ -16,7 +16,7 @@ jobs:
       - name: publish
         # uses: s0/git-publish-subdir-action@master
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
-        env:
+        with:
           repo: SoulLyoko/soullyoko.github.io
           branch: master
           dir: docs
