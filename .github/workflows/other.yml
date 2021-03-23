@@ -20,4 +20,4 @@ jobs:
           REPO: git@github.com:SoulLyoko/soullyoko.github.io.git
           BRANCH: master
           FOLDER: docs
-          SSH_PRIVATE_KEY: ${{ secrets.PUBLISH }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
