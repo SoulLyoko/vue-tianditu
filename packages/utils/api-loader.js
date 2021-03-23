@@ -62,7 +62,7 @@ export default class ApiLoader {
             promises.push(this.loadOneScript(url));
           });
       });
-      Promise.all(promises).then(resolve);
+      Promise.all(promises).finally(resolve);
     });
   }
 

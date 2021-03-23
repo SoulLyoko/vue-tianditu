@@ -1,0 +1,22 @@
+name: AutoBuild
+on: [push]
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Install and Build
+        run: |
+          yarn 
+          yarn docs:build
+
+      - name: publish
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: SoulLyoko/soullyoko.github.io
+          BRANCH: master
+          FOLDER: docs/.vuepress/dist
+          SSH_PRIVATE_KEY: ${{ secrets.publish }}
