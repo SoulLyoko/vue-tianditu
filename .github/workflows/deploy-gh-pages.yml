@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@2
 
       - name: Install and Build
         run: |
@@ -16,7 +16,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          # REPOSITORY_NAME: SoulLyoko/soullyoko.github.io
-          # BRANCH: master
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist

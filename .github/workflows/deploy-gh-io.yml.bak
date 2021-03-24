@@ -10,8 +10,8 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm i
-          npm run docs:build
+          yarn
+          yarn docs:build
 
       - name: publish
         uses: s0/git-publish-subdir-action@master
