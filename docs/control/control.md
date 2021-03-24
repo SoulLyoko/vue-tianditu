@@ -2,9 +2,11 @@
 
 ## 示例
 
-controls 接收一个数组，数组的值可以输字符串或对象。默认配置传入控件名称字符串。自由配置时可以传入对象，name 属性为控件名称。<br>
-position 及 anchor 属性说明：<br>
+controls 接收一个数组，数组的值可以是字符串或对象。传入控件名称字符串时，使用控件的默认配置。自由配置时可以传入对象，name 属性为控件名称。<br>
+
+::: tip position 及 anchor 属性说明
 topleft：表示左上。topright：表示右上。bottomleft：表示左下。bottomright：表示右下。
+:::
 
 <<< @/docs/.vuepress/components/ex-control.vue
 <ex-control></ex-control>
@@ -27,7 +29,7 @@ scale 地图比例尺控件，用来实时的显示地图的当前比例尺。
 
 | 属性     | 类型   | 默认值       | 说明                   |
 | -------- | ------ | ------------ | ---------------------- |
-| position | String | "bottomleft" | 控制的位置，默认左下。 |
+| position | String | "bottomleft" | 控件的位置，默认左下。 |
 
 ## 版权控件
 

@@ -1,14 +1,22 @@
+# vue-tianditu
+
+天地图 vue 组件库
+
+[vue-tianditu 文档](https://soullyoko.github.io/vue-tianditu/)
+
 ## 安装
 
 ### NPM
 
-```
-$ npm install vue-tianditu
+```sh
+npm i vue-tianditu
+# or
+yarn add vue-tianditu
 ```
 
 ### CDN
 
-```
+```html
 <script src="https://unpkg.com/vue-tianditu"></script>
 ```
 
@@ -36,7 +44,7 @@ new Vue({
 
 `App.vue`
 
-```vue
+```html
 <template>
   <div class="mapDiv">
     <tdt-map></tdt-map>
@@ -44,10 +52,10 @@ new Vue({
 </template>
 
 <style>
-.mapDiv {
-  width: 100%;
-  height: 100%;
-}
+  .mapDiv {
+    width: 100%;
+    height: 100%;
+  }
 </style>
 ```
 
