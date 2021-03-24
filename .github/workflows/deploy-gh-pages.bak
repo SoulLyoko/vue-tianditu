@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Deply To gh-pages
 on: [push]
 jobs:
   build-and-deploy:

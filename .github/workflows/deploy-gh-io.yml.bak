@@ -1,4 +1,4 @@
-name: AutoBuild
+name: Deply To github.io
 on: [push]
 jobs:
   build:
