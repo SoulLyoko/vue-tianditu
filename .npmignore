@@ -1,6 +1,16 @@
 .DS_Store
 node_modules
-/dist
+dist
+.github
+docs
+packages
+public
+src
+babel.config.js
+vue.config.js
+yarn.lock
+*.map
+*.html
 
 # local env files
 .env.local
@@ -19,16 +29,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-
-# 以下是新增的
-# 要忽略目录和指定文件
-.github/
-docs/
-packages/
-public/
-src/
-vue.config.js
-babel.config.js
-yarn.lock
-*.map
-*.html

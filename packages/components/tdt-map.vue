@@ -1,6 +1,6 @@
 <template>
-  <div class="tdt-map-container">
-    <div class="tdt-map" :id="mid"></div>
+  <div class="tdt-map-container" style="height:100%;">
+    <div class="tdt-map" :id="mid" style="height:100%;"></div>
     <slot></slot>
   </div>
 </template>
@@ -84,12 +84,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.tdt-map-container {
-  height: 100%;
-  .tdt-map {
-    height: 100%;
-  }
-}
-</style>

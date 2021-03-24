@@ -14,19 +14,19 @@ export default class ApiLoader {
     this._pluginsUrl = {
       D3: [
         "https://cdn.bootcss.com/d3/3.5.17/d3.js",
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js"
+        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js"
       ],
       CarTrack: [
         "https://cdn.bootcss.com/d3/3.5.17/d3.js",
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js",
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/CarTrack.js"
+        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.js",
+        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/CarTrack.js"
       ],
-      HeatmapOverlay: ["https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"],
+      HeatmapOverlay: ["http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/HeatmapOverlay.js"],
       BufferTool: [
         "https://cdn.bootcss.com/Turf.js/3.0.14/turf.js",
-        "https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/BufferTool.js"
+        "http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/BufferTool.js"
       ],
-      ImageOverLayer: ["https://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"]
+      ImageOverLayer: ["http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"]
     };
   }
 
