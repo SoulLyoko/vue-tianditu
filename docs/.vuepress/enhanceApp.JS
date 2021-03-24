@@ -1,10 +1,9 @@
 /**
  * 扩展 VuePress 应用
  */
-import VueTianditu from "./vue-tianditu.umd.min.js";
+import VueTianditu from "../../packages";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import "./vue-tianditu.css";
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数

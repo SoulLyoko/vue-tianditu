@@ -5,7 +5,7 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install and Build
@@ -13,7 +13,7 @@ jobs:
           yarn
           yarn docs:build
 
-      - name: publish
+      - name: Deploy
         uses: s0/git-publish-subdir-action@master
         env:
           REPO: git@github.com:SoulLyoko/soullyoko.github.io.git

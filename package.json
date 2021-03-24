@@ -49,6 +49,9 @@
     },
     "rules": {}
   },
+  "gitHooks": {
+    "pre-commit": "sh deploy.sh"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
