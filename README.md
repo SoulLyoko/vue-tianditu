@@ -1,9 +1,8 @@
 # vue-tianditu
 
 天地图 vue 组件库
-文档 https://soullyoko.github.io/vue-tianditu/
-或
-https://soullyoko.github.io/
+
+[vue-tianditu 文档](https://soullyoko.github.io/vue-tianditu/)
 
 ## 安装
 

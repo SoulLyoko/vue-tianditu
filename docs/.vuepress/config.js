@@ -6,6 +6,11 @@ module.exports = {
     displayAllHeaders: true,
     sidebar: [
       {
+        title: "更新日志",
+        path: "/log/log",
+        collapsable: false
+      },
+      {
         title: "开始",
         path: "/",
         collapsable: false
