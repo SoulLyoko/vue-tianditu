@@ -50,7 +50,7 @@
     "rules": {}
   },
   "gitHooks": {
-    "pre-push": "sh deploy.sh"
+    "pre-commit": "sh deploy.sh"
   },
   "browserslist": [
     "> 1%",
