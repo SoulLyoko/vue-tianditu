@@ -47,5 +47,17 @@ export default {
   "tdt-polyline": ["click", "dblclick", "mousedown", "mouseup", "mouseout", "mouseover", "remove"],
   "tdt-polygon": ["click", "dblclick", "mousedown", "mouseup", "mouseout", "mouseover", "remove"],
   "tdt-rectangle": ["click", "dblclick", "mousedown", "mouseup", "mouseout", "mouseover", "remove"],
-  "tdt-circle": ["click", "dblclick", "mousedown", "mouseup", "mouseout", "mouseover", "remove"]
+  "tdt-circle": ["click", "dblclick", "mousedown", "mouseup", "mouseout", "mouseover", "remove"],
+  "tdt-marker-cluster": [
+    "click",
+    "dblclick",
+    "mousedown",
+    "mouseup",
+    "mouseout",
+    "mouseover",
+    "dragstart",
+    "drag",
+    "dragend",
+    "remove"
+  ]
 };

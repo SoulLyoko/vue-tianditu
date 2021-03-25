@@ -13,7 +13,7 @@ export default {
     opacity: { type: Number }, //设置透明度。
     position: { type: Array }, //标点的坐标
     edit: { type: Boolean, default: false }, //是否可编辑
-    extData: { type: [Object, String, Number], default: undefined } //自定义属性
+    extData: null //自定义属性
   },
   methods: {
     initComponent(option) {

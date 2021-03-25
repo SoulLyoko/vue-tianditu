@@ -1,4 +1,4 @@
-import { toLngLat, toBounds, toPoint, toIcon } from "../utils/converter";
+import { toLngLat, toBounds, toPoint, toIcon, toMarker } from "../utils/converter";
 
 export default {
   "tdt-map": [
@@ -137,6 +137,32 @@ export default {
       name: "center",
       fn(component, val) {
         component.setCenter(toLngLat(val));
+      }
+    }
+  ],
+  "tdt-marker-cluster": [
+    "maxZoom",
+    "gridSize",
+    {
+      name: "markers",
+      fn(component, val) {
+        component.clearMarkers();
+        if (val && val.length) {
+          component.addMarkers(val.map(item => toMarker(item)));
+        }
+      }
+    },
+    {
+      name: "styles",
+      fn(component, val) {
+        component.setStyles(
+          val.map(item => {
+            return {
+              ...item,
+              offset: toPoint(item.offset)
+            };
+          })
+        );
       }
     }
   ]

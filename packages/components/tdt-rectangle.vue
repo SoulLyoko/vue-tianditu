@@ -14,7 +14,7 @@ export default {
     lineStyle: { type: String }, //矩形边线的样式（solid或dashed）。
     bounds: { type: Array }, //矩形范围。
     edit: { type: Boolean, default: false }, //是否可编辑
-    extData: { type: [Object, String, Number], default: undefined } //自定义属性
+    extData: null //自定义属性
   },
   methods: {
     initComponent(option) {

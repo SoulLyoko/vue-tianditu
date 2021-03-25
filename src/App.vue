@@ -2,7 +2,7 @@
   <div id="app">
     <tdt-map :center="center" :zoom="zoom" :controls="controls">
       <tdt-tilelayer :url="tilelayer" v-if="tilelayer"></tdt-tilelayer>
-      <tdt-marker :position="marker" @click="openInfowidow" extData="marker-info"></tdt-marker>
+      <tdt-marker :position="marker" @click="openInfowidow" :extData="marker"></tdt-marker>
       <tdt-label :position="label" text="Hello World!"></tdt-label>
       <tdt-polyline :path="polyline" :edit="edit" color="black" :opacity="1"></tdt-polyline>
       <tdt-polygon :path="polygon" :edit="edit" color="black" :opacity="1"></tdt-polygon>
@@ -16,10 +16,12 @@
       <tdt-mousetool ref="mousetool" :markTool="{ follow: true }" :polygonTool="{ showLabel: true }"></tdt-mousetool>
       <tdt-search></tdt-search>
       <tdt-cartrack :Datas="cartrack" :interval="5" :speed="10" :startOnInit="true"></tdt-cartrack>
+      <tdt-marker-cluster :markers="clusterMarkers" @click="clusterClick"></tdt-marker-cluster>
     </tdt-map>
     <button @click="changeLayer">切换图层</button>
     <button @click="edit = !edit">编辑</button>
     <button @click="startTrack">车辆轨迹</button>
+    <button @click="addCluster">点聚合</button>
     <br />
     <button @click="openTool('markTool')">标点</button>
     <button @click="openTool('polygonTool')">测面</button>
@@ -75,7 +77,8 @@ export default {
         target: null
       },
       edit: false,
-      cartrack: []
+      cartrack: [],
+      clusterMarkers: []
     };
   },
   methods: {
@@ -90,12 +93,29 @@ export default {
     },
     openInfowidow({ target, extData }) {
       this.infowindow = {
-        target,
+        target: target,
         content: `<h3>${extData}</h3>`
       };
     },
     startTrack() {
       this.cartrack = tracks;
+    },
+    addCluster() {
+      this.clusterMarkers = new Array(500).fill(0).map((item, index) => {
+        return {
+          position: [Math.random() * 40 + 85, Math.random() * 30 + 21],
+          extData: "cluster-" + index
+        };
+      });
+    },
+    clusterClick({ layer }) {
+      const {
+        options: { extData }
+      } = layer;
+      this.infowindow = {
+        target: layer,
+        content: `<h3>${extData}</h3>`
+      };
     }
   }
 };

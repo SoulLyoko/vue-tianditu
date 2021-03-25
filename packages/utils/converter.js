@@ -66,3 +66,8 @@ export const objectFilter = obj => {
   });
   return res;
 };
+
+export const toMarker = option => {
+  option.icon = toIcon(option.icon);
+  return new T.Marker(toLngLat(option.position), objectFilter(option));
+};

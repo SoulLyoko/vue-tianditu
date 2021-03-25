@@ -46,7 +46,7 @@ module.exports = {
         title: "组件",
         collapsable: false,
         sidebarDepth: 0,
-        children: ["/component/search", "/component/cartrack"]
+        children: ["/component/search", "/component/cartrack", "component/marker-cluster"]
       }
     ]
   }

@@ -15,7 +15,7 @@ export default {
     center: { type: Array }, //圆心经纬度坐标。
     radius: { type: Number }, //圆的半径，以米为单位。
     edit: { type: Boolean, default: false }, //是否可编辑
-    extData: { type: [Object, String, Number], default: undefined } //自定义属性
+    extData: null //自定义属性
   },
   methods: {
     initComponent(option) {
