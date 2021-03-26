@@ -79,7 +79,17 @@ export default {
           this.addControlByOption(option);
         });
       }
-      this.$tdtMap.addControl(new T.Control[capitalize(controlName)](option));
+      if (controlName === "MapType") {
+        const mapTypes = option.mapTypes.map(item=>{
+          return { 
+            ...item,
+            layer:window[item.layer]
+          }
+        })
+        this.$tdtMap.addControl(new T.Control.MapType(mapTypes));
+      } else {
+        this.$tdtMap.addControl(new T.Control[capitalize(controlName)](option));
+      }
     }
   }
 };

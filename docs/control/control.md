@@ -63,27 +63,27 @@ mapType 负责切换地图类型的控件
   {
     title: "地图", //地图控件上所要显示的图层名称
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png", //地图控件上所要显示的图层图标（默认图标大小 80x80）
-    layer: TMAP_NORMAL_MAP //地图类型对象，即 MapType。
+    layer: "TMAP_NORMAL_MAP" //地图类型
   },
   {
     title: "卫星",
     icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
-    layer: TMAP_SATELLITE_MAP
+    layer: "TMAP_SATELLITE_MAP"
   },
   {
     title: "卫星混合",
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png",
-    layer: TMAP_HYBRID_MAP
+    layer: "TMAP_HYBRID_MAP"
   },
   {
     title: "地形",
-    icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png",
-    layer: TMAP_TERRAIN_MAP
+    icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png",
+    layer: "TMAP_TERRAIN_MAP"
   },
   {
     title: "地形混合",
-    icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png",
-    layer: TMAP_TERRAIN_HYBRID_MAP
+    icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png",
+    layer: "TMAP_TERRAIN_HYBRID_MAP"
   }
 ];
 ```
