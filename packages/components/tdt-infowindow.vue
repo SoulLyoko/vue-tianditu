@@ -20,8 +20,8 @@ export default {
   methods: {
     initComponent(option) {
       this.$tdtComponent = new T.InfoWindow(this.content, option);
-      if (this.target instanceof Array && this.target.length) {
-        this.$tdtMap.openInfoWindow(this.$tdtComponent, toLngLat(this.target));
+      if (this.target instanceof Array) {
+        this.target.length && this.$tdtMap.openInfoWindow(this.$tdtComponent, toLngLat(this.target));
       } else if (this.target instanceof Object) {
         this.target.openInfoWindow(this.$tdtComponent);
       }
