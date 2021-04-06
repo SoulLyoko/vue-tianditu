@@ -11,6 +11,7 @@
       <tdt-infowindow
         :target="infowindow.target"
         :content="infowindow.content"
+        :offset="infowindow.offset"
         @close="infowindow.target = null"
       ></tdt-infowindow>
       <tdt-mousetool ref="mousetool" :markTool="{ follow: true }" :polygonTool="{ showLabel: true }"></tdt-mousetool>
@@ -73,8 +74,9 @@ export default {
       ],
       circle: [113.280637, 23.125178],
       infowindow: {
-        content: "",
-        target: null
+        content: "123123",
+        offset: [0, 0],
+        target: [113.280637, 23.125178]
       },
       edit: false,
       cartrack: [],
@@ -92,8 +94,11 @@ export default {
       this.$refs.mousetool.clearAll();
     },
     openInfowidow({ target, extData }) {
+      console.log(target);
       this.infowindow = {
-        target: target,
+        // target: target,
+        target: [113.280637, 23.125178],
+        offset: [0, -32],
         content: `<h3>${extData}</h3>`
       };
     },

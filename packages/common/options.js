@@ -1,5 +1,8 @@
+/**
+ * 定义组件的初始配置项，默认定义为字符串，定义为对象则传入name及转换的函数value
+ *
+ */
 import { toLngLat, toBounds, toPoint, toIcon, toMarker } from "../utils/converter";
-
 export default {
   "tdt-map": [
     "projection",
@@ -17,6 +20,16 @@ export default {
     "zIndex",
     { name: "bounds", value: val => toBounds(val) }
   ],
+  "tdt-tilelayer-tdt": [
+    "minZoom",
+    "maxZoom",
+    "errorTileUrl",
+    "attribution",
+    "opacity",
+    "zIndex",
+    { name: "bounds", value: val => toBounds(val) }
+  ],
+  "tdt-tilelayer-wms": ["layers", "styles", "format", "transparent", "version", "srs", "crs"],
   "tdt-label": [
     "text",
     { name: "offset", value: val => toPoint(val) },

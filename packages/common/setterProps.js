@@ -1,5 +1,7 @@
+/**
+ * 定义组件可设置的动态属性，定义为字符串默认转为如setZoom的格式，定义为对象则传入name及转换的函数fn
+ */
 import { toLngLat, toBounds, toPoint, toIcon, toMarker } from "../utils/converter";
-
 export default {
   "tdt-map": [
     "zoom",
@@ -26,6 +28,8 @@ export default {
     }
   ],
   "tdt-tilelayer": ["opacity", "zIndex", "url"],
+  "tdt-tilelayer-tdt": ["opacity", "zIndex", "url"],
+  "tdt-tilelayer-wms": ["opacity", "zIndex", "url"],
   "tdt-label": [
     "title",
     "zindex",
@@ -74,8 +78,14 @@ export default {
     "content",
     {
       name: "target",
-      fn(component, val) {
-        val ? val.openInfoWindow(component) : component.closeInfoWindow();
+      fn(component, val, map) {
+        if (val instanceof Array) {
+          val.length ? map.openInfoWindow(component, toLngLat(val)) : map.closeInfoWindow();
+        } else if (val instanceof Object) {
+          val.openInfoWindow(component);
+        } else {
+          component.closeInfoWindow(component);
+        }
       }
     },
     {

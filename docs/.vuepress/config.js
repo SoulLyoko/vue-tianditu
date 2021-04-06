@@ -18,7 +18,13 @@ module.exports = {
         title: "地图",
         collapsable: false,
         sidebarDepth: 0,
-        children: ["/map/map", "/map/tilelayer"]
+        children: ["/map/map"]
+      },
+      {
+        title: "图层",
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ["/tilelayer/tilelayer", "/tilelayer/tilelayer-tdt", "/tilelayer/tilelayer-wms"]
       },
       {
         title: "控件",

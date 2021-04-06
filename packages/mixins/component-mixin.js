@@ -98,7 +98,7 @@ export default {
      * 添加动态属性监听
      */
     addWatchers() {
-      const { $tdtComponent, tag } = this;
+      const { $tdtComponent, tag, $tdtMap } = this;
       //启用/禁用属性的监听
       if (enableProps[tag]) {
         enableProps[tag].forEach(prop => {
@@ -116,7 +116,7 @@ export default {
             });
           } else if (typeof prop === "object") {
             this.$watch(prop.name, val => {
-              prop.fn($tdtComponent, val);
+              prop.fn($tdtComponent, val, $tdtMap);
             });
           }
         });

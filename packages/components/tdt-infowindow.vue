@@ -1,5 +1,7 @@
 <script>
 import componentMixin from "../mixins/component-mixin";
+import { toLngLat } from "../utils/converter";
+
 export default {
   name: "tdt-infowindow",
   mixins: [componentMixin],
@@ -13,12 +15,16 @@ export default {
     autoPanPadding: { type: Array }, //在地图视图自动平移产生后弹出窗口和地图视图之间的边缘。
     closeOnClick: { type: Boolean, default: false }, //	是否开启点击地图关闭信息窗口（默认关闭）。
     content: { type: String, default: "" }, //信息窗口内容
-    target: { type: Object } //打开信息窗口的覆盖物对象
+    target: { type: [Object, Array] } //打开信息窗口的覆盖物对象
   },
   methods: {
     initComponent(option) {
       this.$tdtComponent = new T.InfoWindow(this.content, option);
-      this.target && this.target.openInfoWindow(this.$tdtComponent);
+      if (this.target instanceof Array && this.target.length) {
+        this.$tdtMap.openInfoWindow(this.$tdtComponent, toLngLat(this.target));
+      } else if (this.target instanceof Object) {
+        this.target.openInfoWindow(this.$tdtComponent);
+      }
     }
   }
 };

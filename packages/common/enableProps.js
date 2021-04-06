@@ -1,3 +1,6 @@
+/**
+ * 定义组件的enable和disable属性
+ */
 export default {
   "tdt-map": [
     "drag",

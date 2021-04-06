@@ -22,8 +22,8 @@ export default {
       marker1: [113.280637, 23.125178],
       marker2: [113.320037, 23.125178],
       infowindow: {
-        content: "",
-        target: null
+        content: "123",
+        target: [113.200637, 23.125178]
       }
     };
   },

@@ -1,3 +1,6 @@
+/**
+ * 定义组件的事件
+ */
 export default {
   "tdt-map": [
     "click",
@@ -30,6 +33,8 @@ export default {
     "longpress"
   ],
   "tdt-tilelayer": ["loading", "load", "tileloadstart", "tileload", "tileunload", "tileerror"],
+  "tdt-tilelayer-tdt": ["loading", "load", "tileloadstart", "tileload", "tileunload", "tileerror"],
+  "tdt-tilelayer-wms": ["loading", "load", "tileloadstart", "tileload", "tileunload", "tileerror"],
   "tdt-label": ["click", "dblclick", "mousedown", "mouseup", "mouseout"],
   "tdt-marker": [
     "click",
