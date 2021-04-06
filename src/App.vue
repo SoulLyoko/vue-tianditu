@@ -47,12 +47,26 @@ export default {
       tilelayer: "",
       controls: [
         "zoom",
-        "mapType",
         "copyright",
         "overviewMap",
         {
           name: "scale",
           position: "bottomright"
+        },
+        { 
+          name:"mapType",
+          mapTypes:[ 
+            {
+              title: "地图",
+              icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png",
+              layer: "TMAP_NORMAL_MAP"
+            },
+            {
+              title: "卫星",
+              icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
+              layer: "TMAP_SATELLITE_MAP"
+            },
+          ]
         }
       ],
       marker: [113.280637, 23.125178],
