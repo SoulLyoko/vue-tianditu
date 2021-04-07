@@ -18,6 +18,9 @@
       <tdt-search></tdt-search>
       <tdt-cartrack :Datas="cartrack" :interval="5" :speed="10" :startOnInit="true"></tdt-cartrack>
       <tdt-marker-cluster :markers="clusterMarkers" @click="clusterClick"></tdt-marker-cluster>
+      <tdt-control position="topright">
+        <el-button type="primary">自定义控件</el-button>
+      </tdt-control>
     </tdt-map>
     <button @click="changeLayer">切换图层</button>
     <button @click="edit = !edit">编辑</button>

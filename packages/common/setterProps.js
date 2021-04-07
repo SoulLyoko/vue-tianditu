@@ -30,6 +30,14 @@ export default {
   "tdt-tilelayer": ["opacity", "zIndex", "url"],
   "tdt-tilelayer-tdt": ["opacity", "zIndex", "url"],
   "tdt-tilelayer-wms": ["opacity", "zIndex", "url"],
+  "tdt-control": [
+    {
+      name: "offset",
+      fn(component, val) {
+        component.setOffset(toPoint(val));
+      }
+    }
+  ],
   "tdt-label": [
     "title",
     "zindex",

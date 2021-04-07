@@ -30,6 +30,7 @@ export default {
     { name: "bounds", value: val => toBounds(val) }
   ],
   "tdt-tilelayer-wms": ["layers", "styles", "format", "transparent", "version", "srs", "crs"],
+  "tdt-control": ["position"],
   "tdt-label": [
     "text",
     { name: "offset", value: val => toPoint(val) },

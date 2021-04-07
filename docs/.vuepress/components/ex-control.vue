@@ -1,6 +1,10 @@
 <template>
   <div class="mapDiv">
-    <tdt-map :center="center" :zoom="zoom" :controls="controls"></tdt-map>
+    <tdt-map :center="center" :zoom="zoom" :controls="controls">
+      <tdt-control position="topright">
+        <button>自定义控件</button>
+      </tdt-control>
+    </tdt-map>
   </div>
 </template>
 
@@ -11,13 +15,7 @@ export default {
     return {
       center: [113.280637, 23.125178],
       zoom: 11,
-      controls: [
-        { name: "zoom", position: "topleft" },
-        "scale",
-        "copyright",
-        "overviewMap",
-        "mapType"
-      ]
+      controls: [{ name: "zoom", position: "topleft" }, "scale", "copyright", "overviewMap", "mapType"]
     };
   }
 };

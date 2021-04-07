@@ -11,6 +11,13 @@ topleft：表示左上。topright：表示右上。bottomleft：表示左下。b
 <<< @/docs/.vuepress/components/ex-control.vue
 <ex-control></ex-control>
 
+## 自定义控件
+
+| 属性     | 类型   | 默认值     | 说明                       |
+| -------- | ------ | ---------- | -------------------------- |
+| position | String | "topright" | 控件的停靠位置，默认右上。 |
+| offset   | Array  |            | 控件停靠的偏移量。         |
+
 ## 缩放控件
 
 zoom 地图缩放控件，可以缩放和移动地图。
