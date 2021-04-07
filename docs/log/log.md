@@ -1,3 +1,11 @@
+### v1.1.9
+
+2021-4-7
+
+- 修复 infowindow 组件 content 属性的接受类型为 HTMLElement 和 String
+
+---
+
 ### v1.1.8
 
 2021-4-7
