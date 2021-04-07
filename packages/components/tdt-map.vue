@@ -1,6 +1,6 @@
 <template>
-  <div class="tdt-map-container" style="height:100%;">
-    <div class="tdt-map" :id="mid" style="height:100%;"></div>
+  <div class="tdt-map-container" style="width:100%;height:100%;">
+    <div class="tdt-map" :id="mid" style="width:100%;height:100%;"></div>
     <slot></slot>
   </div>
 </template>
@@ -80,12 +80,12 @@ export default {
         });
       }
       if (controlName === "MapType") {
-        const mapTypes = option.mapTypes.map(item=>{
-          return { 
+        const mapTypes = option.mapTypes.map(item => {
+          return {
             ...item,
-            layer:window[item.layer]
-          }
-        })
+            layer: window[item.layer]
+          };
+        });
         this.$tdtMap.addControl(new T.Control.MapType(mapTypes));
       } else {
         this.$tdtMap.addControl(new T.Control[capitalize(controlName)](option));

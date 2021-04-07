@@ -53,9 +53,9 @@ export default {
           name: "scale",
           position: "bottomright"
         },
-        { 
-          name:"mapType",
-          mapTypes:[ 
+        {
+          name: "mapType",
+          mapTypes: [
             {
               title: "地图",
               icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png",
@@ -65,7 +65,7 @@ export default {
               title: "卫星",
               icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
               layer: "TMAP_SATELLITE_MAP"
-            },
+            }
           ]
         }
       ],
