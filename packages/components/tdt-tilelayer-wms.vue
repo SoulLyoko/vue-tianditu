@@ -11,7 +11,6 @@ export default {
     transparent: { type: Boolean }, //输出图像背景是否透明。
     version: { type: String }, //请求服务的版本
     srs: { type: String }, //地图投影类型。
-    crs: { type: String }, //地图投影类型。
     opacity: { type: Number }, //	设置图层的透明度（0.0-1.0）。默认值为 1.0不透明。
     zIndex: { type: Number }, //	图层的显示顺序。
     url: { type: String } //图层服务地址。
@@ -19,7 +18,7 @@ export default {
   methods: {
     initComponent(option) {
       if (!this.url) return;
-      this.$tdtComponent = new T.TileLayer.WMS(this.url, option);
+      this.$tdtComponent = new T.TileLayer.WMS(this.url, { ...option, ...this.$attrs });
       this.$tdtMap.addLayer(this.$tdtComponent);
     }
   }
