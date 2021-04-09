@@ -6,7 +6,7 @@ export default {
       $tdtRoute: null,
       geocoder: null,
       showRoute: false,
-      policy: 0,
+      policy: "0",
       routePoints: [],
       startTool: null,
       endTool: null,
@@ -108,10 +108,7 @@ export default {
           }
         }
       }
-      this.duration =
-        (hour ? `${hour}小时` : "") +
-        (minute ? `${minute}分` : "") +
-        `${second}秒`;
+      this.duration = (hour ? `${hour}小时` : "") + (minute ? `${minute}分` : "") + `${second}秒`;
       this.distance = plan.getDistance() + "公里";
 
       //显示驾车线路

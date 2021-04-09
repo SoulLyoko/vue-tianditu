@@ -1,68 +1,73 @@
 <template>
   <div class="tdt-search">
-    <div class="search-wrapper">
-      <el-input size="small" v-model="keyWord" placeholder="关键词" style="width:100px;" @change="search()"></el-input>
-      <el-button size="small" @click="search()">搜索</el-button>
-      <el-button
-        size="small"
-        @click="
-          clearAll();
-          showRoute = true;
-        "
-      >
-        导航
-      </el-button>
-    </div>
-    <div class="search-suggest" v-if="suggestList.length">
+    <el-input size="small" v-model="keyWord" placeholder="关键词" style="width:100%;" @change="search()">
+      <template #append>
+        <el-tooltip effect="dark" content="搜索" placement="bottom">
+          <el-button size="small" icon="el-icon-search" @click="search()"></el-button>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="导航" placement="bottom">
+          <el-button
+            size="small"
+            icon="el-icon-position"
+            @click="
+              clearAll();
+              showRoute = true;
+            "
+          ></el-button>
+        </el-tooltip>
+      </template>
+    </el-input>
+
+    <el-card class="search-suggest" v-if="suggestList.length">
       <div class="suggest-item" v-for="(suggest, index) in suggestList" :key="index" @click="suggestClick(suggest)">
-        {{ suggest.name }}
+        <i class="el-icon-search"></i>
+        <span> {{ suggest.name }}</span>
       </div>
-    </div>
-    <div class="search-route" v-if="showRoute">
-      <span class="search-close" @click="closeRoute()">x</span>
-      <div class="route-policy">
-        <input type="radio" id="policy0" value="0" v-model="policy" />
-        <label for="policy0">最少时间</label>
-        <input type="radio" id="policy1" value="1" v-model="policy" />
-        <label for="policy1">最短距离</label>
-        <br />
-        <input type="radio" id="policy2" value="2" v-model="policy" />
-        <label for="policy2">避开高速</label>
-        <input type="radio" id="policy3" value="3" v-model="policy" />
-        <label for="policy3">步行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-      </div>
-      <div class="route-content">
-        <p>
-          <el-input size="mini" v-model="startAddr" placeholder="起点..." readonly style="width:120px;"></el-input>
-          <el-button
-            type="text"
-            size="mini"
-            @click="
-              startTool.clear();
-              startTool.open();
-            "
-          >
-            设起点
-          </el-button>
-        </p>
-        <p>
-          <el-input size="mini" v-model="endAddr" placeholder="终点..." readonly style="width:120px;"></el-input>
-          <el-button
-            type="text"
-            size="mini"
-            @click="
-              endTool.clear();
-              endTool.open();
-            "
-          >
-            设终点
-          </el-button>
-        </p>
-        <strong v-if="duration && distance">总时间：{{ duration }} ，总距离：{{ distance }}</strong>
-      </div>
-    </div>
-    <div class="search-result" v-if="showSearchResult">
-      <span class="search-close" @click="clearSearch()">x</span>
+    </el-card>
+
+    <el-card class="search-route" v-if="showRoute">
+      <el-button type="text" size="small" class="search-close" icon="el-icon-close" @click="closeRoute()"></el-button>
+      <el-radio-group v-model="policy" slot="header">
+        <el-radio label="0">最少时间</el-radio>
+        <el-radio label="1">最短距离</el-radio>
+        <el-radio label="2">避开高速</el-radio>
+        <el-radio label="3">步 行</el-radio>
+      </el-radio-group>
+      <el-input size="small" v-model="startAddr" placeholder="起点..." readonly style="width:100%;">
+        <template #append>
+          <el-tooltip effect="dark" content="标记起点" placement="bottom">
+            <el-button
+              icon="el-icon-location"
+              @click="
+                startTool.clear();
+                startTool.open();
+              "
+            >
+            </el-button>
+          </el-tooltip>
+        </template>
+      </el-input>
+      <br />
+      <br />
+      <el-input size="small" v-model="endAddr" placeholder="终点..." readonly style="width:100%;">
+        <template #append>
+          <el-tooltip effect="dark" content="标记终点" placement="bottom">
+            <el-button
+              icon="el-icon-location"
+              @click="
+                endTool.clear();
+                endTool.open();
+              "
+            >
+            </el-button>
+          </el-tooltip>
+        </template>
+      </el-input>
+      <strong v-if="duration && distance">总时间：{{ duration }} <br />总距离：{{ distance }}</strong>
+    </el-card>
+
+    <el-card class="search-result" v-if="showSearchResult">
+      <el-button type="text" size="small" class="search-close" icon="el-icon-close" @click="clearSearch()"></el-button>
       <div class="prompts" v-for="(prompt, promptIndex) in prompts" :key="promptIndex">
         <div v-if="prompt.type === 1">
           您是否要在
@@ -96,14 +101,14 @@
           <div>{{ poi.name }}</div>
           <div style="color:#aaa">{{ poi.address }}</div>
         </div>
-        <div class="pois-page">
-          共{{ page.total }}条
-          <span class="pois-goto" @click="$tdtSearch.firstPage()">«</span>
-          <span class="pois-goto" @click="$tdtSearch.previousPage()">‹</span>
-          <input class="page-current" v-model="page.currentPage" />
-          <span class="pois-goto" @click="$tdtSearch.nextPage()">›</span>
-          <span class="pois-goto" @click="$tdtSearch.lastPage()">»</span>
-        </div>
+        <el-pagination
+          small
+          layout="prev, pager, next"
+          :current-page.sync="page.currentPage"
+          :pager-count="4"
+          :total="page.total"
+        >
+        </el-pagination>
       </div>
       <div class="statistics" v-if="statistics">
         在中国以下城市有结果
@@ -133,7 +138,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </el-card>
     <div v-show="false">
       <div ref="infoWindow">
         <div>名称:{{ infoWindow.name }}</div>
@@ -186,77 +191,49 @@ export default {
 </script>
 
 <style lang="scss">
-$border: 1px solid #ddd;
-$border-hover: 1px solid #ccc;
 .tdt-search {
   font-size: 14px;
-
-  .search-wrapper {
-    .el-input {
-      margin-right: 10px;
-    }
-  }
+  width: 250px;
 
   .search-suggest {
     position: absolute;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-    width: 230px;
+    width: 100%;
     z-index: 1;
     .suggest-item {
       padding: 10px;
       cursor: pointer;
       &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.05);
       }
+    }
+  }
+
+  .search-suggest,
+  .search-result,
+  .search-route {
+    width: 100%;
+    .el-card__header,
+    .el-card__body {
+      padding: 10px;
     }
   }
 
   .search-result,
   .search-route {
     position: relative;
-    background: #fff;
-    padding: 10px;
-    border: $border;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-    width: 210px;
     .search-close {
       position: absolute;
       right: 10px;
-      top: 5px;
-      color: #aaa;
-      font-weight: 500;
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
+      top: 0;
     }
     .pois {
       .pois-item {
         padding: 5px 0;
-        border-bottom: $border;
         cursor: pointer;
         &:hover {
-          background-color: rgba(0, 0, 0, 0.03);
+          background-color: rgba(0, 0, 0, 0.05);
         }
       }
-      .pois-page {
-        padding-top: 10px;
-        .page-current {
-          max-width: 30px;
-          text-align: center;
-        }
-        .pois-goto {
-          cursor: pointer;
-          font-size: 20px;
-        }
-      }
-    }
-    .route-policy {
-      text-align: center;
-      border-bottom: 1px solid #eee;
     }
   }
 }
