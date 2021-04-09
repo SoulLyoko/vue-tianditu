@@ -1,6 +1,6 @@
 <template>
   <div class="tdt-search">
-    <el-input size="small" v-model="keyWord" placeholder="关键词" style="width:100%;" @change="search()">
+    <el-input size="small" v-model="keyWord" placeholder="关键词" style="width:100%;" @keyup.enter.native="search()">
       <template #append>
         <el-tooltip effect="dark" content="搜索" placement="bottom">
           <el-button size="small" icon="el-icon-search" @click="search()"></el-button>
@@ -105,7 +105,7 @@
           small
           layout="prev, pager, next"
           :current-page.sync="page.currentPage"
-          :pager-count="4"
+          :pager-count="5"
           :total="page.total"
         >
         </el-pagination>
@@ -143,8 +143,8 @@
       <div ref="infoWindow">
         <div>名称:{{ infoWindow.name }}</div>
         <div>地址:{{ infoWindow.address }}</div>
-        <a href="javacript:;" @click="startPoint = infoWindow.lnglat">设为起点</a>
-        <a href="javacript:;" @click="endPoint = infoWindow.lnglat">设为终点</a>
+        <el-button type="text" size="mini" @click="startPoint = infoWindow.lnglat">设为起点</el-button>
+        <el-button type="text" size="mini" @click="endPoint = infoWindow.lnglat">设为终点</el-button>
       </div>
     </div>
   </div>

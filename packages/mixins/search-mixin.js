@@ -46,7 +46,6 @@ export default {
       }
     },
     localSearchResult(result) {
-      console.log(result);
       //清空地图及搜索列表
       this.clearAll();
       //添加提示词
@@ -117,7 +116,7 @@ export default {
     showPosition(obj) {
       this.infoWindow = obj;
       let winHtml = this.$refs.infoWindow;
-      let markerInfoWin = new T.InfoWindow(winHtml, { autoPan: true });
+      let markerInfoWin = new T.InfoWindow(winHtml, { autoPan: true, minWidth: 200 });
       obj.marker.openInfoWindow(markerInfoWin);
       this.$emit("marker-click", { marker: obj.marker, info: this.infoWindow });
     },
