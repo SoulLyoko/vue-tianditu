@@ -1,8 +1,8 @@
 {
   "name": "vue-tianditu",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "vue tianditu",
-  "keyword": "vue tianditu skymap map",
+  "keyword": "vue tianditu map skymap tianmap ",
   "author": "Lyoko <519052532@qq.com>",
   "license": "MIT",
   "private": false,
@@ -48,6 +48,9 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "gitHooks": {
+    "pre-commit": "sh deploy.sh"
   },
   "browserslist": [
     "> 1%",
