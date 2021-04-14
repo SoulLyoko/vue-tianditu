@@ -11,16 +11,16 @@ export default {
       $tdtComponent: null
     };
   },
-  mounted() {
-    this.$tdtMap = this.$tdtMap || this.$parent.$tdtMap;
-    if (this.$tdtMap) {
-      this.register();
-    } else {
-      this.$on("map-ready", _map => {
-        this.$tdtMap = _map;
-        this.register();
-      });
+  computed: {
+    tag() {
+      return this.$options._componentTag;
     }
+  },
+  created() {
+    this.$on("map-ready", _map => {
+      this.$tdtMap = _map;
+      this.register();
+    });
   },
   destroyed() {
     if (!this.$tdtComponent) return;
@@ -29,11 +29,6 @@ export default {
   },
   render(h) {
     return h();
-  },
-  computed: {
-    tag() {
-      return this.$options._componentTag;
-    }
   },
   methods: {
     /**

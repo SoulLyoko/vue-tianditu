@@ -30,7 +30,8 @@ export default {
     minZoom: { type: Number },
     maxZoom: { type: Number },
     viewport: { type: Array }, //根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点。
-    controls: { type: Array } //控件
+    controls: { type: Array }, //控件
+    registerRoot: { default: null } //注册的根组件
   },
   mounted() {
     this.initMap();
@@ -46,10 +47,18 @@ export default {
         this.setProps();
         this.addWatchers();
         this.addControls();
-        this.$children.forEach(component => {
-          component.$emit("map-ready", this.$tdtMap);
-        });
+        this.registerChildren(this.mapRoot || this);
         this.$emit("init", this.$tdtMap);
+      });
+    },
+    registerChildren(vm) {
+      vm.$children.forEach(component => {
+        if (component.$options._componentTag?.includes("tdt-")) {
+          component.$emit("map-ready", this.$tdtMap);
+        }
+        if (component.$children?.length) {
+          this.registerChildren(component);
+        }
       });
     },
     addControls() {
