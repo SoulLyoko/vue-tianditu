@@ -11,16 +11,24 @@ export default {
       $tdtComponent: null
     };
   },
+  inject: {
+    mapRoot: { default: null }
+  },
   computed: {
     tag() {
       return this.$options._componentTag;
     }
   },
-  created() {
-    this.$on("map-ready", _map => {
-      this.$tdtMap = _map;
+  mounted() {
+    this.$tdtMap = this.$tdtMap || this.mapRoot?.$tdtMap;
+    if (this.$tdtMap) {
       this.register();
-    });
+    } else {
+      this.$on("map-ready", _map => {
+        this.$tdtMap = _map;
+        this.register();
+      });
+    }
   },
   destroyed() {
     if (!this.$tdtComponent) return;

@@ -9,26 +9,25 @@
 
 ## 属性
 
-| 属性            | 类型         | 默认值        | 说明                                                                                             |
-| --------------- | ------------ | ------------- | ------------------------------------------------------------------------------------------------ |
-| drag            | Boolean      | true          | 启用地图拖拽，默认启用。                                                                         |
-| scrollWheelZoom | Boolean      | true          | 启用滚轮放大缩小，默认启用。                                                                     |
-| doubleClickZoom | Boolean      | true          | 启用双击放大，默认启用。                                                                         |
-| keyboard        | Boolean      | true          | 启用键盘操作，默认启用。                                                                         |
-| inertia         | Boolean      | true          | 启用地图惯性拖拽，默认启用。                                                                     |
-| continuousZoom  | Boolean      | true          | 启用连续缩放效果，默认启用。                                                                     |
-| pinchToZoom     | Boolean      | true          | 启用双指操作缩放，默认启用。                                                                     |
-| autoResize      | Boolean      | true          | 启用自动适应容器尺寸变化，默认启用。                                                             |
-| maxBounds       | Array        |               | 当这个选项被设置后，地图被限制在给定的地理边界内                                                 |
-| mid             | String       | 随机 id       | 地图容器 id                                                                                      |
-| projection      | String       | "EPSG:900913" | EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)                                                 |
-| center          | Array        |               | 地图的初始化中心点。[lng,lat]                                                                    |
-| zoom            | Number       | 10            | 地图的初始化级别。                                                                               |
-| minZoom         | Number       |               | 地图允许展示的最小级别。                                                                         |
-| maxZoom         | Number       |               | 地图允许展示的最大级别。                                                                         |
-| viewport        | Array        |               | 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点。                           |
-| controls        | Array        |               | 控件                                                                                             |
-| registerRoot    | VueComponent |               | tdt 组件注册的根组件，在该组件下的 tdt 组件都会被注册到同一个地图上，默认为 tdt-map。v1.2.5 新增 |
+| 属性            | 类型    | 默认值        | 说明                                                                   |
+| --------------- | ------- | ------------- | ---------------------------------------------------------------------- |
+| drag            | Boolean | true          | 启用地图拖拽，默认启用。                                               |
+| scrollWheelZoom | Boolean | true          | 启用滚轮放大缩小，默认启用。                                           |
+| doubleClickZoom | Boolean | true          | 启用双击放大，默认启用。                                               |
+| keyboard        | Boolean | true          | 启用键盘操作，默认启用。                                               |
+| inertia         | Boolean | true          | 启用地图惯性拖拽，默认启用。                                           |
+| continuousZoom  | Boolean | true          | 启用连续缩放效果，默认启用。                                           |
+| pinchToZoom     | Boolean | true          | 启用双指操作缩放，默认启用。                                           |
+| autoResize      | Boolean | true          | 启用自动适应容器尺寸变化，默认启用。                                   |
+| maxBounds       | Array   |               | 当这个选项被设置后，地图被限制在给定的地理边界内                       |
+| mid             | String  | 随机 id       | 地图容器 id                                                            |
+| projection      | String  | "EPSG:900913" | EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)                       |
+| center          | Array   |               | 地图的初始化中心点。[lng,lat]                                          |
+| zoom            | Number  | 10            | 地图的初始化级别。                                                     |
+| minZoom         | Number  |               | 地图允许展示的最小级别。                                               |
+| maxZoom         | Number  |               | 地图允许展示的最大级别。                                               |
+| viewport        | Array   |               | 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点。 |
+| controls        | Array   |               | 控件                                                                   |
 
 ## 事件
 
