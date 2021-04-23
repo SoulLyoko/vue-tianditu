@@ -25,6 +25,7 @@ export default {
     maxBounds: { type: Array }, //当这个选项被设置后，地图被限制在给定的地理边界内，当用户平移将地图拖动到视图以外的范围时会出现弹回的效果，并且也不允许缩小视图到给定范围以外的区域（这取决于地图的尺寸）。使用setMaxBounds方法可以动态地设置这种约束。
     mid: { type: String, default: guid() }, //地图容器id
     projection: { type: String }, //EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)
+    mapStyle: { type: String }, //地图样式，原天地图api的style，分别为black，indigo
     center: { type: Array },
     zoom: { type: Number, default: 10 },
     minZoom: { type: Number },

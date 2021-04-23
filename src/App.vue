@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <tdt-map :center="center" :zoom="zoom" :controls="controls">
+    <tdt-map :center="center" :zoom="zoom" :controls="controls" :mapStyle="mapStyle">
       <tdt-tilelayer :url="tilelayer" v-if="tilelayer"></tdt-tilelayer>
       <tdt-marker :position="marker" @click="openInfowidow" :extData="marker"></tdt-marker>
       <tdt-label :position="label" text="Hello World!"></tdt-label>
@@ -22,6 +22,7 @@
         <el-button type="primary">自定义控件</el-button>
       </tdt-control>
     </tdt-map>
+    <button @click="changeStyle">设置地图样式</button>
     <button @click="changeLayer">切换图层</button>
     <button @click="edit = !edit">编辑</button>
     <button @click="startTrack">车辆轨迹</button>
@@ -48,10 +49,10 @@ export default {
       center: [113.280637, 23.125178],
       zoom: 11,
       tilelayer: "",
+      mapStyle: "",
       controls: [
         "zoom",
         "copyright",
-        "overviewMap",
         {
           name: "scale",
           position: "bottomright"
@@ -70,7 +71,8 @@ export default {
               layer: "TMAP_SATELLITE_MAP"
             }
           ]
-        }
+        },
+        "overviewMap"
       ],
       marker: [113.280637, 23.125178],
       label: [113.290637, 23.155178],
@@ -138,6 +140,9 @@ export default {
         target: layer,
         content: `<h3>${extData}</h3>`
       };
+    },
+    changeStyle() {
+      this.mapStyle = "black";
     }
   }
 };

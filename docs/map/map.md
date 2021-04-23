@@ -28,6 +28,7 @@
 | maxZoom         | Number  |               | 地图允许展示的最大级别。                                               |
 | viewport        | Array   |               | 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点。 |
 | controls        | Array   |               | 控件                                                                   |
+| mapStyle        | String  |               | 原天地图 api 的 style，地图样式，分别为 black，indigo。(v1.2.8 新增)   |
 
 ## 事件
 

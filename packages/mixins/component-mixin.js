@@ -84,15 +84,13 @@ export default {
           }
         });
       }
-      //设置组件的属性
+      //组件的可设置属性
       if (setterProps[tag]) {
         setterProps[tag].forEach(prop => {
-          if (this[prop] !== undefined) {
-            if (typeof prop === "string") {
-              $tdtComponent[`set${capitalize(prop)}`](this[prop]);
-            } else if (typeof prop === "object") {
-              prop.fn($tdtComponent, this[prop]);
-            }
+          if (typeof prop === "string") {
+            this[prop] !== undefined && $tdtComponent[`set${capitalize(prop)}`](this[prop]);
+          } else if (typeof prop === "object") {
+            this[prop.name] !== undefined && prop.fn($tdtComponent, this[prop.name], this.$tdtMap);
           }
         });
       }

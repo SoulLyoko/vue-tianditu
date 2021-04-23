@@ -7,7 +7,16 @@ export default {
     "zoom",
     "minZoom",
     "maxZoom",
-    "style",
+    {
+      name: "mapStyle",
+      fn(component, val) {
+        if (val) {
+          component.setStyle(val);
+        } else {
+          component.removeStyle(val);
+        }
+      }
+    },
     {
       name: "center",
       fn(component, val) {
