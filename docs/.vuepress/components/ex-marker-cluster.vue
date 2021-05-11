@@ -11,15 +11,10 @@ export default {
   name: "ex-marker-cluster",
   data() {
     return {
-      center: [113.280637, 23.125178],
-      zoom: 6,
+      center: [116.40969, 37.43997],
+      zoom: 3,
       markers: new Array(500).fill(0).map((item, index) => {
         return {
-          icon: {
-            iconUrl: index > 250 ? "/marker_red.png" : "/marker_blue.png",
-            iconSize: [18, 26],
-            iconAnchor: [9, 26]
-          },
           position: [Math.random() * 40 + 85, Math.random() * 30 + 21],
           extData: "cluster-" + index
         };

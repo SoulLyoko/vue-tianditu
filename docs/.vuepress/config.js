@@ -5,6 +5,7 @@ module.exports = {
   themeConfig: {
     repo: "SoulLyoko/vue-tianditu",
     displayAllHeaders: true,
+    nav: [{ text: "天地图官网", link: "https://www.tianditu.gov.cn/" }],
     sidebar: [
       {
         title: "更新日志",

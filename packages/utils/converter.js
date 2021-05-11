@@ -1,6 +1,6 @@
 /**
  * 转换为经纬度对象
- * @param {Array<lng,lat>} lnglat 经纬度数组
+ * @param {[Number,Number]} lnglat 经纬度数组
  */
 export const toLngLat = lnglat => {
   if (lnglat instanceof Array) {
@@ -12,7 +12,7 @@ export const toLngLat = lnglat => {
 
 /**
  * 转换为地理范围对象
- * @param {Array<Array<lng,lat>,Array<lng,lat>>} bounds 地理范围数组
+ * @param {[[Number,Number],[Number,Number]]} bounds 地理范围数组
  */
 export const toBounds = bounds => {
   if (bounds instanceof Array) {
@@ -24,7 +24,7 @@ export const toBounds = bounds => {
 
 /**
  * 转换为像素坐标点对象
- * @param {Array<x,y>} point 像素坐标点数组
+ * @param {[Number,Number]} point 像素坐标点数组
  */
 export const toPoint = point => {
   if (point instanceof Array) {
@@ -35,8 +35,25 @@ export const toPoint = point => {
 };
 
 /**
+ * 过滤掉对象中undefined的属性
+ * @param {Object} obj 对象
+ */
+export const objectFilter = obj => {
+  let res = {};
+  Object.keys(obj).forEach(key => {
+    if (obj[key] !== undefined) {
+      res[key] = obj[key];
+    }
+  });
+  return res;
+};
+
+/**
  * 转换为图标对象
- * @param {Object<iconUrl:String,iconSize:Array<x,y>,iconAnchor:Array<x,y>>|String} icon 图标
+ * @param {Object} icon 图标，也可以是String
+ * @param {String} icon.iconUrl
+ * @param {[Number,Number]} icon.iconSize
+ * @param {[Number,Number]} icon.iconAnchor
  */
 export const toIcon = icon => {
   if (typeof icon === "string") {
@@ -54,19 +71,9 @@ export const toIcon = icon => {
 };
 
 /**
- * 过滤掉对象中undefined的属性
- * @param {Object} obj 对象
+ * 转换为点标注对象
+ * @param {Object} option
  */
-export const objectFilter = obj => {
-  let res = {};
-  Object.keys(obj).forEach(key => {
-    if (obj[key] !== undefined) {
-      res[key] = obj[key];
-    }
-  });
-  return res;
-};
-
 export const toMarker = option => {
   option.icon = toIcon(option.icon);
   return new T.Marker(toLngLat(option.position), objectFilter(option));

@@ -15,7 +15,7 @@ export default {
     return {
       center: [113.280637, 23.125178],
       zoom: 11,
-      controls: [{ name: "zoom", position: "topleft" }, "scale", "copyright", "overviewMap", "mapType"]
+      controls: [{ name: "zoom", position: "topleft" }, "scale", "copyright", "mapType", "overviewMap"]
     };
   }
 };

@@ -47,7 +47,7 @@
     offset: [-15, -13], //显示图片的偏移量
     textColor: "#000000", //显示数字的颜色
     textSize: 8, //显示文字的大小
-    range: [0, 50]
+    range: [0, 50] //显示该图标的范围
   },
   {
     url: "http://api.tianditu.gov.cn/img/map/cluster/heart40.png",

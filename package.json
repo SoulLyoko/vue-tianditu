@@ -1,6 +1,6 @@
 {
   "name": "vue-tianditu",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "vue tianditu",
   "keyword": "vue tianditu map skymap tianmap ",
   "author": "Lyoko <519052532@qq.com>",
@@ -12,24 +12,31 @@
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build --target lib --name vue-tianditu --dest lib packages/index.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "async-validator": "1.11.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.12"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.12",
+    "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-plugin-unit-jest": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-transform-require-context": "^0.1.1",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.32.8",
     "sass-loader": "^10.0.1",
-    "vue-template-compiler": "^2.6.11",
+    "vue-jest": "^3.0.7",
+    "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2"
   },
   "eslintConfig": {
@@ -48,6 +55,21 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^#/(.*)$": "<rootDir>/packages/$1"
+    },
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   },
   "gitHooks": {
     "pre-push": "sh deploy.sh"
