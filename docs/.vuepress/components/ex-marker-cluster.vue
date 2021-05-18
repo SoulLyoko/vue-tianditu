@@ -21,7 +21,7 @@ export default {
       }),
       styles: [
         {
-          url: "/cluster0.png",
+          url: "/vue-tianditu/cluster0.png",
           size: [30, 30], //图片大小
           offset: [0, 0], //显示图片的偏移量
           textColor: "#000000", //显示数字的颜色
@@ -29,7 +29,7 @@ export default {
           range: [0, 50] //显示该图标的范围
         },
         {
-          url: "/cluster1.png",
+          url: "/vue-tianditu/cluster1.png",
           size: [40, 40],
           offset: [0, 0],
           textColor: "#000000",
@@ -37,7 +37,7 @@ export default {
           range: [50, 400]
         },
         {
-          url: "/cluster2.png",
+          url: "/vue-tianditu/cluster2.png",
           size: [50, 50],
           offset: [0, 0],
           textColor: "#000000",
