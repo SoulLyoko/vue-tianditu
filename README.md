@@ -62,24 +62,6 @@ new Vue({
 
 ### 按需引入
 
-`main.js`
-
-```js
-import Vue from "vue";
-import { initApiLoader } from "vue-tianditu";
-import App from "./App.vue";
-
-initApiLoader({
-  v: "4.0",
-  tk: "your map token"
-});
-
-new Vue({
-  el: "#app",
-  render: h => h(App)
-});
-```
-
 `App.vue`
 
 ```html
@@ -90,8 +72,11 @@ new Vue({
 </template>
 
 <script>
-  import { TdtMap } from "vue-tianditu";
-
+  import { TdtMap, initApiLoader } from "vue-tianditu";
+  initApiLoader({
+    v: "4.0",
+    tk: "your map token"
+  });
   export default {
     components: { TdtMap }
   };

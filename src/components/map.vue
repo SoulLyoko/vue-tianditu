@@ -3,7 +3,11 @@
 </template>
 
 <script>
-import { TdtMap } from "@/../packages";
+import { TdtMap, initApiLoader } from "@/../packages";
+initApiLoader({
+  v: "4.0",
+  tk: "7f013d0186775b063d6a046977bbefc6"
+});
 
 export default {
   name: "test-map",
