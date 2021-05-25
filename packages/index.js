@@ -11,7 +11,7 @@ import TdtMap from "./components/tdt-map.vue";
 import TdtMarkerCluster from "./components/tdt-marker-cluster.vue";
 import TdtMarker from "./components/tdt-marker.vue";
 import TdtMousetool from "./components/tdt-mousetool.vue";
-import TdtPolyon from "./components/tdt-polygon.vue";
+import TdtPolygon from "./components/tdt-polygon.vue";
 import TdtPolyline from "./components/tdt-polyline.vue";
 import TdtRectangle from "./components/tdt-rectangle.vue";
 import TdtSearch from "./components/tdt-search";
@@ -29,7 +29,7 @@ const components = [
   TdtMarkerCluster,
   TdtMarker,
   TdtMousetool,
-  TdtPolyon,
+  TdtPolygon,
   TdtPolyline,
   TdtRectangle,
   TdtSearch,
@@ -68,7 +68,7 @@ export {
   TdtMarkerCluster,
   TdtMarker,
   TdtMousetool,
-  TdtPolyon,
+  TdtPolygon,
   TdtPolyline,
   TdtRectangle,
   TdtSearch,
