@@ -17,7 +17,7 @@ export default {
   methods: {
     initComponent(option) {
       if (!this.url) return;
-      this.$tdtComponent = new T.TileLayer.TDT(this.url, option);
+      this.$tdtComponent = new T.TileLayer.TDT(this.url, { ...option, ...this.$attrs });
       this.$tdtMap.addLayer(this.$tdtComponent);
     }
   }
