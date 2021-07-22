@@ -60,25 +60,7 @@ new Vue({
 </style>
 ```
 
-### 按需引入(v1.2.9 新增)
-
-`main.js`
-
-```js
-import Vue from "vue";
-import { initApiLoader } from "vue-tianditu";
-import App from "./App.vue";
-
-initApiLoader({
-  v: "4.0",
-  tk: "your map token"
-});
-
-new Vue({
-  el: "#app",
-  render: h => h(App)
-});
-```
+### 按需引入(v1.2.9+)
 
 `App.vue`
 
@@ -90,8 +72,11 @@ new Vue({
 </template>
 
 <script>
-  import { TdtMap } from "vue-tianditu";
-
+  import { TdtMap, initApiLoader } from "vue-tianditu";
+  initApiLoader({
+    v: "4.0",
+    tk: "your map token"
+  });
   export default {
     components: { TdtMap }
   };
@@ -121,13 +106,13 @@ new Vue({
 </script>
 ```
 
-## 辅助函数
+## 辅助函数(v1.2.9+)
 
 ```js
 import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 ```
 
-### 说明(v1.2.9 新增)
+### 说明
 
 | 函数名                                             | 返回值   | 描述                                                                                                                                                                     |
 | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

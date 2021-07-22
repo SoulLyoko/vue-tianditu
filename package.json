@@ -2,7 +2,14 @@
   "name": "vue-tianditu",
   "version": "1.2.11",
   "description": "vue tianditu",
-  "keyword": "vue tianditu map skymap tianmap ",
+  "keyword": [
+    "vue-tianditu",
+    "vue",
+    "tianditu",
+    "map",
+    "tianmap",
+    "skymap"
+  ],
   "author": "Lyoko <519052532@qq.com>",
   "license": "MIT",
   "private": false,
@@ -19,7 +26,7 @@
     "async-validator": "1.11.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.1",
-    "vue": "^2.6.12"
+    "vue": "2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.12",
@@ -36,7 +43,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^10.0.1",
     "vue-jest": "^3.0.7",
-    "vue-template-compiler": "^2.6.12",
+    "vue-template-compiler": "2.6.12",
     "vuepress": "^1.8.2"
   },
   "eslintConfig": {
