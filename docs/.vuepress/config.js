@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/vue-tianditu/",
+  base: "/vue-tianditu/v1",
   title: "vue-tianditu文档",
   description: "vue-tianditu文档",
   themeConfig: {
