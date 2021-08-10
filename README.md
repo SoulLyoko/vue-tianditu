@@ -2,7 +2,7 @@
 
 天地图 vue 组件库
 
-[vue-tianditu 文档](https://soullyoko.github.io/vue-tianditu/)
+[vue-tianditu 文档](https://soullyoko.github.io/vue-tianditu/v1)
 
 ## 安装
 
