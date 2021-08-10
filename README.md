@@ -1,46 +1,34 @@
 # vue-tianditu
 
-天地图 vue 组件库
+天地图 vue3 组件库
 
 [vue-tianditu 文档](https://soullyoko.github.io/vue-tianditu/)
 
 ## 安装
 
-### NPM
-
 ```sh
-npm i vue-tianditu
+npm i vue-tianditu@next
 # or
-yarn add vue-tianditu
-```
-
-### CDN
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-tianditu"></script>
+yarn add vue-tianditu@next
 ```
 
 ## 快速上手
 
 ### 全局引入
 
-`main.js`
+`main.ts`
 
-```js
-import Vue from "vue";
-import VueTianditu from "vue-tianditu";
+```ts
+import { createApp } from "vue";
 import App from "./App.vue";
+import VueTianditu from "vue-tianditu";
 
-Vue.use(VueTianditu, {
+const app = createApp(App);
+app.use(VueTianditu, {
   v: "4.0",
   tk: "your map token"
 });
-
-new Vue({
-  el: "#app",
-  render: h => h(App)
-});
+app.mount("#app");
 ```
 
 `App.vue`
@@ -48,9 +36,18 @@ new Vue({
 ```html
 <template>
   <div class="mapDiv">
-    <tdt-map></tdt-map>
+    <tdt-map :center="state.center" zoom="state.zoom"></tdt-map>
   </div>
 </template>
+
+<script lang="ts" setup>
+  import { reactive } from "vue";
+  import { TdtMap } from "vue-tianditu";
+  const state = reactive({
+    center: [113.280637, 23.125178],
+    zoom: 12
+  });
+</script>
 
 <style>
   .mapDiv {
@@ -62,24 +59,28 @@ new Vue({
 
 ### 按需引入
 
+- 建议按需引入配合 ts 获得类型提示
+
 `App.vue`
 
 ```html
 <template>
   <div class="mapDiv">
-    <tdt-map></tdt-map>
+    <tdt-map :center="state.center" zoom="state.zoom"></tdt-map>
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
+  import { reactive } from "vue";
   import { TdtMap, initApiLoader } from "vue-tianditu";
   initApiLoader({
     v: "4.0",
     tk: "your map token"
   });
-  export default {
-    components: { TdtMap }
-  };
+  const state = reactive({
+    center: [113.280637, 23.125178],
+    zoom: 12
+  });
 </script>
 
 <style>
@@ -90,33 +91,8 @@ new Vue({
 </style>
 ```
 
-### CDN 引入
-
-需手动加载 API
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-tianditu"></script>
-<script>
-  VueTianditu.initApiLoader({
-    v: "4.0",
-    tk: "your map token"
-  });
-  ...
-</script>
-```
-
 ## 辅助函数
 
-```js
+```ts
 import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 ```
-
-### 说明(v1.2.9 新增)
-
-| 函数名                                             | 返回值   | 描述                                                                                                                                                                     |
-| -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| toLngLat(lnglat:[Number,Number])                   | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组                                                                                                                     |
-| toBounds(bounds:[[Number,Number],[Number,Number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组                                                                                                                 |
-| toPoint(point:[Number,Number])                     | T.Point  | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组                                                                                                              |
-| toIcon(icon:Object\|String)                        | T.Icon   | 转换为图标对象。<br>参数说明:<br>`icon:String//图片地址` 或 `{iconUrl:String,//图片地址`<br>`iconSize:[Number,Number],//图片大小`<br>`iconAnchor:[Number,Number]//偏移}` |
