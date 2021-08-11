@@ -14,7 +14,13 @@ module.exports = {
     sidebar: {
       "/": [
         { text: "更新日志", link: "/CHANGELOG" },
-        { text: "开始", link: "/" }
+        { text: "开始", link: "/" },
+        {
+          text: "地图",
+          collapsable: false,
+          sidebarDepth: 0,
+          children: [{ text: "基础地图", link: "/map/map" }]
+        }
       ]
     }
   }
