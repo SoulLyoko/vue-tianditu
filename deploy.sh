@@ -4,22 +4,31 @@
 set -e
 
 # 生成静态文件
-yarn docs:build
+# yarn docs:build
+
+
 
 # 进入生成的文件夹
 cd docs/.vuepress
 rm -rf build
 mkdir build
-mkdir build/v1
-cp -rf dist/* build/v1
-rm -rf dist
+# mkdir build/v1
 cd build
+git init
+# git remote add -f master https://github.com/SoulLyoko/vue-tianditu.git
+# git checkout -b gh-pages master/gh-pages
+git pull https://github.com/SoulLyoko/vue-tianditu.git gh-pages
+
+cd ../
+rm -rf build/v1/*
+cp -rf dist/* build/v1
+# rm -rf dist
+
 
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
-git init
 git add -A
 git commit -m 'deploy'
 
