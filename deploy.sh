@@ -28,6 +28,6 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:SoulLyoko/vue-tianditu.git master:gh-pages
-git push -f https://github.com/SoulLyoko/vue-tianditu.git master:gh-pages
+git push https://github.com/SoulLyoko/vue-tianditu.git master:gh-pages
 
 cd -

@@ -5,7 +5,13 @@ module.exports = {
   themeConfig: {
     repo: "SoulLyoko/vue-tianditu",
     displayAllHeaders: true,
-    nav: [{ text: "天地图官网", link: "https://www.tianditu.gov.cn/" }],
+    nav: [
+      {
+        text: "v1.x",
+        items: [{ text: "v2.x", link: "https://soullyoko.github.io/vue-tianditu/v2/" }]
+      },
+      { text: "天地图官网", link: "https://www.tianditu.gov.cn/" }
+    ],
     sidebar: [
       {
         title: "更新日志",
