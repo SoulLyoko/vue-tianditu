@@ -2,7 +2,7 @@
 node_modules
 dist
 lib
-build
+docs/.vuepress/build
 
 
 # local env files
