@@ -1,9 +1,10 @@
 /**
  * 扩展 VuePress 应用
  */
-// import VueTianditu from "../../packages";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+import VueTianditu from "../../packages";
+console.log("🚀 ~ file: enhanceApp.JS ~ line 7 ~ VueTianditu", VueTianditu);
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
@@ -13,21 +14,28 @@ export default ({
 }) => {
   // ...做一些其他的应用级别的优化
   Vue.use(ElementUI);
-  if (process.env.NODE_ENV === "development") {
-    import("../../packages").then(VueTianditu => {
-      Vue.use(VueTianditu.default, {
-        v: "4.0",
-        tk: "7f013d0186775b063d6a046977bbefc6",
-        plugins: ["CarTrack"]
-      });
-    });
-  } else {
-    import("../../").then(VueTianditu => {
-      Vue.use(VueTianditu.default, {
-        v: "4.0",
-        tk: "7f013d0186775b063d6a046977bbefc6",
-        plugins: ["CarTrack"]
-      });
-    });
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   import("../../packages").then(VueTianditu => {
+  //     console.log("🚀 ~ file: enhanceApp.JS ~ line 18 ~ import ~ VueTianditu", VueTianditu);
+  //     Vue.use(VueTianditu.default, {
+  //       v: "4.0",
+  //       tk: "7f013d0186775b063d6a046977bbefc6",
+  //       plugins: ["CarTrack"]
+  //     });
+  //   });
+  // } else {
+  //   import("../../packages").then(VueTianditu => {
+  //     console.log("🚀 ~ file: enhanceApp.JS ~ line 27 ~ import ~ VueTianditu", VueTianditu);
+  //     Vue.use(VueTianditu.default, {
+  //       v: "4.0",
+  //       tk: "7f013d0186775b063d6a046977bbefc6",
+  //       plugins: ["CarTrack"]
+  //     });
+  //   });
+  // }
+  Vue.use(VueTianditu, {
+    v: "4.0",
+    tk: "7f013d0186775b063d6a046977bbefc6",
+    plugins: ["CarTrack"]
+  });
 };
