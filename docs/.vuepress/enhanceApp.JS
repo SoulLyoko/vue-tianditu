@@ -1,7 +1,7 @@
 /**
  * 扩展 VuePress 应用
  */
-import VueTianditu from "../../packages";
+// import VueTianditu from "../../packages";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
@@ -13,9 +13,21 @@ export default ({
 }) => {
   // ...做一些其他的应用级别的优化
   Vue.use(ElementUI);
-  Vue.use(VueTianditu, {
-    v: "4.0",
-    tk: "7f013d0186775b063d6a046977bbefc6",
-    plugins: ["CarTrack"]
-  });
+  if (process.env.NODE_ENV === "development") {
+    import("../../packages").then(VueTianditu => {
+      Vue.use(VueTianditu.default, {
+        v: "4.0",
+        tk: "7f013d0186775b063d6a046977bbefc6",
+        plugins: ["CarTrack"]
+      });
+    });
+  } else {
+    import("../../").then(VueTianditu => {
+      Vue.use(VueTianditu.default, {
+        v: "4.0",
+        tk: "7f013d0186775b063d6a046977bbefc6",
+        plugins: ["CarTrack"]
+      });
+    });
+  }
 };
