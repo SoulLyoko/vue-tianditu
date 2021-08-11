@@ -7,7 +7,12 @@ set -e
 yarn docs:build
 
 # 进入生成的文件夹
-cd docs/.vuepress/dist
+cd docs/.vuepress
+mkdir build
+mkdir build/v1
+cp -rf dist/* build/v1
+cd build
+
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
@@ -23,4 +28,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:SoulLyoko/vue-tianditu.git master:gh-pages
 git push -f https://github.com/SoulLyoko/vue-tianditu.git master:gh-pages
 
+rm -r dist
+rm -r build
 cd -
