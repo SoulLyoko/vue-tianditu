@@ -1,5 +1,6 @@
 module.exports = {
   base: "/vue-tianditu/v1/",
+  dest: "docs/.vuepress/dist/v1",
   title: "vue-tianditu文档",
   description: "vue-tianditu文档",
   themeConfig: {
