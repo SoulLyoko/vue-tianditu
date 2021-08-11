@@ -2,6 +2,8 @@
 
 天地图 vue3 组件库
 
+[vue-tianditu 文档 v1](https://soullyoko.github.io/vue-tianditu/v1)
+
 [vue-tianditu 文档 v2](https://soullyoko.github.io/vue-tianditu/v2)
 
 ## 安装
