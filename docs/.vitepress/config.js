@@ -20,7 +20,8 @@ module.exports = {
           collapsable: false,
           sidebarDepth: 0,
           children: [{ text: "基础地图", link: "/map/map" }]
-        }
+        },
+        { text: "控件", link: "/control/control" }
       ]
     }
   }

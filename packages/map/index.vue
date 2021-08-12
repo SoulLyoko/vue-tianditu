@@ -26,11 +26,11 @@ defineExpose({ tdtMap });
 onMounted(() => {
   apiLoaderInstance.load().then(() => {
     tdtMap.value = useInit(props);
-    emit("init", tdtMap.value);
-    mapEmitter.emit("mapInit", tdtMap.value);
     useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
     useWatch({ props, instance: tdtMap.value });
     useControls(props, tdtMap.value, emit);
+    emit("init", tdtMap.value);
+    mapEmitter.emit("mapInit", tdtMap.value);
   });
 });
 </script>

@@ -23,10 +23,10 @@ function initComponent(map: Tianditu.Map): void {
   mapEmitter.off("mapInit", initComponent);
   tdtMap.value = map;
   tdtComponent.value = useInit(props);
-  emit("init", tdtComponent.value);
   useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent.value, extData: props.extData });
   useWatch({ props, instance: tdtComponent.value });
   map.addOverLay(tdtComponent.value);
+  emit("init", tdtComponent.value);
 }
 
 onUnmounted(() => {

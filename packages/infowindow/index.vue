@@ -23,7 +23,6 @@ function initComponent(map: Tianditu.Map): void {
   mapEmitter.off("mapInit", initComponent);
   tdtMap.value = map;
   tdtComponent.value = useInit(props);
-  emit("init", tdtComponent.value);
   useEvent({
     events: NATIVE_EVENTS,
     emit,
@@ -33,5 +32,6 @@ function initComponent(map: Tianditu.Map): void {
     }
   });
   useWatch({ props, instance: tdtComponent.value, map });
+  emit("init", tdtComponent.value);
 }
 </script>

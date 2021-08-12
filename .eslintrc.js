@@ -23,7 +23,8 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
-    "prefer-const": 0,
-    "vue/require-render-return": 0
+    "vue/require-render-return": 0,
+    "vue/require-explicit-emits": 0,
+    "prefer-const": 0
   }
 };

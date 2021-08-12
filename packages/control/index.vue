@@ -1,6 +1,12 @@
+<template>
+  <div ref="controlRef" class="tdt-control-custom">
+    <slot></slot>
+  </div>
+</template>
+
 <script lang="ts">
 export default {
-  name: "TdtLabel",
+  name: "TdtControl",
   render() {}
 };
 </script>
@@ -11,10 +17,11 @@ import { mapEmitter } from "../utils";
 import { useEvent } from "../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
+const controlRef = ref();
 const props = defineProps(PROPS);
 const emit = defineEmits(EVENTS);
 const tdtMap = ref<Tianditu.Map>();
-const tdtComponent = ref<Tianditu.Label>();
+const tdtComponent = ref<Tianditu.Control>();
 defineExpose({ tdtComponent });
 
 mapEmitter.on("mapInit", initComponent);
@@ -23,13 +30,15 @@ function initComponent(map: Tianditu.Map): void {
   mapEmitter.off("mapInit", initComponent);
   tdtMap.value = map;
   tdtComponent.value = useInit(props);
-  useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent.value, extData: props.extData });
+  tdtComponent.value.onAdd = () => controlRef.value;
+  tdtComponent.value.onRemove = () => {};
+  useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent.value });
   useWatch({ props, instance: tdtComponent.value });
-  map.addOverLay(tdtComponent.value);
+  map.addControl(tdtComponent.value);
   emit("init", tdtComponent.value);
 }
 
 onUnmounted(() => {
-  tdtComponent.value && tdtMap.value?.removeOverLay(tdtComponent.value);
+  tdtComponent.value && tdtMap.value?.removeControl(tdtComponent.value);
 });
 </script>

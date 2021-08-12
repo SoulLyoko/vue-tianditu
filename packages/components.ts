@@ -6,3 +6,4 @@ export { default as TdtPolygon } from "./polygon/index.vue";
 export { default as TdtRectangle } from "./rectangle/index.vue";
 export { default as TdtCircle } from "./circle/index.vue";
 export { default as TdtInfowindow } from "./infowindow/index.vue";
+export { default as TdtControl } from "./control/index.vue";
