@@ -10,8 +10,7 @@ export default {
   enhanceApp({ app }: { app: App }) {
     app.use(VueTianditu, {
       v: "4.0",
-      tk: "7f013d0186775b063d6a046977bbefc6",
-      plugins: ["CarTrack"]
+      tk: "7f013d0186775b063d6a046977bbefc6"
     });
     useComponents(app);
   }
