@@ -22,7 +22,7 @@ export const NATIVE_PROPS = {
 
 export const OTHER_PROPS = {
   /** 信息浮窗的显示 HTML 内容 */
-  content: { type: [String, HTMLElement] as PropType<string | HTMLElement>, default: "" },
+  content: { type: [String, Object] as PropType<string | HTMLElement>, default: "" },
   /** 打开信息浮窗的覆盖物或信息浮窗所指向的地理位置坐标 */
   modelValue: { type: [Object, Array] as PropType<Tianditu.OverlayBase<any> | LngLat | null>, default: null }
 };

@@ -3,6 +3,7 @@ import { App } from "vue";
 import defaultTheme from "vitepress/dist/client/theme-default";
 import VueTianditu from "../../../packages";
 import { useComponents } from "../components";
+import "./index.css";
 
 export default {
   ...defaultTheme,
