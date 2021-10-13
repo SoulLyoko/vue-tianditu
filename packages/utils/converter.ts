@@ -1,5 +1,5 @@
 import { LngLat, LngLats, Bounds, Point, IconOptions } from "../types";
-import { Props as MarkerOptions } from "../marker/types";
+import { Props as MarkerOptions } from "../overlay/marker/types";
 
 /**
  * 转换为经纬度对象

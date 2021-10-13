@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { App } from "vue";
 import demoMap from "./demo-map/index.vue";
 import demoControl from "./demo-control/index.vue";
