@@ -1,4 +1,8 @@
 declare namespace Tianditu {
+  namespace TileLayer {
+    class WMS extends TileLayerWMS {}
+    class TDT extends TileLayerTDT {}
+  }
   class TileLayer {
     /** 以指定的参数创建TileLayer对象,这个对象是在地图上叠加栅格地图的时候用到的 */
     constructor(url: string, opts?: TileLayerOptions);
@@ -16,9 +20,6 @@ declare namespace Tianditu {
     addEventListener<E extends keyof TileLayerEvents>(event: E, handler: TileLayerEvents[E]): void;
     /** 移除事件监听函数 */
     removeEventListener<E extends keyof TileLayerEvents>(event: E, handler: TileLayerEvents[E]): void;
-
-    static TDT: TileLayerTDT;
-    static WMS: TileLayerWMS;
   }
 
   interface TileLayerOptions {
@@ -63,30 +64,30 @@ declare namespace Tianditu {
   }
 
   class TileLayerTDT extends TileLayer {
-    constructor(url: string, opts: TileLayerTDTOptions);
+    constructor(url: string, opts?: TileLayerTDTOptions);
   }
 
   interface TileLayerTDTOptions extends TileLayerOptions {
     /** 用来描述图层信息 */
-    attribution: string;
+    attribution?: string;
   }
 
   class TileLayerWMS extends TileLayer {
-    constructor(url: string, opts: TileLayerWMSOptions);
+    constructor(url: string, opts?: TileLayerWMSOptions);
   }
 
   interface TileLayerWMSOptions {
     /** 用","分隔的多个图层列表 */
-    layers: string;
+    layers?: string;
     /** 每个请求图层的用","分隔的描述样式 */
-    styles: string;
+    styles?: string;
     /** 输出图像的类型。default:"image/jpeg" */
-    format: string;
+    format?: string;
     /** 输出图像背景是否透明。default:false */
-    transparent: boolean;
+    transparent?: boolean;
     /** 请求服务的版本。default:"1.1.1" */
-    version: string;
+    version?: string;
     /** 地图投影类型。default:"EPSG:900913" */
-    srs: string;
+    srs?: string;
   }
 }
