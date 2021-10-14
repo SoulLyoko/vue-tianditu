@@ -1,6 +1,8 @@
 <template>
   <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
+    <tdt-map :center="state.center" :zoom="state.zoom">
+      <tdt-label :position="state.center" text="Hello World!"></tdt-label>
+    </tdt-map>
   </div>
 </template>
 
@@ -14,7 +16,7 @@ const state = reactive({
 </script>
 
 <script lang="ts">
-export default { name: "demo-map" };
+export default { name: "demo-label" };
 </script>
 
 <style scoped>

@@ -1,11 +1,12 @@
 import { App } from "vue";
-import demoMap from "./demo-map/index.vue";
-import demoControl from "./demo-control/index.vue";
 
-const components = [demoMap, demoControl];
+const components = import.meta.globEager("./**/*.vue");
 
-export function useComponents(app: App) {
-  components.forEach(component => {
-    app.component(component.name, component);
-  });
-}
+export default {
+  install: (app: App) => {
+    Object.keys(components).forEach((key: string) => {
+      const component = components[key].default;
+      app.component(component.name, component);
+    });
+  }
+};
