@@ -1,3 +1,9 @@
+### v2.0.4
+
+2021-10-14
+
+- fix: rename and export components: TdtTilelayer,TdtTilelayerTdt,TdtTilelayerWms
+
 ### v2.0.3
 
 2021-10-14

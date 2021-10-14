@@ -9,7 +9,7 @@ export function useInit(props: Props, attrs: Record<string, unknown>) {
     errorTileUrl,
     opacity,
     zIndex,
-    bounds: toBounds(bounds),
+    bounds: bounds.length ? toBounds(bounds) : undefined,
     ...attrs
   });
   return instance;

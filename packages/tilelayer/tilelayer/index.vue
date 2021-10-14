@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: "TdtTileLayer",
+  name: "TdtTilelayer",
   render() {}
 };
 </script>
@@ -13,6 +13,7 @@ import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
 const props = defineProps(PROPS);
 const emit = defineEmits(EVENTS);
+const attrs = useAttrs();
 
 const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.TileLayer>();
@@ -24,7 +25,7 @@ mapEmitter?.on("mapInit", initComponent);
 function initComponent(map: Tianditu.Map): void {
   mapEmitter?.off("mapInit", initComponent);
   tdtMap.value = map;
-  tdtComponent.value = useInit(props, useAttrs());
+  tdtComponent.value = useInit(props, attrs);
   useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent.value });
   useWatch({ props, instance: tdtComponent.value });
   map.addLayer(tdtComponent.value);
