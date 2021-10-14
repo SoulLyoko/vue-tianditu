@@ -4,12 +4,9 @@
 
 <demo-label></demo-label>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-label/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

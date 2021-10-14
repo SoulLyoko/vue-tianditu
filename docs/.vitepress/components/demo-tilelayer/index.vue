@@ -1,7 +1,7 @@
 <template>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-tilelayer :url="state.url"></tdt-tilelayer>
+      <tdt-tilelayer :url="state.url" :zIndex="1"></tdt-tilelayer>
     </tdt-map>
   </div>
 </template>

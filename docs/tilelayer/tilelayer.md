@@ -6,12 +6,9 @@
 
 <demo-tilelayer></demo-tilelayer>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-tilelayer/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

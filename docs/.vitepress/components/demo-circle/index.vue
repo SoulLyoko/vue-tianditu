@@ -1,9 +1,9 @@
 <template>
+  <button @click="state.edit = !state.edit">editable</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-circle :center="state.center" :radius="3000" :edit="state.edit" color="black" :opacity="1"></tdt-circle>
     </tdt-map>
-    <button @click="state.edit = !state.edit">editable</button>
   </div>
 </template>
 

@@ -6,12 +6,9 @@
 
 <demo-tilelayer-tdt></demo-tilelayer-tdt>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-tilelayer-tdt/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

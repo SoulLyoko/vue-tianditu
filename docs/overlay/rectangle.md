@@ -4,12 +4,9 @@
 
 <demo-rectangle></demo-rectangle>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-rectangle/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

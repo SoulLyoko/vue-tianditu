@@ -4,12 +4,9 @@
 
 <demo-marker></demo-marker>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-marker/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

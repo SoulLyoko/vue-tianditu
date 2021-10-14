@@ -19,7 +19,10 @@ module.exports = {
           text: "地图",
           collapsable: false,
           sidebarDepth: 0,
-          children: [{ text: "基础地图", link: "/map/map" }]
+          children: [
+            { text: "基础地图", link: "/map/map" },
+            { text: "控件", link: "/map/control" }
+          ]
         },
         {
           text: "图层",
@@ -31,8 +34,6 @@ module.exports = {
             { text: "WMS服务图层", link: "/tilelayer/tilelayer-wms" }
           ]
         },
-        { text: "控件", link: "/control/control" },
-
         {
           text: "覆盖物",
           collapsable: false,

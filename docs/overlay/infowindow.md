@@ -4,12 +4,9 @@
 
 <demo-infowindow></demo-infowindow>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-infowindow/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 

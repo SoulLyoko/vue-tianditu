@@ -10,8 +10,8 @@
 import { reactive } from "vue";
 
 const state = reactive({
-  center: [113.280637, 23.125178],
-  zoom: 11,
+  center: [116.40769, 39.89945],
+  zoom: 6,
   option: {
     url: "http://gisserver.tianditu.com/tiandituService/wms",
     version: "1.1.1",
@@ -30,6 +30,6 @@ export default { name: "demo-tilelayer-wms" };
 <style scoped>
 .mapDiv {
   width: 100%;
-  height: 300px;
+  height: 600px;
 }
 </style>

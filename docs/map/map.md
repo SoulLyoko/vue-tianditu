@@ -6,12 +6,9 @@
 
 <demo-map></demo-map>
 
-<details>
-<summary>查看代码</summary>
-
+<code-details>
 <<< @/.vitepress/components/demo-map/index.vue
-
-</details>
+</code-details>
 
 ## 属性
 
