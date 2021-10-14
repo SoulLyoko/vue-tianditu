@@ -6,8 +6,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { defineProps, defineExpose, ref, onUnmounted } from "vue";
-import { mapEmitter } from "../../utils";
+import { ref, inject, onUnmounted } from "vue";
+import type { MapEmitter } from "../../types";
 import { useEvent } from "../../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
@@ -17,10 +17,11 @@ const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.Polygon>();
 defineExpose({ tdtComponent });
 
-mapEmitter.on("mapInit", initComponent);
+const mapEmitter = inject<MapEmitter>("mapEmitter");
+mapEmitter?.on("mapInit", initComponent);
 
 function initComponent(map: Tianditu.Map): void {
-  mapEmitter.off("mapInit", initComponent);
+  mapEmitter?.off("mapInit", initComponent);
   tdtMap.value = map;
   tdtComponent.value = useInit(props);
   useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent.value, extData: props.extData });

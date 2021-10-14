@@ -40,7 +40,7 @@ export const OTHER_PROPS = {
   /** 地图样式，原天地图api的style，分别为black，indigo */
   mapStyle: { type: String as PropType<"black" | "indigo"> },
   /** 地图容器id */
-  mid: { type: String, default: uuid() },
+  mid: { type: String, default: () => uuid() },
   /** 控件 */
   controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: [] }
 };

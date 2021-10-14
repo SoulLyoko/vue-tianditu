@@ -12,16 +12,21 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { defineProps, defineExpose, onMounted, ref } from "vue";
+import mitt from "mitt";
+import { ref, provide, onMounted } from "vue";
 import { apiLoaderInstance } from "../api-loader";
-import { mapEmitter } from "../utils";
+import { MapEmitEvents } from "../types";
 import { useEvent } from "../use";
 import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
 const props = defineProps(PROPS);
 const emit = defineEmits(EVENTS);
+
 const tdtMap = ref<Tianditu.Map>();
 defineExpose({ tdtMap });
+
+const mapEmitter = mitt<MapEmitEvents>();
+provide("mapEmitter", mapEmitter);
 
 onMounted(() => {
   apiLoaderInstance.load().then(() => {
