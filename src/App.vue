@@ -12,7 +12,13 @@
       <TdtPolyline :path="state.polylinePath" ext-data="polyline" @click="openInfoWindow"></TdtPolyline>
       <TdtPolygon :path="state.polygonPath" ext-data="polygon" @click="openInfoWindow"></TdtPolygon>
       <TdtRectangle :bounds="state.bounds" ext-data="rectangle" @click="openInfoWindow"></TdtRectangle>
-      <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
+      <TdtCircle
+        v-if="state.show"
+        :center="state.center"
+        :radius="1000"
+        ext-data="circle"
+        @click="openInfoWindow"
+      ></TdtCircle>
       <TdtInfowindow
         v-model="state.infowindow.target"
         :content="state.infowindow.content"
@@ -67,7 +73,8 @@ const state = reactive({
   infowindow: {
     target: null,
     content: ""
-  }
+  },
+  show: false
 });
 
 // setTimeout(() => {
@@ -76,6 +83,18 @@ const state = reactive({
 //   state.bounds = [];
 //   state.markers = [];
 // }, 3000);
+
+setTimeout(() => {
+  state.show = true;
+}, 1000);
+
+setTimeout(() => {
+  state.show = false;
+}, 2000);
+
+setTimeout(() => {
+  state.show = true;
+}, 3000);
 
 function openInfoWindow(e: any) {
   state.infowindow.target = e.target;

@@ -12,6 +12,7 @@ export default {
 
 <script lang="ts" setup>
 import { ref, inject, onUnmounted } from "vue";
+import type { Ref } from "vue";
 import type { MapEmitter } from "../types";
 import { useEvent } from "../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
@@ -23,8 +24,13 @@ const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.Control>();
 defineExpose({ tdtComponent });
 
+const mapRoot = inject<Ref<Tianditu.Map>>("mapRoot");
 const mapEmitter = inject<MapEmitter>("mapEmitter");
-mapEmitter?.on("mapInit", initComponent);
+if (mapRoot?.value) {
+  initComponent(mapRoot?.value);
+} else {
+  mapEmitter?.on("mapInit", initComponent);
+}
 
 const controlRef = ref();
 function initComponent(map: Tianditu.Map): void {
