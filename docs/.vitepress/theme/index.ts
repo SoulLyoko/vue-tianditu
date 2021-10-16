@@ -1,8 +1,8 @@
+// @ts-nocheck
 import { App } from "vue";
 // import DefaultTheme from "vitepress/theme";
-// @ts-ignore
 import defaultTheme from "vitepress/dist/client/theme-default";
-import VueTianditu from "../../../packages";
+import VueTianditu from "../../../lib/index.es.js";
 import components from "../components";
 import "./index.css";
 

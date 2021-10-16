@@ -13,7 +13,7 @@ export default {
 
 <script lang="ts" setup>
 import mitt from "mitt";
-import { ref, provide, onMounted } from "vue";
+import { ref, provide, onMounted } from "vue-demi";
 import { apiLoaderInstance } from "../api-loader";
 import { MapEmitEvents } from "../types";
 import { useEvent } from "../use";

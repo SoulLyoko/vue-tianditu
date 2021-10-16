@@ -11,6 +11,9 @@ export default defineConfig({
       "~": path.resolve(__dirname, "packages")
     }
   },
+  optimizeDeps: {
+    exclude: ["vue-demi"]
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, "packages/index.ts"),

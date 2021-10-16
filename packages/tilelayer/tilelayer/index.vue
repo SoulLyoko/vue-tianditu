@@ -6,8 +6,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, inject, onUnmounted, useAttrs } from "vue";
-import type { Ref } from "vue";
+import { ref, inject, onUnmounted, useAttrs } from "vue-demi";
+import type { Ref } from "vue-demi";
 import type { MapEmitter } from "../../types";
 import { useEvent } from "../../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";

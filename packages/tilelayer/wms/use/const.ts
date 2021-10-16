@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { PropType } from "vue-demi";
 
 export const NATIVE_PROPS = {
   /** 用","分隔的多个图层列表 */

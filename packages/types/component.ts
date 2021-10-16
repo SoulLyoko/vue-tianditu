@@ -1,4 +1,4 @@
-import { DefineComponent, EmitsOptions, ExtractPropTypes } from "vue";
+import { DefineComponent, EmitsOptions, ExtractPropTypes } from "vue-demi";
 
 // export type DefineProps<P> = InstanceType<DefineComponent<P>>["$props"];
 export type DefineProps<P> = ExtractPropTypes<P>;
