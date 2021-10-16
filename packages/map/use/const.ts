@@ -42,7 +42,7 @@ export const OTHER_PROPS = {
   /** 地图容器id */
   mid: { type: String, default: () => uuid() },
   /** 控件 */
-  controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: [] }
+  controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: () => [] }
 };
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };

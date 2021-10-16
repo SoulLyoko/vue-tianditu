@@ -13,9 +13,9 @@ export const NATIVE_PROPS = {
   /** 控制弹出窗口中出现的关闭按钮 */
   closeButton: { type: Boolean, default: true },
   /** 弹出窗口位置的补偿值。在同一图层中打开弹出窗口时对于控制锚点比较有用 */
-  offset: { type: Array as unknown as PropType<Point>, default: [0, 7] },
+  offset: { type: Array as unknown as PropType<Point>, default: () => [0, 7] },
   /** 在地图视图自动平移产生后弹出窗口和地图视图之间的边缘 */
-  autoPanPadding: { type: Array as unknown as PropType<Point>, default: [5, 5] },
+  autoPanPadding: { type: Array as unknown as PropType<Point>, default: () => [5, 5] },
   /** 是否开启点击地图关闭信息窗口（默认关闭） */
   closeOnClick: { type: Boolean, default: false }
 };

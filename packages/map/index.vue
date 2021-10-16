@@ -24,7 +24,7 @@ const emit = defineEmits(EVENTS);
 
 const tdtMap = ref<Tianditu.Map>();
 provide("mapRoot", tdtMap);
-defineExpose({ tdtMap });
+// // defineExpose({ tdtMap });
 
 const mapEmitter = mitt<MapEmitEvents>();
 provide("mapEmitter", mapEmitter);

@@ -16,7 +16,7 @@ const props = defineProps(PROPS);
 const emit = defineEmits(EVENTS);
 const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.Polygon>();
-defineExpose({ tdtComponent });
+// defineExpose({ tdtComponent });
 
 const mapRoot = inject<Ref<Tianditu.Map>>("mapRoot");
 const mapEmitter = inject<MapEmitter>("mapEmitter");

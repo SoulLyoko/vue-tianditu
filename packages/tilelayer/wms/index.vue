@@ -18,7 +18,7 @@ const attrs = useAttrs();
 
 const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.TileLayer.WMS>();
-defineExpose({ tdtComponent });
+// defineExpose({ tdtComponent });
 
 const mapRoot = inject<Ref<Tianditu.Map>>("mapRoot");
 const mapEmitter = inject<MapEmitter>("mapEmitter");
