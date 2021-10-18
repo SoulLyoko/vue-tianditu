@@ -2,7 +2,7 @@
 import { App } from "vue";
 // import DefaultTheme from "vitepress/theme";
 import defaultTheme from "vitepress/dist/client/theme-default";
-import VueTianditu from "../../../lib/index.es.js";
+import VueTianditu from "../../../packages";
 import components from "../components";
 import "./index.css";
 
