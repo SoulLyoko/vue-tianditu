@@ -13,7 +13,7 @@ export default {
 
 <script lang="ts" setup>
 import mitt from "mitt";
-import { ref, provide, onMounted } from "vue-demi";
+import { ref, provide, onMounted } from "vue";
 import { apiLoaderInstance } from "../api-loader";
 import { MapEmitEvents } from "../types";
 import { useEvent } from "../use";
@@ -24,7 +24,7 @@ const emit = defineEmits(EVENTS);
 
 const tdtMap = ref<Tianditu.Map>();
 provide("mapRoot", tdtMap);
-// // defineExpose({ tdtMap });
+defineExpose({ tdtMap });
 
 const mapEmitter = mitt<MapEmitEvents>();
 provide("mapEmitter", mapEmitter);

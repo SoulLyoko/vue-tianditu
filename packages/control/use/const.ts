@@ -1,4 +1,4 @@
-import { PropType } from "vue-demi";
+import { PropType } from "vue";
 import { Point } from "../../types";
 
 export const NATIVE_PROPS = {

@@ -9,7 +9,8 @@ module.exports = {
       {
         text: "v2.x",
         items: [{ text: "v1.x", link: "https://soullyoko.github.io/vue-tianditu/v1" }]
-      }
+      },
+      { text: "天地图官网", link: "https://www.tianditu.gov.cn/" }
     ],
     sidebar: {
       "/": [

@@ -6,8 +6,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, inject, onUnmounted, useAttrs } from "vue-demi";
-import type { Ref } from "vue-demi";
+import { ref, inject, onUnmounted, useAttrs } from "vue";
+import type { Ref } from "vue";
 import type { MapEmitter } from "../../types";
 import { useEvent } from "../../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
@@ -18,7 +18,7 @@ const attrs = useAttrs();
 
 const tdtMap = ref<Tianditu.Map>();
 const tdtComponent = ref<Tianditu.TileLayer.TDT>();
-// defineExpose({ tdtComponent });
+defineExpose({ tdtComponent });
 
 const mapRoot = inject<Ref<Tianditu.Map>>("mapRoot");
 const mapEmitter = inject<MapEmitter>("mapEmitter");

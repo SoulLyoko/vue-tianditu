@@ -1,0 +1,15 @@
+.github
+.husky
+.docs
+node_modules
+public
+src
+eslintrc.js
+.gitignore
+.prettierrc.js
+commitlint.config.js
+commitlint.md
+index.html
+tsconfig.json
+vite.config.ts
+yarn.lock

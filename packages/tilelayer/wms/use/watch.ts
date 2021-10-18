@@ -1,4 +1,4 @@
-import { watch } from "vue-demi";
+import { watch } from "vue";
 import { Props } from "../types";
 
 export function useWatch({ props, instance }: { props: Props; instance: Tianditu.TileLayer.WMS }) {

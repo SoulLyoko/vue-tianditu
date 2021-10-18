@@ -1,4 +1,4 @@
-import { watch } from "vue-demi";
+import { watch } from "vue";
 import { toBounds, toLngLat } from "../../utils";
 import { Props } from "../types";
 
