@@ -10,3 +10,4 @@ export { default as TdtControl } from "./control/index.vue";
 export { default as TdtTilelayer } from "./tilelayer/tilelayer/index.vue";
 export { default as TdtTilelayerTdt } from "./tilelayer/tdt/index.vue";
 export { default as TdtTilelayerWms } from "./tilelayer/wms/index.vue";
+export { default as TdtMousetool } from "./mousetool/index.vue";

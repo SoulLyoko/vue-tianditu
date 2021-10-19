@@ -1,3 +1,9 @@
+### v2.2.1
+
+2021-10-19
+
+- feat: new component `tdt-mousetool`
+
 ### v2.0.5
 
 2021-10-15

@@ -1,5 +1,6 @@
 <template>
   <div style="width: 800px; height: 600px">
+    <button @click="openTool('markTool')">标点</button>
     <TdtMap :center="state.center" :zoom="state.zoom" :controls="['Zoom', 'MapType']">
       <TdtMarker
         v-for="marker in state.markers"
@@ -12,24 +13,19 @@
       <TdtPolyline :path="state.polylinePath" ext-data="polyline" @click="openInfoWindow"></TdtPolyline>
       <TdtPolygon :path="state.polygonPath" ext-data="polygon" @click="openInfoWindow"></TdtPolygon>
       <TdtRectangle :bounds="state.bounds" ext-data="rectangle" @click="openInfoWindow"></TdtRectangle>
-      <TdtCircle
-        v-if="state.show"
-        :center="state.center"
-        :radius="1000"
-        ext-data="circle"
-        @click="openInfoWindow"
-      ></TdtCircle>
+      <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
       <TdtInfowindow
         v-model="state.infowindow.target"
         :content="state.infowindow.content"
         :close-on-click="true"
       ></TdtInfowindow>
+      <TdtMousetool ref="mousetoolRef" :mark-tool="{ follow: true }"></TdtMousetool>
     </TdtMap>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import {
   initApiLoader,
   TdtMap,
@@ -39,7 +35,8 @@ import {
   TdtPolygon,
   TdtRectangle,
   TdtCircle,
-  TdtInfowindow
+  TdtInfowindow,
+  TdtMousetool
 } from "~/index";
 
 initApiLoader({
@@ -73,32 +70,17 @@ const state = reactive({
   infowindow: {
     target: null,
     content: ""
-  },
-  show: false
+  }
 });
-
-// setTimeout(() => {
-//   state.polylinePath = [];
-//   state.polygonPath = [];
-//   state.bounds = [];
-//   state.markers = [];
-// }, 3000);
-
-setTimeout(() => {
-  state.show = true;
-}, 1000);
-
-setTimeout(() => {
-  state.show = false;
-}, 2000);
-
-setTimeout(() => {
-  state.show = true;
-}, 3000);
 
 function openInfoWindow(e: any) {
   state.infowindow.target = e.target;
   state.infowindow.content = e.extData;
+}
+
+const mousetoolRef = ref<typeof TdtMousetool>();
+function openTool(toolName: string) {
+  mousetoolRef.value?.open(toolName);
 }
 </script>
 

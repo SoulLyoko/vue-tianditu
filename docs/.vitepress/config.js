@@ -22,7 +22,8 @@ module.exports = {
           sidebarDepth: 0,
           children: [
             { text: "基础地图", link: "/map/map" },
-            { text: "控件", link: "/map/control" }
+            { text: "控件", link: "/map/control" },
+            { text: "地图工具", link: "/mousetool/mousetool" }
           ]
         },
         {

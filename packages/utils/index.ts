@@ -1,3 +1,3 @@
 export * from "./converter";
-export * from "./uuid";
 export * from "./emitter";
+export * from "./string";
