@@ -17,7 +17,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "lint": "eslint src --ext .vue,.js,.ts",
+    "lint": "eslint --ext .ts,.vue .",
     "prepare": "husky install",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -30,26 +30,26 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
-    "@types/node": "^16.11.1",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@types/node": "^16.11.3",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
     "@vitejs/plugin-vue": "^1.9.3",
     "@vue/compiler-sfc": "3.2.20",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^7.19.1",
-    "husky": "^7.0.2",
+    "eslint-plugin-vue": "^7.20.0",
+    "husky": "^7.0.4",
     "lint-staged": "^11.2.3",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4",
-    "vite": "2.6.7",
+    "vite": "2.6.10",
     "vitepress": "^0.20.0",
     "vue-tsc": "^0.28.7"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
-      "prettier --write",
+    "*.{ts,vue}": [
+      "prettier --write",
       "eslint --fix",
       "git add"
     ]

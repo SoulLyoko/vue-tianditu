@@ -16,9 +16,9 @@ export function useControls(props: Props, map: Tianditu.Map, emit: Emit) {
         addControlByName(option);
       });
     }
-    let control = new T.Control[controlName]();
+    const control = new T.Control[controlName]();
     if (controlName === "OverviewMap") {
-      let c = control as Tianditu.ControlOverviewMap;
+      const c = control as Tianditu.ControlOverviewMap;
       c.addEventListener("viewchange", e => {
         emit("viewchange", e);
       });

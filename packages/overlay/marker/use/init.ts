@@ -2,9 +2,9 @@ import { toLngLat } from "../../../utils";
 import { Props } from "../types";
 
 export function useInit(props: Props) {
-  let { icon, draggable, title, zIndexOffset, opacity, position } = props;
+  const { /**icon,*/ draggable, title, zIndexOffset, opacity, position } = props;
   const instance = new T.Marker(toLngLat(position), {
-    // icon: icon ? toIcon(icon) : undefined,
+    /** icon: icon ? toIcon(icon) : undefined,*/
     draggable,
     title,
     zIndexOffset,
