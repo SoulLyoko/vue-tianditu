@@ -1,9 +1,9 @@
 import { toLngLat } from "../../utils";
 import { Props } from "../types";
 
-export function useInit(props: Props) {
-  const { projection, minZoom, maxZoom, center, zoom } = props;
-  const instance = new T.Map(props.mid, {
+export function useInit(props: Props, dom?: HTMLElement) {
+  const { mid, projection, minZoom, maxZoom, center, zoom } = props;
+  const instance = new T.Map(dom ?? mid, {
     projection,
     minZoom,
     maxZoom,

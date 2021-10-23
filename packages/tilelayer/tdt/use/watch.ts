@@ -1,4 +1,4 @@
-import { watch } from "vue";
+import { watch } from "vue-demi";
 import { Props } from "../types";
 
 export function useWatch({ props, instance }: { props: Props; instance: Tianditu.TileLayer.TDT }) {

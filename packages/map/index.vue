@@ -1,42 +1,50 @@
-<template>
-  <div class="tdt-map-container" style="width: 100%; height: 100%">
-    <div :id="mid" class="tdt-map" style="width: 100%; height: 100%"></div>
-    <slot></slot>
-  </div>
-</template>
-
 <script lang="ts">
-export default {
-  name: "TdtMap"
-};
-</script>
-
-<script lang="ts" setup>
 import mitt from "mitt";
-import { ref, provide, onMounted } from "vue";
+import { defineComponent, h, ref, provide, onMounted } from "vue-demi";
 import { apiLoaderInstance } from "../api-loader";
 import { MapEmitEvents } from "../types";
 import { useEvent } from "../use";
 import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
-const props = defineProps(PROPS);
-const emit = defineEmits(EVENTS);
+export default defineComponent({
+  name: "TdtMap",
+  props: PROPS,
+  emits: EVENTS,
+  setup(props, { emit, expose, slots }) {
+    const tdtMap = ref<Tianditu.Map>();
+    provide("mapRoot", tdtMap);
+    expose?.({ tdtMap });
 
-const tdtMap = ref<Tianditu.Map>();
-provide("mapRoot", tdtMap);
-defineExpose({ tdtMap });
+    const mapEmitter = mitt<MapEmitEvents>();
+    provide("mapEmitter", mapEmitter);
 
-const mapEmitter = mitt<MapEmitEvents>();
-provide("mapEmitter", mapEmitter);
+    const tdtMapRef = h("div", {
+      id: props.mid,
+      class: "tdt-map",
+      style: "width:100%;height:100%"
+    });
 
-onMounted(() => {
-  apiLoaderInstance.load().then(() => {
-    tdtMap.value = useInit(props);
-    useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
-    useWatch({ props, instance: tdtMap.value });
-    useControls(props, tdtMap.value, emit);
-    emit("init", tdtMap.value);
-    mapEmitter.emit("mapInit", tdtMap.value);
-  });
+    onMounted(() => {
+      apiLoaderInstance.load().then(() => {
+        // @ts-ignore: VNode.elm in Vue2
+        tdtMap.value = useInit(props, (tdtMapRef.el || tdtMapRef.elm) as unknown as HTMLElement);
+        useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
+        useWatch({ props, instance: tdtMap.value });
+        useControls(props, tdtMap.value, emit);
+        emit("init", tdtMap.value);
+        mapEmitter.emit("mapInit", tdtMap.value);
+      });
+    });
+
+    return () =>
+      h(
+        "div",
+        {
+          class: "tdt-map-container",
+          style: "width:100%;height:100%"
+        },
+        [tdtMapRef, slots.default?.()]
+      );
+  }
 });
 </script>
