@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { PropType } from "vue-demi";
 import { IconOptions, LngLat } from "../../../types";
 
 export const NATIVE_PROPS = {

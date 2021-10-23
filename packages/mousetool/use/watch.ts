@@ -1,4 +1,4 @@
-import { watch } from "vue";
+import { watch } from "vue-demi";
 import { Props, ToolInstances } from "../types";
 
 export function useWatch({ props, instances }: { props: Props; instances: ToolInstances }) {

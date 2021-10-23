@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { PropType } from "vue-demi";
 import { LngLat, Point } from "../../../types";
 
 export const NATIVE_PROPS = {
@@ -37,7 +37,7 @@ export const NATIVE_EVENTS: Tianditu.InfoWindowEvents = {
 
 export const OTHER_EVENTS = {
   init: (e: Tianditu.InfoWindow) => e instanceof T.InfoWindow,
-  "update:modelValue": () => true
+  "update:modelValue": (e: any) => true
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

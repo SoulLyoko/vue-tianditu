@@ -1,4 +1,4 @@
-import { App } from "vue";
+import { App } from "vue-demi";
 import { Options } from "./api-loader/types";
 import { initApiLoader } from "./api-loader";
 import * as components from "./components";

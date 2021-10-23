@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { PropType } from "vue-demi";
 import { LngLat, Bounds } from "../../types";
 import { uuid } from "../../utils";
 import { ControlNames, ControlOpts } from "../types";
