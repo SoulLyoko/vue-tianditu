@@ -21,7 +21,7 @@
 | autoPanPadding | Array              | [5,5]  | 在地图视图自动平移产生后弹出窗口和地图视图之间的边缘                 |
 | closeOnClick   | Boolean            | false  | 是否开启点击地图关闭信息窗口（默认关闭）                             |
 | content        | String/HTMLElement | ""     | 信息窗口的内容可以是字符串或 HTML                                    |
-| v-model        | Object/Array       |        | 打开信息窗口的覆盖物对象或经纬度数组，传入数组时自行调整 offset 参数 |
+| target.sync    | Object/Array       |        | 打开信息窗口的覆盖物对象或经纬度数组，传入数组时自行调整 offset 参数 |
 
 ## 事件
 
