@@ -12,7 +12,7 @@ export function useWatch({ props, instance, map }: { props: Props; instance: Tia
     val => val && instance.setContent(val)
   );
   watch(
-    () => props.modelValue,
+    () => props.target,
     val => {
       if (val instanceof Array) {
         map.openInfoWindow(instance, toLngLat(val));

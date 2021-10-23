@@ -3,7 +3,7 @@
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-marker :position="state.marker1" @click="openInfowindow" extData="marker1"></tdt-marker>
       <tdt-marker :position="state.marker2" @click="openInfowindow" extData="marker2"></tdt-marker>
-      <tdt-infowindow v-model="state.infowindow.target" :content="state.infowindow.content"></tdt-infowindow>
+      <tdt-infowindow v-model:target="state.infowindow.target" :content="state.infowindow.content"></tdt-infowindow>
     </tdt-map>
   </div>
 </template>

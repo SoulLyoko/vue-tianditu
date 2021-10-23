@@ -31,7 +31,7 @@ export default defineComponent({
         emit,
         instance: tdtComponent.value,
         emitted: (event: string) => {
-          event === "close" && emit("update:modelValue", null);
+          event === "close" && emit("update:target", null);
         }
       });
       useWatch({ props, instance: tdtComponent.value, map });

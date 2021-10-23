@@ -1,11 +1,14 @@
+### v2.3.0-beta.2
 
+2021-10-23
 
+- fix: 打开信息窗口的方式改为 target
 
 ### v2.3.0-beta.1
 
 2021-10-23
 
-- refactor: 使用vue-demi支持vue2
+- refactor: 使用 vue-demi 支持 vue2
 
 ### v2.2.1
 
