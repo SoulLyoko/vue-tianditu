@@ -1,10 +1,12 @@
 # vue-tianditu
 
-天地图 vue3 组件库
+天地图 vue 组件库
 
-[vue-tianditu 文档 v1](https://soullyoko.github.io/vue-tianditu/v1)
+- vue-tianditu v2 同时支持 Vue3 和 Vue2(composition-api)
 
-[vue-tianditu 文档 v2](https://soullyoko.github.io/vue-tianditu/v2)
+- [vue-tianditu 文档 v1](https://soullyoko.github.io/vue-tianditu/v1)
+
+- [vue-tianditu 文档 v2](https://soullyoko.github.io/vue-tianditu/v2)
 
 ## 安装
 
@@ -27,7 +29,7 @@ import VueTianditu from "vue-tianditu";
 
 const app = createApp(App);
 app.use(VueTianditu, {
-  v: "4.0",
+  v: "4.0", //目前只支持4.0版本
   tk: "your map token"
 });
 app.mount("#app");
@@ -61,7 +63,7 @@ app.mount("#app");
 
 ### 按需引入
 
-- 建议按需引入配合 ts 获得类型提示
+建议按需引入配合 ts 获得类型提示
 
 `App.vue`
 
@@ -76,7 +78,7 @@ app.mount("#app");
   import { reactive } from "vue";
   import { TdtMap, initApiLoader } from "vue-tianditu";
   initApiLoader({
-    v: "4.0",
+    v: "4.0", //目前只支持4.0版本
     tk: "your map token"
   });
   const state = reactive({
@@ -98,3 +100,12 @@ app.mount("#app");
 ```ts
 import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 ```
+
+### 说明
+
+| 函数名 | 返回值 | 描述 |
+| --- | --- | --- |
+| toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
+| toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
+| toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
+| toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:String,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |

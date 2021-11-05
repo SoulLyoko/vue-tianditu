@@ -18,7 +18,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "packages/index.ts"),
       name: "VueTianditu",
-      fileName: "index"
+      fileName: "vue-tianditu"
     },
     outDir: "lib",
     rollupOptions: {

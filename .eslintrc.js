@@ -9,7 +9,8 @@ module.exports = {
     defineProps: "readonly",
     defineEmits: "readonly",
     defineExpose: "readonly",
-    Tianditu: "readonly"
+    Tianditu: "readonly",
+    T: "readonly"
   },
   parser: "vue-eslint-parser",
   parserOptions: {
@@ -32,6 +33,7 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/ban-types": 0,
     "vue/require-render-return": 0,
     "vue/require-explicit-emits": 0
   }

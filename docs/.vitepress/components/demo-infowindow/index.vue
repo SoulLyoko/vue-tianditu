@@ -1,32 +1,46 @@
 <template>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-marker :position="state.marker1" @click="openInfowindow" extData="marker1"></tdt-marker>
-      <tdt-marker :position="state.marker2" @click="openInfowindow" extData="marker2"></tdt-marker>
-      <tdt-infowindow v-model:target="state.infowindow.target" :content="state.infowindow.content"></tdt-infowindow>
+      <tdt-marker
+        v-for="marker in markers"
+        :position="marker.position"
+        :extData="marker"
+        @click="openInfowindow"
+      ></tdt-marker>
+      <tdt-infowindow
+        v-model:target="state.currentMarker.position"
+        :content="contentRef"
+        :offset="[0, -30]"
+      ></tdt-infowindow>
     </tdt-map>
+    <template v-show="false">
+      <div ref="contentRef">
+        <strong>{{ state.currentMarker.title }}</strong>
+        <div>{{ state.currentMarker.position }}</div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+
+const markers = [
+  { title: "这是第一个标记点", position: [113.280637, 23.125178] },
+  { title: "这是第二个标记点", position: [113.300637, 23.125178] },
+  { title: "这是第三个标记点", position: [113.320637, 23.125178] },
+  { title: "这是第四个标记点", position: [113.340637, 23.125178] }
+];
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
-  marker1: [113.280637, 23.125178],
-  marker2: [113.320037, 23.125178],
-  infowindow: {
-    content: "123",
-    target: null
-  }
+  currentMarker: {} as typeof markers[0]
 });
 
-function openInfowindow({ target, extData }: any) {
-  state.infowindow = {
-    target,
-    content: `<span>${extData}</span>`
-  };
+const contentRef = ref();
+function openInfowindow({ extData }: { extData: typeof markers[0] }) {
+  state.currentMarker = extData;
 }
 </script>
 

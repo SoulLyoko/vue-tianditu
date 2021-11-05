@@ -15,7 +15,7 @@
       <TdtRectangle :bounds="state.bounds" ext-data="rectangle" @click="openInfoWindow"></TdtRectangle>
       <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
       <TdtInfowindow
-        v-model="state.infowindow.target"
+        v-model:target="state.infowindow.target"
         :content="state.infowindow.content"
         :close-on-click="true"
       ></TdtInfowindow>

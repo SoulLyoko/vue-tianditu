@@ -27,7 +27,7 @@ export default defineComponent({
     onMounted(() => {
       apiLoaderInstance.load().then(() => {
         // @ts-ignore: VNode.elm in Vue2
-        tdtMap.value = useInit(props, (tdtMapRef.el || tdtMapRef.elm) as unknown as HTMLElement);
+        tdtMap.value = useInit(props, tdtMapRef.el || tdtMapRef.elm);
         useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
         useWatch({ props, instance: tdtMap.value });
         useControls(props, tdtMap.value, emit);
