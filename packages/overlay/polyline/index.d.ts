@@ -35,14 +35,14 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.Polyline) => boolean;
-    click(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    dblclick(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    mousedown(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    mouseup(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    mouseout(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    mouseover(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
-    remove(e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>): void;
+    init: (e: T.Polyline) => boolean;
+    click(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    dblclick(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    mousedown(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    mouseup(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    mouseout(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    mouseover(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
+    remove(e: T.OverlayEvent<T.Polyline, T.LngLat[]>): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -66,14 +66,14 @@ declare const _default: import("vue-demi").DefineComponent<
       extData?: unknown;
     }
   > & {
-    onInit?: ((e: Tianditu.Polyline) => any) | undefined;
-    onClick?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onDblclick?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onMouseout?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onMouseover?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onMousedown?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onMouseup?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
-    onRemove?: ((e: Tianditu.OverlayEvent<Tianditu.Polyline, Tianditu.LngLat[]>) => any) | undefined;
+    onInit?: ((e: T.Polyline) => any) | undefined;
+    onClick?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onDblclick?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onMouseout?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onMouseover?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onMousedown?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onMouseup?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
+    onRemove?: ((e: T.OverlayEvent<T.Polyline, T.LngLat[]>) => any) | undefined;
   },
   {
     opacity: number;

@@ -27,7 +27,7 @@ export const OTHER_PROPS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.RectangleEvents = {
+export const NATIVE_EVENTS: T.RectangleEvents = {
   click: () => true,
   dblclick: () => true,
   mousedown: () => true,
@@ -38,7 +38,7 @@ export const NATIVE_EVENTS: Tianditu.RectangleEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Rectangle) => e instanceof T.Rectangle
+  init: (e: T.Rectangle) => e instanceof T.Rectangle
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

@@ -36,13 +36,13 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.TileLayer.WMS) => boolean;
-    loading(e: Pick<Tianditu.TileLayerEvent, "type" | "target">): void;
-    load(e: Pick<Tianditu.TileLayerEvent, "type" | "target">): void;
-    tileloadstart(e: Tianditu.TileLayerEvent): void;
-    tileload(e: Tianditu.TileLayerEvent): void;
-    tileunload(e: Tianditu.TileLayerEvent): void;
-    tileerror(e: Tianditu.TileLayerEvent): void;
+    init: (e: T.TileLayer.WMS) => boolean;
+    loading(e: Pick<T.TileLayerEvent, "type" | "target">): void;
+    load(e: Pick<T.TileLayerEvent, "type" | "target">): void;
+    tileloadstart(e: T.TileLayerEvent): void;
+    tileload(e: T.TileLayerEvent): void;
+    tileunload(e: T.TileLayerEvent): void;
+    tileerror(e: T.TileLayerEvent): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -70,13 +70,13 @@ declare const _default: import("vue-demi").DefineComponent<
       srs?: string | undefined;
     }
   > & {
-    onInit?: ((e: Tianditu.TileLayer.WMS) => any) | undefined;
-    onLoad?: ((e: Pick<Tianditu.TileLayerEvent, "type" | "target">) => any) | undefined;
-    onLoading?: ((e: Pick<Tianditu.TileLayerEvent, "type" | "target">) => any) | undefined;
-    onTileloadstart?: ((e: Tianditu.TileLayerEvent) => any) | undefined;
-    onTileload?: ((e: Tianditu.TileLayerEvent) => any) | undefined;
-    onTileunload?: ((e: Tianditu.TileLayerEvent) => any) | undefined;
-    onTileerror?: ((e: Tianditu.TileLayerEvent) => any) | undefined;
+    onInit?: ((e: T.TileLayer.WMS) => any) | undefined;
+    onLoad?: ((e: Pick<T.TileLayerEvent, "type" | "target">) => any) | undefined;
+    onLoading?: ((e: Pick<T.TileLayerEvent, "type" | "target">) => any) | undefined;
+    onTileloadstart?: ((e: T.TileLayerEvent) => any) | undefined;
+    onTileload?: ((e: T.TileLayerEvent) => any) | undefined;
+    onTileunload?: ((e: T.TileLayerEvent) => any) | undefined;
+    onTileerror?: ((e: T.TileLayerEvent) => any) | undefined;
   },
   {
     url: string;

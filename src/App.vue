@@ -1,7 +1,12 @@
 <template>
   <div style="width: 800px; height: 600px">
     <button @click="openTool('markTool')">标点</button>
-    <TdtMap :center="state.center" :zoom="state.zoom" :controls="['Zoom', 'MapType']">
+    <TdtMap
+      :center="state.center"
+      :zoom="state.zoom"
+      :controls="['Zoom', 'MapType']"
+      :load-config="{ tk: '7f013d0186775b063d6a046977bbefc6' }"
+    >
       <TdtMarker
         v-for="marker in state.markers"
         :key="marker.name"
@@ -27,7 +32,6 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
 import {
-  initApiLoader,
   TdtMap,
   TdtMarker,
   TdtLabel,
@@ -38,11 +42,6 @@ import {
   TdtInfowindow,
   TdtMousetool
 } from "~/index";
-
-initApiLoader({
-  v: "4.0",
-  tk: "7f013d0186775b063d6a046977bbefc6"
-});
 
 const state = reactive({
   center: [113.280637, 23.125178],

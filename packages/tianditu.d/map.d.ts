@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   class Map {
     /**
      * 在指定的容器内创建地图实例，之后需要调用Map.centerAndZoom()方法对地图进行初始化。未进行初始化的地图将不能进行任何操作。

@@ -5,13 +5,13 @@ export const NATIVE_PROPS = {
   /** 标点的配置项 */
   markTool: { type: Object as PropType<MarkToolOptions>, default: () => ({}) },
   /** 多边形的配置项 */
-  polygonTool: { type: Object as PropType<Tianditu.PolygonToolOptions>, default: () => ({}) },
+  polygonTool: { type: Object as PropType<T.PolygonToolOptions>, default: () => ({}) },
   /** 折线的配置项 */
-  polylineTool: { type: Object as PropType<Tianditu.PolylineToolOptions>, default: () => ({}) },
+  polylineTool: { type: Object as PropType<T.PolylineToolOptions>, default: () => ({}) },
   /** 矩形的配置项 */
-  rectangleTool: { type: Object as PropType<Tianditu.RectangleToolOptions>, default: () => ({}) },
+  rectangleTool: { type: Object as PropType<T.RectangleToolOptions>, default: () => ({}) },
   /** 圆形的配置项 */
-  circleTool: { type: Object as PropType<Tianditu.CircleToolOptions>, default: () => ({}) }
+  circleTool: { type: Object as PropType<T.CircleToolOptions>, default: () => ({}) }
 };
 
 export const OTHER_PROPS = {};

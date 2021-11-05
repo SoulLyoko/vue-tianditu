@@ -5,7 +5,7 @@ declare const _default: import("vue-demi").DefineComponent<
       default: string;
     };
     target: {
-      type: import("vue-demi").PropType<import("../../types").LngLat | Tianditu.OverlayBase<any> | null>;
+      type: import("vue-demi").PropType<import("../../types").LngLat | T.OverlayBase<any> | null>;
       default: null;
     };
     minWidth: {
@@ -48,11 +48,11 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.InfoWindow) => boolean;
+    init: (e: T.InfoWindow) => boolean;
     "update:target": (e: any) => boolean;
-    close(e: Pick<Tianditu.InfoWindowEvent, "type" | "target" | "lnglat">): void;
-    open(e: Pick<Tianditu.InfoWindowEvent, "type" | "target" | "lnglat">): void;
-    clickclose(e: Pick<Tianditu.InfoWindowEvent, "type" | "target">): void;
+    close(e: Pick<T.InfoWindowEvent, "type" | "target" | "lnglat">): void;
+    open(e: Pick<T.InfoWindowEvent, "type" | "target" | "lnglat">): void;
+    clickclose(e: Pick<T.InfoWindowEvent, "type" | "target">): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -70,7 +70,7 @@ declare const _default: import("vue-demi").DefineComponent<
       closeOnClick?: unknown;
     } & {
       offset: import("../../types").Point;
-      target: import("../../types").LngLat | Tianditu.OverlayBase<any> | null;
+      target: import("../../types").LngLat | T.OverlayBase<any> | null;
       content: string | HTMLElement;
       minWidth: number;
       maxWidth: number;
@@ -81,15 +81,15 @@ declare const _default: import("vue-demi").DefineComponent<
       closeOnClick: boolean;
     } & {}
   > & {
-    onInit?: ((e: Tianditu.InfoWindow) => any) | undefined;
-    onClose?: ((e: Pick<Tianditu.InfoWindowEvent, "type" | "target" | "lnglat">) => any) | undefined;
-    onOpen?: ((e: Pick<Tianditu.InfoWindowEvent, "type" | "target" | "lnglat">) => any) | undefined;
-    onClickclose?: ((e: Pick<Tianditu.InfoWindowEvent, "type" | "target">) => any) | undefined;
+    onInit?: ((e: T.InfoWindow) => any) | undefined;
+    onClose?: ((e: Pick<T.InfoWindowEvent, "type" | "target" | "lnglat">) => any) | undefined;
+    onOpen?: ((e: Pick<T.InfoWindowEvent, "type" | "target" | "lnglat">) => any) | undefined;
+    onClickclose?: ((e: Pick<T.InfoWindowEvent, "type" | "target">) => any) | undefined;
     "onUpdate:target"?: ((e: any) => any) | undefined;
   },
   {
     offset: import("../../types").Point;
-    target: import("../../types").LngLat | Tianditu.OverlayBase<any> | null;
+    target: import("../../types").LngLat | T.OverlayBase<any> | null;
     content: string | HTMLElement;
     minWidth: number;
     maxWidth: number;

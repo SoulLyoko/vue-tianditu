@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   namespace TileLayer {
     class WMS extends TileLayerWMS {}
     class TDT extends TileLayerTDT {}

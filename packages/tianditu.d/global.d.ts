@@ -1,6 +1,10 @@
-declare const T: typeof Tianditu;
-declare const TMAP_NORMAL_MAP: Tianditu.MapType;
-declare const TMAP_SATELLITE_MAP: Tianditu.MapType;
-declare const TMAP_HYBRID_MAP: Tianditu.MapType;
-declare const TMAP_TERRAIN_MAP: Tianditu.MapType;
-declare const TMAP_TERRAIN_HYBRID_MAP: Tianditu.MapType;
+declare global {
+  interface Window {
+    T: typeof T;
+    TMAP_NORMAL_MAP: T.MapType;
+    TMAP_SATELLITE_MAP: T.MapType;
+    TMAP_HYBRID_MAP: T.MapType;
+    TMAP_TERRAIN_MAP: T.MapType;
+    TMAP_TERRAIN_HYBRID_MAP: T.MapType;
+  }
+}

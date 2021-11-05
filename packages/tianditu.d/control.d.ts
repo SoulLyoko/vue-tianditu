@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   /**
    * 自定义控件基类
    */

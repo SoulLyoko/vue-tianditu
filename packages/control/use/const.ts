@@ -3,7 +3,7 @@ import { Point } from "../../types";
 
 export const NATIVE_PROPS = {
   /** 控件的停靠位置 */
-  position: { type: String as PropType<Tianditu.ControlPosition>, default: "topright" }
+  position: { type: String as PropType<T.ControlPosition>, default: "topright" }
 };
 
 export const OTHER_PROPS = {
@@ -16,7 +16,7 @@ export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 export const NATIVE_EVENTS = {};
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Control) => e instanceof T.Control
+  init: (e: T.Control) => e instanceof T.Control
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

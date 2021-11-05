@@ -3,11 +3,11 @@ import { PROPS, EVENTS } from "./use/const";
 
 export type ControlNames = "Zoom" | "Scale" | "Copyright" | "OverviewMap" | "MapType";
 
-export type ControlOpts = Tianditu.ControlZoomOptions &
-  Tianditu.ControlScaleOptions &
-  Tianditu.ControlCopyrightOptions &
-  Tianditu.ControlOverviewMapOptions &
-  Tianditu.ControlMapTypeOptions & {
+export type ControlOpts = T.ControlZoomOptions &
+  T.ControlScaleOptions &
+  T.ControlCopyrightOptions &
+  T.ControlOverviewMapOptions &
+  T.ControlMapTypeOptions & {
     name: ControlNames;
   };
 

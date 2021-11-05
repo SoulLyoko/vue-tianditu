@@ -10,11 +10,11 @@ export default defineComponent({
   props: PROPS,
   emits: EVENTS,
   setup(props, { emit, expose, slots }) {
-    const tdtMap = ref<Tianditu.Map>();
-    const tdtComponent = ref<Tianditu.Control>();
+    const tdtMap = ref<T.Map>();
+    const tdtComponent = ref<T.Control>();
     expose?.({ tdtComponent });
 
-    const mapRoot = inject<Ref<Tianditu.Map>>("mapRoot");
+    const mapRoot = inject<Ref<T.Map>>("mapRoot");
     const mapEmitter = inject<MapEmitter>("mapEmitter");
     if (mapRoot?.value) {
       initComponent(mapRoot?.value);
@@ -29,7 +29,7 @@ export default defineComponent({
       },
       slots.default?.()
     );
-    function initComponent(map: Tianditu.Map): void {
+    function initComponent(map: T.Map): void {
       mapEmitter?.off("mapInit", initComponent);
       tdtMap.value = map;
       tdtComponent.value = useInit(props);

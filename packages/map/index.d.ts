@@ -49,6 +49,9 @@ declare const _default: import("vue-demi").DefineComponent<
       type: import("vue-demi").PropType<(import("./types").ControlNames | import("./types").ControlOpts)[]>;
       default: () => never[];
     };
+    loadConfig: {
+      type: import("vue-demi").PropType<import("../use").LoadConfig>;
+    };
     projection: {
       type: StringConstructor;
       default: string;
@@ -83,70 +86,70 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init(e: Tianditu.Map): void;
-    viewchange(e: Tianditu.ControlOverviewMapEvent): void;
-    click(e: Tianditu.MapEvent): void;
-    dblclick(e: Tianditu.MapEvent): void;
-    contextmenu(e: Tianditu.MapEvent): void;
-    mousemove(e: Tianditu.MapEvent): void;
-    mouseover(e: Tianditu.MapEvent): void;
-    mouseout(e: Tianditu.MapEvent): void;
-    movestart(e: Tianditu.MapEventBase): void;
-    move(e: Tianditu.MapEventBase): void;
-    moveend(e: Tianditu.MapEventBase): void;
-    zoomstart(e: Tianditu.MapEventBase): void;
-    zoomend(e: Tianditu.MapEventBase): void;
+    init(e: T.Map): void;
+    viewchange(e: T.ControlOverviewMapEvent): void;
+    click(e: T.MapEvent): void;
+    dblclick(e: T.MapEvent): void;
+    contextmenu(e: T.MapEvent): void;
+    mousemove(e: T.MapEvent): void;
+    mouseover(e: T.MapEvent): void;
+    mouseout(e: T.MapEvent): void;
+    movestart(e: T.MapEventBase): void;
+    move(e: T.MapEventBase): void;
+    moveend(e: T.MapEventBase): void;
+    zoomstart(e: T.MapEventBase): void;
+    zoomend(e: T.MapEventBase): void;
     addoverlay(
-      e: Tianditu.MapEventBase & {
-        addoverlay: Tianditu.Overlay;
+      e: T.MapEventBase & {
+        addoverlay: T.Overlay;
       }
     ): void;
     removeoverlay(
-      e: Tianditu.MapEventBase & {
-        removeoverlay: Tianditu.Overlay;
+      e: T.MapEventBase & {
+        removeoverlay: T.Overlay;
       }
     ): void;
     addcontrol(
-      e: Tianditu.MapEventBase & {
-        addcontrol: Tianditu.Control;
+      e: T.MapEventBase & {
+        addcontrol: T.Control;
       }
     ): void;
     removecontrol(
-      e: Tianditu.MapEventBase & {
-        removecontrol: Tianditu.Control;
+      e: T.MapEventBase & {
+        removecontrol: T.Control;
       }
     ): void;
-    clearoverlays(e: Tianditu.MapEventBase): void;
-    dragstart(e: Tianditu.MapEventBase): void;
-    drag(e: Tianditu.MapEventBase): void;
-    dragend(e: Tianditu.MapEventBase): void;
+    clearoverlays(e: T.MapEventBase): void;
+    dragstart(e: T.MapEventBase): void;
+    drag(e: T.MapEventBase): void;
+    dragend(e: T.MapEventBase): void;
     layeradd(
-      e: Tianditu.MapEventBase & {
-        layer: Tianditu.TileLayer;
+      e: T.MapEventBase & {
+        layer: T.TileLayer;
       }
     ): void;
     layerremove(
-      e: Tianditu.MapEventBase & {
-        layer: Tianditu.TileLayer;
+      e: T.MapEventBase & {
+        layer: T.TileLayer;
       }
     ): void;
-    load(e: Tianditu.MapEventBase): void;
+    load(e: T.MapEventBase): void;
     resize(
-      e: Tianditu.MapEventBase & {
-        newSize: Tianditu.Point;
-        oldSize: Tianditu.Point;
+      e: T.MapEventBase & {
+        newSize: T.Point;
+        oldSize: T.Point;
       }
     ): void;
     levels(
-      e: Tianditu.MapEventBase & {
+      e: T.MapEventBase & {
         minZoom: number;
         maxZoom: number;
       }
     ): void;
-    touchstart(e: Tianditu.MapEvent): void;
-    touchmove(e: Tianditu.MapEvent): void;
-    touchend(e: Tianditu.MapEvent): void;
-    longpress(e: Tianditu.MapEvent): void;
+    touchstart(e: T.MapEvent): void;
+    touchmove(e: T.MapEvent): void;
+    touchend(e: T.MapEvent): void;
+    longpress(e: T.MapEvent): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -165,6 +168,7 @@ declare const _default: import("vue-demi").DefineComponent<
       mapStyle?: unknown;
       mid?: unknown;
       controls?: unknown;
+      loadConfig?: unknown;
       projection?: unknown;
       minZoom?: unknown;
       maxZoom?: unknown;
@@ -190,88 +194,89 @@ declare const _default: import("vue-demi").DefineComponent<
       maxBounds?: import("../types").Bounds | undefined;
       viewport?: import("../types").LngLat[] | undefined;
       mapStyle?: "black" | "indigo" | undefined;
+      loadConfig?: import("../use").LoadConfig | undefined;
     }
   > & {
-    onInit?: ((e: Tianditu.Map) => any) | undefined;
-    onDragstart?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onDrag?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onDragend?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onClick?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onDblclick?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onMouseout?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onMouseover?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onViewchange?: ((e: Tianditu.ControlOverviewMapEvent) => any) | undefined;
-    onContextmenu?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onMousemove?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onMovestart?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onMove?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onMoveend?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onZoomstart?: ((e: Tianditu.MapEventBase) => any) | undefined;
-    onZoomend?: ((e: Tianditu.MapEventBase) => any) | undefined;
+    onInit?: ((e: T.Map) => any) | undefined;
+    onDragstart?: ((e: T.MapEventBase) => any) | undefined;
+    onDrag?: ((e: T.MapEventBase) => any) | undefined;
+    onDragend?: ((e: T.MapEventBase) => any) | undefined;
+    onClick?: ((e: T.MapEvent) => any) | undefined;
+    onDblclick?: ((e: T.MapEvent) => any) | undefined;
+    onMouseout?: ((e: T.MapEvent) => any) | undefined;
+    onMouseover?: ((e: T.MapEvent) => any) | undefined;
+    onViewchange?: ((e: T.ControlOverviewMapEvent) => any) | undefined;
+    onContextmenu?: ((e: T.MapEvent) => any) | undefined;
+    onMousemove?: ((e: T.MapEvent) => any) | undefined;
+    onMovestart?: ((e: T.MapEventBase) => any) | undefined;
+    onMove?: ((e: T.MapEventBase) => any) | undefined;
+    onMoveend?: ((e: T.MapEventBase) => any) | undefined;
+    onZoomstart?: ((e: T.MapEventBase) => any) | undefined;
+    onZoomend?: ((e: T.MapEventBase) => any) | undefined;
     onAddoverlay?:
       | ((
-          e: Tianditu.MapEventBase & {
-            addoverlay: Tianditu.Overlay;
+          e: T.MapEventBase & {
+            addoverlay: T.Overlay;
           }
         ) => any)
       | undefined;
     onRemoveoverlay?:
       | ((
-          e: Tianditu.MapEventBase & {
-            removeoverlay: Tianditu.Overlay;
+          e: T.MapEventBase & {
+            removeoverlay: T.Overlay;
           }
         ) => any)
       | undefined;
     onAddcontrol?:
       | ((
-          e: Tianditu.MapEventBase & {
-            addcontrol: Tianditu.Control;
+          e: T.MapEventBase & {
+            addcontrol: T.Control;
           }
         ) => any)
       | undefined;
     onRemovecontrol?:
       | ((
-          e: Tianditu.MapEventBase & {
-            removecontrol: Tianditu.Control;
+          e: T.MapEventBase & {
+            removecontrol: T.Control;
           }
         ) => any)
       | undefined;
-    onClearoverlays?: ((e: Tianditu.MapEventBase) => any) | undefined;
+    onClearoverlays?: ((e: T.MapEventBase) => any) | undefined;
     onLayeradd?:
       | ((
-          e: Tianditu.MapEventBase & {
-            layer: Tianditu.TileLayer;
+          e: T.MapEventBase & {
+            layer: T.TileLayer;
           }
         ) => any)
       | undefined;
     onLayerremove?:
       | ((
-          e: Tianditu.MapEventBase & {
-            layer: Tianditu.TileLayer;
+          e: T.MapEventBase & {
+            layer: T.TileLayer;
           }
         ) => any)
       | undefined;
-    onLoad?: ((e: Tianditu.MapEventBase) => any) | undefined;
+    onLoad?: ((e: T.MapEventBase) => any) | undefined;
     onResize?:
       | ((
-          e: Tianditu.MapEventBase & {
-            newSize: Tianditu.Point;
-            oldSize: Tianditu.Point;
+          e: T.MapEventBase & {
+            newSize: T.Point;
+            oldSize: T.Point;
           }
         ) => any)
       | undefined;
     onLevels?:
       | ((
-          e: Tianditu.MapEventBase & {
+          e: T.MapEventBase & {
             minZoom: number;
             maxZoom: number;
           }
         ) => any)
       | undefined;
-    onTouchstart?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onTouchmove?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onTouchend?: ((e: Tianditu.MapEvent) => any) | undefined;
-    onLongpress?: ((e: Tianditu.MapEvent) => any) | undefined;
+    onTouchstart?: ((e: T.MapEvent) => any) | undefined;
+    onTouchmove?: ((e: T.MapEvent) => any) | undefined;
+    onTouchend?: ((e: T.MapEvent) => any) | undefined;
+    onLongpress?: ((e: T.MapEvent) => any) | undefined;
   },
   {
     drag: boolean;

@@ -43,14 +43,14 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.Rectangle) => boolean;
-    click(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    dblclick(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    mousedown(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    mouseup(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    mouseout(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    mouseover(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
-    remove(e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>): void;
+    init: (e: T.Rectangle) => boolean;
+    click(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    dblclick(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    mousedown(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    mouseup(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    mouseout(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    mouseover(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
+    remove(e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -78,14 +78,14 @@ declare const _default: import("vue-demi").DefineComponent<
       extData?: unknown;
     }
   > & {
-    onInit?: ((e: Tianditu.Rectangle) => any) | undefined;
-    onClick?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onDblclick?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onMouseout?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onMouseover?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onMousedown?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onMouseup?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
-    onRemove?: ((e: Tianditu.OverlayEvent<Tianditu.Rectangle, Tianditu.LngLatBounds>) => any) | undefined;
+    onInit?: ((e: T.Rectangle) => any) | undefined;
+    onClick?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onDblclick?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onMouseout?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onMouseover?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onMousedown?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onMouseup?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
+    onRemove?: ((e: T.OverlayEvent<T.Rectangle, T.LngLatBounds>) => any) | undefined;
   },
   {
     opacity: number;

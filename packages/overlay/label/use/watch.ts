@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toLngLat, toPoint } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.Label }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.Label }) {
   watch(
     () => props.position,
     val => val && instance.setLngLat(toLngLat(val))

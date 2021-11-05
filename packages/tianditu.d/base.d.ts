@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   class LngLat {
     /**
      * 根据给定经度和纬度创建地理位置坐标点

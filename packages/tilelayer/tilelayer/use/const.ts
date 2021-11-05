@@ -22,7 +22,7 @@ export const OTHER_PROPS = {};
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.TileLayerEvents = {
+export const NATIVE_EVENTS: T.TileLayerEvents = {
   loading: () => true,
   load: () => true,
   tileloadstart: () => true,
@@ -32,7 +32,7 @@ export const NATIVE_EVENTS: Tianditu.TileLayerEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.TileLayer) => e instanceof T.TileLayer
+  init: (e: T.TileLayer) => e instanceof T.TileLayer
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

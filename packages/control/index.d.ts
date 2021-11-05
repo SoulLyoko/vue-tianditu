@@ -4,7 +4,7 @@ declare const _default: import("vue-demi").DefineComponent<
       type: import("vue-demi").PropType<import("../types").Point>;
     };
     position: {
-      type: import("vue-demi").PropType<Tianditu.ControlPosition>;
+      type: import("vue-demi").PropType<T.ControlPosition>;
       default: string;
     };
   },
@@ -21,7 +21,7 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.Control) => boolean;
+    init: (e: T.Control) => boolean;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -30,15 +30,15 @@ declare const _default: import("vue-demi").DefineComponent<
       offset?: unknown;
       position?: unknown;
     } & {
-      position: Tianditu.ControlPosition;
+      position: T.ControlPosition;
     } & {
       offset?: import("../types").Point | undefined;
     }
   > & {
-    onInit?: ((e: Tianditu.Control) => any) | undefined;
+    onInit?: ((e: T.Control) => any) | undefined;
   },
   {
-    position: Tianditu.ControlPosition;
+    position: T.ControlPosition;
   }
 >;
 export default _default;

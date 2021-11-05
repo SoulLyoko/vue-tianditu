@@ -1,13 +1,11 @@
 import { App } from "vue-demi";
-import { Options } from "./api-loader/types";
-import { initApiLoader } from "./api-loader";
+import { useApiLoader, LoadConfig } from "./use";
 import * as components from "./components";
 
 export default {
-  install: (app: App, options: Options): void => {
-    initApiLoader(options);
-    Object.keys(components).forEach((key: string) => {
-      const component = components[key as keyof typeof components];
+  install: (app: App, config: LoadConfig): void => {
+    useApiLoader(config);
+    Object.values(components).forEach(component => {
       app.component(component.name, component);
     });
   }

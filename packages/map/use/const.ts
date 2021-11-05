@@ -2,6 +2,7 @@ import { PropType } from "vue-demi";
 import { LngLat, Bounds } from "../../types";
 import { uuid } from "../../utils";
 import { ControlNames, ControlOpts } from "../types";
+import { LoadConfig } from "../../use";
 
 export const NATIVE_PROPS = {
   /** EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影) */
@@ -42,12 +43,14 @@ export const OTHER_PROPS = {
   /** 地图容器id */
   mid: { type: String, default: () => uuid() },
   /** 控件 */
-  controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: () => [] }
+  controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: () => [] },
+  /** 加载Api的配置 */
+  loadConfig: { type: Object as PropType<LoadConfig> }
 };
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.MapEvents = {
+export const NATIVE_EVENTS: T.MapEvents = {
   click: () => true,
   dblclick: () => true,
   contextmenu: () => true,
@@ -78,7 +81,7 @@ export const NATIVE_EVENTS: Tianditu.MapEvents = {
   longpress: () => true
 };
 
-export const OTHER_EVENTS: { init(e: Tianditu.Map): void } & Tianditu.ControlOverviewMapEvents = {
+export const OTHER_EVENTS: { init(e: T.Map): void } & T.ControlOverviewMapEvents = {
   /** 地图初始化 */
   init: e => e instanceof T.Map,
   /** 鹰眼视图控件的开合状态变化时触发事件 */

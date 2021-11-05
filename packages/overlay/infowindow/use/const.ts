@@ -24,19 +24,19 @@ export const OTHER_PROPS = {
   /** 信息浮窗的显示 HTML 内容 */
   content: { type: [String, Object] as PropType<string | HTMLElement>, default: "" },
   /** 打开信息浮窗的覆盖物或信息浮窗所指向的地理位置坐标 */
-  target: { type: [Object, Array] as PropType<Tianditu.OverlayBase<any> | LngLat | null>, default: null }
+  target: { type: [Object, Array] as PropType<T.OverlayBase<any> | LngLat | null>, default: null }
 };
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.InfoWindowEvents = {
+export const NATIVE_EVENTS: T.InfoWindowEvents = {
   close: () => true,
   open: () => true,
   clickclose: () => true
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.InfoWindow) => e instanceof T.InfoWindow,
+  init: (e: T.InfoWindow) => e instanceof T.InfoWindow,
   "update:target": (e: any) => true
 };
 

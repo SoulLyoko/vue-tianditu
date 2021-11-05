@@ -20,9 +20,10 @@ yarn add vue-tianditu@next
 
 ### 全局引入
 
-`main.ts`
+全部引入，解放双手
 
 ```ts
+// main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
 import VueTianditu from "vue-tianditu";
@@ -35,9 +36,8 @@ app.use(VueTianditu, {
 app.mount("#app");
 ```
 
-`App.vue`
-
 ```html
+<!-- App.vue -->
 <template>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
@@ -63,24 +63,21 @@ app.mount("#app");
 
 ### 按需引入
 
-建议按需引入配合 ts 获得类型提示
+按需引入，配合 ts 获得类型提示
 
 `App.vue`
 
 ```html
 <template>
   <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
+    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadScript"></tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { reactive } from "vue";
-  import { TdtMap, initApiLoader } from "vue-tianditu";
-  initApiLoader({
-    v: "4.0", //目前只支持4.0版本
-    tk: "your map token"
-  });
+  import { TdtMap } from "vue-tianditu";
+  const loadConfig = { v: "4.0", tk: "your map token" };
   const state = reactive({
     center: [113.280637, 23.125178],
     zoom: 12
@@ -93,6 +90,22 @@ app.mount("#app");
     height: 100%;
   }
 </style>
+```
+
+### API 加载器
+
+甚至可以把它当作无情的 API 加载工具
+
+```ts
+import { useApiLoader } from "vue-tianditu";
+
+useApiLoader({
+  v: "4.0",
+  tk: "your map token",
+  plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
+}).then(T => {
+  new T.Map({...});
+});
 ```
 
 ## 辅助函数
@@ -108,4 +121,4 @@ import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 | toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
 | toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
 | toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
-| toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:String,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |
+| toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:string,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |

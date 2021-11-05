@@ -34,17 +34,17 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   import("vue-demi").ComponentOptionsMixin,
   {
-    init: (e: Tianditu.Marker) => boolean;
-    dragstart(e: Pick<Tianditu.MarkerEvent, "type" | "target">): void;
-    drag(e: Pick<Tianditu.MarkerEvent, "type" | "target" | "lnglat">): void;
-    dragend(e: Pick<Tianditu.MarkerEvent, "type" | "target" | "lnglat">): void;
-    click(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    dblclick(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    mousedown(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    mouseup(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    mouseout(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    mouseover(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
-    remove(e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>): void;
+    init: (e: T.Marker) => boolean;
+    dragstart(e: Pick<T.MarkerEvent, "type" | "target">): void;
+    drag(e: Pick<T.MarkerEvent, "type" | "target" | "lnglat">): void;
+    dragend(e: Pick<T.MarkerEvent, "type" | "target" | "lnglat">): void;
+    click(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    dblclick(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    mousedown(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    mouseup(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    mouseout(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    mouseover(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
+    remove(e: T.OverlayEvent<T.Marker, T.LngLat>): void;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -68,17 +68,17 @@ declare const _default: import("vue-demi").DefineComponent<
       icon?: string | import("../../types").IconOptions | undefined;
     }
   > & {
-    onInit?: ((e: Tianditu.Marker) => any) | undefined;
-    onDragstart?: ((e: Pick<Tianditu.MarkerEvent, "type" | "target">) => any) | undefined;
-    onDrag?: ((e: Pick<Tianditu.MarkerEvent, "type" | "target" | "lnglat">) => any) | undefined;
-    onDragend?: ((e: Pick<Tianditu.MarkerEvent, "type" | "target" | "lnglat">) => any) | undefined;
-    onClick?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onDblclick?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onMouseout?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onMouseover?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onMousedown?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onMouseup?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
-    onRemove?: ((e: Tianditu.OverlayEvent<Tianditu.Marker, Tianditu.LngLat>) => any) | undefined;
+    onInit?: ((e: T.Marker) => any) | undefined;
+    onDragstart?: ((e: Pick<T.MarkerEvent, "type" | "target">) => any) | undefined;
+    onDrag?: ((e: Pick<T.MarkerEvent, "type" | "target" | "lnglat">) => any) | undefined;
+    onDragend?: ((e: Pick<T.MarkerEvent, "type" | "target" | "lnglat">) => any) | undefined;
+    onClick?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onDblclick?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onMouseout?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onMouseover?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onMousedown?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onMouseup?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
+    onRemove?: ((e: T.OverlayEvent<T.Marker, T.LngLat>) => any) | undefined;
   },
   {
     position: import("../../types").LngLat;

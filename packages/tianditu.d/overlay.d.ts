@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   /**
    * 自定义覆盖物的构造类
    */

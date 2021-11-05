@@ -29,7 +29,7 @@ export const OTHER_PROPS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.CircleEvents = {
+export const NATIVE_EVENTS: T.CircleEvents = {
   click: () => true,
   dblclick: () => true,
   mousedown: () => true,
@@ -40,7 +40,7 @@ export const NATIVE_EVENTS: Tianditu.CircleEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Circle) => e instanceof T.Circle
+  init: (e: T.Circle) => e instanceof T.Circle
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toLngLats } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.Polygon }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.Polygon }) {
   watch(
     () => props.path,
     val => val && instance.setLngLats(toLngLats(val))

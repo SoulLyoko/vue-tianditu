@@ -1,9 +1,8 @@
 <script lang="ts">
 import mitt from "mitt";
 import { defineComponent, h, ref, provide, onMounted } from "vue-demi";
-import { apiLoaderInstance } from "../api-loader";
 import { MapEmitEvents } from "../types";
-import { useEvent } from "../use";
+import { useApiLoader, useEvent } from "../use";
 import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
 export default defineComponent({
@@ -11,7 +10,7 @@ export default defineComponent({
   props: PROPS,
   emits: EVENTS,
   setup(props, { emit, expose, slots }) {
-    const tdtMap = ref<Tianditu.Map>();
+    const tdtMap = ref<T.Map>();
     provide("mapRoot", tdtMap);
     expose?.({ tdtMap });
 
@@ -25,7 +24,7 @@ export default defineComponent({
     });
 
     onMounted(() => {
-      apiLoaderInstance.load().then(() => {
+      useApiLoader(props.loadConfig).then(() => {
         // @ts-ignore: VNode.elm in Vue2
         tdtMap.value = useInit(props, tdtMapRef.el || tdtMapRef.elm);
         useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });

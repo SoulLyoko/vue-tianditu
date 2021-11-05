@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toIcon, toLngLat } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.Marker }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.Marker }) {
   watch(
     () => props.position,
     val => val && instance.setLngLat(toLngLat(val))

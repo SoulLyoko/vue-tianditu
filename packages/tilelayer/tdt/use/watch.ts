@@ -1,7 +1,7 @@
 import { watch } from "vue-demi";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.TileLayer.TDT }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.TileLayer.TDT }) {
   watch(
     () => props.opacity,
     val => val && instance.setOpacity(val)

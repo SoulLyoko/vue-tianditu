@@ -1,3 +1,10 @@
+### v2.5.0
+
+2021-11-5
+
+- feat: 移除 initApiLoader 新增 useApiLoader
+- chore: 重命名 namespace Tianditu 为 T
+
 ### v2.4.0
 
 2021-11-5

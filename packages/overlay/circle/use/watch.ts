@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toLngLat } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.Circle }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.Circle }) {
   watch(
     () => props.center,
     val => val && instance.setCenter(toLngLat(val))

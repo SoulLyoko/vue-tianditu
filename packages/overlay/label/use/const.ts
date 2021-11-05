@@ -33,7 +33,7 @@ export const OTHER_PROPS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.LabelEvents = {
+export const NATIVE_EVENTS: T.LabelEvents = {
   click: () => true,
   dblclick: () => true,
   mousedown: () => true,
@@ -44,7 +44,7 @@ export const NATIVE_EVENTS: Tianditu.LabelEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Label) => e instanceof T.Label
+  init: (e: T.Label) => e instanceof T.Label
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

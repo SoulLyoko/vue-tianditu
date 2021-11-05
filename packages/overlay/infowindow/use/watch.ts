@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toLngLat, toPoint } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance, map }: { props: Props; instance: Tianditu.InfoWindow; map: Tianditu.Map }) {
+export function useWatch({ props, instance, map }: { props: Props; instance: T.InfoWindow; map: T.Map }) {
   watch(
     () => props.offset,
     val => val && instance.setOffset(toPoint(val))

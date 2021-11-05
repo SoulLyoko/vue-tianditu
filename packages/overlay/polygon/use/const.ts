@@ -27,7 +27,7 @@ export const OTHER_PROPS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.PolygonEvents = {
+export const NATIVE_EVENTS: T.PolygonEvents = {
   click: () => true,
   dblclick: () => true,
   mousedown: () => true,
@@ -38,7 +38,7 @@ export const NATIVE_EVENTS: Tianditu.PolygonEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Polygon) => e instanceof T.Polygon
+  init: (e: T.Polygon) => e instanceof T.Polygon
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

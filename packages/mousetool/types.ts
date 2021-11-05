@@ -11,20 +11,20 @@ export interface MarkToolOptions {
 }
 
 export interface ToolInstances {
-  markTool?: Tianditu.MarkTool;
-  polygonTool?: Tianditu.PolygonTool;
-  polylineTool?: Tianditu.PolylineTool;
-  rectangleTool?: Tianditu.RectangleTool;
-  circleTool?: Tianditu.CircleTool;
+  markTool?: T.MarkTool;
+  polygonTool?: T.PolygonTool;
+  polylineTool?: T.PolylineTool;
+  rectangleTool?: T.RectangleTool;
+  circleTool?: T.CircleTool;
 }
 
 export interface ToolEvents {
-  "mark-draw": Tianditu.MarkToolEvents["mouseup"];
-  "polygon-draw": Tianditu.PolygonToolEvents["draw"];
-  "polygon-addpoint": Tianditu.PolygonToolEvents["addpoint"];
-  "polyline-draw": Tianditu.PolylineToolEvents["draw"];
-  "polyline-addpoint": Tianditu.PolylineToolEvents["addpoint"];
-  "rectangle-draw": Tianditu.RectangleToolEvents["draw"];
-  "circle-draw": Tianditu.CircleToolEvents["draw"];
-  "circle-drawend": Tianditu.CircleToolEvents["drawend"];
+  "mark-draw": T.MarkToolEvents["mouseup"];
+  "polygon-draw": T.PolygonToolEvents["draw"];
+  "polygon-addpoint": T.PolygonToolEvents["addpoint"];
+  "polyline-draw": T.PolylineToolEvents["draw"];
+  "polyline-addpoint": T.PolylineToolEvents["addpoint"];
+  "rectangle-draw": T.RectangleToolEvents["draw"];
+  "circle-draw": T.CircleToolEvents["draw"];
+  "circle-drawend": T.CircleToolEvents["drawend"];
 }

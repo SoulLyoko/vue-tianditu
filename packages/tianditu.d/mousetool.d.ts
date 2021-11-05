@@ -1,4 +1,4 @@
-declare namespace Tianditu {
+declare namespace T {
   class Mousetool<E> {
     /** 开启工具 */
     open(): boolean;

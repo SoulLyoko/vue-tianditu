@@ -23,7 +23,7 @@ export const OTHER_PROPS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
-export const NATIVE_EVENTS: Tianditu.PolylineEvents = {
+export const NATIVE_EVENTS: T.PolylineEvents = {
   click: () => true,
   dblclick: () => true,
   mousedown: () => true,
@@ -34,7 +34,7 @@ export const NATIVE_EVENTS: Tianditu.PolylineEvents = {
 };
 
 export const OTHER_EVENTS = {
-  init: (e: Tianditu.Polyline) => e instanceof T.Polyline
+  init: (e: T.Polyline) => e instanceof T.Polyline
 };
 
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };

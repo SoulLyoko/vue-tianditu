@@ -6,19 +6,19 @@ declare const _default: import("vue-demi").DefineComponent<
       default: () => {};
     };
     polygonTool: {
-      type: import("vue-demi").PropType<Tianditu.PolygonToolOptions>;
+      type: import("vue-demi").PropType<T.PolygonToolOptions>;
       default: () => {};
     };
     polylineTool: {
-      type: import("vue-demi").PropType<Tianditu.PolylineToolOptions>;
+      type: import("vue-demi").PropType<T.PolylineToolOptions>;
       default: () => {};
     };
     rectangleTool: {
-      type: import("vue-demi").PropType<Tianditu.RectangleToolOptions>;
+      type: import("vue-demi").PropType<T.RectangleToolOptions>;
       default: () => {};
     };
     circleTool: {
-      type: import("vue-demi").PropType<Tianditu.CircleToolOptions>;
+      type: import("vue-demi").PropType<T.CircleToolOptions>;
       default: () => {};
     };
   },
@@ -30,14 +30,14 @@ declare const _default: import("vue-demi").DefineComponent<
   import("vue-demi").ComponentOptionsMixin,
   {
     init: (e: ToolInstances) => boolean;
-    "mark-draw": (e: Tianditu.MarkToolEvent) => any;
-    "polygon-draw": (e: Tianditu.PolygonToolEvent) => any;
-    "polygon-addpoint": (e: Tianditu.PolygonToolEvent) => any;
-    "polyline-draw": (e: Tianditu.PolylineToolEvent) => any;
-    "polyline-addpoint": (e: Tianditu.PolylineToolEvent) => any;
-    "rectangle-draw": (e: Tianditu.RectangleToolEvent) => any;
-    "circle-draw": (e: Tianditu.CircleToolEvent) => any;
-    "circle-drawend": (e: Tianditu.CircleToolEvent) => any;
+    "mark-draw": (e: T.MarkToolEvent) => any;
+    "polygon-draw": (e: T.PolygonToolEvent) => any;
+    "polygon-addpoint": (e: T.PolygonToolEvent) => any;
+    "polyline-draw": (e: T.PolylineToolEvent) => any;
+    "polyline-addpoint": (e: T.PolylineToolEvent) => any;
+    "rectangle-draw": (e: T.RectangleToolEvent) => any;
+    "circle-draw": (e: T.CircleToolEvent) => any;
+    "circle-drawend": (e: T.CircleToolEvent) => any;
   },
   string,
   import("vue-demi").VNodeProps & import("vue-demi").AllowedComponentProps & import("vue-demi").ComponentCustomProps,
@@ -50,28 +50,28 @@ declare const _default: import("vue-demi").DefineComponent<
       circleTool?: unknown;
     } & {
       markTool: import("./types").MarkToolOptions;
-      polygonTool: Tianditu.PolygonToolOptions;
-      polylineTool: Tianditu.PolylineToolOptions;
-      rectangleTool: Tianditu.RectangleToolOptions;
-      circleTool: Tianditu.CircleToolOptions;
+      polygonTool: T.PolygonToolOptions;
+      polylineTool: T.PolylineToolOptions;
+      rectangleTool: T.RectangleToolOptions;
+      circleTool: T.CircleToolOptions;
     } & {}
   > & {
     onInit?: ((e: ToolInstances) => any) | undefined;
-    "onMark-draw"?: ((e: Tianditu.MarkToolEvent) => any) | undefined;
-    "onPolygon-draw"?: ((e: Tianditu.PolygonToolEvent) => any) | undefined;
-    "onPolygon-addpoint"?: ((e: Tianditu.PolygonToolEvent) => any) | undefined;
-    "onPolyline-draw"?: ((e: Tianditu.PolylineToolEvent) => any) | undefined;
-    "onPolyline-addpoint"?: ((e: Tianditu.PolylineToolEvent) => any) | undefined;
-    "onRectangle-draw"?: ((e: Tianditu.RectangleToolEvent) => any) | undefined;
-    "onCircle-draw"?: ((e: Tianditu.CircleToolEvent) => any) | undefined;
-    "onCircle-drawend"?: ((e: Tianditu.CircleToolEvent) => any) | undefined;
+    "onMark-draw"?: ((e: T.MarkToolEvent) => any) | undefined;
+    "onPolygon-draw"?: ((e: T.PolygonToolEvent) => any) | undefined;
+    "onPolygon-addpoint"?: ((e: T.PolygonToolEvent) => any) | undefined;
+    "onPolyline-draw"?: ((e: T.PolylineToolEvent) => any) | undefined;
+    "onPolyline-addpoint"?: ((e: T.PolylineToolEvent) => any) | undefined;
+    "onRectangle-draw"?: ((e: T.RectangleToolEvent) => any) | undefined;
+    "onCircle-draw"?: ((e: T.CircleToolEvent) => any) | undefined;
+    "onCircle-drawend"?: ((e: T.CircleToolEvent) => any) | undefined;
   },
   {
     markTool: import("./types").MarkToolOptions;
-    polygonTool: Tianditu.PolygonToolOptions;
-    polylineTool: Tianditu.PolylineToolOptions;
-    rectangleTool: Tianditu.RectangleToolOptions;
-    circleTool: Tianditu.CircleToolOptions;
+    polygonTool: T.PolygonToolOptions;
+    polylineTool: T.PolylineToolOptions;
+    rectangleTool: T.RectangleToolOptions;
+    circleTool: T.CircleToolOptions;
   }
 >;
 export default _default;

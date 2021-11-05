@@ -2,7 +2,7 @@ import { watch } from "vue-demi";
 import { toBounds } from "../../../utils";
 import { Props } from "../types";
 
-export function useWatch({ props, instance }: { props: Props; instance: Tianditu.Rectangle }) {
+export function useWatch({ props, instance }: { props: Props; instance: T.Rectangle }) {
   watch(
     () => props.bounds,
     val => val && instance.setBounds(toBounds(val))

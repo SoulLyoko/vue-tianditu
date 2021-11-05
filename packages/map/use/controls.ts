@@ -1,6 +1,6 @@
 import { ControlNames, ControlOpts, Emit, Props } from "../types";
 
-export function useControls(props: Props, map: Tianditu.Map, emit: Emit) {
+export function useControls(props: Props, map: T.Map, emit: Emit) {
   props.controls?.forEach((option: ControlNames | ControlOpts) => {
     if (typeof option === "string") {
       addControlByName(option);
@@ -18,7 +18,7 @@ export function useControls(props: Props, map: Tianditu.Map, emit: Emit) {
     }
     const control = new T.Control[controlName]();
     if (controlName === "OverviewMap") {
-      const c = control as Tianditu.ControlOverviewMap;
+      const c = control as T.ControlOverviewMap;
       c.addEventListener("viewchange", e => {
         emit("viewchange", e);
       });
