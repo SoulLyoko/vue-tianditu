@@ -103,7 +103,7 @@ useApiLoader({
   v: "4.0",
   tk: "your map token",
   plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
-}).then(T => {
+}).then(() => {
   new T.Map({...});
 });
 ```

@@ -1,5 +1,3 @@
-import { ref } from "vue-demi";
-
 export const DEFAULT_CONFIG = {
   v: "4.0",
   tk: "",
@@ -26,32 +24,31 @@ export const PLUGINS_URL = {
 
 export interface LoadConfig {
   v?: string;
-  tk: string;
+  tk?: string;
   plugins?: (keyof typeof PLUGINS_URL)[];
 }
 
-const isLoading = ref(false);
-export async function useApiLoader(config?: LoadConfig): Promise<typeof T> {
-  if (isLoading.value) {
+let isLoading = false;
+export async function useApiLoader(config: LoadConfig = {}) {
+  if (isLoading) {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(useApiLoader(config));
       });
     });
   } else if (window.T) {
-    return window.T;
+    return;
   } else {
-    isLoading.value = true;
+    isLoading = true;
     const { v, tk, plugins } = { ...DEFAULT_CONFIG, ...config };
-    await loadScript(`http://api.tianditu.gov.cn/api?v=${v}&tk=${tk}`);
+    await loadScript(`https://api.tianditu.gov.cn/api?v=${v}&tk=${tk}`);
     await Promise.all(
       plugins
         .map((name: keyof typeof PLUGINS_URL) => PLUGINS_URL[name])
         .flat()
         .map(url => loadScript(url))
     );
-    isLoading.value = false;
-    return window.T;
+    isLoading = false;
   }
 }
 

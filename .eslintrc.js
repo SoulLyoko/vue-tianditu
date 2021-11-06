@@ -9,7 +9,6 @@ module.exports = {
     defineProps: "readonly",
     defineEmits: "readonly",
     defineExpose: "readonly",
-    Tianditu: "readonly",
     T: "readonly"
   },
   parser: "vue-eslint-parser",
