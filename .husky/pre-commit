@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+npm run cp
 npm run dts
 git add .
 npx lint-staged --allow-empty $1
