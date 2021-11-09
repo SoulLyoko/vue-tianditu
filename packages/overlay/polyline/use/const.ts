@@ -17,6 +17,8 @@ export const EXTRA_PROPS = {
   edit: { type: Boolean, default: false },
   /** 坐标数组 */
   path: { type: Array as unknown as PropType<VT.LngLat[]>, default: () => [] },
+  /** 是否可见 */
+  visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };

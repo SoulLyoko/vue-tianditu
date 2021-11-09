@@ -36,4 +36,9 @@ export function useWatch({ props, instance }: { props: Props; instance: T.Polygo
     val => (val ? instance.enableEdit() : instance.disableEdit()),
     { immediate: true }
   );
+  watch(
+    () => props.visible,
+    val => (val ? instance.show() : instance.hide()),
+    { immediate: true }
+  );
 }

@@ -17,6 +17,8 @@ export const NATIVE_PROPS = {
 export const EXTRA_PROPS = {
   /** 经纬度 */
   position: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
+  /** 是否可见 */
+  visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };

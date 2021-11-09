@@ -1,8 +1,9 @@
 <template>
   <button @click="state.draggable = !state.draggable">draggable:{{ state.draggable }}</button>
+  <button @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-marker :position="state.marker1" :draggable="state.draggable"></tdt-marker>
+      <tdt-marker :position="state.marker1" :draggable="state.draggable" :visible="state.visible"></tdt-marker>
       <tdt-marker :position="state.marker2" :draggable="state.draggable" :icon="state.icon"></tdt-marker>
     </tdt-map>
   </div>
@@ -15,6 +16,7 @@ const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
   draggable: false,
+  visible: true,
   marker1: [113.280637, 23.125178],
   marker2: [113.300037, 23.125178],
   icon: {

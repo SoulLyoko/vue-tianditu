@@ -56,6 +56,10 @@ declare namespace T {
     openInfoWindow(infowin: InfoWindow): void;
     /** 关闭信息窗口 */
     closeInfoWindow(): void;
+    /** 显示 */
+    show(): void;
+    /** 隐藏 */
+    hide(): void;
   }
   /**
    * 覆盖物共有事件

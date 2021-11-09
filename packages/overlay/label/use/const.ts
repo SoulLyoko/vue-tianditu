@@ -27,6 +27,8 @@ export const EXTRA_PROPS = {
   borderColor: { type: String },
   /** 设置文本的透明度 */
   opacity: { type: Number },
+  /** 是否可见 */
+  visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };

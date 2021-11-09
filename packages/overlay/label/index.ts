@@ -12,9 +12,9 @@ export const TdtLabel = defineComponent({
 
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props);
+      tdtMap.addOverLay(tdtComponent);
       useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent, extData: props.extData });
       useWatch({ props, instance: tdtComponent });
-      tdtMap.addOverLay(tdtComponent);
       emit("init", tdtComponent);
     });
 

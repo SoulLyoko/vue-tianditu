@@ -1,7 +1,8 @@
 <template>
+  <button @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-label :position="state.center" text="Hello World!"></tdt-label>
+      <tdt-label :position="state.center" text="Hello World!" :visible="state.visible"></tdt-label>
     </tdt-map>
   </div>
 </template>
@@ -11,7 +12,8 @@ import { reactive } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
-  zoom: 11
+  zoom: 11,
+  visible: true
 });
 </script>
 

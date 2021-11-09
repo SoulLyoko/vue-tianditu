@@ -55,4 +55,9 @@ export function useWatch({ props, instance }: { props: Props; instance: T.Label 
     val => val && instance.setOpacity(val),
     { immediate: true }
   );
+  watch(
+    () => props.visible,
+    val => (val ? instance.show() : instance.hide()),
+    { immediate: true }
+  );
 }

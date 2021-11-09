@@ -21,6 +21,8 @@ export const EXTRA_PROPS = {
   edit: { type: Boolean, default: false },
   /** 矩形地理范围 */
   bounds: { type: Array as unknown as PropType<VT.Bounds>, default: () => [] },
+  /** 是否可见 */
+  visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };
