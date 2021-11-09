@@ -20,16 +20,15 @@ export const TdtMap = defineComponent({
       style: "width:100%;height:100%"
     });
 
-    onMounted(() => {
-      useApiLoader(props.loadConfig).then(() => {
-        // @ts-ignore: VNode.elm in Vue2
-        tdtMap.value = useInit(props, tdtMapRef.el || tdtMapRef.elm);
-        useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
-        useWatch({ props, instance: tdtMap.value });
-        useControls(props, tdtMap.value, emit);
-        emit("init", tdtMap.value);
-        mapEmitter.emit("mapInit", tdtMap.value);
-      });
+    onMounted(async () => {
+      await useApiLoader(props.loadConfig);
+      // @ts-ignore: VNode.elm in Vue2
+      tdtMap.value = useInit(props, tdtMapRef.el || tdtMapRef.elm);
+      useEvent({ events: NATIVE_EVENTS, emit, instance: tdtMap.value });
+      useWatch({ props, instance: tdtMap.value });
+      useControls(props, tdtMap.value, emit);
+      emit("init", tdtMap.value);
+      mapEmitter.emit("mapInit", tdtMap.value);
     });
 
     return () =>

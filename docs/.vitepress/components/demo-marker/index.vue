@@ -1,5 +1,5 @@
 <template>
-  <button @click="state.draggable = !state.draggable">draggable</button>
+  <button @click="state.draggable = !state.draggable">draggable:{{ state.draggable }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-marker :position="state.marker1" :draggable="state.draggable"></tdt-marker>

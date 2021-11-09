@@ -1,4 +1,4 @@
-import { defineComponent, onUnmounted } from "vue-demi";
+import { defineComponent, onBeforeMount, onUnmounted } from "vue-demi";
 import { useMapRoot, useEvent } from "../../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
@@ -6,15 +6,17 @@ export const TdtTilelayer = defineComponent({
   name: "TdtTilelayer",
   props: PROPS,
   emits: EVENTS,
-  async setup(props, { emit, attrs }) {
-    onUnmounted(() => tdtComponent && tdtMap?.removeLayer(tdtComponent));
+  setup(props, { emit, attrs }) {
+    onBeforeMount(async () => {
+      onUnmounted(() => tdtComponent && tdtMap?.removeLayer(tdtComponent));
 
-    const tdtMap = await useMapRoot();
-    const tdtComponent = useInit(props, attrs);
-    useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent });
-    useWatch({ props, instance: tdtComponent });
-    tdtMap.addLayer(tdtComponent);
-    emit("init", tdtComponent);
+      const tdtMap = await useMapRoot();
+      const tdtComponent = useInit(props, attrs);
+      useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent });
+      useWatch({ props, instance: tdtComponent });
+      tdtMap.addLayer(tdtComponent);
+      emit("init", tdtComponent);
+    });
 
     return () => {};
   }
