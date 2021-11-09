@@ -9,6 +9,7 @@ mousetool 组件初始化时会创建五个工具对象，分别对应标注工�
 <code-details>
 <<< @/.vitepress/components/demo-mousetool/index.vue
 </code-details>
+
 ## 属性
 
 | 属性          | 类型   | 默认值 | 说明                         |

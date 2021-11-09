@@ -1,7 +1,6 @@
 import { App } from "vue-demi";
 import { useApiLoader, LoadConfig } from "./use";
 import * as components from "./components";
-console.log("🚀 ~ file: install.ts ~ line 4 ~ components", components);
 
 export default {
   install: (app: App, config: LoadConfig): void => {

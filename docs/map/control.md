@@ -77,7 +77,7 @@ mapType 负责切换地图类型的控件
   {
     title: "地图", //地图控件上所要显示的图层名称
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png", //地图控件上所要显示的图层图标（默认图标大小 80x80）
-    layer: "TMAP_NORMAL_MAP" //地图类型，在原天地图api中以T.TMAP_NORMAL_MAP表示，此处为字符串，下同
+    layer: "TMAP_NORMAL_MAP" //地图类型，在原天地图api中以window.TMAP_NORMAL_MAP表示，此处为字符串
   },
   {
     title: "卫星",

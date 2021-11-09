@@ -1,6 +1,6 @@
 import { PropType } from "vue-demi";
 import { uuid } from "../../utils";
-import { ControlNames, ControlOpts } from "../types";
+import { DefineEmits, DefineProps } from "../../types";
 import { LoadConfig } from "../../use";
 
 export const NATIVE_PROPS = {
@@ -42,12 +42,10 @@ export const EXTRA_PROPS = {
   /** 地图容器id */
   mid: { type: String, default: () => uuid() },
   /** 控件 */
-  controls: { type: Array as PropType<(ControlNames | ControlOpts)[]>, default: () => [] },
+  controls: { type: Array as PropType<(VT.ControlName | VT.ControlOptions)[]>, default: () => [] },
   /** 加载Api的配置 */
   loadConfig: { type: Object as PropType<LoadConfig> }
 };
-
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
 
 export const NATIVE_EVENTS: T.MapEvents = {
   click: () => true,
@@ -87,4 +85,7 @@ export const EXTRA_EVENTS: { init(e: T.Map): void } & T.ControlOverviewMapEvents
   viewchange: () => true
 };
 
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
 export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

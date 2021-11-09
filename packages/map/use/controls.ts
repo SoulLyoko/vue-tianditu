@@ -1,7 +1,7 @@
-import { ControlNames, ControlOpts, Emit, Props } from "../types";
+import { Emit, Props } from "./";
 
 export function useControls(props: Props, map: T.Map, emit: Emit) {
-  props.controls?.forEach((option: ControlNames | ControlOpts) => {
+  props.controls?.forEach((option: VT.ControlName | VT.ControlOptions) => {
     if (typeof option === "string") {
       addControlByName(option);
     } else if (typeof option === "object") {
@@ -9,48 +9,41 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
     }
   });
 
-  function addControlByName(option: ControlNames) {
+  function addControlByName(option: VT.ControlName) {
     const controlName = option;
     if (!T.Control[controlName]) {
-      return setTimeout(() => {
-        addControlByName(option);
-      });
+      setTimeout(() => addControlByName(option));
+      return;
     }
     const control = new T.Control[controlName]();
     if (controlName === "OverviewMap") {
       const c = control as T.ControlOverviewMap;
-      c.addEventListener("viewchange", e => {
-        emit("viewchange", e);
-      });
+      c.addEventListener("viewchange", e => emit("viewchange", e));
     }
     map.addControl(control);
   }
 
-  function addControlByOption(option: ControlOpts) {
+  function addControlByOption(option: VT.ControlOptions) {
     const controlName = option.name;
     if (!T.Control[controlName]) {
-      return setTimeout(() => {
-        addControlByOption(option);
-      });
+      setTimeout(() => addControlByOption(option));
+      return;
     }
     let control;
     if (controlName === "MapType") {
       const mapTypes = option.mapTypes?.map(item => {
         return {
           ...item,
-          layer: window[item.layer as any]
+          layer: window[item.layer]
         };
-      }) as typeof option.mapTypes;
+      });
       control = new T.Control.MapType({ mapTypes });
     } else if (controlName === "OverviewMap") {
       control = new T.Control[controlName](option);
-      control.addEventListener("viewchange", e => {
-        emit("viewchange", e);
-      });
+      control.addEventListener("viewchange", e => emit("viewchange", e));
     } else {
       control = new T.Control[controlName](option);
     }
-
     map.addControl(control);
   }
 }
