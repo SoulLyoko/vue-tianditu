@@ -1,8 +1,15 @@
+### v2.6.2
+
+2021-11-9
+
+- feat: 覆盖物新增 visible 属性
+- feat: mounseTool 组件支持 paintBrushTool
+
 ### v2.6.1
 
 2021-11-9
 
-- fix: 修复async setup的问题
+- fix: 修复 async setup 的问题
 
 ### v2.6.0
 
