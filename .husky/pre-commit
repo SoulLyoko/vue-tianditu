@@ -3,5 +3,5 @@
 
 npm run cp
 # npm run dts
-git add .
+git add
 npx lint-staged --allow-empty $1

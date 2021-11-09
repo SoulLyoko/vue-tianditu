@@ -3,7 +3,7 @@ import { Props } from "./";
 import { toIcon } from "../../utils";
 
 export function useInit(props: Props, map: T.Map) {
-  const { markTool, polygonTool, polylineTool, rectangleTool, circleTool } = props;
+  const { markTool, polygonTool, polylineTool, rectangleTool, circleTool, paintBrushTool } = props;
   const instances: ToolInstances = {};
   if (markTool) {
     if (markTool.icon) {
@@ -19,5 +19,6 @@ export function useInit(props: Props, map: T.Map) {
   polylineTool && (instances.polylineTool = new T.PolylineTool(map, polylineTool));
   rectangleTool && (instances.rectangleTool = new T.RectangleTool(map, rectangleTool));
   circleTool && (instances.circleTool = new T.CircleTool(map, circleTool));
+  paintBrushTool && (instances.paintBrushTool = new T.PaintBrushTool(map, paintBrushTool));
   return instances;
 }

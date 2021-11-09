@@ -12,7 +12,9 @@ export const NATIVE_PROPS = {
   /** 矩形的配置项 */
   rectangleTool: { type: Object as PropType<T.RectangleToolOptions>, default: () => ({}) },
   /** 圆形的配置项 */
-  circleTool: { type: Object as PropType<T.CircleToolOptions>, default: () => ({}) }
+  circleTool: { type: Object as PropType<T.CircleToolOptions>, default: () => ({}) },
+  /** 画笔的配置项 */
+  paintBrushTool: { type: Object as PropType<T.PaintBrushToolOptions>, default: () => ({}) }
 };
 
 export const OTHER_PROPS = {};
@@ -35,7 +37,8 @@ export const OTHER_EVENTS = {
       e.polygonTool instanceof T.PolygonTool &&
       e.polylineTool instanceof T.PolylineTool &&
       e.rectangleTool instanceof T.RectangleTool &&
-      e.circleTool instanceof T.CircleTool
+      e.circleTool instanceof T.CircleTool &&
+      e.paintBrushTool instanceof T.PaintBrushTool
     );
   }
 };

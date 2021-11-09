@@ -4,12 +4,14 @@
   <button @click="openTool('polylineTool')">画线</button>
   <button @click="openTool('rectangleTool')">画矩形</button>
   <button @click="openTool('circleTool')">画圆</button>
+  <button @click="openTool('paintBrushTool')">画笔</button>
   <br />
   <button @click="clearTool('markTool')">清除标点</button>
   <button @click="clearTool('polygonTool')">清除面</button>
   <button @click="clearTool('polylineTool')">清除线</button>
   <button @click="clearTool('rectangleTool')">清除矩形</button>
   <button @click="clearTool('circleTool')">清除圆</button>
+  <button @click="clearTool('paintBrushTool')">清除画笔</button>
   <button @click="clearTool()">清除全部</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">

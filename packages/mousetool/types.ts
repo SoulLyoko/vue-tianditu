@@ -9,6 +9,7 @@ export interface ToolInstances {
   polylineTool?: T.PolylineTool;
   rectangleTool?: T.RectangleTool;
   circleTool?: T.CircleTool;
+  paintBrushTool?: T.PaintBrushTool;
 }
 
 export interface ToolEvents {
