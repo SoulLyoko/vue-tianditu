@@ -1,5 +1,5 @@
 import { PropType } from "vue-demi";
-import { Bounds } from "../../../types";
+import { DefineEmits, DefineProps } from "../../../types";
 
 export const NATIVE_PROPS = {
   /** 此图层的最低缩放级别 */
@@ -13,14 +13,12 @@ export const NATIVE_PROPS = {
   /** 图层的显示顺序 */
   zIndex: { type: Number as PropType<number> },
   /** 设置指定范围内显示瓦片 */
-  bounds: { type: Array as PropType<Bounds>, default: () => [] },
+  bounds: { type: Array as PropType<VT.Bounds>, default: () => [] },
   /** 图层服务地址 */
   url: { type: String as PropType<string>, default: "" }
 };
 
-export const OTHER_PROPS = {};
-
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
+export const EXTRA_PROPS = {};
 
 export const NATIVE_EVENTS: T.TileLayerEvents = {
   loading: () => true,
@@ -31,8 +29,11 @@ export const NATIVE_EVENTS: T.TileLayerEvents = {
   tileerror: () => true
 };
 
-export const OTHER_EVENTS = {
+export const EXTRA_EVENTS = {
   init: (e: T.TileLayer) => e instanceof T.TileLayer
 };
 
-export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

@@ -1,4 +1,4 @@
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useInit(props: Props) {
   const { position } = props;

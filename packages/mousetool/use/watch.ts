@@ -1,5 +1,6 @@
 import { watch } from "vue-demi";
-import { Props, ToolInstances } from "../types";
+import { ToolInstances } from "../types";
+import { Props } from "./";
 
 export function useWatch({ props, instances }: { props: Props; instances: ToolInstances }) {
   watch(

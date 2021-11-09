@@ -1,4 +1,5 @@
-import { Props, ToolInstances } from "../types";
+import { ToolInstances } from "../types";
+import { Props } from "./";
 import { toIcon } from "../../utils";
 
 export function useInit(props: Props, map: T.Map) {

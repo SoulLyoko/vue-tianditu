@@ -1,5 +1,5 @@
 import { toLngLat, toPoint } from "../../../utils";
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useInit(props: Props) {
   const { position, offset, text } = props;

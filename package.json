@@ -1,10 +1,10 @@
 {
   "name": "vue-tianditu",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "vue-tianditu",
   "author": "SoulLyoko <519052532@qq.com>",
-  "homepage": "https://github.com/SoulLyoko/vue-arcgis-api",
-  "repository": "https://github.com/SoulLyoko/vue-arcgis-api.git",
+  "repository": "https://github.com/SoulLyoko/vue-tianditu.git",
+  "homepage": "https://github.com/SoulLyoko/vue-tianditu#readme",
   "private": false,
   "license": "MIT",
   "main": "lib/vue-tianditu.umd.js",
@@ -25,7 +25,7 @@
     "docs:serve": "npm run cp && vitepress serve docs",
     "lint": "eslint --ext .ts,.vue .",
     "prepare": "husky install",
-    "dts": "vue-dts-gen packages/**/*.vue",
+    "dts": "vue-dts-gezn packages/**/*.vue",
     "cp:readme": "ncp README.md docs/index.md",
     "cp:changelog": "ncp CHANGELOG.md docs/CHANGELOG.md",
     "cp": "npm run cp:readme && npm run cp:changelog"
@@ -35,7 +35,6 @@
     "vue-demi": "^0.11.4"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.2.4",
     "vue": "^2.0.0 || >=3.0.0"
   },
   "peerDependenciesMeta": {

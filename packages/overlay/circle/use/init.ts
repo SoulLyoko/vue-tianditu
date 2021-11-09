@@ -1,5 +1,5 @@
 import { toLngLat } from "../../../utils";
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useInit(props: Props) {
   const { center, radius, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props;

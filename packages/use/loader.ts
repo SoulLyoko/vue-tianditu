@@ -59,10 +59,8 @@ function loadScript(url: string) {
     script.type = "text/javascript";
     script.async = true;
     script.defer = true;
-    document.body.appendChild(script);
-    script.onload = () => {
-      resolve();
-    };
+    script.onload = () => resolve();
     script.onerror = e => reject(e);
+    document.body.appendChild(script);
   });
 }

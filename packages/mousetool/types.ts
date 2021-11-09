@@ -1,12 +1,5 @@
-import { DefineEmits, DefineProps } from "../types";
-import { PROPS, EVENTS } from "./use/const";
-import { IconOptions } from "../types";
-
-export type Props = DefineProps<typeof PROPS>;
-export type Emit = DefineEmits<typeof EVENTS>;
-
 export interface MarkToolOptions {
-  icon?: IconOptions | string;
+  icon?: VT.IconOptions | string;
   follow?: boolean;
 }
 

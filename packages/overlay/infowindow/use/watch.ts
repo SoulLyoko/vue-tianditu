@@ -1,6 +1,6 @@
 import { watch } from "vue-demi";
 import { toLngLat, toPoint } from "../../../utils";
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useWatch({ props, instance, map }: { props: Props; instance: T.InfoWindow; map: T.Map }) {
   watch(

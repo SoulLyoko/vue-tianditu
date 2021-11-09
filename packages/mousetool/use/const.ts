@@ -1,5 +1,6 @@
 import { PropType } from "vue-demi";
 import { MarkToolOptions, ToolEvents, ToolInstances } from "../types";
+import { DefineEmits, DefineProps } from "../../types";
 
 export const NATIVE_PROPS = {
   /** 标点的配置项 */
@@ -15,8 +16,6 @@ export const NATIVE_PROPS = {
 };
 
 export const OTHER_PROPS = {};
-
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
 export const NATIVE_EVENTS: ToolEvents = {
   "mark-draw": () => true,
@@ -41,4 +40,7 @@ export const OTHER_EVENTS = {
   }
 };
 
+export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

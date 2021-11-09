@@ -1,5 +1,5 @@
 import { PropType } from "vue-demi";
-import { Bounds } from "../../../types";
+import { DefineProps, DefineEmits } from "../../../types";
 
 export const NATIVE_PROPS = {
   /** 矩形边线颜色 */
@@ -16,16 +16,14 @@ export const NATIVE_PROPS = {
   fillOpacity: { type: Number, default: 0.2 }
 };
 
-export const OTHER_PROPS = {
+export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 矩形地理范围 */
-  bounds: { type: Array as unknown as PropType<Bounds>, default: () => [] },
+  bounds: { type: Array as unknown as PropType<VT.Bounds>, default: () => [] },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };
-
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
 export const NATIVE_EVENTS: T.RectangleEvents = {
   click: () => true,
@@ -37,8 +35,11 @@ export const NATIVE_EVENTS: T.RectangleEvents = {
   remove: () => true
 };
 
-export const OTHER_EVENTS = {
+export const EXTRA_EVENTS = {
   init: (e: T.Rectangle) => e instanceof T.Rectangle
 };
 
-export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

@@ -1,4 +1,5 @@
 import { PropType } from "vue-demi";
+import { DefineEmits, DefineProps } from "../../../types";
 
 export const NATIVE_PROPS = {
   /** 用","分隔的多个图层列表 */
@@ -17,14 +18,12 @@ export const NATIVE_PROPS = {
   url: { type: String as PropType<string>, default: "" }
 };
 
-export const OTHER_PROPS = {
+export const EXTRA_PROPS = {
   /** 设置图层的透明度（0.0-1.0）。默认值为 1.0不透明 */
   opacity: { type: Number as PropType<number> },
   /** 图层的显示顺序 */
   zIndex: { type: Number as PropType<number> }
 };
-
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
 export const NATIVE_EVENTS: T.TileLayerEvents = {
   loading: () => true,
@@ -35,8 +34,11 @@ export const NATIVE_EVENTS: T.TileLayerEvents = {
   tileerror: () => true
 };
 
-export const OTHER_EVENTS = {
+export const EXTRA_EVENTS = {
   init: (e: T.TileLayer.WMS) => e instanceof T.TileLayer.WMS
 };
 
-export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

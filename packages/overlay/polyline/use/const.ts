@@ -1,5 +1,5 @@
 import { PropType } from "vue-demi";
-import { LngLat } from "../../../types";
+import { DefineEmits, DefineProps } from "../../../types";
 
 export const NATIVE_PROPS = {
   /** 折线颜色 */
@@ -12,16 +12,14 @@ export const NATIVE_PROPS = {
   lineStyle: { type: String as PropType<"solid" | "dashed">, default: "solid" }
 };
 
-export const OTHER_PROPS = {
+export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 坐标数组 */
-  path: { type: Array as unknown as PropType<LngLat[]>, default: () => [] },
+  path: { type: Array as unknown as PropType<VT.LngLat[]>, default: () => [] },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> }
 };
-
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
 
 export const NATIVE_EVENTS: T.PolylineEvents = {
   click: () => true,
@@ -33,8 +31,11 @@ export const NATIVE_EVENTS: T.PolylineEvents = {
   remove: () => true
 };
 
-export const OTHER_EVENTS = {
+export const EXTRA_EVENTS = {
   init: (e: T.Polyline) => e instanceof T.Polyline
 };
 
-export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

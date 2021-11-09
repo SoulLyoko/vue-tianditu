@@ -1,5 +1,5 @@
 import { toPoint } from "../../../utils";
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useInit(props: Props) {
   const { minWidth, maxWidth, maxHeight, autoPan, closeButton, offset, autoPanPadding, closeOnClick, content } = props;

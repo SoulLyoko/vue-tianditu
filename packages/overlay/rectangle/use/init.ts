@@ -1,5 +1,5 @@
 import { toBounds } from "../../../utils";
-import { Props } from "../types";
+import { Props } from "./";
 
 export function useInit(props: Props) {
   const { bounds, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props;
