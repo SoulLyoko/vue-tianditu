@@ -3,5 +3,6 @@
 
 npm run cp
 # npm run dts
-git add
+git add docs/index.md
+git add docs/CHANGELOG.md
 npx lint-staged --allow-empty $1
