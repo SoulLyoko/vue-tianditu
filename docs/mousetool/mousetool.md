@@ -2,7 +2,7 @@
 
 ## 示例
 
-mousetool 组件初始化时会创建五个工具对象，分别对应标注工具、多边形工具、折线工具、矩形工具、画圆工具。使用默认配置时不需要传值，手动配置时传入相应工具的配置项参数即可。
+mousetool 组件初始化时会创建六个工具对象，分别对应标注工具、多边形工具、折线工具、矩形工具、画圆工具、画笔工具。使用默认配置时不需要传值，手动配置时传入相应工具的配置项参数即可。
 
 <demo-mousetool></demo-mousetool>
 
@@ -12,13 +12,14 @@ mousetool 组件初始化时会创建五个工具对象，分别对应标注工�
 
 ## 属性
 
-| 属性          | 类型   | 默认值 | 说明                         |
-| ------------- | ------ | ------ | ---------------------------- |
-| markTool      | Object |        | 标点的配置项，下方详细说明   |
-| polygonTool   | Object |        | 多边形的配置项，下方详细说明 |
-| polylineTool  | Object |        | 折线的配置项，下方详细说明   |
-| rectangleTool | Object |        | 矩形的配置项，下方详细说明   |
-| circleTool    | Object |        | 圆形的配置项，下方详细说明   |
+| 属性           | 类型   | 默认值 | 说明                         |
+| -------------- | ------ | ------ | ---------------------------- |
+| markTool       | Object |        | 标点的配置项，下方详细说明   |
+| polygonTool    | Object |        | 多边形的配置项，下方详细说明 |
+| polylineTool   | Object |        | 折线的配置项，下方详细说明   |
+| rectangleTool  | Object |        | 矩形的配置项，下方详细说明   |
+| circleTool     | Object |        | 圆形的配置项，下方详细说明   |
+| paintBrushTool | Object |        | 画笔的配置项，下方详细说明   |
 
 ## 方法
 
@@ -134,3 +135,16 @@ circleTool 画圆工具，用来实现在地图上画圆的功能。
 | -------------- | ----------------------------------------------------------------------- | ---------------------- |
 | circle-draw    | {type,target,currentCenter,currentRadius,<br>currentCircle,allCircles } | 用户拖动绘制圆时触发。 |
 | circle-drawend | {type,target,currentCenter,currentRadius,<br>currentCircle,allCircles } | 用户完成绘制圆时触发。 |
+
+## 画笔工具
+
+paintBrushTool 在地图容器中，创建一个可以随意画线的画笔工具。
+
+### 属性
+
+| 属性        | 类型    | 默认值    | 说明                            |
+| ----------- | ------- | --------- | ------------------------------- |
+| keepdrawing | Boolean | false     | 保持工具的连续可用性            |
+| color       | String  | "#0000FF" | 画笔颜色。                      |
+| weight      | Number  | 3        | 画笔的宽度，以像素为单位。      |
+| opacity     | Number  | 0.5       | 画笔的透明度（范围 0-1 之间）。 |

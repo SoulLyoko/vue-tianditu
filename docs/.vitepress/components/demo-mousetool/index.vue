@@ -32,6 +32,7 @@ const mousetoolRef = ref();
 function openTool(toolName: string) {
   mousetoolRef.value?.open(toolName);
 }
+
 function clearTool(toolName?: string) {
   toolName ? mousetoolRef.value?.clear(toolName) : mousetoolRef.value?.clearAll();
 }

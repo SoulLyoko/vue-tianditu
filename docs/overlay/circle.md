@@ -21,6 +21,7 @@
 | center      | Array   |           | 圆心经纬度坐标                                   |
 | radius      | Number  |           | 圆的半径，以米为单位                             |
 | edit        | Boolean | false     | 是否可编辑                                       |
+| visible     | Boolean | true      | 是否可见                                         |
 | extData     |         |           | 自定义属性                                       |
 
 ## 事件

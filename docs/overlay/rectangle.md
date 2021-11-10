@@ -20,6 +20,7 @@
 | lineStyle   | String  | "solid"   | 矩形边线的样式（solid 或 dashed）                  |
 | bounds      | Array   |           | 矩形范围                                           |
 | edit        | Boolean | false     | 是否可编辑                                         |
+| visible     | Boolean | true      | 是否可见                                           |
 | extData     |         |           | 自定义属性                                         |
 
 ## 事件

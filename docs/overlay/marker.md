@@ -18,6 +18,7 @@
 | zIndexOffset | Number | 0 | 设置 z-index |
 | opacity | Number | 1.0 | 设置透明度 |
 | position | Array |  | 标点的坐标 |
+| visible | Boolean | true | 是否可见 |
 | extData |  |  | 自定义属性 |
 
 ## 事件

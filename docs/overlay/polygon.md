@@ -20,6 +20,7 @@
 | lineStyle   | String  | "solid"   | 多边形边线的样式（solid 或 dashed）                  |
 | path        | Array   |           | 坐标数组                                             |
 | edit        | Boolean | false     | 是否可编辑                                           |
+| visible     | Boolean | true      | 是否可见                                             |
 | extData     |         |           | 自定义属性                                           |
 
 ## 事件
