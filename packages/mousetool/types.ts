@@ -3,6 +3,13 @@ export interface MarkToolOptions {
   follow?: boolean;
 }
 
+export interface PaintBrushToolOptions {
+  keepdrawing?: boolean;
+  color?: string;
+  weight?: number;
+  opacity?: number;
+}
+
 export interface ToolInstances {
   markTool?: T.MarkTool;
   polygonTool?: T.PolygonTool;

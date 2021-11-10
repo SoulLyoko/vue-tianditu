@@ -204,8 +204,8 @@ declare namespace T {
 
   interface PaintBrushToolOptions {
     /** 保持工具的连续可用性 */
-    keepdrawing: boolean;
+    keepdrawing?: boolean;
     /** 	画笔留下笔迹的样式 */
-    style: { color: string; weight: number; opacity: number };
+    style?: { color?: string; weight?: number; opacity?: number };
   }
 }

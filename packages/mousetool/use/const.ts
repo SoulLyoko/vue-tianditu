@@ -1,5 +1,5 @@
 import { PropType } from "vue-demi";
-import { MarkToolOptions, ToolEvents, ToolInstances } from "../types";
+import { MarkToolOptions, PaintBrushToolOptions, ToolEvents, ToolInstances } from "../types";
 import { DefineEmits, DefineProps } from "../../types";
 
 export const NATIVE_PROPS = {
@@ -14,7 +14,7 @@ export const NATIVE_PROPS = {
   /** 圆形的配置项 */
   circleTool: { type: Object as PropType<T.CircleToolOptions>, default: () => ({}) },
   /** 画笔的配置项 */
-  paintBrushTool: { type: Object as PropType<T.PaintBrushToolOptions>, default: () => ({}) }
+  paintBrushTool: { type: Object as PropType<PaintBrushToolOptions>, default: () => ({}) }
 };
 
 export const OTHER_PROPS = {};
