@@ -1,3 +1,9 @@
+### v2.6.4
+
+2021-11-12
+
+- feat: 新增组件 TdtMarkerClusterer,TdtCloudMarkerCollection,TdtGridlineLayer
+
 ### v2.6.3
 
 2021-11-10

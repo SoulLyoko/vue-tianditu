@@ -34,7 +34,7 @@ const state = reactive({
 });
 
 function openInfowindow({ extData }: { extData: typeof markers[0] }) {
-  state.currentMarker = extData;
+  state.currentMarker = { ...extData };
 }
 </script>
 

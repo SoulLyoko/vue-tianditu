@@ -33,7 +33,8 @@ module.exports = {
           children: [
             { text: "自定义图层", link: "/tilelayer/tilelayer" },
             { text: "天地图矢量图层", link: "/tilelayer/tilelayer-tdt" },
-            { text: "WMS服务图层", link: "/tilelayer/tilelayer-wms" }
+            { text: "WMS服务图层", link: "/tilelayer/tilelayer-wms" },
+            { text: "网格图层", link: "/tilelayer/gridline-layer" }
           ]
         },
         {
@@ -47,7 +48,9 @@ module.exports = {
             { text: "折线", link: "/overlay/polyline" },
             { text: "多边形", link: "/overlay/polygon" },
             { text: "矩形", link: "/overlay/rectangle" },
-            { text: "圆形", link: "/overlay/circle" }
+            { text: "圆形", link: "/overlay/circle" },
+            { text: "点聚合", link: "/overlay/marker-clusterer" },
+            { text: "海量密集点", link: "/overlay/cloud-marker-collection" }
           ]
         }
       ]
