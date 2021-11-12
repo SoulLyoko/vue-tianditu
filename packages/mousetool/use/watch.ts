@@ -10,7 +10,7 @@ export function useWatch({ props, instances }: { props: Props; instances: ToolIn
       if (typeof val === "string") {
         instances.markTool?.setPointImage(val);
       } else {
-        instances.markTool?.setPointImage(val?.iconUrl);
+        val?.iconUrl && instances.markTool?.setPointImage(val?.iconUrl);
       }
     }
   );
