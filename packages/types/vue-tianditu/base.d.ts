@@ -7,18 +7,13 @@ declare namespace VT {
 
   type Point = number[];
 
-  interface IconOptions {
-    iconUrl: string;
-    iconSize: number[];
-    iconAnchor: number[];
+  interface IconOptions extends T.IconOptions {
+    iconSize?: Point;
+    iconAnchor?: Point;
   }
 
-  interface MarkerOptions {
+  interface MarkerOptions extends T.MarkerOptions {
     icon?: IconOptions | string;
-    draggable?: boolean;
-    title?: string;
-    zIndexOffset?: number;
-    opacity?: number;
   }
 
   type ControlName = "Zoom" | "Scale" | "Copyright" | "OverviewMap" | "MapType";
@@ -31,13 +26,10 @@ declare namespace VT {
       name: ControlName;
     };
 
-  interface ControlMapTypeOptions {
+  interface ControlMapTypeOptions extends T.ControlMapTypeOptions {
     mapTypes?: {
-      /** 地图控件上所要显示的图层名称 */
       title: string;
-      /**  地图控件上所要显示的图层图标（默认图标大小80x80） */
       icon: string;
-      /** 地图类型对象，即MapType */
       layer:
         | "TMAP_NORMAL_MAP"
         | "TMAP_SATELLITE_MAP"
@@ -45,5 +37,9 @@ declare namespace VT {
         | "TMAP_TERRAIN_MAP"
         | "TMAP_TERRAIN_HYBRID_MAP";
     }[];
+  }
+
+  interface MarkerClustererStyle extends T.MarkerClustererStyle {
+    offset?: Point;
   }
 }

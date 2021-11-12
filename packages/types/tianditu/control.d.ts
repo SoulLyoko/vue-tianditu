@@ -163,47 +163,47 @@ declare namespace T {
     constructor(opts?: ControlMapTypeOptions);
   }
 
+  interface ControlMapTypeOptions {
+    mapTypes?: ControlMapTypeOptionsMapType[];
+  }
+
   /**
    * ```
-   * {
-   *  mapTypes?: [
-   *     {
-   *       title: "地图";
-   *       icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png";
-   *       layer: TMAP_NORMAL_MAP;
-   *     },
-   *     {
-   *       title: "卫星";
-   *       icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png";
-   *       layer: TMAP_SATELLITE_MAP;
-   *     },
-   *     {
-   *       title: "卫星混合";
-   *       icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png";
-   *       layer: TMAP_HYBRID_MAP;
-   *     },
-   *     {
-   *       title: "地形";
-   *       icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png";
-   *       layer: TMAP_TERRAIN_MAP;
-   *     },
-   *     {
-   *       title: "地形混合";
-   *       icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png";
-   *       layer: TMAP_TERRAIN_HYBRID_MAP;
-   *     }
-   *   ];
-   * }
+   * [
+   *   {
+   *     title: "地图";
+   *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png";
+   *     layer: TMAP_NORMAL_MAP;
+   *   },
+   *   {
+   *     title: "卫星";
+   *     icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png";
+   *     layer: TMAP_SATELLITE_MAP;
+   *   },
+   *   {
+   *     title: "卫星混合";
+   *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png";
+   *     layer: TMAP_HYBRID_MAP;
+   *   },
+   *   {
+   *     title: "地形";
+   *     icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png";
+   *     layer: TMAP_TERRAIN_MAP;
+   *   },
+   *   {
+   *     title: "地形混合";
+   *     icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png";
+   *     layer: TMAP_TERRAIN_HYBRID_MAP;
+   *   }
+   * ]
    * ```
    */
-  interface ControlMapTypeOptions {
-    mapTypes?: {
-      /** 地图控件上所要显示的图层名称 */
-      title: string;
-      /**  地图控件上所要显示的图层图标（默认图标大小80x80） */
-      icon: string;
-      /** 地图类型对象，即MapType */
-      layer: MapType;
-    }[];
+  interface ControlMapTypeOptionsMapType {
+    /** 地图控件上所要显示的图层名称 */
+    title?: string;
+    /**  地图控件上所要显示的图层图标（默认图标大小80x80） */
+    icon?: string;
+    /** 地图类型对象，即MapType */
+    layer?: MapType;
   }
 }

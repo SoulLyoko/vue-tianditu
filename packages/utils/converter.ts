@@ -1,4 +1,4 @@
-import { Props as MarkerOptions } from "../overlay/marker/use/const";
+import { Props as MarkerProps, useInit as useInitMarker } from "../overlay/marker/use";
 
 /**
  * 转换为经纬度对象
@@ -63,8 +63,8 @@ export const toIcon = (icon: VT.IconOptions | string) => {
     const { iconUrl, iconSize, iconAnchor } = icon;
     const iconOption = {
       iconUrl,
-      iconSize: toPoint(iconSize),
-      iconAnchor: toPoint(iconAnchor)
+      iconSize: iconSize && toPoint(iconSize),
+      iconAnchor: iconAnchor && toPoint(iconAnchor)
     };
     return new T.Icon(objectFilter(iconOption));
   }
@@ -74,11 +74,8 @@ export const toIcon = (icon: VT.IconOptions | string) => {
  * 转换为点标注对象
  * @param option 点标注配置
  */
-export const toMarker = (option: MarkerOptions) => {
-  const markerOpt = {
-    ...option,
-    icon: option.icon ? toIcon(option.icon) : undefined,
-    position: toLngLat(option.position)
-  };
-  return new T.Marker(markerOpt.position, objectFilter(option));
+export const toMarker = (option: MarkerProps) => {
+  const marker = useInitMarker(option);
+  option.icon && marker.setIcon(toIcon(option.icon));
+  return marker;
 };

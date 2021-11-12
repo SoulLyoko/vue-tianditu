@@ -64,32 +64,34 @@ declare namespace T {
   /**
    * 覆盖物共有事件
    */
-  interface OverlayEvents<T, LL> {
+  interface OverlayEvents<T, LL, L = undefined> {
     /** 点击叠加层后会触发此事件 */
-    click(e: OverlayEvent<T, LL>): void;
+    click(e: OverlayEvent<T, LL, L>): void;
     /** 双击叠加层后会触发此事件 */
-    dblclick(e: OverlayEvent<T, LL>): void;
+    dblclick(e: OverlayEvent<T, LL, L>): void;
     /** 鼠标在叠加层上按下触发此事件 */
-    mousedown(e: OverlayEvent<T, LL>): void;
+    mousedown(e: OverlayEvent<T, LL, L>): void;
     /** 鼠标在叠加层释放触发此事件 */
-    mouseup(e: OverlayEvent<T, LL>): void;
+    mouseup(e: OverlayEvent<T, LL, L>): void;
     /** 鼠标离开叠加层时触发此事件 */
-    mouseout(e: OverlayEvent<T, LL>): void;
+    mouseout(e: OverlayEvent<T, LL, L>): void;
     /** 当鼠标进入叠加层区域时会触发此事件 */
-    mouseover(e: OverlayEvent<T, LL>): void;
+    mouseover(e: OverlayEvent<T, LL, L>): void;
     /** 移除叠加层时触发 */
-    remove(e: OverlayEvent<T, LL>): void;
+    remove(e: OverlayEvent<T, LL, L>): void;
   }
   /**
    * 覆盖物共有事件参数
    */
-  interface OverlayEvent<T, LL> {
+  interface OverlayEvent<T, LL, L = undefined> {
     /** 事件类型 */
     type: string;
     /** 叠加层对象 */
     target: T;
     /** 叠加层经纬度坐标 */
     lnglat: LL;
+    /** 点聚合组件的点标注对象 */
+    layer: L;
     /** 叠加层像素坐标 */
     containerPoint: Point;
   }
@@ -480,4 +482,144 @@ declare namespace T {
     /** SVG容器的范围相对地图视图容器的大小扩展缩小区域，例如：0.1表示地图视图每个方向扩大0.1倍的范围。default:0.1 */
     padding?: number;
   }
+
+  class MarkerClusterer extends OverlayBase<MarkerClustererEvents> {
+    /** 创建一个点聚合组件 */
+    constructor(map: Map, opts: MarkerClustererOptions);
+    /** 添加一个聚合的标记 */
+    addMarker(marker: Marker): void;
+    /** 添加要聚合的标记数组 */
+    addMarkers(markers: Marker[]): void;
+    /** 获取聚合的总数量 */
+    getClustersCount(): number;
+    /** 从地图上彻底清除所有的标记 */
+    clearMarkers(): void;
+    /** 获取网格大小 */
+    getGridSize(): number;
+    /** 获取所有的标记数组 */
+    getMarkers(): Marker[];
+    /** 获取聚合的最大缩放级别 */
+    getMaxZoom(): number;
+    /** 获取单个聚合的最小数量 */
+    getMinClusterSize(): number;
+    /** 获取聚合的样式风格集合 */
+    getStyles(): MarkerClustererStyle[];
+    /** 删除单个标记 */
+    removeMarker(marker: Marker): void;
+    /** 删除一组标记 */
+    removeMarkers(markers: Marker[]): void;
+    /** 设置网格大小 */
+    setGridSize(gridSize: number): void;
+    /** 设置聚合的最大缩放级别 */
+    setMaxZoom(maxZoom: number): void;
+    /** 设置聚合的样式风格集合 */
+    setStyles(styles: MarkerClustererStyle[]): void;
+  }
+
+  interface MarkerClustererOptions {
+    /** 要聚合的标注点数组 */
+    markers?: Marker[];
+    /** 聚合计算时网格的像素大小，默认60 */
+    girdSize?: number;
+    /** 最大的聚合级别，大于该级别就不进行聚合 */
+    maxZoom?: number;
+    /** 自定义聚合后的图标风格 */
+    styles?: MarkerClustererStyle[];
+  }
+
+  interface MarkerClustererEvents extends OverlayEvents<MarkerClusterer, LngLat, Marker> {
+    dragstart(e: Pick<MarkerClustererEvent, "type" | "target" | "layer">): void;
+    drag(e: Pick<MarkerClustererEvent, "type" | "target" | "lnglat" | "layer">): void;
+    dragend(e: Pick<MarkerClustererEvent, "type" | "target" | "lnglat" | "layer">): void;
+  }
+
+  interface MarkerClustererEvent extends OverlayEvent<Marker, LngLat, Marker> {}
+
+  /**
+   * ```
+   * [
+   *   {
+   *     url: "http://api.tianditu.gov.cn/img/map/cluster/heart30.png",
+   *     size: [30, 26], //图片大小
+   *     offset: new T.Point(-15, -13), //显示图片的偏移量
+   *     textColor: "#000000", //显示数字的颜色
+   *     textSize: 8, //显示文字的大小
+   *     range: [0, 50]
+   *   },
+   *   {
+   *     url: "http://api.tianditu.gov.cn/img/map/cluster/heart40.png",
+   *     size: [42, 36],
+   *     offset: new T.Point(-20, -17),
+   *     textColor: "#ff0000",
+   *     textSize: 10,
+   *     range: [50, 400]
+   *   },
+   *   {
+   *     url: "http://api.tianditu.gov.cn/img/map/cluster/heart50.png",
+   *     size: [52, 46],
+   *     soffset: new T.Point(-10, -22),
+   *     textColor: "white",
+   *     textSize: 12,
+   *     range: [400, 500]
+   *   }
+   * ];
+   * ```
+   */
+  interface MarkerClustererStyle {
+    /** 图片地址 */
+    url?: string;
+    /** 图片大小 */
+    size?: number[];
+    /** 显示图片的偏移量 */
+    offset?: Point;
+    /** 显示数字的颜色 */
+    textColor?: string;
+    /** 显示文字的大小 */
+    textSize?: number;
+    /** 显示图片的数字范围 */
+    range?: number[];
+  }
+
+  class CloudMarkerCollection extends OverlayBase<CloudMarkerCollectionEvents> {
+    constructor(lnglats: LngLat[], opts: CloudMarkerCollectionOptions);
+    setLnglats(lnglats: LngLat[]): void;
+    setStyles(styles: CloudMarkerCollectionOptions): void;
+    clear(): void;
+  }
+
+  interface CloudMarkerCollectionOptions {
+    /**
+     * 海量点的预设形状。
+     * CIRCLE 圆形(默认)；
+     * RHOMBUS 星形；
+     * SQUARE 方形；
+     * STAR 菱形；
+     * WATERDROP 滴状
+     */
+    ShapeType?: "CIRCLE" | "RHOMBUS" | "SQUARE" | "STAR" | "WATERDROP";
+    /**
+     * 海量点的预设尺寸。
+     * TINY 超小，宽高为2px * 2px；
+     * SMALLER 很小，宽高为4px * 4px；
+     * SMALL 小，宽高为8px * 8px；
+     * NORMAL 正常，宽高为10px * 10px(默认)；
+     * HUGE 大，宽高为16px * 16px；
+     * BIGGER 很大，宽高为20px * 20px；
+     * BIG 超大，宽高为30px * 30px
+     */
+    SizeType?: "TINY" | "SMALLER" | "SMALL" | "NORMAL" | "HUGE" | "BIGGER" | "BIG";
+    /**
+     * 海量点的颜色，默认为'#fa937e'。
+     * 同时支持颜色字符串，如'red'；
+     * 哈希字符串'#000000'；
+     * rgb字符串，如'rgb(0,0,0)’；
+     * rgba字符串，如'rgb(255,0,0,0.1)'；
+     * hsl字符串，如'hsl(0,100%,50%)'；
+     * hsla字符串，如'hsla(0,100%,50%,0.4)'
+     */
+    color?: string;
+  }
+
+  interface CloudMarkerCollectionEvents
+    extends Pick<OverlayEvents<CloudMarkerCollection, LngLat, Overlay>, "click" | "mouseover" | "mouseout"> {}
 }
