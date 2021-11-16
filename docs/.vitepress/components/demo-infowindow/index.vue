@@ -8,7 +8,7 @@
         @click="openInfowindow"
       ></tdt-marker>
       <tdt-infowindow v-model:target="state.currentMarker.position" :minWidth="150" :offset="[0, -30]">
-        <template #default>
+        <template #default v-show="state.currentMarker.position">
           <strong>{{ state.currentMarker.title }}</strong>
           <div>{{ state.currentMarker.position }}</div>
         </template>

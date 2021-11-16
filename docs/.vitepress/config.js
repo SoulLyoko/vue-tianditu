@@ -18,8 +18,6 @@ module.exports = {
         { text: "开始", link: "/" },
         {
           text: "地图",
-          collapsable: false,
-          sidebarDepth: 0,
           children: [
             { text: "基础地图", link: "/map/map" },
             { text: "控件", link: "/map/control" },
@@ -28,8 +26,6 @@ module.exports = {
         },
         {
           text: "图层",
-          collapsable: false,
-          sidebarDepth: 0,
           children: [
             { text: "自定义图层", link: "/tilelayer/tilelayer" },
             { text: "天地图矢量图层", link: "/tilelayer/tilelayer-tdt" },
@@ -39,8 +35,6 @@ module.exports = {
         },
         {
           text: "覆盖物",
-          collapsable: false,
-          sidebarDepth: 0,
           children: [
             { text: "文本标注", link: "/overlay/label" },
             { text: "点标注", link: "/overlay/marker" },
@@ -52,6 +46,10 @@ module.exports = {
             { text: "点聚合", link: "/overlay/marker-clusterer" },
             { text: "海量密集点", link: "/overlay/cloud-marker-collection" }
           ]
+        },
+        {
+          text: "服务",
+          children: [{ text: "搜索", link: "/service/search" }]
         }
       ]
     }

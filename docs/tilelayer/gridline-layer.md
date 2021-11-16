@@ -14,12 +14,12 @@
 
 | 属性 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| tileSize | number | 256 | 设置格网图层的网格大小，单位是像素。 |
-| minZoom | number | 0 | 显示格网图层的最小层级。 |
-| maxZoom | number | 18 | 显示格网图层的最大层级。 |
-| opacity | number | 1 | 设置格网图层的透明度。 |
-| outlineSize | object | `{ width:1, style:'solid', color:'#999' }` | 设置格网图层边线的颜色、宽度、线样式。 |
-| textSize | object | `{ display:false, fontSize:'14', fontWeight:true, color:'black' }` | 设置格网图层文字的样式，图层文字表现网格的行号、列号、层级。 |
+| tileSize | number | 256 | 设置格网图层的网格大小，单位是像素 |
+| minZoom | number | 0 | 显示格网图层的最小层级 |
+| maxZoom | number | 18 | 显示格网图层的最大层级 |
+| opacity | number | 1 | 设置格网图层的透明度 |
+| outlineSize | object | `{ width:1, style:'solid', color:'#999' }` | 设置格网图层边线的颜色、宽度、线样式 |
+| textSize | object | `{ display:false, fontSize:'14', fontWeight:true, color:'black' }` | 设置格网图层文字的样式，图层文字表现网格的行号、列号、层级 |
 
 ## 事件
 
