@@ -34,7 +34,7 @@ declare namespace T {
    * 覆盖物公共类
    */
   class OverlayBase<E> {
-    /**返回叠加层类型 */
+    /** 返回叠加层类型 */
     getType(): number;
     /** 返回叠加层所在的map对象 */
     getMap(): Map;
@@ -137,27 +137,27 @@ declare namespace T {
     getLabel(): string;
     /** 设置文本的提示内容 */
     setTitle(title: string): void;
-    /**返回文本的提示内容 */
+    /** 返回文本的提示内容 */
     getTitle(): string;
-    /**设置文本的文本内容字体大小 */
+    /** 设置文本的文本内容字体大小 */
     setFontSize(size: number): void;
-    /**返回文本内容字体大小 */
+    /** 返回文本内容字体大小 */
     getFontSize(): number;
-    /**设置文本的文本的字体颜色 */
+    /** 设置文本的文本的字体颜色 */
     setFontColor(color: string): void;
-    /**返回文本的字体颜色 */
+    /** 返回文本的字体颜色 */
     getFontColor(): string;
-    /**设置文本的背景色 */
+    /** 设置文本的背景色 */
     setBackgroundColor(color: string): void;
-    /**返回文本的背景色*/
+    /** 返回文本的背景色*/
     getBackgroundColor(): string;
-    /**设置文本的边框线宽 */
+    /** 设置文本的边框线宽 */
     setBorderLine(width: number): void;
-    /**返回文本的边框线宽 */
+    /** 返回文本的边框线宽 */
     getBorderLine(): number;
-    /**设置文本的边框颜色 */
+    /** 设置文本的边框颜色 */
     setBorderColor(color: string): void;
-    /**返回文本的边框颜色 */
+    /** 返回文本的边框颜色 */
     getBorderColor(): string;
   }
 

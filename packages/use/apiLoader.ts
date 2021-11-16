@@ -32,9 +32,7 @@ let isLoading = false;
 export async function useApiLoader(config: LoadConfig = {}) {
   if (isLoading) {
     return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(useApiLoader(config));
-      });
+      setTimeout(() => resolve(useApiLoader(config)));
     });
   } else if (window.T) {
     return;

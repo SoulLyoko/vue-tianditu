@@ -25,6 +25,9 @@
         :close-on-click="true"
       ></TdtInfowindow>
       <TdtMousetool ref="mousetoolRef" :mark-tool="{ follow: true }"></TdtMousetool>
+      <TdtControl position="topleft">
+        <TdtSearch></TdtSearch>
+      </TdtControl>
     </TdtMap>
   </div>
 </template>
@@ -40,7 +43,9 @@ import {
   TdtRectangle,
   TdtCircle,
   TdtInfowindow,
-  TdtMousetool
+  TdtMousetool,
+  TdtControl,
+  TdtSearch
 } from "~/index";
 
 const state = reactive({
@@ -69,7 +74,8 @@ const state = reactive({
   infowindow: {
     target: null,
     content: ""
-  }
+  },
+  keyword: ""
 });
 
 function openInfoWindow(e: any) {

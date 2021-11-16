@@ -1,5 +1,6 @@
 export * from "./map";
 export * from "./control";
+export * from "./mousetool";
 export * from "./overlay/marker";
 export * from "./overlay/label";
 export * from "./overlay/polyline";
@@ -13,4 +14,4 @@ export * from "./tilelayer/tilelayer";
 export * from "./tilelayer/tdt";
 export * from "./tilelayer/wms";
 export * from "./tilelayer/gridlineLayer";
-export * from "./mousetool";
+export * from "./service/search";
