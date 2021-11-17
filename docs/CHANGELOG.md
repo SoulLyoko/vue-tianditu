@@ -1,3 +1,10 @@
+### v2.6.6
+
+2021-11-17
+
+- fix: TdtControl 中 slots.default 在 Vue2 的错误
+- fix: TdtSearch 对 Vue2 的兼容性
+
 ### v2.6.5
 
 2021-11-16
