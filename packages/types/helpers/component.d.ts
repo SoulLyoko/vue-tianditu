@@ -8,4 +8,5 @@ export type DefineEmits<E extends EmitsOptions> = SetupContext<E>["emit"];
 
 export type ComponentInstance<P, E extends EmitsOptions> = ComponentPublicInstance<P, Data, Data, Data, Data, E>;
 
+/** VNode.elm in Vue2 */
 export type VNodeEl = VNode & { el: HTMLElement; elm: HTMLElement };

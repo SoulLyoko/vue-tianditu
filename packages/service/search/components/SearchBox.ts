@@ -26,24 +26,43 @@ export const SearchBox = defineComponent({
             onFocus: () => (state.queryType = 4),
             onCompositionstart: () => (isComposition = true),
             onCompositionend: () => (isComposition = false),
-            onInput: (e: any) => setTimeout(() => !isComposition && (state.keyword = e.target.value))
+            onInput: (e: any) => setTimeout(() => !isComposition && (state.keyword = e.target.value)),
+            attrs: {
+              type: "text",
+              placeholder: props.placeholder
+            },
+            domProps: {
+              value: state.keyword
+            },
+            on: {
+              focus: () => (state.queryType = 4),
+              compositionstart: () => (isComposition = true),
+              compositionend: () => (isComposition = false),
+              input: (e: any) => setTimeout(() => !isComposition && (state.keyword = e.target.value))
+            }
           }),
           h(
             "i",
             {
               class: "search-close",
               style: state.keyword ? "" : "display:none",
-              onClick: () => (state.keyword = "")
+              onClick: () => (state.keyword = ""),
+              on: {
+                click: () => (state.keyword = "")
+              }
             },
-            IconClose
+            [h(IconClose)]
           ),
           h(
             "button",
             {
               class: "search-btn",
-              onClick: () => onSearch(1)
+              onClick: () => onSearch(1),
+              on: {
+                click: () => onSearch(1)
+              }
             },
-            IconSearch
+            [h(IconSearch)]
           )
         ]
       );

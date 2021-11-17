@@ -30,7 +30,10 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn first-page",
-              onClick: () => (state.page = 1)
+              onClick: () => (state.page = 1),
+              on: {
+                click: () => (state.page = 1)
+              }
             },
             "«"
           ),
@@ -38,7 +41,10 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn prev-page",
-              onClick: () => state.page--
+              onClick: () => state.page--,
+              on: {
+                click: () => state.page--
+              }
             },
             "‹"
           ),
@@ -49,7 +55,10 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn next-page",
-              onClick: () => state.page++
+              onClick: () => state.page++,
+              on: {
+                click: () => state.page++
+              }
             },
             "›"
           ),
@@ -57,7 +66,10 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn last-page",
-              onClick: () => (state.page = pages.value)
+              onClick: () => (state.page = pages.value),
+              on: {
+                click: () => (state.page = pages.value)
+              }
             },
             "»"
           )

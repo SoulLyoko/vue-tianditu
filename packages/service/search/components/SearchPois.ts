@@ -24,11 +24,14 @@ export const SearchPois = defineComponent({
                   "div",
                   {
                     class: "pois-item",
-                    onClick: () => onPoiClick(item, emit)
+                    onClick: () => onPoiClick(item, emit),
+                    on: {
+                      click: () => onPoiClick(item, emit)
+                    }
                   },
                   [
                     h("strong", { class: "pois-name" }, item.name),
-                    h("br", null),
+                    h("br"),
                     h("span", { class: "pois-address" }, item.address)
                   ]
                 );

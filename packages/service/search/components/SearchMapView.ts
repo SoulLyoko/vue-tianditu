@@ -15,8 +15,7 @@ export const SearchMapView = defineComponent({
         ? state.pois.map(poi => {
             return {
               position: poi.lonlat.split(" ").map(Number),
-              extData: poi,
-              onClick: () => onPoiClick(poi, emit)
+              extData: poi
             };
           })
         : [];
@@ -31,7 +30,11 @@ export const SearchMapView = defineComponent({
         ...markers.value.map(item => {
           return h(TdtMarker, {
             ...item,
-            onClick: () => onPoiClick(item.extData, emit)
+            onClick: () => onPoiClick(item.extData, emit),
+            props: { ...item },
+            on: {
+              click: () => onPoiClick(item.extData, emit)
+            }
           });
         }),
         h(TdtInfowindow, {
@@ -39,7 +42,16 @@ export const SearchMapView = defineComponent({
           content: state.content,
           offset: [0, -30],
           minWidth: 150,
-          "onUpdate:target": (e: any) => (state.target = e)
+          "onUpdate:target": (e: any) => (state.target = e),
+          props: {
+            target: state.target,
+            content: state.content,
+            offset: [0, -30],
+            minWidth: 150
+          },
+          on: {
+            "update:target": (e: any) => (state.target = e)
+          }
         })
       ]);
   }

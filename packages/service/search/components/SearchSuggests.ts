@@ -19,23 +19,14 @@ export const SearchSuggests = defineComponent({
                 "div",
                 {
                   class: "suggests-item",
-                  onClick: () => onSearch(1, item.name)
+                  onClick: () => onSearch(1, item.name),
+                  on: {
+                    click: () => onSearch(1, item.name)
+                  }
                 },
                 [
-                  h(
-                    "span",
-                    {
-                      class: "suggests-name"
-                    },
-                    item.name
-                  ),
-                  h(
-                    "span",
-                    {
-                      class: "suggests-address"
-                    },
-                    item.address
-                  )
+                  h("span", { class: "suggests-name" }, item.name),
+                  h("span", { class: "suggests-address" }, item.address)
                 ]
               );
             })
