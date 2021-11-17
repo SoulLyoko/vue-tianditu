@@ -18,7 +18,7 @@ declare namespace T {
     /** 返回控件的位置 */
     getPosition(): ControlPosition;
     /** 向地图上添加叠加物。当调用map.addControl时，API将调用此方法。自定义控件时需要实现此方法。自定义控件时需要将控件对应的HTML元素返回 */
-    onAdd(map: Map): void;
+    onAdd(map: Map): HTMLElement;
     /** 移除控件，释放控件对象所占用的内存。自定义控件时需要实现此方法 */
     onRemove(): void;
     /** 返回控件所在的容器的标签 */
