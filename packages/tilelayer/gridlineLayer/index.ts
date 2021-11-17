@@ -12,9 +12,9 @@ export const TdtGridlineLayer = defineComponent({
 
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props);
+      tdtMap.addLayer(tdtComponent);
       useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent });
       useWatch({ props, instance: tdtComponent });
-      tdtMap.addLayer(tdtComponent);
       emit("init", tdtComponent);
     });
 

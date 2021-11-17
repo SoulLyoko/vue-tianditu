@@ -8,7 +8,9 @@ export const NATIVE_PROPS = {
 
 export const OTHER_PROPS = {
   /** 设置控件停靠的偏移量 */
-  offset: { type: Array as unknown as PropType<VT.Point> }
+  offset: { type: Array as unknown as PropType<VT.Point> },
+  /** 是否可见 */
+  visible: { type: Boolean, default: true }
 };
 
 export const NATIVE_EVENTS = {};
