@@ -1,4 +1,4 @@
-import { defineComponent, onBeforeMount } from "vue-demi";
+import { defineComponent, onBeforeMount, getCurrentInstance, isVue2 } from "vue-demi";
 import type { ToolInstances } from "./types";
 import { useMapRoot } from "../use";
 import { useInit, useWatch, PROPS, EVENTS, useEvent } from "./use";
@@ -10,6 +10,13 @@ export const TdtMousetool = defineComponent({
   setup(props, { emit, expose }) {
     onBeforeMount(async () => {
       expose?.({ open, close, clear, clearAll });
+      if (isVue2) {
+        const vm = getCurrentInstance()?.proxy as any;
+        vm.open = open;
+        vm.close = close;
+        vm.clear = clear;
+        vm.clearAll = clearAll;
+      }
 
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props, tdtMap);

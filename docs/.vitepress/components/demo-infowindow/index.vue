@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive } from "vue-demi";
 
 const markers = [
   { title: "这是第一个标记点", position: [113.280637, 23.125178] },

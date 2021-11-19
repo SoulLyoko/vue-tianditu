@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
+import { reactive, ref } from "vue-demi";
 
 const state = reactive({
   center: [113.280637, 23.125178],

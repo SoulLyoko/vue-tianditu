@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 800px; height: 600px">
+  <div class="map-container">
     <button @click="openTool('markTool')">标点</button>
     <TdtMap
       :center="state.center"
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
+import { reactive, ref } from "vue-demi";
 import {
   TdtMap,
   TdtMarker,
@@ -72,7 +72,7 @@ const state = reactive({
     { name: "marker4", position: [113.280637, 23.115178] }
   ],
   infowindow: {
-    target: null,
+    target: null as any,
     content: ""
   },
   keyword: ""
@@ -83,19 +83,16 @@ function openInfoWindow(e: any) {
   state.infowindow.content = e.extData;
 }
 
-const mousetoolRef = ref<typeof TdtMousetool>();
+const mousetoolRef = ref();
 function openTool(toolName: string) {
+  console.log("🚀 ~ file: App.vue ~ line 89 ~ openTool ~ mousetoolRef.value", mousetoolRef.value);
   mousetoolRef.value?.open(toolName);
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.map-container {
+  width: 800px;
+  height: 600px;
 }
 </style>
