@@ -1,6 +1,6 @@
 {
   "name": "vue-tianditu",
-  "version": "2.6.6",
+  "version": "2.6.7",
   "description": "vue-tianditu",
   "author": "SoulLyoko <519052532@qq.com>",
   "repository": "https://github.com/SoulLyoko/vue-tianditu.git",
@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vitejs/plugin-vue": "^1.9.4",
-    "@vue/compiler-sfc": "^3.2.22",
+    "@vue/compiler-sfc": "3.2.20",
     "@vue/composition-api": "1.4.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
@@ -62,14 +62,12 @@
     "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "typescript": "^4.4.4",
-    "unplugin-vue2-script-setup": "^0.6.16",
     "vite": "2.6.13",
     "vite-plugin-vue2": "^1.9.0",
     "vitepress": "^0.20.1",
     "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
-    "vue-tsc": "^0.29.5",
-    "vue2": "npm:vue@2"
+    "vue-tsc": "^0.29.5"
   },
   "lint-staged": {
     "*.{ts,vue}": [

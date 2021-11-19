@@ -32,8 +32,8 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive, ref } from "vue-demi";
+<script lang="ts">
+import { defineComponent, reactive, ref } from "vue-demi";
 import {
   TdtMap,
   TdtMarker,
@@ -48,46 +48,69 @@ import {
   TdtSearch
 } from "~/index";
 
-const state = reactive({
-  center: [113.280637, 23.125178],
-  zoom: 12,
-  polylinePath: [
-    [113.280637, 23.125178],
-    [113.290637, 23.135178]
-  ],
-  polygonPath: [
-    [113.280637, 23.125178],
-    [113.290637, 23.125178],
-    [113.290637, 23.115178],
-    [113.280637, 23.115178]
-  ],
-  bounds: [
-    [113.280637, 23.125178],
-    [113.270637, 23.115178]
-  ],
-  markers: [
-    { name: "marker1", position: [113.280637, 23.125178] },
-    { name: "marker2", position: [113.290637, 23.125178] },
-    { name: "marker3", position: [113.290637, 23.115178] },
-    { name: "marker4", position: [113.280637, 23.115178] }
-  ],
-  infowindow: {
-    target: null as any,
-    content: ""
+export default defineComponent({
+  components: {
+    TdtMap,
+    TdtMarker,
+    TdtLabel,
+    TdtPolyline,
+    TdtPolygon,
+    TdtRectangle,
+    TdtCircle,
+    TdtInfowindow,
+    TdtMousetool,
+    TdtControl,
+    TdtSearch
   },
-  keyword: ""
+  setup() {
+    const state = reactive({
+      center: [113.280637, 23.125178],
+      zoom: 12,
+      polylinePath: [
+        [113.280637, 23.125178],
+        [113.290637, 23.135178]
+      ],
+      polygonPath: [
+        [113.280637, 23.125178],
+        [113.290637, 23.125178],
+        [113.290637, 23.115178],
+        [113.280637, 23.115178]
+      ],
+      bounds: [
+        [113.280637, 23.125178],
+        [113.270637, 23.115178]
+      ],
+      markers: [
+        { name: "marker1", position: [113.280637, 23.125178] },
+        { name: "marker2", position: [113.290637, 23.125178] },
+        { name: "marker3", position: [113.290637, 23.115178] },
+        { name: "marker4", position: [113.280637, 23.115178] }
+      ],
+      infowindow: {
+        target: null as any,
+        content: ""
+      },
+      keyword: ""
+    });
+
+    function openInfoWindow(e: any) {
+      state.infowindow.target = e.target;
+      state.infowindow.content = e.extData;
+    }
+
+    const mousetoolRef = ref();
+    function openTool(toolName: string) {
+      mousetoolRef.value?.open(toolName);
+    }
+
+    return {
+      state,
+      mousetoolRef,
+      openInfoWindow,
+      openTool
+    };
+  }
 });
-
-function openInfoWindow(e: any) {
-  state.infowindow.target = e.target;
-  state.infowindow.content = e.extData;
-}
-
-const mousetoolRef = ref();
-function openTool(toolName: string) {
-  console.log("🚀 ~ file: App.vue ~ line 89 ~ openTool ~ mousetoolRef.value", mousetoolRef.value);
-  mousetoolRef.value?.open(toolName);
-}
 </script>
 
 <style>

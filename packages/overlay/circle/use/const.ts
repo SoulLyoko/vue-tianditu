@@ -20,7 +20,7 @@ export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 圆的中心点 */
-  center: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
+  center: { type: Array as PropType<VT.LngLat>, default: () => [0, 0] },
   /** 圆的半径 */
   radius: { type: Number, default: 0 },
   /** 是否可见 */

@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import { isVue2 } from "vue-demi";
-import ScriptSetup from "unplugin-vue2-script-setup/vite";
 import path from "path";
 
 // https://vitejs.dev/config/
@@ -9,7 +8,7 @@ export default defineConfig(async () => {
     ? (await import("vite-plugin-vue2")).createVuePlugin()
     : (await import("@vitejs/plugin-vue")).default();
   return {
-    plugins: [vuePlugin, isVue2 ? ScriptSetup() : null],
+    plugins: [vuePlugin],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),

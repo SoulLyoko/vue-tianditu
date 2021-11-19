@@ -14,11 +14,7 @@
     "paths": {
       "@/*": ["src/*"],
       "~/*": ["packages/*"]
-    },
-    "types": ["unplugin-vue2-script-setup/types"]
-  },
-  "vueCompilerOptions": {
-    "experimentalCompatMode": 2
+    }
   },
   "include": [
     "src/**/*.ts",
