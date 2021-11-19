@@ -1,7 +1,7 @@
-import { h, defineComponent, computed, watch } from "vue-demi";
+import { defineComponent, computed, watch } from "vue-demi";
 import { TdtMarker, TdtInfowindow } from "../../../components";
 import { useState, useMethods } from "../use";
-import { toLngLats } from "../../../utils";
+import { toLngLats, h } from "../../../utils";
 import { EVENTS } from "../use";
 
 export const SearchMapView = defineComponent({
@@ -29,8 +29,6 @@ export const SearchMapView = defineComponent({
       h("div", null, [
         ...markers.value.map(item => {
           return h(TdtMarker, {
-            ...item,
-            onClick: () => onPoiClick(item.extData, emit),
             props: { ...item },
             on: {
               click: () => onPoiClick(item.extData, emit)
@@ -38,11 +36,6 @@ export const SearchMapView = defineComponent({
           });
         }),
         h(TdtInfowindow, {
-          target: state.target,
-          content: state.content,
-          offset: [0, -30],
-          minWidth: 150,
-          "onUpdate:target": (e: any) => (state.target = e),
           props: {
             target: state.target,
             content: state.content,

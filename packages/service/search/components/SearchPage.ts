@@ -1,5 +1,6 @@
-import { h, defineComponent, watch, computed } from "vue-demi";
+import { defineComponent, watch, computed } from "vue-demi";
 import { useState } from "../use";
+import { h } from "../../../utils";
 
 export const SearchPage = defineComponent({
   setup() {
@@ -30,7 +31,6 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn first-page",
-              onClick: () => (state.page = 1),
               on: {
                 click: () => (state.page = 1)
               }
@@ -41,7 +41,6 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn prev-page",
-              onClick: () => state.page--,
               on: {
                 click: () => state.page--
               }
@@ -55,7 +54,6 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn next-page",
-              onClick: () => state.page++,
               on: {
                 click: () => state.page++
               }
@@ -66,7 +64,6 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "search-page-btn last-page",
-              onClick: () => (state.page = pages.value),
               on: {
                 click: () => (state.page = pages.value)
               }

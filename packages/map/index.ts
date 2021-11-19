@@ -1,8 +1,9 @@
 import mitt from "mitt";
-import { defineComponent, h, ref, provide, onMounted } from "vue-demi";
-import { MapEmitEvents, VNodeEl } from "../types";
+import { defineComponent, ref, provide, onMounted } from "vue-demi";
+import { MapEmitEvents } from "../types";
 import { useApiLoader, useEvent } from "../use";
 import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { h } from "../utils";
 
 export const TdtMap = defineComponent({
   name: "TdtMap",
@@ -15,10 +16,10 @@ export const TdtMap = defineComponent({
     provide("mapEmitter", mapEmitter);
 
     const tdtMapRef = h("div", {
-      id: props.mid,
       class: "tdt-map",
-      style: "width:100%;height:100%"
-    }) as VNodeEl;
+      style: "width:100%;height:100%",
+      attrs: { id: props.mid }
+    });
 
     onMounted(async () => {
       await useApiLoader(props.loadConfig);
@@ -41,3 +42,5 @@ export const TdtMap = defineComponent({
       );
   }
 });
+
+export type TdtMap = InstanceType<typeof TdtMap>;

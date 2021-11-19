@@ -1,6 +1,7 @@
-import { h, defineComponent } from "vue-demi";
+import { defineComponent } from "vue-demi";
 import { useMethods, useState } from "../use";
 import { IconSearch, IconClose } from "./icons";
+import { h } from "../../../utils";
 
 export const SearchBox = defineComponent({
   props: {
@@ -20,13 +21,6 @@ export const SearchBox = defineComponent({
         [
           h("input", {
             class: "search-input",
-            type: "text",
-            value: state.keyword,
-            placeholder: props.placeholder,
-            onFocus: () => (state.queryType = 4),
-            onCompositionstart: () => (isComposition = true),
-            onCompositionend: () => (isComposition = false),
-            onInput: (e: any) => setTimeout(() => !isComposition && (state.keyword = e.target.value)),
             attrs: {
               type: "text",
               placeholder: props.placeholder
@@ -46,7 +40,6 @@ export const SearchBox = defineComponent({
             {
               class: "search-close",
               style: state.keyword ? "" : "display:none",
-              onClick: () => (state.keyword = ""),
               on: {
                 click: () => (state.keyword = "")
               }
@@ -57,7 +50,6 @@ export const SearchBox = defineComponent({
             "button",
             {
               class: "search-btn",
-              onClick: () => onSearch(1),
               on: {
                 click: () => onSearch(1)
               }

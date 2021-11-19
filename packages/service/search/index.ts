@@ -1,7 +1,7 @@
-import { defineComponent, onBeforeMount, watch, reactive, h, provide } from "vue-demi";
+import { defineComponent, onBeforeMount, watch, reactive, provide } from "vue-demi";
 import { useMapRoot } from "../../use";
 import { PROPS, EVENTS, useMethods } from "./use";
-import { debounce } from "../../utils";
+import { debounce, h } from "../../utils";
 import "./index.scss";
 import { SearchBox, SearchSuggests, SearchPois, SearchMapView } from "./components";
 import { SearchLocalState, SearchResultState, SearchViewState } from "./types";
@@ -60,14 +60,6 @@ export const TdtSearch = defineComponent({
         {
           class: "tdt-search",
           // 解决地图的滚动冒泡和点击及双击冒泡
-          onMousewheel: (e: Event) => e.stopPropagation(),
-          onClick: (e: Event) => {
-            e.stopPropagation();
-            if (state.tdtMap?.isDoubleClickZoom()) {
-              state.tdtMap?.disableDoubleClickZoom();
-              setTimeout(() => state.tdtMap?.enableDoubleClickZoom(), 300);
-            }
-          },
           on: {
             mousewheel: (e: Event) => e.stopPropagation(),
             click: (e: Event) => {
@@ -81,20 +73,17 @@ export const TdtSearch = defineComponent({
         },
         [
           h(SearchBox, {
-            placeholder: props.placeholder,
             props: {
               placeholder: props.placeholder
             }
           }),
           h(SearchSuggests),
           h(SearchPois, {
-            onPoiClick: (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi),
             on: {
               "poi-click": (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi)
             }
           }),
           h(SearchMapView, {
-            onPoiClick: (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi),
             on: {
               "poi-click": (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi)
             }

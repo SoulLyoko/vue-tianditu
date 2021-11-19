@@ -1,5 +1,6 @@
-import { h, defineComponent } from "vue-demi";
+import { defineComponent } from "vue-demi";
 import { useMethods, useState } from "../use";
+import { h } from "../../../utils";
 
 export const SearchSuggests = defineComponent({
   setup() {
@@ -14,12 +15,11 @@ export const SearchSuggests = defineComponent({
           style: state.suggests ? "" : "display:none"
         },
         state.suggests
-          ? state.suggests.map((item: any) => {
+          ? state.suggests.map(item => {
               return h(
                 "div",
                 {
                   class: "suggests-item",
-                  onClick: () => onSearch(1, item.name),
                   on: {
                     click: () => onSearch(1, item.name)
                   }

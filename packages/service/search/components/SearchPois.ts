@@ -1,7 +1,8 @@
-import { h, defineComponent } from "vue-demi";
+import { defineComponent } from "vue-demi";
 import { useMethods, useState } from "../use";
 import { SearchPage } from "./SearchPage";
 import { EVENTS } from "../use";
+import { h } from "../../../utils";
 
 export const SearchPois = defineComponent({
   emits: EVENTS,
@@ -24,7 +25,6 @@ export const SearchPois = defineComponent({
                   "div",
                   {
                     class: "pois-item",
-                    onClick: () => onPoiClick(item, emit),
                     on: {
                       click: () => onPoiClick(item, emit)
                     }

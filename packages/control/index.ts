@@ -1,21 +1,20 @@
-import { defineComponent, h, onMounted, onUnmounted } from "vue-demi";
-import { VNodeEl } from "../types";
+import { defineComponent, onMounted, onUnmounted } from "vue-demi";
 import { useEvent, useMapRoot } from "../use";
 import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { h } from "../utils";
 
 export const TdtControl = defineComponent({
   name: "TdtControl",
   props: PROPS,
   emits: EVENTS,
   setup(props, { emit, slots }) {
-    let controlRef = h("div") as VNodeEl;
+    let controlRef = h("div");
 
     onMounted(async () => {
       onUnmounted(() => tdtComponent && tdtMap?.removeControl(tdtComponent));
 
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props);
-
       tdtComponent.onAdd = () => controlRef.el || controlRef.elm;
       tdtComponent.onRemove = () => {};
       tdtMap.addControl(tdtComponent);
@@ -25,7 +24,7 @@ export const TdtControl = defineComponent({
     });
 
     return () => {
-      controlRef = h("div", { class: "tdt-control-custom" }, slots.default?.()) as VNodeEl;
+      controlRef = h("div", { class: "tdt-control-custom" }, slots.default?.());
       return controlRef;
     };
   }
