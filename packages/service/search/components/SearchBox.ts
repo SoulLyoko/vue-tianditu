@@ -20,7 +20,7 @@ export const SearchBox = defineComponent({
         },
         [
           h("input", {
-            class: "search-input",
+            class: "tdt-search-box__input",
             attrs: {
               type: "text",
               placeholder: props.placeholder
@@ -38,8 +38,8 @@ export const SearchBox = defineComponent({
           h(
             "i",
             {
-              class: "search-close",
-              style: state.keyword ? "" : "display:none",
+              class: "tdt-search-box__close",
+              style: { display: state.keyword ? "block" : "none" },
               on: {
                 click: () => (state.keyword = "")
               }
@@ -49,7 +49,7 @@ export const SearchBox = defineComponent({
           h(
             "button",
             {
-              class: "search-btn",
+              class: "tdt-search-box__btn",
               on: {
                 click: () => onSearch(1)
               }

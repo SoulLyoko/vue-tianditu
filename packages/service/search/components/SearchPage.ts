@@ -30,7 +30,7 @@ export const SearchPage = defineComponent({
           h(
             "span",
             {
-              class: "search-page-btn first-page",
+              class: "tdt-search-page__btn first-page",
               on: {
                 click: () => (state.page = 1)
               }
@@ -40,7 +40,7 @@ export const SearchPage = defineComponent({
           h(
             "span",
             {
-              class: "search-page-btn prev-page",
+              class: "tdt-search-page__btn prev-page",
               on: {
                 click: () => state.page--
               }
@@ -53,7 +53,7 @@ export const SearchPage = defineComponent({
           h(
             "span",
             {
-              class: "search-page-btn next-page",
+              class: "tdt-search-page__btn next-page",
               on: {
                 click: () => state.page++
               }
@@ -63,7 +63,7 @@ export const SearchPage = defineComponent({
           h(
             "span",
             {
-              class: "search-page-btn last-page",
+              class: "tdt-search-page__btn last-page",
               on: {
                 click: () => (state.page = pages.value)
               }

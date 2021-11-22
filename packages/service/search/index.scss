@@ -7,14 +7,14 @@
     position: relative;
     box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
 
-    .search-input {
+    .tdt-search-box__input {
       outline: none;
       width: 210px;
       height: 100%;
       padding: 0 10px;
       border: none;
     }
-    .search-btn {
+    .tdt-search-box__btn {
       outline: none;
       border: none;
       width: 40px;
@@ -26,7 +26,7 @@
       text-align: center;
       background-color: #fff;
     }
-    .search-close {
+    .tdt-search-box__close {
       position: absolute;
       right: 40px;
       top: 0;
@@ -48,7 +48,7 @@
     margin-top: 1px;
     box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
 
-    .suggests-item {
+    .search-suggests-item {
       text-align: left;
       line-height: 2;
       padding: 0 10px;
@@ -56,10 +56,10 @@
       &:hover {
         background: #eee;
       }
-      .suggests-name {
+      .search-suggests-item__name {
         font-size: 14px;
       }
-      .suggests-address {
+      .search-suggests-item__address {
         font-size: 12px;
         color: #999;
         margin-left: 10px;
@@ -76,7 +76,7 @@
     overflow-y: auto;
     box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
 
-    .pois-item {
+    .search-pois-item {
       text-align: left;
       line-height: 2;
       padding: 0 10px;
@@ -85,10 +85,10 @@
       &:hover {
         background: #f5f5f5;
       }
-      .pois-name {
+      .search-pois-item__name {
         font-size: 14px;
       }
-      .pois-address {
+      .search-pois-item__address {
         font-size: 12px;
         color: #999;
       }
@@ -98,7 +98,7 @@
   .tdt-search-page {
     width: 100%;
     text-align: center;
-    .search-page-btn {
+    .tdt-search-page__btn {
       cursor: pointer;
       padding: 4px;
       font-size: 14px;

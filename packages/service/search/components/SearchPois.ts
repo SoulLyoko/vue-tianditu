@@ -15,7 +15,7 @@ export const SearchPois = defineComponent({
         "div",
         {
           class: "tdt-search-pois",
-          style: state.pois ? "" : "display:none"
+          style: { display: state.pois ? "block" : "none" }
         },
         [
           // 点信息
@@ -24,15 +24,15 @@ export const SearchPois = defineComponent({
                 return h(
                   "div",
                   {
-                    class: "pois-item",
+                    class: "search-pois-item",
                     on: {
                       click: () => onPoiClick(item, emit)
                     }
                   },
                   [
-                    h("strong", { class: "pois-name" }, item.name),
+                    h("strong", { class: "search-pois-item__name" }, item.name),
                     h("br"),
-                    h("span", { class: "pois-address" }, item.address)
+                    h("span", { class: "search-pois-item__address" }, item.address)
                   ]
                 );
               })

@@ -12,21 +12,21 @@ export const SearchSuggests = defineComponent({
         "div",
         {
           class: "tdt-search-suggests",
-          style: state.suggests ? "" : "display:none"
+          style: { display: state.suggests ? "block" : "none" }
         },
         state.suggests
           ? state.suggests.map(item => {
               return h(
                 "div",
                 {
-                  class: "suggests-item",
+                  class: "search-suggests-item",
                   on: {
                     click: () => onSearch(1, item.name)
                   }
                 },
                 [
-                  h("span", { class: "suggests-name" }, item.name),
-                  h("span", { class: "suggests-address" }, item.address)
+                  h("span", { class: "search-suggests-item__name" }, item.name),
+                  h("span", { class: "search-suggests-item__address" }, item.address)
                 ]
               );
             })
