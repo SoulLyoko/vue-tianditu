@@ -1,8 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+npm run switch3
+git add package.json
+git add yarn.lock
 npm run cp
-# npm run dts
 git add docs/index.md
 git add docs/CHANGELOG.md
 npx lint-staged --allow-empty $1

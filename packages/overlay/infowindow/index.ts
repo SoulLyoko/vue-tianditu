@@ -13,7 +13,12 @@ export const TdtInfowindow = defineComponent({
         "div",
         {
           class: "tdt-infowindow-custom",
-          style: { minWidth: props.minWidth, maxWidth: props.maxWidth, maxHeight: props.maxHeight }
+          style: {
+            minWidth: props.minWidth,
+            maxWidth: props.maxWidth,
+            maxHeight: props.maxHeight,
+            display: slots.default && props.target ? "block" : "none"
+          }
         },
         slots.default?.()
       );
