@@ -1,4 +1,4 @@
-import { ExtractPropTypes, EmitsOptions, SetupContext, ComponentPublicInstance, VNode } from "vue-demi";
+import { ExtractPropTypes, EmitsOptions, SetupContext, ComponentPublicInstance } from "vue-demi";
 
 export type Data<V = any> = Record<string, V>;
 

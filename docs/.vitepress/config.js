@@ -50,6 +50,10 @@ module.exports = {
         {
           text: "服务",
           children: [{ text: "搜索", link: "/service/search" }]
+        },
+        {
+          text: "扩展",
+          children: [{ text: "车辆轨迹", link: "/extra/car-track" }]
         }
       ]
     }

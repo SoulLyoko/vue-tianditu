@@ -42,4 +42,6 @@ declare namespace VT {
   interface MarkerClustererStyle extends T.MarkerClustererStyle {
     offset?: Point;
   }
+
+  type PassOneNode = (lnglat: LngLat, index: number, length: number) => void;
 }

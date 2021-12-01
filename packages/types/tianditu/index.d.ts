@@ -1,8 +1,10 @@
 import "./base";
 import "./control";
+import "./extra";
 import "./map";
 import "./mousetool";
 import "./overlay";
+import "./service";
 import "./tileLayer";
 
 declare global {

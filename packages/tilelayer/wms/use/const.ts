@@ -1,4 +1,3 @@
-import { PropType } from "vue-demi";
 import { DefineEmits, DefineProps } from "../../../types";
 
 export const NATIVE_PROPS = {
