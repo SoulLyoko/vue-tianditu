@@ -26,7 +26,7 @@ declare namespace VT {
       name: ControlName;
     };
 
-  interface ControlMapTypeOptions extends T.ControlMapTypeOptions {
+  interface ControlMapTypeOptions {
     mapTypes?: {
       title: string;
       icon: string;

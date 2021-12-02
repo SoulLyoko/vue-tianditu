@@ -78,11 +78,11 @@ export const NATIVE_EVENTS: T.MapEvents = {
   longpress: () => true
 };
 
-export const EXTRA_EVENTS: { init(e: T.Map): void } & T.ControlOverviewMapEvents = {
+export const EXTRA_EVENTS = {
   /** 地图初始化 */
-  init: e => e instanceof T.Map,
+  init: (e: T.Map) => e instanceof T.Map,
   /** 鹰眼视图控件的开合状态变化时触发事件 */
-  viewchange: () => true
+  viewchange: (e: T.ControlOverviewMapEvent) => true
 };
 
 export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };

@@ -271,11 +271,7 @@ declare namespace T {
     target: Map;
   }
 
-  interface MapEvent {
-    /** 事件类型 */
-    type: string;
-    /** 地图对象 */
-    target: Map;
+  interface MapEvent extends MapEventBase {
     /** 经纬度坐标 */
     lnglat: LngLat;
     /** xy坐标 */

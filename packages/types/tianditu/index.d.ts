@@ -5,7 +5,7 @@ import "./map";
 import "./mousetool";
 import "./overlay";
 import "./service";
-import "./tileLayer";
+import "./layer";
 
 declare global {
   interface Window {
