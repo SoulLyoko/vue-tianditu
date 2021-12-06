@@ -52,13 +52,13 @@ export async function useApiLoader(config: LoadConfig = {}) {
 
 function loadScript(url: string) {
   return new Promise<void>((resolve, reject) => {
-    const script = document.createElement("script");
+    const script = globalThis.document?.createElement("script") || {};
     script.src = url;
     script.type = "text/javascript";
     script.async = true;
     script.defer = true;
     script.onload = () => resolve();
     script.onerror = e => reject(e);
-    document.body.appendChild(script);
+    globalThis.document?.body.appendChild(script);
   });
 }
