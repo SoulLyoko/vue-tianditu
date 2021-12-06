@@ -34,7 +34,7 @@ export async function useApiLoader(config: LoadConfig = {}) {
     return new Promise(resolve => {
       setTimeout(() => resolve(useApiLoader(config)));
     });
-  } else if (window.T) {
+  } else if (globalThis.T) {
     return;
   } else {
     isLoading = true;
