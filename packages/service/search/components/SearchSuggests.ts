@@ -1,36 +1,38 @@
-import { defineComponent } from "vue-demi";
-import { useMethods, useState } from "../use";
+import { defineComponent, PropType } from "vue-demi";
 import { h } from "../../../utils";
+import "../styles/search-suggests.scss";
 
 export const SearchSuggests = defineComponent({
-  setup() {
-    const state = useState();
-    const { onSearch } = useMethods(state);
-
+  props: {
+    /** 搜索建议数组 */
+    suggests: { type: Array as PropType<T.LocalSearchSuggest[]>, default: () => [] }
+  },
+  emits: {
+    "suggest-click": (e: T.LocalSearchSuggest) => true
+  },
+  setup(props, { emit }) {
     return () =>
       h(
         "div",
         {
           class: "tdt-search-suggests",
-          style: { display: state.suggests ? "block" : "none" }
+          style: { display: props.suggests.length ? "block" : "none" }
         },
-        state.suggests
-          ? state.suggests.map(item => {
-              return h(
-                "div",
-                {
-                  class: "search-suggests-item",
-                  on: {
-                    click: () => onSearch(1, item.name)
-                  }
-                },
-                [
-                  h("span", { class: "search-suggests-item__name" }, item.name),
-                  h("span", { class: "search-suggests-item__address" }, item.address)
-                ]
-              );
-            })
-          : []
+        props.suggests.map(item => {
+          return h(
+            "div",
+            {
+              class: "search-suggests-item",
+              on: {
+                click: () => emit("suggest-click", item)
+              }
+            },
+            [
+              h("span", { class: "search-suggests-item__name" }, item.name),
+              h("span", { class: "search-suggests-item__address" }, item.address)
+            ]
+          );
+        })
       );
   }
 });

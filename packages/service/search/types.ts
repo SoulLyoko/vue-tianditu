@@ -14,7 +14,7 @@ export interface SearchViewState {
   markers: TdtMarker["$props"][];
   target: VT.LngLat | null;
   content: string;
-  page: number;
+  current: number;
   total: number | string;
 }
 

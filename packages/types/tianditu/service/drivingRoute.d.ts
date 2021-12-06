@@ -29,6 +29,10 @@ declare namespace T {
   }
 
   interface DrivingRouteResult {
+    /** 起点"lng,lat" */
+    start: string;
+    /** 终点"lng,lat" */
+    end: string;
     /** 返回起点 */
     getStart(): LngLat;
     /** 返回终点 */

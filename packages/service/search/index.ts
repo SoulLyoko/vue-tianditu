@@ -1,8 +1,9 @@
-import { defineComponent, onBeforeMount, watch, reactive, provide } from "vue-demi";
+import { defineComponent, onBeforeMount, reactive, provide, watch, isVue2 } from "vue-demi";
 import { useMapRoot } from "../../use";
+import { h } from "../../utils";
+import "../../styles/tdt-search.scss";
+import "../../styles/tdt-icon.scss";
 import { PROPS, EVENTS, useMethods } from "./use";
-import { debounce, h } from "../../utils";
-import "./index.scss";
 import { SearchBox, SearchSuggests, SearchPois, SearchMapView } from "./components";
 import { SearchLocalState, SearchResultState, SearchViewState } from "./types";
 
@@ -29,27 +30,26 @@ export const TdtSearch = defineComponent({
       markers: [],
       target: null,
       content: "",
-      page: 1,
+      current: 1,
       total: 0
     };
     const state = reactive({ ...searchLocalState, ...searchResultState, ...searchViewState });
 
     provide("searchState", state);
 
-    const { onSearch, onSearchComplete } = useMethods(state);
+    const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(state, emit);
 
     onBeforeMount(async () => {
       state.tdtMap = await useMapRoot();
       state.localSearch = new T.LocalSearch(state.tdtMap, {
         pageCapacity: props.pageCapacity,
-        onSearchComplete: result => onSearchComplete(result, emit)
+        onSearchComplete
       });
       emit("init", state.localSearch);
-
       watch(
-        () => state.keyword,
-        () => {
-          debounce(onSearch, 100)();
+        () => [props.value, props.modelValue],
+        ([v, mV]: string[]) => {
+          isVue2 ? emit("input", v) : emit("update:modelValue", mV);
         }
       );
     });
@@ -74,18 +74,47 @@ export const TdtSearch = defineComponent({
         [
           h(SearchBox, {
             props: {
+              value: state.keyword,
+              modelValue: state.keyword,
               placeholder: props.placeholder
+            },
+            on: {
+              input: (val: string) => onSearch(4, val),
+              "update:modelValue": (val: string) => onSearch(4, val),
+              search: (val: string) => onSearch(1, val)
             }
           }),
-          h(SearchSuggests),
-          h(SearchPois, {
+          h(SearchSuggests, {
+            props: {
+              suggests: state.suggests || []
+            },
             on: {
-              "poi-click": (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi)
+              "suggest-click": onSuggestClick
+            }
+          }),
+          h(SearchPois, {
+            props: {
+              pois: state.pois || [],
+              page: {
+                current: state.current,
+                size: props.pageCapacity,
+                total: state.total
+              }
+            },
+            on: {
+              "poi-click": onPoiClick,
+              "update:page": onPageChange
             }
           }),
           h(SearchMapView, {
+            props: {
+              pois: state.pois || [],
+              target: state.target,
+              content: state.content
+            },
             on: {
-              "poi-click": (poi: T.LocalSearchResultPois[0]) => emit("poi-click", poi)
+              "poi-click": onPoiClick,
+              "update:target": (e: any) => (state.target = e)
             }
           })
         ]

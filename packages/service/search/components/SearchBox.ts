@@ -1,16 +1,34 @@
-import { defineComponent } from "vue-demi";
-import { useMethods, useState } from "../use";
+import { defineComponent, computed, isVue2 } from "vue-demi";
 import { IconSearch, IconClose } from "./icons";
-import { h } from "../../../utils";
+import { h, debounce } from "../../../utils";
+import "../styles/search-box.scss";
 
 export const SearchBox = defineComponent({
   props: {
-    placeholder: { type: String, default: "输入关键字搜索" }
+    value: { type: String, default: "" },
+    modelValue: { type: String, default: "" },
+    /** 显示在输入框的提示 */
+    placeholder: { type: String, default: "输入关键字搜索" },
+    /** 是否显示搜索按钮 */
+    searchBtn: { type: Boolean, default: true }
   },
-  setup(props) {
+  emits: {
+    input: (e: string) => true,
+    "update:modelValue": (e: string) => true,
+    // 点击搜索按钮事件或回车时触发
+    search: (e: string) => true
+  },
+  setup(props, { emit }) {
     let isComposition = false;
-    const state = useState();
-    const { onSearch } = useMethods(state);
+
+    const keyword = computed({
+      get() {
+        return isVue2 ? props.value : props.modelValue;
+      },
+      set(val: string) {
+        isVue2 ? emit("input", val) : emit("update:modelValue", val);
+      }
+    });
 
     return () =>
       h(
@@ -26,36 +44,37 @@ export const SearchBox = defineComponent({
               placeholder: props.placeholder
             },
             domProps: {
-              value: state.keyword
+              value: keyword.value
             },
             on: {
-              focus: () => (state.queryType = 4),
               compositionstart: () => (isComposition = true),
               compositionend: () => (isComposition = false),
-              input: (e: any) => setTimeout(() => !isComposition && (state.keyword = e.target.value))
+              input: debounce((e: any) => !isComposition && (keyword.value = e.target.value), 100),
+              keyup: (e: KeyboardEvent) => e.code === "Enter" && emit("search", keyword.value)
             }
           }),
           h(
             "i",
             {
               class: "tdt-search-box__close",
-              style: { display: state.keyword ? "block" : "none" },
+              style: { display: props.value || props.modelValue ? "block" : "none" },
               on: {
-                click: () => (state.keyword = "")
+                click: () => (keyword.value = "")
               }
             },
             [h(IconClose)]
           ),
-          h(
-            "button",
-            {
-              class: "tdt-search-box__btn",
-              on: {
-                click: () => onSearch(1)
-              }
-            },
-            [h(IconSearch)]
-          )
+          props.searchBtn &&
+            h(
+              "button",
+              {
+                class: "tdt-search-box__btn",
+                on: {
+                  click: () => emit("search", keyword.value)
+                }
+              },
+              [h(IconSearch)]
+            )
         ]
       );
   }

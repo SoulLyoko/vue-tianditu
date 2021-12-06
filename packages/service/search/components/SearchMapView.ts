@@ -1,28 +1,38 @@
-import { defineComponent, computed, watch } from "vue-demi";
+import { defineComponent, computed, watch, onBeforeMount, PropType } from "vue-demi";
 import { TdtMarker, TdtInfowindow } from "../../../components";
-import { useState, useMethods } from "../use";
 import { toLngLats, h } from "../../../utils";
-import { EVENTS } from "../use";
+import { useMapRoot } from "../../../use";
 
 export const SearchMapView = defineComponent({
-  emits: EVENTS,
+  props: {
+    /** 显示在地图上的点数组 */
+    pois: { type: Array as PropType<T.LocalSearchPoi[]>, default: () => [] },
+    /** 显示信息窗口的坐标 */
+    target: { type: Array as PropType<VT.LngLat | null>, default: () => null },
+    /** 信息窗口的内容 */
+    content: { type: String, default: "" }
+  },
+  emits: {
+    /** 点击地图上的标点触发 */
+    "poi-click": (e: T.LocalSearchPoi) => true,
+    "update-target": (e: VT.LngLat | null) => true
+  },
   setup(props, { emit }) {
-    const state = useState();
-    const { onPoiClick } = useMethods(state);
-
     const markers = computed(() => {
-      return state.pois
-        ? state.pois.map(poi => {
-            return {
-              position: poi.lonlat.split(" ").map(Number),
-              extData: poi
-            };
-          })
-        : [];
+      return props.pois.map(poi => {
+        return {
+          position: poi.lonlat.split(" ").map(Number),
+          extData: poi
+        };
+      });
     });
 
-    watch(markers, () => {
-      state.tdtMap?.setViewport(toLngLats(markers.value.map(e => e.position)));
+    onBeforeMount(async () => {
+      const tdtMap = await useMapRoot();
+
+      watch(markers, () => {
+        tdtMap?.setViewport(toLngLats(markers.value.map(e => e.position)));
+      });
     });
 
     return () =>
@@ -31,19 +41,19 @@ export const SearchMapView = defineComponent({
           return h(TdtMarker, {
             props: { ...item },
             on: {
-              click: () => onPoiClick(item.extData, emit)
+              click: () => emit("poi-click", item.extData)
             }
           });
         }),
         h(TdtInfowindow, {
           props: {
-            target: state.target,
-            content: state.content,
+            target: props.target,
+            content: props.content,
             offset: [0, -30],
             minWidth: 150
           },
           on: {
-            "update:target": (e: any) => (state.target = e)
+            "update:target": (e: VT.LngLat | null) => emit("update-target", e)
           }
         })
       ]);

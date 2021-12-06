@@ -19,7 +19,7 @@ const state = reactive({
 function searchComplete(result: T.LocalSearchResult) {
   console.log(result);
 }
-function poiClick(poi: T.LocalSearchResultPois[0]) {
+function poiClick(poi: T.LocalSearchPoi) {
   console.log(poi);
 }
 </script>

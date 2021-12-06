@@ -58,12 +58,12 @@ declare namespace T {
     resultType: number | string;
     count: number | string;
     KeyWord: string;
-    pois: LocalSearchResultPois | false;
-    statistics: LocalSearchResultStatistics | false;
-    area: LocalSearchResultArea | false;
-    suggests: LocalSearchResultSuggests | false;
-    prompt: LocalSearchResultPrompt | false;
-    lineData: LocalSearchResultLineData | false;
+    pois: LocalSearchPoi[] | false;
+    statistics: LocalSearchStatistics | false;
+    area: LocalSearchArea | false;
+    suggests: LocalSearchSuggest[] | false;
+    prompt: LocalSearchPrompt[] | false;
+    lineData: LocalSearchLineData[] | false;
     /** 返回搜索类型 */
     getResultType(): QueryType;
     /** 返回检索总条数 */
@@ -71,21 +71,21 @@ declare namespace T {
     /** 返回检索关键词 */
     getKeyword(): number;
     /** 返回点信息，当getResultType值为1时返回 */
-    getPois(): LocalSearchResultPois;
+    getPois(): LocalSearchPoi[];
     /** 返回统计信息，当getResultType值为2时返回 */
-    getStatistics(): LocalSearchResultStatistics;
+    getStatistics(): LocalSearchStatistics;
     /** 返回行政区省信息，当getResultType值为3时返回 */
-    getArea(): LocalSearchResultArea;
+    getArea(): LocalSearchArea;
     /** 返回建议词信息，当getResultType值为4时返回 */
-    getSuggests(): LocalSearchResultSuggests;
+    getSuggests(): LocalSearchSuggest[];
     /** 返回提示信息 */
-    getPrompt(): LocalSearchResultPrompt;
+    getPrompt(): LocalSearchPrompt;
     /** 返回线路信息，当getResultType值为5时返回 */
-    getLineData(): LocalSearchResultLineData;
+    getLineData(): LocalSearchLineData[];
   }
 
   /** 点信息 */
-  type LocalSearchResultPois = {
+  interface LocalSearchPoi {
     /** 电话 */
     phone: string;
     /** 坐标 */
@@ -96,19 +96,12 @@ declare namespace T {
     name: string;
     /** poi类型（102表示公交站，普通poi该参数可以不返回） */
     poiType: string;
-  }[];
+  }
 
   /** 统计信息 */
-  interface LocalSearchResultStatistics {
+  interface LocalSearchStatistics {
     /** 推荐显示城市 */
-    priorityCitys: {
-      /** 统计数量 */
-      count: string;
-      /** 城市名称 */
-      name: string;
-      /** 城市国标码 */
-      adminCode: number;
-    }[];
+    priorityCitys: LocalSearchAdmin[];
     /** 搜索的关键字 */
     keyword: string;
     /** 搜索的国家数量 */
@@ -117,19 +110,17 @@ declare namespace T {
     citysCount: number;
     /** 搜索的省份数量 */
     provinceCount: number;
-    allAdmins: LocalSearchResultStatistics["priorityCitys"] & {
-      childAdmins: LocalSearchResultStatistics["priorityCitys"];
-    };
+    allAdmins: (LocalSearchAdmin & { childAdmins: LocalSearchAdmin[] })[];
   }
 
   /** 行政区省信息 */
-  interface LocalSearchResultArea {
+  interface LocalSearchArea {
     /** 显示级别 */
     level: string;
     /** 定位中心点坐标 */
     lonlat: string;
     /** 名称 */
-    name: "北京市";
+    name: string;
     /** 行政区边界坐标 */
     points: { region: string }[];
     /** 1表示正常区域，2表示特殊区域 */
@@ -137,30 +128,25 @@ declare namespace T {
   }
 
   /** 建议词信息 */
-  type LocalSearchResultSuggests = {
+  interface LocalSearchSuggest {
     /** 地址 */
     address: string;
     /** 名称 */
     name: string;
     /** 国标码 */
     gbCode: string;
-  }[];
+  }
 
   /** 提示信息 */
-  type LocalSearchResultPrompt = {
+  interface LocalSearchPrompt {
     /** 关键字 */
     keyword: string;
-    admins: {
-      /** 搜索的行政区范围 */
-      name: string;
-      /** 行政区码 */
-      adminCode: number;
-    }[];
+    admins: LocalSearchAdmin[];
     type: number;
-  }[];
+  }
 
   /** 线路信息 */
-  type LocalSearchResultLineData = {
+  interface LocalSearchLineData {
     /** poi点的poi类型（poiType =102表示公交站，其它值表示普通poi） */
     poiType: string;
     /** 站数 */
@@ -169,5 +155,14 @@ declare namespace T {
     name: string;
     /** 线路的id */
     uuid: string;
-  }[];
+  }
+
+  interface LocalSearchAdmin {
+    /** 统计数量 */
+    count: string;
+    /** 城市名称 */
+    name: string;
+    /** 城市国标码 */
+    adminCode: number;
+  }
 }

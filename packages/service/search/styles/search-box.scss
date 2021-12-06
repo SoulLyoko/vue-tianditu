@@ -1,0 +1,39 @@
+.tdt-search-box {
+  display: flex;
+  height: 30px;
+  position: relative;
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+
+  .tdt-search-box__input {
+    outline: none;
+    width: 210px;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+  }
+  .tdt-search-box__btn {
+    outline: none;
+    border: none;
+    width: 40px;
+    height: 100%;
+    line-height: 35px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    background-color: #fff;
+  }
+  .tdt-search-box__close {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: 15px;
+    height: 30px;
+    line-height: 35px;
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    background-color: #fff;
+  }
+}
