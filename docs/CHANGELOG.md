@@ -1,9 +1,17 @@
+### v2.6.9
+
+2021-12-06
+
+- feat: 新增车辆轨迹组件 TdtCartrack
+- refactor: 天地图的类型定义优化
+- refactor: TdtSearch 组件优化
+
 ### v2.6.8
 
 2021-11-22
 
-- fix: TdtInfowindow插槽显示问题
-- fix: 优化TdtSearch样式
+- fix: TdtInfowindow 插槽显示问题
+- fix: 优化 TdtSearch 样式
 
 ### v2.6.7
 
