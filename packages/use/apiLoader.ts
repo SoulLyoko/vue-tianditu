@@ -39,21 +39,25 @@ export async function useApiLoader(config: LoadConfig = {}) {
   } else {
     isLoading = true;
     const { v, tk, plugins } = { ...DEFAULT_CONFIG, ...config };
-    await loadScript(`https://api.tianditu.gov.cn/api?v=${v}&tk=${tk}`);
-    await Promise.all(
-      plugins
-        .map((name: keyof typeof PLUGINS_URL) => PLUGINS_URL[name])
-        .flat()
-        .map(url => loadScript(url))
-    );
-    isLoading = false;
+    try {
+      await loadScript(`https://api.tianditu.gov.cn/api?v=${v}&tk=${tk}`);
+      await Promise.all(
+        plugins
+          .map((name: keyof typeof PLUGINS_URL) => PLUGINS_URL[name])
+          .flat()
+          .map(url => loadScript(url))
+      );
+      isLoading = false;
+    } catch (error) {
+      isLoading = false;
+    }
   }
 }
 
 function loadScript(url: string) {
   return new Promise<void>((resolve, reject) => {
     const script = globalThis.document?.createElement("script");
-    if (!script) resolve();
+    if (!script) reject();
     script.src = url;
     script.type = "text/javascript";
     script.async = true;
