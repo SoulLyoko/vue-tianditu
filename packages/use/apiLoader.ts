@@ -52,7 +52,8 @@ export async function useApiLoader(config: LoadConfig = {}) {
 
 function loadScript(url: string) {
   return new Promise<void>((resolve, reject) => {
-    const script = globalThis.document?.createElement("script") || {};
+    const script = globalThis.document?.createElement("script");
+    if (!script) resolve();
     script.src = url;
     script.type = "text/javascript";
     script.async = true;
