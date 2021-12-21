@@ -1,21 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-#替换vue版本
-cat package.json | while read line
-do
-  reg="\"vue\": \"^2.6."
-  if [[ $line == *$reg* ]]
-  then
-    npm run switch3
-    git add package.json
-    git add yarn.lock
-  fi
-done
-
-#复制文档
-npm run cp
-git add docs/index.md
-git add docs/CHANGELOG.md
+npm run precommit
 
 npx lint-staged --allow-empty $1

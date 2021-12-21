@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/vue-tianditu/v2",
+  base: "/vue-tianditu/v2/",
   lang: "zh-CN",
   title: "VueTianditu",
   description: "Vue3 Components for TiandituApi",
@@ -49,7 +49,10 @@ module.exports = {
         },
         {
           text: "服务",
-          children: [{ text: "搜索", link: "/service/search" }]
+          children: [
+            { text: "搜索", link: "/service/search" },
+            { text: "导航", link: "/service/route" }
+          ]
         },
         {
           text: "扩展",

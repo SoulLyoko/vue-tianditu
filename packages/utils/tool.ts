@@ -5,12 +5,12 @@
  * @param {number} wait 等待时间,默认500ms
  * @param {boolean} immediate 是否立即执行
  */
-export function debounce(func: Function, wait = 500, immediate = false) {
+export function debounce<F extends () => void>(func: F, wait = 500, immediate = false) {
   let timeout: NodeJS.Timeout | undefined;
-  return function () {
+  return function (...args: Parameters<F>) {
     // @ts-ignore
     const context = this;
-    const args = arguments;
+    // const args = arguments;
 
     if (timeout) clearTimeout(timeout);
     if (immediate) {
@@ -20,9 +20,11 @@ export function debounce(func: Function, wait = 500, immediate = false) {
         timeout = undefined;
       }, wait);
       if (callNow) func.apply(context, args);
+      // if (callNow) func(...args);
     } else {
       timeout = setTimeout(function () {
         func.apply(context, args);
+        // func(...args);
       }, wait);
     }
   };
