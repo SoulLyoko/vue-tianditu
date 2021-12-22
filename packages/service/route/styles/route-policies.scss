@@ -1,0 +1,19 @@
+.route-policies {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px 0;
+  .route-policies-item {
+    width: 100%;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    &:not(:last-child) {
+      border-right: 1px solid #aaa;
+    }
+    &:hover,
+    &.active {
+      color: #2c64a7;
+    }
+  }
+}

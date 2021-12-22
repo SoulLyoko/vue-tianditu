@@ -1,0 +1,9 @@
+.route-plans {
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+  details > summary {
+    cursor: pointer;
+  }
+}

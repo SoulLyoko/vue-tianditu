@@ -15,4 +15,5 @@ export * from "./tilelayer/tdt";
 export * from "./tilelayer/wms";
 export * from "./tilelayer/gridlineLayer";
 export * from "./service/search";
+export * from "./service/route";
 export * from "./extra/cartrack";

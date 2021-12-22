@@ -13,6 +13,26 @@ declare namespace T {
     setPolicy(policy: TransitRouteOptions["policy"]): void;
     /** 设置检索结束后的回调函数 */
     setSearchCompleteCallback(fun: Function): void;
+    /** 返回状态码 */
+    getStatus(): TransitRouteResult["resultCode"];
+  }
+
+  interface TransitRouteOptions {
+    /**
+     * 公交导航的策略参数。
+     * TMAP_TRANSIT_POLICY_LEAST_TIME = 1表示最少时间
+     * TMAP_TRANSIT_POLICY_LEAST_TRANSFER = 2表示最少换乘
+     * TMAP_TRANSIT_POLICY_LEAST_WALKING = 4表示最少步行
+     * TMAP_TRANSIT_POLICY_AVOID_SUBWAYS = 8表示不乘地铁
+     */
+    policy: number;
+    /** 检索结束后的回调函数 */
+    onSearchComplete?: (result: TransitRouteResult) => void;
+  }
+
+  interface TransitRouteResult {
+    /** 是否包含地铁 */
+    hasSubway: boolean;
     /**
      * 返回状态码。状态码如下：
      * 0表示正常返回线路；
@@ -23,23 +43,20 @@ declare namespace T {
      * 5表示起终点距离500米内，返回线路；
      * 6表示输入参数错误
      */
-    getStatus(): number;
-  }
-
-  interface TransitRouteOptions {
-    /**
-     * 驾车策略参数
-     * TMAP_TRANSIT_POLICY_LEAST_TIME = 1表示最少时间
-     * TMAP_TRANSIT_POLICY_LEAST_TRANSFER = 2表示最少换乘
-     * TMAP_TRANSIT_POLICY_LEAST_WALKING = 4表示最少步行
-     * TMAP_TRANSIT_POLICY_AVOID_SUBWAYS = 8表示不乘地铁
-     */
-    policy?: number;
-    /** 检索结束后的回调函数 */
-    onSearchComplete?: (result: TransitRouteResult) => void;
-  }
-
-  interface TransitRouteResult {
+    resultCode: number;
+    results: {
+      lineType: TransitRouteOptions["policy"];
+      lines: {
+        /** 方案线路名称 */
+        lineName: string;
+        segments: {
+          segmentType: number;
+          segmentLine: SegmentLine;
+          stationStart: Station;
+          stationEnd: Station;
+        }[];
+      }[];
+    };
     /** 返回方案个数 */
     getNumPlans(): number;
     /** 返回索引指定的方案。索引0表示第一条方案 */
@@ -47,12 +64,17 @@ declare namespace T {
   }
 
   interface TransitRoutePlan {
+    Distance: number;
+    Duration: number;
+    LineName: string;
+    LineType: number;
+    NumSegments: number;
     /** 返回单个方案的详细信息段数 */
     getNumSegments(): number;
     /** 返回索引指定的详细信息。索引0表示第一条方案 */
     getDetails(i: number): TransitRouteLine;
     /** 返回方案描述文本 */
-    getLineName(): [];
+    getLineName(): string[];
     /** 返回方案总距离 */
     getDistance(): number;
     /** 返回方案总时间 */
@@ -79,11 +101,11 @@ declare namespace T {
   }
 
   interface Station {
-    /** 起站点坐标 "lng,lat" */
+    /** 起终站点坐标 "lng,lat" */
     lonlat: string;
-    /** 起站点名称 */
+    /** 起终站点名称 */
     name: string;
-    /** 起站点id */
+    /** 起终站点id */
     uuid: string;
   }
 
