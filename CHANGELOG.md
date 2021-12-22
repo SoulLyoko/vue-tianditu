@@ -1,3 +1,10 @@
+### v2.7.0
+
+2021-12-22
+
+- refactor: TdtSearch 组件优化
+- feat: 新增 TdtRoute 导航组件
+
 ### v2.6.9
 
 2021-12-06
