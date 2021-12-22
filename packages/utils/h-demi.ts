@@ -22,7 +22,7 @@ const adaptOnsV3 = (ons: Object) => {
 export const h = (type: string | any, options?: Options | any, chidren?: any) => {
   if (isVue2) return hDemi(type, options, chidren) as VNode;
 
-  const { attrs, props, domProps, on, ...extraOptions } = options ?? {};
+  const { attrs, props, domProps, on, scopedSlots, ...extraOptions } = options ?? {};
   const ons = adaptOnsV3(on);
   const params = {
     ...(extraOptions ?? {}),
@@ -32,7 +32,7 @@ export const h = (type: string | any, options?: Options | any, chidren?: any) =>
     ...(ons ?? {})
   };
 
-  return hDemi(type, params, chidren) as VNode;
+  return hDemi(type, params, scopedSlots || chidren) as VNode;
 };
 
 export const slot = (s: any, attrs?: any) => {

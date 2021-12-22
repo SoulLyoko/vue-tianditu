@@ -10,29 +10,31 @@ export const RouteMapView = defineComponent({
     return () =>
       h("span", null, [
         // 起点
-        state.startMarker.length &&
-          h(TdtMarker, {
-            props: {
-              position: state.startMarker,
-              icon: {
-                iconUrl: "http://lbs.tianditu.gov.cn/images/bus/start.png",
-                iconSize: [44, 34],
-                iconAnchor: [12, 31]
+        state.startMarker.length
+          ? h(TdtMarker, {
+              props: {
+                position: state.startMarker,
+                icon: {
+                  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/start.png",
+                  iconSize: [44, 34],
+                  iconAnchor: [12, 31]
+                }
               }
-            }
-          }),
+            })
+          : "",
         // 终点
-        state.endMarker.length &&
-          h(TdtMarker, {
-            props: {
-              position: state.endMarker,
-              icon: {
-                iconUrl: "http://lbs.tianditu.gov.cn/images/bus/end.png",
-                iconSize: [44, 34],
-                iconAnchor: [12, 31]
+        state.endMarker.length
+          ? h(TdtMarker, {
+              props: {
+                position: state.endMarker,
+                icon: {
+                  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/end.png",
+                  iconSize: [44, 34],
+                  iconAnchor: [12, 31]
+                }
               }
-            }
-          }),
+            })
+          : "",
         // 驾车线
         state.drivingLines.map(path =>
           h(TdtPolyline, {

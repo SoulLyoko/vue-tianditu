@@ -10,9 +10,9 @@ export const SearchBox = defineComponent({
     /** 显示在输入框的提示 */
     placeholder: { type: String, default: "输入关键字搜索" },
     /** 是否显示搜索按钮 */
-    searchBtn: { type: Boolean, default: false },
+    searchBtn: { type: Boolean, default: true },
     /** 是否显示导航按钮 */
-    routeBtn: { type: Boolean, default: false }
+    routeBtn: { type: Boolean, default: true }
   },
   emits: {
     input: (e: string) => true,
