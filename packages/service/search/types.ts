@@ -5,6 +5,7 @@ export interface SearchLocalState {
   localSearch: T.LocalSearch | null;
   keyword: string;
   queryType: number;
+  showRoute: boolean;
 }
 
 export interface SearchResultState

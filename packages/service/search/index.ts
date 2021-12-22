@@ -1,57 +1,29 @@
-import { defineComponent, onBeforeMount, reactive, provide, watch, isVue2 } from "vue-demi";
+import { defineComponent, onBeforeMount } from "vue-demi";
 import { useMapRoot } from "../../use";
-import { h } from "../../utils";
-import "../../styles/tdt-search.scss";
+import { h, fixMapPropagation } from "../../utils";
+import { useState, useMethods } from "./use";
+import { SearchBox, SearchSuggests, SearchPois, SearchMapView, IconSearch, IconRoute, IconClose } from "./components";
+import { TdtRoute } from "../route";
+import "./styles/tdt-search.scss";
 import "../../styles/tdt-icon.scss";
-import { PROPS, EVENTS, useMethods } from "./use";
-import { SearchBox, SearchSuggests, SearchPois, SearchMapView } from "./components";
-import { SearchLocalState, SearchResultState, SearchViewState } from "./types";
 
 export const TdtSearch = defineComponent({
   name: "TdtSearch",
-  props: PROPS,
-  emit: EVENTS,
-  setup(props, { emit }) {
-    const searchLocalState: SearchLocalState = {
-      tdtMap: null,
-      localSearch: null,
-      keyword: "",
-      queryType: 1
-    };
-    const searchResultState: SearchResultState = {
-      pois: false,
-      statistics: false,
-      area: false,
-      suggests: false,
-      prompt: false,
-      lineData: false
-    };
-    const searchViewState: SearchViewState = {
-      markers: [],
-      target: null,
-      content: "",
-      current: 1,
-      total: 0
-    };
-    const state = reactive({ ...searchLocalState, ...searchResultState, ...searchViewState });
-
-    provide("searchState", state);
-
-    const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(state, emit);
+  props: {
+    placeholder: { type: String, default: "输入关键字搜索" },
+    searchBtn: { type: Boolean, default: true },
+    routeBtn: { type: Boolean, default: true }
+  },
+  setup(props) {
+    const state = useState();
+    const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(state);
 
     onBeforeMount(async () => {
       state.tdtMap = await useMapRoot();
       state.localSearch = new T.LocalSearch(state.tdtMap, {
-        pageCapacity: props.pageCapacity,
+        pageCapacity: 10,
         onSearchComplete
       });
-      emit("init", state.localSearch);
-      watch(
-        () => [props.value, props.modelValue],
-        ([v, mV]: string[]) => {
-          isVue2 ? emit("input", v) : emit("update:modelValue", mV);
-        }
-      );
     });
 
     return () =>
@@ -61,29 +33,69 @@ export const TdtSearch = defineComponent({
           class: "tdt-search",
           // 解决地图的滚动冒泡和点击及双击冒泡
           on: {
-            mousewheel: (e: Event) => e.stopPropagation(),
-            click: (e: Event) => {
-              e.stopPropagation();
-              if (state.tdtMap?.isDoubleClickZoom()) {
-                state.tdtMap?.disableDoubleClickZoom();
-                setTimeout(() => state.tdtMap?.enableDoubleClickZoom(), 300);
-              }
-            }
+            ...fixMapPropagation(state.tdtMap)
           }
         },
         [
-          h(SearchBox, {
-            props: {
-              value: state.keyword,
-              modelValue: state.keyword,
-              placeholder: props.placeholder
-            },
-            on: {
-              input: (val: string) => onSearch(4, val),
-              "update:modelValue": (val: string) => onSearch(4, val),
-              search: (val: string) => onSearch(1, val)
-            }
-          }),
+          state.showRoute
+            ? h(TdtRoute)
+            : h(
+                SearchBox,
+                {
+                  props: {
+                    value: state.keyword,
+                    modelValue: state.keyword,
+                    placeholder: props.placeholder
+                  },
+                  on: {
+                    input: (val: string) => {
+                      state.keyword = val;
+                      onSearch(4, val);
+                    },
+                    "update:modelValue": (val: string) => {
+                      state.keyword = val;
+                      onSearch(4, val);
+                    },
+                    search: (val: string) => onSearch(1, val)
+                  }
+                },
+                () => [
+                  props.searchBtn &&
+                    h(
+                      "button",
+                      {
+                        class: "tdt-search-box__btn",
+                        on: {
+                          click: () => onSearch(1)
+                        }
+                      },
+                      [h(IconSearch)]
+                    ),
+                  props.routeBtn &&
+                    h(
+                      "button",
+                      {
+                        class: "tdt-search-box__btn",
+                        on: {
+                          click: () => (state.showRoute = true)
+                        }
+                      },
+                      [h(IconRoute)]
+                    )
+                ]
+              ),
+          state.showRoute
+            ? h(
+                "i",
+                {
+                  class: "tdt-search-route__close",
+                  on: {
+                    click: () => (state.showRoute = false)
+                  }
+                },
+                [h(IconClose)]
+              )
+            : "",
           h(SearchSuggests, {
             props: {
               suggests: state.suggests || []
@@ -97,7 +109,7 @@ export const TdtSearch = defineComponent({
               pois: state.pois || [],
               page: {
                 current: state.current,
-                size: props.pageCapacity,
+                size: 10,
                 total: state.total
               }
             },

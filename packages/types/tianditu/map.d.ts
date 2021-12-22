@@ -90,7 +90,7 @@ declare namespace T {
     /** 初始化定位地图 */
     centerAndZoom(lnglat: LngLat, zoom: number): void;
     /** 将地图的中心点变换到指定的地理坐标，如果同时指定了缩放等级，则同时缩放到指定的等级 */
-    panTo(lnglat: LngLat, zoom: number): void;
+    panTo(lnglat: LngLat, zoom?: number): void;
     /** 将地图在水平位置上移动x像素，垂直位置上移动y像素 */
     panBy(position: Point): void;
     /** 将视图缩放到指定的缩放等级，中心点坐标不变 */

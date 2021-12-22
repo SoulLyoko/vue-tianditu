@@ -1,12 +1,11 @@
-import { toLngLat } from "../../../utils";
+import { toLngLat, debounce } from "../../../utils";
 import { PageProps } from "../components";
 import { SearchState } from "../types";
-import { Emit } from "./";
 
-export function useMethods(state: SearchState, emit: Emit) {
+export function useMethods(state: SearchState) {
   function onSearch(type = state.queryType, keyword = state.keyword, gbCode = 0) {
     state.queryType = type;
-    state.keyword = keyword;
+    // state.keyword = keyword;
     state.current = 1;
     state.localSearch?.setSpecifyAdminCode(gbCode);
     if (state.keyword) {
@@ -24,7 +23,6 @@ export function useMethods(state: SearchState, emit: Emit) {
   }
 
   function onSearchComplete(result: T.LocalSearchResult) {
-    emit("search-complete", result);
     state.target = null;
     state.pois = result.pois;
     state.statistics = result.statistics;
@@ -36,9 +34,8 @@ export function useMethods(state: SearchState, emit: Emit) {
   }
 
   function onPoiClick(poi: T.LocalSearchPoi) {
-    emit("poi-click", poi);
     const position = poi.lonlat.split(" ").map(Number);
-    state.tdtMap?.centerAndZoom(toLngLat(position), 15);
+    state.tdtMap?.panTo(toLngLat(position));
     state.target = position;
     state.content = `
       <strong>${poi.name}</strong>
@@ -48,7 +45,6 @@ export function useMethods(state: SearchState, emit: Emit) {
   }
 
   function onSuggestClick(suggest: T.LocalSearchSuggest) {
-    emit("suggest-click", suggest);
     onSearch(1, suggest.name, Number(suggest.gbCode));
   }
 
@@ -57,5 +53,11 @@ export function useMethods(state: SearchState, emit: Emit) {
     state.localSearch?.gotoPage(state.current);
   }
 
-  return { onSearch, onSearchComplete, onPoiClick, onSuggestClick, onPageChange };
+  return {
+    onSearch: debounce(onSearch, 100),
+    onSearchComplete,
+    onPoiClick,
+    onSuggestClick,
+    onPageChange
+  };
 }

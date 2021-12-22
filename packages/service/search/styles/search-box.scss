@@ -6,7 +6,7 @@
 
   .tdt-search-box__input {
     outline: none;
-    width: 210px;
+    width: 200px;
     height: 100%;
     padding: 0 10px;
     border: none;
@@ -14,7 +14,7 @@
   .tdt-search-box__btn {
     outline: none;
     border: none;
-    width: 40px;
+    width: 30px;
     height: 100%;
     line-height: 35px;
     font-size: 16px;
@@ -25,7 +25,7 @@
   }
   .tdt-search-box__close {
     position: absolute;
-    right: 40px;
+    left: 180px;
     top: 0;
     width: 15px;
     height: 30px;

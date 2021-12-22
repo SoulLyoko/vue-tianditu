@@ -1,6 +1,6 @@
 import { defineComponent, computed, isVue2 } from "vue-demi";
-import { IconSearch, IconClose } from "./icons";
-import { h, debounce } from "../../../utils";
+import { IconClose } from "./icons";
+import { h, slot, debounce } from "../../../utils";
 import "../styles/search-box.scss";
 
 export const SearchBox = defineComponent({
@@ -10,7 +10,9 @@ export const SearchBox = defineComponent({
     /** 显示在输入框的提示 */
     placeholder: { type: String, default: "输入关键字搜索" },
     /** 是否显示搜索按钮 */
-    searchBtn: { type: Boolean, default: true }
+    searchBtn: { type: Boolean, default: false },
+    /** 是否显示导航按钮 */
+    routeBtn: { type: Boolean, default: false }
   },
   emits: {
     input: (e: string) => true,
@@ -18,7 +20,7 @@ export const SearchBox = defineComponent({
     // 点击搜索按钮事件或回车时触发
     search: (e: string) => true
   },
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     let isComposition = false;
 
     const keyword = computed({
@@ -49,7 +51,9 @@ export const SearchBox = defineComponent({
             on: {
               compositionstart: () => (isComposition = true),
               compositionend: () => (isComposition = false),
-              input: debounce((e: any) => !isComposition && (keyword.value = e.target.value), 100),
+              input: (e: any) => setTimeout(() => !isComposition && (keyword.value = e.target.value)),
+              // input: debounce((e: any) => !isComposition && (keyword.value = e.target.value), 100),
+              // input: (e: any) => (keyword.value = e.target.value),
               keyup: (e: KeyboardEvent) => e.code === "Enter" && emit("search", keyword.value)
             }
           }),
@@ -64,17 +68,7 @@ export const SearchBox = defineComponent({
             },
             [h(IconClose)]
           ),
-          props.searchBtn &&
-            h(
-              "button",
-              {
-                class: "tdt-search-box__btn",
-                on: {
-                  click: () => emit("search", keyword.value)
-                }
-              },
-              [h(IconSearch)]
-            )
+          slot(slots.default)
         ]
       );
   }
