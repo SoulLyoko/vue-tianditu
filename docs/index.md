@@ -1,19 +1,17 @@
 # vue-tianditu
 
-天地图 vue 组件库
+- 天地图 vue 组件库
 
 - vue-tianditu v2 同时支持 Vue3 和 Vue2(composition-api)
 
-- [vue-tianditu 文档 v1](https://soullyoko.github.io/vue-tianditu/v1)
-
-- [vue-tianditu 文档 v2](https://soullyoko.github.io/vue-tianditu/v2)
+- [vue-tianditu v2 文档](https://soullyoko.github.io/vue-tianditu/)
 
 ## 安装
 
 ```sh
-npm i vue-tianditu@next
+npm i vue-tianditu
 # or
-yarn add vue-tianditu@next
+yarn add vue-tianditu
 ```
 
 ## 快速上手

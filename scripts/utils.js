@@ -42,7 +42,7 @@ function exec(command, cb) {
 
 function copyDocs({ readme = true, changelog = true } = {}) {
   readme && execSync("ncp README.md docs/index.md");
-  changelog && execSync("ncp README.md docs/index.md");
+  changelog && execSync("ncp CHANGELOG.md docs/CHANGELOG.md");
 }
 
 module.exports.getVueVersion = getVueVersion;

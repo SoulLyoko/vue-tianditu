@@ -1,3 +1,16 @@
+### v2.7.1
+
+2021-12-23
+
+- feat: vue-tianditu v2 转为正式版
+
+### v2.7.0
+
+2021-12-22
+
+- refactor: TdtSearch 组件优化
+- feat: 新增 TdtRoute 导航组件
+
 ### v2.6.9
 
 2021-12-06
