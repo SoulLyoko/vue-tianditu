@@ -1,14 +1,14 @@
 module.exports = {
-  base: "/vue-tianditu/v2/",
+  base: "/vue-tianditu/",
   lang: "zh-CN",
   title: "VueTianditu",
-  description: "Vue3 Components for TiandituApi",
+  description: "Vue Components for TiandituApi",
   themeConfig: {
-    repo: "SoulLyoko/vue-tianditu/tree/v2",
+    repo: "SoulLyoko/vue-tianditu/",
     nav: [
       {
         text: "v2.x",
-        items: [{ text: "v1.x", link: "https://soullyoko.github.io/vue-tianditu/v1" }]
+        items: [{ text: "v1.x", link: "https://soullyoko.github.io/vue-tianditu-legacy/" }]
       },
       { text: "天地图官网", link: "https://www.tianditu.gov.cn/" }
     ],
