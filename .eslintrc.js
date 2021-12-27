@@ -33,6 +33,7 @@ module.exports = {
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/no-var-requires": 0,
     "vue/require-render-return": 0,
     "vue/require-explicit-emits": 0
   }
