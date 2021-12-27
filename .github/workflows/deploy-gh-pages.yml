@@ -18,6 +18,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages
           folder: docs/.vitepress/dist
