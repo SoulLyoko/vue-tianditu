@@ -1,3 +1,12 @@
+## [2.7.2](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.1...v2.7.2) (2022-01-18)
+
+
+### Bug Fixes
+
+* markerClusterer事件提交extData, `e.layer.extData` ([ad5c922](https://github.com/SoulLyoko/vue-tianditu/commit/ad5c922d7c3568abc13fcf1bf0f8cc1af0929e5a))
+
+
+
 ## [2.7.1](https://github.com/SoulLyoko/vue-tianditu/compare/v2.6.9...v2.7.1) (2021-12-23)
 
 
