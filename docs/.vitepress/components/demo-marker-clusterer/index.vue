@@ -57,7 +57,7 @@ const state = reactive({
 function onClick(e: any) {
   console.log(e);
   state.target = e.layer;
-  state.content = `[${e.lnglat.lng}, ${e.lnglat.lat}]`;
+  state.content = `${e.layer.extData}<br>[${e.lnglat.lng}, ${e.lnglat.lat}]`;
 }
 </script>
 

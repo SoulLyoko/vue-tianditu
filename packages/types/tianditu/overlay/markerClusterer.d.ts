@@ -49,7 +49,7 @@ declare namespace T {
     dragend(e: Pick<MarkerClustererEvent, "type" | "target" | "lnglat" | "layer">): void;
   }
 
-  interface MarkerClustererEvent extends OverlayEvent<Marker, LngLat, Marker> {}
+  interface MarkerClustererEvent extends OverlayEvent<MarkerClusterer, LngLat, Marker> {}
 
   /**
    * ```

@@ -77,5 +77,7 @@ export const toIcon = (icon: VT.IconOptions | string) => {
 export const toMarker = (option: MarkerProps) => {
   const marker = useInitMarker(option);
   option.icon && marker.setIcon(toIcon(option.icon));
+  // @ts-ignore
+  marker.extData = option.extData;
   return marker;
 };
