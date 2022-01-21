@@ -38,6 +38,7 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
         };
       });
       control = new T.Control.MapType(mapTypes);
+      option.position && control.setPosition(option.position);
     } else if (controlName === "OverviewMap") {
       control = new T.Control[controlName](option);
       control.addEventListener("viewchange", e => emit("viewchange", e));
