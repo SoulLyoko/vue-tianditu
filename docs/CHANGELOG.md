@@ -1,3 +1,12 @@
+## [2.7.3](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.2...v2.7.3) (2022-01-21)
+
+
+### Bug Fixes
+
+* 控件MapType的mapTypes属性失效问题 ([aa2f2d4](https://github.com/SoulLyoko/vue-tianditu/commit/aa2f2d4edfbb858d2659011bd3fe4c0e7576eb71)), closes [#40](https://github.com/SoulLyoko/vue-tianditu/issues/40)
+
+
+
 ## [2.7.2](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.1...v2.7.2) (2022-01-18)
 
 
