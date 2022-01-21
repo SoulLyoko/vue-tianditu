@@ -16,11 +16,12 @@ const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
   controls: [
-    { name: "Zoom", position: "topleft" },
+    { name: "Zoom", position: "topright" },
     "Scale",
     "Copyright",
     {
       name: "MapType",
+      position: "topleft",
       mapTypes: [
         {
           title: "地图", //地图控件上所要显示的图层名称
