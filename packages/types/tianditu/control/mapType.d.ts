@@ -10,9 +10,7 @@ declare namespace T {
     constructor(opts?: ControlMapTypeOptions);
   }
 
-  interface ControlMapTypeOptions {
-    mapTypes?: ControlMapTypeOptionsMapType[];
-  }
+  type ControlMapTypeOptions = ControlMapTypeOptionsMapType[];
 
   /**
    * ```

@@ -37,7 +37,7 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
           layer: window[item.layer]
         };
       });
-      control = new T.Control.MapType({ mapTypes });
+      control = new T.Control.MapType(mapTypes);
     } else if (controlName === "OverviewMap") {
       control = new T.Control[controlName](option);
       control.addEventListener("viewchange", e => emit("viewchange", e));
