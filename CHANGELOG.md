@@ -1,3 +1,12 @@
+## [2.7.4](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.3...v2.7.4) (2022-01-21)
+
+
+### Features
+
+* 控件MapType支持position ([dad1794](https://github.com/SoulLyoko/vue-tianditu/commit/dad17944788d0b97dac69b667b67d660b49919d0)), closes [#40](https://github.com/SoulLyoko/vue-tianditu/issues/40)
+
+
+
 ## [2.7.3](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.2...v2.7.3) (2022-01-21)
 
 
