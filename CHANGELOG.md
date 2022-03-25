@@ -1,3 +1,17 @@
+## [2.7.5](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.4...v2.7.5) (2022-03-25)
+
+
+### Bug Fixes
+
+* 修复Copright控件不能添加的问题，并新增position属性 ([7fd3934](https://github.com/SoulLyoko/vue-tianditu/commit/7fd39340ee39ace508e4686a39729f79bf4ba496)), closes [#44](https://github.com/SoulLyoko/vue-tianditu/issues/44)
+
+
+### Features
+
+* 组件MarkerClusterer新增clusterclick事件 ([31211e2](https://github.com/SoulLyoko/vue-tianditu/commit/31211e2d5ab6ea5cccb53d4ab64095b0da0b6f6b)), closes [#36](https://github.com/SoulLyoko/vue-tianditu/issues/36)
+
+
+
 ## [2.7.4](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.3...v2.7.4) (2022-01-21)
 
 ## [2.7.3](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.2...v2.7.3) (2022-01-21)
