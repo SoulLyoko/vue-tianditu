@@ -1,7 +1,12 @@
 <template>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-marker-clusterer :markers="state.markers" :styles="state.styles" @click="onClick"></tdt-marker-clusterer>
+      <tdt-marker-clusterer
+        :markers="state.markers"
+        :styles="state.styles"
+        @click="onClick"
+        @clusterclick="onClusterClick"
+      ></tdt-marker-clusterer>
       <tdt-infowindow v-model:target="state.target" :content="state.content"></tdt-infowindow>
     </tdt-map>
   </div>
@@ -55,9 +60,12 @@ const state = reactive({
 });
 
 function onClick(e: any) {
-  console.log(e);
+  console.log("onClick", e);
   state.target = e.layer;
   state.content = `${e.layer.extData}<br>[${e.lnglat.lng}, ${e.lnglat.lat}]`;
+}
+function onClusterClick(e: any) {
+  console.log("onClusterClick", e);
 }
 </script>
 

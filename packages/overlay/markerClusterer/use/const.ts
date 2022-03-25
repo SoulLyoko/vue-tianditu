@@ -17,6 +17,7 @@ export const EXTRA_PROPS = {};
 
 export const NATIVE_EVENTS: T.MarkerClustererEvents = {
   click: () => true,
+  clusterclick: () => true,
   dblclick: () => true,
   mousedown: () => true,
   mouseup: () => true,
