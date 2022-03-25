@@ -79,15 +79,16 @@
 
 :::
 
-| 事件      | 参数                                        | 描述                                   |
-| --------- | ------------------------------------------- | -------------------------------------- |
-| click     | ({type,target,layer,lnglat,containerPoint}) | 点击标注图标后会触发此事件。           |
-| dblclick  | ({type,target,layer,lnglat,containerPoint}) | 双击标注图标后会触发此事件。           |
-| mousedown | ({type,target,layer,lnglat,containerPoint}) | 鼠标在标注图标上按下触发此事件。       |
-| mouseup   | ({type,target,layer,lnglat,containerPoint}) | 鼠标在标注图标释放触发此事件。         |
-| mouseout  | ({type,target,layer,lnglat,containerPoint}) | 鼠标离开标注图标时触发此事件。         |
-| mouseover | ({type,target,layer,lnglat,containerPoint}) | 当鼠标进入标注图标区域时会触发此事件。 |
-| dragstart | ({type,target,layer})                       | 当用户拖动标注图标时触发。             |
-| drag      | ({type,target,layer,lnglat})                | 当用户拖动标注图标时不断触发。         |
-| dragend   | ({type,target,layer,lnglat})                | 当用户停止拖动标注图标时触发。         |
-| remove    | ({type,target,layer})                       | 移除标注图标时触发。                   |
+| 事件         | 参数                                        | 描述                                   |
+| ------------ | ------------------------------------------- | -------------------------------------- |
+| click        | ({type,target,layer,lnglat,containerPoint}) | 点击标注图标后会触发此事件。           |
+| dblclick     | ({type,target,layer,lnglat,containerPoint}) | 双击标注图标后会触发此事件。           |
+| mousedown    | ({type,target,layer,lnglat,containerPoint}) | 鼠标在标注图标上按下触发此事件。       |
+| mouseup      | ({type,target,layer,lnglat,containerPoint}) | 鼠标在标注图标释放触发此事件。         |
+| mouseout     | ({type,target,layer,lnglat,containerPoint}) | 鼠标离开标注图标时触发此事件。         |
+| mouseover    | ({type,target,layer,lnglat,containerPoint}) | 当鼠标进入标注图标区域时会触发此事件。 |
+| dragstart    | ({type,target,layer})                       | 当用户拖动标注图标时触发。             |
+| drag         | ({type,target,layer,lnglat})                | 当用户拖动标注图标时不断触发。         |
+| dragend      | ({type,target,layer,lnglat})                | 当用户停止拖动标注图标时触发。         |
+| remove       | ({type,target,layer})                       | 移除标注图标时触发。                   |
+| clusterclick | ({type,target,layer,lnglat,containerPoint}) | 点击聚合点图标后会触发此事件。         |
