@@ -20,7 +20,7 @@ declare namespace VT {
 
   type ControlOptions = T.ControlZoomOptions &
     T.ControlScaleOptions &
-    T.ControlCopyrightOptions &
+    ControlCopyrightOptions &
     T.ControlOverviewMapOptions &
     ControlMapTypeOptions & {
       name: ControlName;
@@ -37,6 +37,10 @@ declare namespace VT {
         | "TMAP_TERRAIN_MAP"
         | "TMAP_TERRAIN_HYBRID_MAP";
     }[];
+  }
+
+  interface ControlCopyrightOptions extends T.ControlCopyrightOptions {
+    bounds: Bounds;
   }
 
   interface MarkerClustererStyle extends T.MarkerClustererStyle {

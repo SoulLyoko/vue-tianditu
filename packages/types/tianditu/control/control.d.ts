@@ -11,7 +11,7 @@ declare namespace T {
 
     constructor(opts?: ControlOptions);
     /**
-     * 设置控件的位置。参数请参见Control常量。
+     * 设置控件的位置。参数请参见ControlPosition常量。
      * @param position "topleft" | "topright" | "bottomleft" | "bottomright"
      */
     setPosition(position?: ControlPosition): void;
@@ -40,6 +40,10 @@ declare namespace T {
   type ControlPosition = "topleft" | "topright" | "bottomleft" | "bottomright";
 
   interface ControlOptions {
+    /**
+     * 控件的位置。参数请参见ControlPosition常量。
+     * "topleft" | "topright" | "bottomleft" | "bottomright"
+     */
     position?: ControlPosition;
   }
 }

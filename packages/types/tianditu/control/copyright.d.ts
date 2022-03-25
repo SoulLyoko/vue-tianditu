@@ -15,12 +15,12 @@ declare namespace T {
     getCopyrightCollection(): ControlCopyright[];
   }
 
-  interface ControlCopyrightOptions {
+  interface ControlCopyrightOptions extends T.ControlOptions {
     /** 该版权信息的唯一标识符 */
-    id: string;
+    id?: string;
     /** 该版权的文本信息，用于显示在地图上，支持HTML内容 */
-    content: string;
+    content?: string;
     /** 该版权信息所适用的地理区域 */
-    bounds: LngLatBounds;
+    bounds?: LngLatBounds;
   }
 }
