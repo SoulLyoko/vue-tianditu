@@ -10,6 +10,13 @@ export function fixMapPropagation(map: T.Map | null) {
         map?.disableDoubleClickZoom();
         setTimeout(() => map?.enableDoubleClickZoom(), 300);
       }
+    },
+    mousemove: (e: Event) => {
+      e.stopPropagation();
+      if (map?.isDrag()) {
+        map?.disableDrag();
+        setTimeout(() => map?.enableDrag(), 300);
+      }
     }
   };
 }
