@@ -4,7 +4,7 @@
 
 :::tip
 
-`TdtSearch`是单独的 UI 组件，需要使用`TdtControl`定位到地图上，或根据需要使用样式定位
+`TdtSearch`是单独的 UI 组件，需要使用`TdtControl`定位到地图上，或根据需要使用css定位。
 
 无论全局引入还是按需引入搜索组件，都需要导入样式文件
 
@@ -28,7 +28,7 @@ import "vue-tianditu/lib/style.css";
 | searchBtn   | boolean | true             | 是否显示搜索按钮   |
 | routeBtn    | boolean | true             | 是否显示导航按钮   |
 
-## 事件
+## 事件`(v2.7.6)`
 
 | 事件            | 参数                         | 描述                             |
 | --------------- | ---------------------------- | -------------------------------- |
