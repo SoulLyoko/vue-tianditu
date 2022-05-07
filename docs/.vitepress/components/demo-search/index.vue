@@ -2,7 +2,7 @@
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-control>
-        <tdt-search @search-complete="searchComplete" @poi-click="poiClick"></tdt-search>
+        <tdt-search @search-complete="searchComplete" @poi-click="poiClick" @suggest-click="suggestClick"></tdt-search>
       </tdt-control>
     </tdt-map>
   </div>
@@ -21,6 +21,9 @@ function searchComplete(result: T.LocalSearchResult) {
 }
 function poiClick(poi: T.LocalSearchPoi) {
   console.log(poi);
+}
+function suggestClick(suggest: T.LocalSearchSuggest) {
+  console.log(suggest);
 }
 </script>
 

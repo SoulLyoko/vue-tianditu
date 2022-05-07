@@ -27,3 +27,11 @@ import "vue-tianditu/lib/style.css";
 | placeholder | number  | "输入关键字搜索" | 显示在输入框的提示 |
 | searchBtn   | boolean | true             | 是否显示搜索按钮   |
 | routeBtn    | boolean | true             | 是否显示导航按钮   |
+
+## 事件
+
+| 事件            | 参数                         | 描述                             |
+| --------------- | ---------------------------- | -------------------------------- |
+| poi-click       | (poi:LocalSearchPoi)         | 点击搜索结果项或地图上的标点触发 |
+| suggest-click   | (suggest:LocalSearchSuggest) | 点击搜索建议项触发               |
+| search-complete | (result:LocalSearchResult)   | 搜索完成后触发(包括搜索建议)     |

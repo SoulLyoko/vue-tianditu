@@ -13,6 +13,7 @@ export const SearchPois = defineComponent({
     page: { type: Object as PropType<PageProps> }
   },
   emits: {
+    /** 点击搜索结果项触发 */
     "poi-click": (e: T.LocalSearchPoi) => true,
     "update:page": (e: PageProps) => true
   },

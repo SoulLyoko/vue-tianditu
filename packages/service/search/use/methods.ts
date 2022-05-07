@@ -2,10 +2,10 @@ import { toLngLat, debounce } from "../../../utils";
 import { PageProps } from "../components";
 import { SearchState } from "../types";
 
-export function useMethods(state: SearchState) {
+export function useMethods(state: SearchState, emit: any) {
   function onSearch(type = state.queryType, keyword = state.keyword, gbCode = 0) {
     state.queryType = type;
-    // state.keyword = keyword;
+    state.keyword = keyword;
     state.current = 1;
     state.localSearch?.setSpecifyAdminCode(gbCode);
     if (state.keyword) {
@@ -31,6 +31,7 @@ export function useMethods(state: SearchState) {
     state.prompt = result.prompt;
     state.lineData = result.lineData;
     state.total = Number(result.count);
+    emit("search-complete", result);
   }
 
   function onPoiClick(poi: T.LocalSearchPoi) {
@@ -42,10 +43,12 @@ export function useMethods(state: SearchState) {
       <div>地址：${poi.address}</div>
       <div>坐标：${poi.lonlat}</div>
       `;
+    emit("poi-click", poi);
   }
 
   function onSuggestClick(suggest: T.LocalSearchSuggest) {
     onSearch(1, suggest.name, Number(suggest.gbCode));
+    emit("suggest-click", suggest);
   }
 
   function onPageChange(page: PageProps) {

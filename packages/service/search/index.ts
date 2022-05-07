@@ -14,9 +14,14 @@ export const TdtSearch = defineComponent({
     searchBtn: { type: Boolean, default: true },
     routeBtn: { type: Boolean, default: true }
   },
-  setup(props) {
+  emits: {
+    "poi-click": (poi: T.LocalSearchPoi) => true,
+    "suggest-click": (suggest: T.LocalSearchSuggest) => true,
+    "search-complete": (result: T.LocalSearchResult) => true
+  },
+  setup(props, { emit }) {
     const state = useState();
-    const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(state);
+    const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(state, emit);
 
     onBeforeMount(async () => {
       state.tdtMap = await useMapRoot();

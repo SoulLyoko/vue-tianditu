@@ -8,6 +8,7 @@ export const SearchSuggests = defineComponent({
     suggests: { type: Array as PropType<T.LocalSearchSuggest[]>, default: () => [] }
   },
   emits: {
+    /** 点击搜索建议项 */
     "suggest-click": (e: T.LocalSearchSuggest) => true
   },
   setup(props, { emit }) {

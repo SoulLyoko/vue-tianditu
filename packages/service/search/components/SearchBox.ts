@@ -1,6 +1,6 @@
 import { defineComponent, computed, isVue2 } from "vue-demi";
 import { IconClose } from "./icons";
-import { h, slot, debounce } from "../../../utils";
+import { h, slot } from "../../../utils";
 import "../styles/search-box.scss";
 
 export const SearchBox = defineComponent({
@@ -17,7 +17,7 @@ export const SearchBox = defineComponent({
   emits: {
     input: (e: string) => true,
     "update:modelValue": (e: string) => true,
-    // 点击搜索按钮事件或回车时触发
+    // 点击搜索按钮或回车时触发
     search: (e: string) => true
   },
   setup(props, { emit, slots }) {
