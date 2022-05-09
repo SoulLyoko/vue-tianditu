@@ -12,14 +12,14 @@ function getVueVersion() {
 
 function switch2() {
   if (getVueVersion() != "2") {
-    execSync("yarn add vue");
+    execSync("yarn add vue@2.6.14");
     execSync("vue-demi-switch 2");
   }
 }
 
 function switch3() {
   if (getVueVersion() != "3") {
-    execSync("yarn add vue@next");
+    execSync("yarn add vue");
     execSync("vue-demi-switch 3");
   }
 }
