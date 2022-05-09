@@ -1,3 +1,19 @@
+## [2.7.6](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.5...v2.7.6) (2022-05-09)
+
+
+### Bug Fixes
+
+* 地图拖拽冒泡 ([ce9a1e2](https://github.com/SoulLyoko/vue-tianditu/commit/ce9a1e2f3838f90e00524648d7530f69095eda9c))
+* **infowindow:** 解决vue2中content属性的html类型警告 ([15f5fac](https://github.com/SoulLyoko/vue-tianditu/commit/15f5fac80b532add916aff531a21ebefea3c5935))
+* **mousetool:** 修改marktool的鼠标事件 ([4456395](https://github.com/SoulLyoko/vue-tianditu/commit/4456395ee70d04eaee42c07c8e5610af733af933)), closes [#54](https://github.com/SoulLyoko/vue-tianditu/issues/54)
+
+
+### Features
+
+* 新增搜索组件事件 ([b4ee795](https://github.com/SoulLyoko/vue-tianditu/commit/b4ee79541bf3e59ee17f503c7fe534855d95e3f1)), closes [#52](https://github.com/SoulLyoko/vue-tianditu/issues/52)
+
+
+
 ## [2.7.5](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.4...v2.7.5) (2022-03-25)
 
 
