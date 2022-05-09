@@ -3,6 +3,11 @@ module.exports = {
   lang: "zh-CN",
   title: "VueTianditu",
   description: "Vue Components for TiandituApi",
+  vite: {
+    define: {
+      HTMLElement: "Object"
+    }
+  },
   themeConfig: {
     repo: "SoulLyoko/vue-tianditu/",
     nav: [
