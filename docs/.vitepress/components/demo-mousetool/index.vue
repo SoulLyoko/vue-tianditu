@@ -15,7 +15,7 @@
   <button @click="clearTool()">清除全部</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-mousetool ref="mousetoolRef" :markTool="{ follow: true }"></tdt-mousetool>
+      <tdt-mousetool ref="mousetoolRef" :markTool="{ follow: true }" @mark-mouseup="onMarkMouseup"></tdt-mousetool>
     </tdt-map>
   </div>
 </template>
@@ -35,6 +35,10 @@ function openTool(toolName: string) {
 
 function clearTool(toolName?: string) {
   toolName ? mousetoolRef.value?.clear(toolName) : mousetoolRef.value?.clearAll();
+}
+
+function onMarkMouseup(e: T.MarkToolEvent) {
+  console.log(e);
 }
 </script>
 

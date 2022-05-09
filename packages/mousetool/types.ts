@@ -20,7 +20,7 @@ export interface ToolInstances {
 }
 
 export interface ToolEvents {
-  "mark-draw": T.MarkToolEvents["mouseup"];
+  "mark-mouseup": T.MarkToolEvents["mouseup"];
   "polygon-draw": T.PolygonToolEvents["draw"];
   "polygon-addpoint": T.PolygonToolEvents["addpoint"];
   "polyline-draw": T.PolylineToolEvents["draw"];

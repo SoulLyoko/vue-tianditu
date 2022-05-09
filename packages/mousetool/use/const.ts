@@ -20,7 +20,7 @@ export const NATIVE_PROPS = {
 export const OTHER_PROPS = {};
 
 export const NATIVE_EVENTS: ToolEvents = {
-  "mark-draw": () => true,
+  "mark-mouseup": () => true,
   "polygon-draw": () => true,
   "polygon-addpoint": () => true,
   "polyline-draw": () => true,

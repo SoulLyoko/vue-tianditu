@@ -2,7 +2,7 @@ import { ToolInstances } from "../types";
 import { Emit } from "./";
 
 export function useEvent({ emit, instances }: { emit: Emit; instances: ToolInstances }): void {
-  instances.markTool?.addEventListener("mouseup", e => emit("mark-draw", e));
+  instances.markTool?.addEventListener("mouseup", e => emit("mark-mouseup", e));
 
   instances.polygonTool?.addEventListener("draw", e => emit("polygon-draw", e));
   instances.polygonTool?.addEventListener("addpoint", e => emit("polygon-draw", e));

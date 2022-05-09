@@ -27,9 +27,9 @@ mousetool 组件初始化时会创建六个工具对象，分别对应标注工�
 
 | 方法                   | 返回值 | 说明                       |
 | ---------------------- | ------ | -------------------------- |
-| open(toolName:String)  |        | 开启工具                   |
-| close(toolName:String) |        | 关闭工具                   |
-| clear(toolName:String) |        | 清除该工具绘制的所有图形。 |
+| open(toolName:string)  |        | 开启工具                   |
+| close(toolName:string) |        | 关闭工具                   |
+| clear(toolName:string) |        | 清除该工具绘制的所有图形。 |
 | clearAll()             |        | 清除绘制的所有图形。       |
 
 ## 标注工具
@@ -45,9 +45,9 @@ markTool 标注工具，用来让用户在地图上标注一个点，可以通�
 
 ### 事件
 
-| 事件    | 参数                                                          | 描述                           |
-| ------- | ------------------------------------------------------------- | ------------------------------ |
-| markend | { type, target, currentLnglat,<br>currentMarker, allMarkers } | 在用户每完成一次标注时触发事件 |
+| 事件         | 参数                                                       | 描述                           |
+| ------------ | ---------------------------------------------------------- | ------------------------------ |
+| mark-mouseup | ({type,target,currentLnglat,<br>currentMarker,allMarkers}) | 在用户每完成一次标注时触发事件 |
 
 ## 多边形工具
 
@@ -69,8 +69,8 @@ polygonTool 多边形工具，可以通过事件来获取用户绘制的多边�
 
 | 事件 | 参数 | 描述 |
 | --- | --- | --- |
-| polygon-draw | {type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons } | 用户双击完成一次折线绘制时触发事件。 |
-| polygon-addpoint | {type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons } | 用户在多边形绘制过程中，每次点击底图添加节点时触发事件。 |
+| polygon-draw | ({type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons}) | 用户双击完成一次折线绘制时触发事件。 |
+| polygon-addpoint | ({type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons}) | 用户在多边形绘制过程中，每次点击底图添加节点时触发事件。 |
 
 ## 折线工具
 
@@ -90,8 +90,8 @@ polylineTool 折线工具，可以通过事件来获取用户绘制的折线，�
 
 | 事件 | 参数 | 说明 |
 | --- | --- | --- |
-| polyline-draw | {type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines } | 用户每次完成拉框操作时触发事件。 |
-| polyline-addpoint | {type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines } | 用户测距过程中，每次点击底图添加节点时触发事件。 |
+| polyline-draw | ({type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines}) | 用户每次完成拉框操作时触发事件。 |
+| polyline-addpoint | ({type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines}) | 用户测距过程中，每次点击底图添加节点时触发事件。 |
 
 ## 矩形工具
 
@@ -110,9 +110,9 @@ rectangleTool 矩形工具，用来实现在地图上选择一个矩形区域或
 
 ### 事件
 
-| 事件           | 参数                                                            | 描述                             |
-| -------------- | --------------------------------------------------------------- | -------------------------------- |
-| rectangle-draw | {type,target,currentBounds,<br>currentRectangle,allRectangles } | 用户每次完成拉框操作时触发事件。 |
+| 事件           | 参数                                                             | 描述                             |
+| -------------- | ---------------------------------------------------------------- | -------------------------------- |
+| rectangle-draw | ({type,target,currentBounds,<br>currentRectangle,allRectangles}) | 用户每次完成拉框操作时触发事件。 |
 
 ## 画圆工具
 
@@ -131,10 +131,10 @@ circleTool 画圆工具，用来实现在地图上画圆的功能。
 
 ### 事件
 
-| 事件           | 参数                                                                    | 描述                   |
-| -------------- | ----------------------------------------------------------------------- | ---------------------- |
-| circle-draw    | {type,target,currentCenter,currentRadius,<br>currentCircle,allCircles } | 用户拖动绘制圆时触发。 |
-| circle-drawend | {type,target,currentCenter,currentRadius,<br>currentCircle,allCircles } | 用户完成绘制圆时触发。 |
+| 事件           | 参数                                                                     | 描述                   |
+| -------------- | ------------------------------------------------------------------------ | ---------------------- |
+| circle-draw    | ({type,target,currentCenter,currentRadius,<br>currentCircle,allCircles}) | 用户拖动绘制圆时触发。 |
+| circle-drawend | ({type,target,currentCenter,currentRadius,<br>currentCircle,allCircles}) | 用户完成绘制圆时触发。 |
 
 ## 画笔工具
 
@@ -146,5 +146,5 @@ paintBrushTool 在地图容器中，创建一个可以随意画线的画笔工�
 | ----------- | ------- | --------- | ------------------------------- |
 | keepdrawing | Boolean | false     | 保持工具的连续可用性            |
 | color       | String  | "#0000FF" | 画笔颜色。                      |
-| weight      | Number  | 3        | 画笔的宽度，以像素为单位。      |
+| weight      | Number  | 3         | 画笔的宽度，以像素为单位。      |
 | opacity     | Number  | 0.5       | 画笔的透明度（范围 0-1 之间）。 |
