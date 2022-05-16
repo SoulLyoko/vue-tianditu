@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+import { withBase } from "vitepress";
 import { reactive } from "vue-demi";
 
 const state = reactive({
@@ -20,7 +21,7 @@ const state = reactive({
   marker1: [113.280637, 23.125178],
   marker2: [113.300037, 23.125178],
   icon: {
-    iconUrl: "/marker_red.png",
+    iconUrl: withBase("/marker_red.png"),
     iconSize: [18, 26],
     iconAnchor: [9, 26]
   }
