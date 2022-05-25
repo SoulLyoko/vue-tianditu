@@ -127,8 +127,11 @@ import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 
 - 不使用组件，只使用API加载器
 ```html
-<div id="mapContainer"></div>
-...
+<template>
+  <div id="mapContainer"></div>
+</template>
+
+<script>
 import { useApiLoader } from "vue-tianditu";
 // 加载API
 useApiLoader({
@@ -140,20 +143,25 @@ useApiLoader({
   const marker = new T.Marker({...});
   map.addOverlay(marker);
 });
+</script>
 ```
 - 使用组件，监听组件的初始化事件
 ```html
-<tdt-map @init="mapInit"></tdt-map>
-...
+<template>
+  <tdt-map @init="mapInit"></tdt-map>
+</template>
+
+<script>
 function mapInit(map){
   // 此时原生API中的T已存在window中
   const marker = new T.Marker({...})
   map.addOverlay(marker);
 }
+</script>
 ```
 - 注册了组件，使用API加载器异步等待API加载完成
 ```js
-// 不传参数则会等待之前注册组件时带参数加载的API加载完成
+// 不用传参数，异步等待之前注册组件时带参数加载的API加载完成
 useApiLoader({}).then(() => {
   const marker = new T.Marker({...});
 });
