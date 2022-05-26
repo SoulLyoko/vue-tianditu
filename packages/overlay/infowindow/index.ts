@@ -42,5 +42,3 @@ export const TdtInfowindow = defineComponent({
     return () => contentRef.value;
   }
 });
-
-export type TdtInfowindow = InstanceType<typeof TdtInfowindow>;

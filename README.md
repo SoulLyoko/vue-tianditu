@@ -1,10 +1,15 @@
-# vue-tianditu
+<div align="center">
 
-- 天地图 vue 组件库
+<h1>VueTianditu</h1>
+<p>天地图 vue 组件库</p>
+<p>同时支持 Vue3 和 Vue2(composition-api)</p>
+<p>
+<a href="https://soullyoko.github.io/vue-tianditu/">文档</a>
+</p>
 
-- vue-tianditu v2 同时支持 Vue3 和 Vue2(composition-api)
+</div>
 
-- [vue-tianditu v2 文档](https://soullyoko.github.io/vue-tianditu/)
+# 快速开始
 
 ## 安装
 
@@ -14,9 +19,7 @@ npm i vue-tianditu
 yarn add vue-tianditu
 ```
 
-## 快速上手
-
-### 全局引入
+## 全局引入
 
 全部引入，解放双手
 
@@ -59,16 +62,30 @@ app.mount("#app");
 </style>
 ```
 
-### 按需引入
+### 类型提示
 
-按需引入，配合 ts 获得类型提示
+在 tsconfig.json 中通过 compilerOptions.types 指定全局组件类型，需要使用 Volar 插件支持。
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    // ...
+    "types": ["vue-tianditu/global"]
+  }
+}
+```
+
+## 按需引入
+
+按需引入，优化包体积
 
 `App.vue`
 
 ```html
 <template>
   <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadScript"></tdt-map>
+    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadConfig"></tdt-map>
   </div>
 </template>
 
@@ -90,7 +107,7 @@ app.mount("#app");
 </style>
 ```
 
-### API 加载器
+## API 加载器
 
 甚至可以把它当作无情的 API 加载工具
 
@@ -109,7 +126,7 @@ useApiLoader({
 ## 辅助函数
 
 ```ts
-import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
+import { toLngLat, toLngLats, toBounds, toPoint, toIcon } from "vue-tianditu";
 ```
 
 ### 说明
@@ -117,6 +134,7 @@ import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 | 函数名 | 返回值 | 描述 |
 | --- | --- | --- |
 | toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
+| toLngLats(lnglats:[number,number][]) | T.LngLat[] | 转换为由经纬度对象构成数组。<br>参数说明:<br>lnglats:由经纬度数组构成的数组 |
 | toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
 | toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
 | toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:string,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |

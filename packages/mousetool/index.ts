@@ -51,5 +51,3 @@ export const TdtMousetool = defineComponent({
     return () => {};
   }
 });
-
-export type TdtMousetool = InstanceType<typeof TdtMousetool>;

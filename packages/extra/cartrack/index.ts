@@ -48,5 +48,3 @@ export const TdtCarTrack = defineComponent({
     return () => {};
   }
 });
-
-export type TdtCarTrack = InstanceType<typeof TdtCarTrack>;

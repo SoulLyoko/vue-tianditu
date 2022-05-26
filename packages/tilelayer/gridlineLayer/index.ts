@@ -21,5 +21,3 @@ export const TdtGridlineLayer = defineComponent({
     return () => {};
   }
 });
-
-export type TdtGridlineLayer = InstanceType<typeof TdtGridlineLayer>;

@@ -12,11 +12,12 @@ export default defineConfig(async () => {
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
-        "~": path.resolve(__dirname, "packages")
+        "~": path.resolve(__dirname, "packages"),
+        "vue-tianditu": path.resolve(__dirname, "packages")
       }
     },
     optimizeDeps: {
-      exclude: ["vue-demi"]
+      exclude: ["vue", "vue-demi"]
     },
     build: {
       lib: {

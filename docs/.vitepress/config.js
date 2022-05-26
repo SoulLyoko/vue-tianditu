@@ -20,7 +20,7 @@ module.exports = {
     sidebar: {
       "/": [
         { text: "更新日志", link: "/CHANGELOG" },
-        { text: "开始", link: "/" },
+        { text: "快速开始", link: "/" },
         {
           text: "地图",
           children: [

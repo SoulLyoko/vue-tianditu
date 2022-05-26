@@ -13,18 +13,10 @@
     "lib": ["esnext", "dom"],
     "paths": {
       "@/*": ["src/*"],
-      "~/*": ["packages/*"]
-    }
+      "~/*": ["packages/*"],
+      "vue-tianditu": ["packages"]
+    },
+    "outDir": "lib"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-    "packages/**/*.ts",
-    "packages/**/*.d.ts",
-    "packages/**/*.vue",
-    "docs/.vitepress/**/*.ts",
-    "docs/.vitepress/**/*.d.ts",
-    "docs/.vitepress/**/*.vue"
-  ]
+  "include": ["src", "packages", "docs/.vitepress"]
 }

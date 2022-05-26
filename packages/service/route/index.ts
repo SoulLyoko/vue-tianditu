@@ -29,5 +29,3 @@ export const TdtRoute = defineComponent({
       );
   }
 });
-
-export type TdtRoute = InstanceType<typeof TdtRoute>;

@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 <h1>VueTianditu</h1>
 <p>天地图 vue 组件库</p>
@@ -7,7 +7,7 @@
 <a href="https://soullyoko.github.io/vue-tianditu/">文档</a>
 </p>
 
-</center>
+</div>
 
 # 快速开始
 

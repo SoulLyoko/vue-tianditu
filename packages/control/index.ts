@@ -29,5 +29,3 @@ export const TdtControl = defineComponent({
     };
   }
 });
-
-export type TdtControl = InstanceType<typeof TdtControl>;

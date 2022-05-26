@@ -24,5 +24,3 @@ export const TdtCloudMarkerCollection = defineComponent({
     return () => {};
   }
 });
-
-export type TdtCloudMarkerCollection = InstanceType<typeof TdtCloudMarkerCollection>;

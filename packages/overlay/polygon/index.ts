@@ -21,5 +21,3 @@ export const TdtPolygon = defineComponent({
     return () => {};
   }
 });
-
-export type TdtPolygon = InstanceType<typeof TdtPolygon>;

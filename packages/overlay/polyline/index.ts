@@ -21,5 +21,3 @@ export const TdtPolyline = defineComponent({
     return () => {};
   }
 });
-
-export type TdtPolyline = InstanceType<typeof TdtPolyline>;

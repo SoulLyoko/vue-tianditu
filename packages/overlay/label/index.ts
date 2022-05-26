@@ -21,5 +21,3 @@ export const TdtLabel = defineComponent({
     return () => {};
   }
 });
-
-export type TdtLabel = InstanceType<typeof TdtLabel>;

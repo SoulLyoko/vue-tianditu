@@ -20,5 +20,3 @@ export const TdtMarkerClusterer = defineComponent({
     return () => {};
   }
 });
-
-export type TdtMarkerClusterer = InstanceType<typeof TdtMarkerClusterer>;

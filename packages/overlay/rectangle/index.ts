@@ -21,5 +21,3 @@ export const TdtRectangle = defineComponent({
     return () => {};
   }
 });
-
-export type TdtRectangle = InstanceType<typeof TdtRectangle>;

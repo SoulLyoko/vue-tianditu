@@ -12,7 +12,7 @@ export interface SearchResultState
   extends Pick<T.LocalSearchResult, "pois" | "statistics" | "area" | "suggests" | "prompt" | "lineData"> {}
 
 export interface SearchViewState {
-  markers: TdtMarker["$props"][];
+  markers: typeof TdtMarker["$props"][];
   target: VT.LngLat | null;
   content: string;
   current: number;

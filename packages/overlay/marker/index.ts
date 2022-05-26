@@ -21,5 +21,3 @@ export const TdtMarker = defineComponent({
     return () => {};
   }
 });
-
-export type TdtMarker = InstanceType<typeof TdtMarker>;

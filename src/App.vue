@@ -1,12 +1,7 @@
 <template>
   <div class="map-container">
     <button @click="openTool('markTool')">标点</button>
-    <TdtMap
-      :center="state.center"
-      :zoom="state.zoom"
-      :controls="['Zoom', 'MapType']"
-      :load-config="{ tk: '7f013d0186775b063d6a046977bbefc6' }"
-    >
+    <TdtMap :center="state.center" :zoom="state.zoom" :controls="['Zoom', 'MapType']">
       <TdtMarker
         v-for="marker in state.markers"
         :key="marker.name"
@@ -20,9 +15,10 @@
       <TdtRectangle :bounds="state.bounds" ext-data="rectangle" @click="openInfoWindow"></TdtRectangle>
       <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
       <TdtInfowindow
-        v-model:target="state.infowindow.target"
+        :target="state.infowindow.target"
         :content="state.infowindow.content"
         :close-on-click="true"
+        @update:target="state.infowindow.target = $event"
       ></TdtInfowindow>
       <TdtMousetool ref="mousetoolRef" :mark-tool="{ follow: true }"></TdtMousetool>
       <TdtControl position="topleft">
@@ -34,34 +30,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from "vue-demi";
-import {
-  TdtMap,
-  TdtMarker,
-  TdtLabel,
-  TdtPolyline,
-  TdtPolygon,
-  TdtRectangle,
-  TdtCircle,
-  TdtInfowindow,
-  TdtMousetool,
-  TdtControl,
-  TdtSearch
-} from "~/index";
 
 export default defineComponent({
-  components: {
-    TdtMap,
-    TdtMarker,
-    TdtLabel,
-    TdtPolyline,
-    TdtPolygon,
-    TdtRectangle,
-    TdtCircle,
-    TdtInfowindow,
-    TdtMousetool,
-    TdtControl,
-    TdtSearch
-  },
   setup() {
     const state = reactive({
       center: [113.280637, 23.125178],

@@ -21,5 +21,3 @@ export const TdtCircle = defineComponent({
     return () => {};
   }
 });
-
-export type TdtCircle = InstanceType<typeof TdtCircle>;
