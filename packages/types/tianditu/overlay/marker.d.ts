@@ -29,6 +29,9 @@ declare namespace T {
     zIndexOffset?: number;
     /** 设置透明度。default:1.0 */
     opacity?: number;
+    /** 设置其他参数。 */
+    [index:string]: any
+
   }
 
   interface MakerEvents extends OverlayEvents<Marker, LngLat> {
