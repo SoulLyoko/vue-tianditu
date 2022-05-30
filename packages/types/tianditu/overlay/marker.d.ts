@@ -31,7 +31,6 @@ declare namespace T {
     opacity?: number;
     /** 设置其他参数。 */
     [index:string]: any
-
   }
 
   interface MakerEvents extends OverlayEvents<Marker, LngLat> {
