@@ -1,4 +1,18 @@
-# 搜索
+# 车辆轨迹
+
+::: tip
+
+车辆轨迹是额外的开源库，需要初始化时导入
+
+```js
+app.use(VueTianditu, {
+  v: "4.0",
+  tk: "your map token",
+  plugins: ["CarTrack"]
+});
+```
+
+:::
 
 ## 示例
 

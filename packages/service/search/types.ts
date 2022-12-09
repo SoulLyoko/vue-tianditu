@@ -1,4 +1,4 @@
-import { TdtMarker } from "../../components";
+import { Props as TdtMarkerProps } from "../../overlay/marker/use/const";
 
 export interface SearchLocalState {
   tdtMap: T.Map | null;
@@ -12,7 +12,7 @@ export interface SearchResultState
   extends Pick<T.LocalSearchResult, "pois" | "statistics" | "area" | "suggests" | "prompt" | "lineData"> {}
 
 export interface SearchViewState {
-  markers: typeof TdtMarker["$props"][];
+  markers: TdtMarkerProps[];
   target: VT.LngLat | null;
   content: string;
   current: number;

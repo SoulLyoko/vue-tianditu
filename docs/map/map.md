@@ -12,26 +12,35 @@
 
 ## 属性
 
-| 属性            | 类型    | 默认值        | 说明                                                                 |
-| --------------- | ------- | ------------- | -------------------------------------------------------------------- |
-| drag            | boolean | true          | 启用地图拖拽，默认启用                                               |
-| scrollWheelZoom | boolean | true          | 启用滚轮放大缩小，默认启用                                           |
-| doubleClickZoom | boolean | true          | 启用双击放大，默认启用                                               |
-| keyboard        | boolean | true          | 启用键盘操作，默认启用                                               |
-| inertia         | boolean | true          | 启用地图惯性拖拽，默认启用                                           |
-| continuousZoom  | boolean | true          | 启用连续缩放效果，默认启用                                           |
-| pinchToZoom     | boolean | true          | 启用双指操作缩放，默认启用                                           |
-| autoResize      | boolean | true          | 启用自动适应容器尺寸变化，默认启用                                   |
-| maxBounds       | array   |               | 当这个选项被设置后，地图被限制在给定的地理边界内                     |
-| projection      | string  | "EPSG:900913" | EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)                     |
-| center          | array   |               | 地图的初始化中心点[lng,lat]                                          |
-| zoom            | number  | 10            | 地图的初始化级别                                                     |
-| minZoom         | number  | 1             | 地图允许展示的最小级别                                               |
-| maxZoom         | number  | 18            | 地图允许展示的最大级别                                               |
-| viewport        | array   |               | 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点 |
-| mapStyle        | string  |               | 原天地图 api 的 style，地图样式，分别为 black 和 indigo              |
-| mid             | string  | uuid()        | 地图容器 id                                                          |
-| controls        | array   |               | 控件                                                                 |
+| 属性            | 类型       | 默认值        | 说明                                                                 |
+| --------------- | ---------- | ------------- | -------------------------------------------------------------------- |
+| drag            | boolean    | true          | 启用地图拖拽，默认启用                                               |
+| scrollWheelZoom | boolean    | true          | 启用滚轮放大缩小，默认启用                                           |
+| doubleClickZoom | boolean    | true          | 启用双击放大，默认启用                                               |
+| keyboard        | boolean    | true          | 启用键盘操作，默认启用                                               |
+| inertia         | boolean    | true          | 启用地图惯性拖拽，默认启用                                           |
+| continuousZoom  | boolean    | true          | 启用连续缩放效果，默认启用                                           |
+| pinchToZoom     | boolean    | true          | 启用双指操作缩放，默认启用                                           |
+| autoResize      | boolean    | true          | 启用自动适应容器尺寸变化，默认启用                                   |
+| maxBounds       | array      |               | 当这个选项被设置后，地图被限制在给定的地理边界内                     |
+| projection      | string     | "EPSG:900913" | EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)                     |
+| center          | array      |               | 地图的初始化中心点[lng,lat]                                          |
+| zoom            | number     | 10            | 地图的初始化级别                                                     |
+| minZoom         | number     | 1             | 地图允许展示的最小级别                                               |
+| maxZoom         | number     | 18            | 地图允许展示的最大级别                                               |
+| viewport        | array      |               | 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点 |
+| mapStyle        | string     |               | 原天地图 api 的 style，地图样式，分别为 black 和 indigo              |
+| mid             | string     | uuid()        | 地图容器 id                                                          |
+| controls        | array      |               | 控件                                                                 |
+| loadConfig      | LoadConfig |               | api 加载配置，按需引入时使用                                         |
+
+## LoadConfig
+
+| 属性 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| v | string | 4.0 | 天地图 api 版本号，目前只支持 4.0 |
+| tk | string |  | 天地图 api 的 token，通过天地图官网的控制台获取 |
+| plugins | array | [] | 开源库，默认不加载，可传入以下值，请按需传入：`["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]` |
 
 ## 事件
 

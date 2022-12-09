@@ -51,7 +51,7 @@ export async function useApiLoader(config: LoadConfig = {}) {
 }
 
 function loadScript(url: string) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>(resolve => {
     const script = globalThis.document?.createElement("script");
     if (!script) resolve();
     script.src = url;
@@ -59,7 +59,7 @@ function loadScript(url: string) {
     script.async = true;
     script.defer = true;
     script.onload = () => resolve();
-    script.onerror = e => resolve();
+    script.onerror = () => resolve();
     globalThis.document?.body.appendChild(script);
   });
 }
