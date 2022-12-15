@@ -1,4 +1,4 @@
-import { Props as MarkerProps, useInit as useInitMarker } from "../overlay/marker/use";
+// import { Props as MarkerProps, useInit as useInitMarker } from "../overlay/marker/use";
 
 /**
  * 转换为经纬度对象
@@ -70,14 +70,14 @@ export const toIcon = (icon: VT.IconOptions | string) => {
   }
 };
 
-/**
- * 转换为点标注对象
- * @param option 点标注配置
- */
-export const toMarker = (option: MarkerProps) => {
-  const marker = useInitMarker(option);
-  option.icon && marker.setIcon(toIcon(option.icon));
-  // @ts-ignore
-  marker.extData = option.extData;
-  return marker;
-};
+// /**
+//  * 转换为点标注对象
+//  * @param option 点标注配置
+//  */
+// export const toMarker = (option: MarkerProps) => {
+//   const marker = useInitMarker(option);
+//   option.icon && marker.setIcon(toIcon(option.icon));
+//   // @ts-ignore
+//   marker.extData = option.extData;
+//   return marker;
+// };

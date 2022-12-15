@@ -13,7 +13,7 @@ declare namespace T {
     draw(e: RectangleToolEvent);
   }
 
-  interface RectangleToolEvent extends ToolEvent<Rectangle> {
+  interface RectangleToolEvent extends ToolEvent<RectangleTool> {
     /** 用户拉框选择的地理范围 */
     currentBounds: LngLat;
     /** 用户绘制的矩形图形对象 */

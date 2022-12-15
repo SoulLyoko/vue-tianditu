@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["packages"],
+  "exclude": ["packages/.vitepress", "packages/**/demo", "packages/**/test", "**/*.md"]
+}

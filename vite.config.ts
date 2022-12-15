@@ -1,41 +1,77 @@
-import { defineConfig } from "vite";
-import { isVue2 } from "vue-demi";
 import path from "path";
 
+import { defineConfig } from "vite";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import fs from "fs-extra";
+
+import pkg from "./package.json";
+import { getVueVersion } from "./scripts/switch";
+
+export const alias = {
+  "@": path.resolve(__dirname, "src"),
+  "~": path.resolve(__dirname, "packages"),
+  [pkg.name]: path.resolve(__dirname, "packages")
+};
+export async function getVuePlugin() {
+  const vuePluginMap = {
+    2: async () => (await import("vite-plugin-vue2")).createVuePlugin(),
+    2.7: async () => (await import("@vitejs/plugin-vue2")).default(),
+    3: async () => (await import("@vitejs/plugin-vue")).default()
+  };
+  const plugin = await vuePluginMap[getVueVersion()]();
+  return plugin;
+}
+
+const globals = { vue: "Vue", "vue-demi": "VueDemi" };
+const external = Object.keys(globals);
+
 // https://vitejs.dev/config/
-export default defineConfig(async () => {
-  const vuePlugin = isVue2
-    ? (await import("vite-plugin-vue2")).createVuePlugin()
-    : (await import("@vitejs/plugin-vue")).default();
+export default defineConfig(async ({ mode }) => {
+  if (mode === "production") {
+    fs.removeSync("dist");
+    fs.removeSync("es");
+    fs.removeSync("lib");
+  }
+  const vuePlugin = await getVuePlugin();
   return {
-    plugins: [vuePlugin],
+    plugins: [vuePlugin, vueJsx()],
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "src"),
-        "~": path.resolve(__dirname, "packages"),
-        "vue-tianditu": path.resolve(__dirname, "packages")
-      }
+      alias
     },
     optimizeDeps: {
-      exclude: ["vue", "vue-demi"]
+      exclude: external
     },
     build: {
       lib: {
         entry: path.resolve(__dirname, "packages/index.ts"),
-        name: "VueTianditu",
-        fileName: "vue-tianditu"
+        name: pkg.upperName
       },
-      outDir: "lib",
       rollupOptions: {
-        // 请确保外部化那些你的库中不需要的依赖
-        external: ["vue", "vue-demi"],
-        output: {
-          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-          globals: {
-            vue: "Vue",
-            "vue-demi": "VueDemi"
+        external,
+        output: [
+          {
+            globals,
+            name: pkg.upperName,
+            entryFileNames: "[name].js",
+            format: "umd",
+            dir: "dist"
+          },
+          {
+            preserveModules: true,
+            preserveModulesRoot: path.resolve(__dirname, "es"),
+            entryFileNames: "[name].js",
+            format: "es",
+            dir: "es"
+          },
+          {
+            exports: "named",
+            preserveModules: true,
+            preserveModulesRoot: path.resolve(__dirname, "lib"),
+            entryFileNames: "[name].js",
+            format: "cjs",
+            dir: "lib"
           }
-        }
+        ]
       }
     }
   };

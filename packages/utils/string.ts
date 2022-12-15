@@ -1,12 +1,3 @@
-/**
- * 首字母大写
- * @param {string} 字符串
- */
-export function capitalize(word: string): Capitalize<typeof word> {
-  if (!word) return word;
-  return word[0].toUpperCase() + word.substr(1).toLowerCase();
-}
-
 export function uuid(len?: number, radix?: number): string {
   const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
   radix = radix ?? chars.length;

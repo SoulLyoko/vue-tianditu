@@ -30,7 +30,7 @@ declare namespace T {
     addpoint(e: PolylineToolEvent);
   }
 
-  interface PolylineToolEvent extends ToolEvent<Polyline> {
+  interface PolylineToolEvent extends ToolEvent<PolylineTool> {
     /** 用户当前绘制的折线的点坐标数组 */
     currentLnglats: LngLat;
     /** 用户当前绘制的折线的地理长度 */

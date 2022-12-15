@@ -1,9 +1,11 @@
-import { Plugin } from "vue-demi";
-import { useApiLoader, LoadConfig } from "./use";
-import * as components from "./components";
+import type { App, Plugin } from "vue-demi";
+import type { LoadConfig } from "./types";
+
+import { useApiLoader } from "./composables";
+import components from "./components";
 
 export default {
-  install: (app: any, config: LoadConfig): void => {
+  install(app: App, config: LoadConfig) {
     useApiLoader(config);
     Object.values(components).forEach(component => {
       app.component(component.name, component);

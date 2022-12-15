@@ -1,22 +1,15 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "lib": ["esnext", "dom"],
     "paths": {
       "@/*": ["src/*"],
       "~/*": ["packages/*"],
       "vue-tianditu": ["packages"]
     },
-    "outDir": "lib"
+    "types": ["vitest/globals"]
   },
-  "include": ["src", "packages", "docs/.vitepress"]
+  "include": ["packages", "packages/.vitepress/**/*", "src", "scripts/tianditu.ts"],
+  "exclude": ["packages/.vitepress/dist"]
 }

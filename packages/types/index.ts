@@ -1,4 +1,4 @@
-import "./tianditu";
-import "./vue-tianditu";
+// import "./tianditu";
+// import "./vue-tianditu";
 
 export * from "./helpers";

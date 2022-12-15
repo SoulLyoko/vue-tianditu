@@ -29,3 +29,7 @@ export function debounce<F extends () => void>(func: F, wait = 500, immediate = 
     }
   };
 }
+
+export function sleep(ms?: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

@@ -25,7 +25,7 @@ declare namespace T {
     mouseup(e: MarkToolEvent);
   }
 
-  interface MarkToolEvent extends ToolEvent<Marker> {
+  interface MarkToolEvent extends ToolEvent<MarkTool> {
     /** 用户在地图上标的坐标 */
     currentLngLat: LngLat;
     /** 用户当前的标注点对象 */

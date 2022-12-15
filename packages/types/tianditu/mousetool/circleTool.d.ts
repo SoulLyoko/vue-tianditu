@@ -15,7 +15,7 @@ declare namespace T {
     drawend(e: CircleToolEvent);
   }
 
-  interface CircleToolEvent extends ToolEvent<Circle> {
+  interface CircleToolEvent extends ToolEvent<CircleTool> {
     /** 中心点的地理坐标 */
     currentCenter: LngLat;
     /** 半径，单位为米 */

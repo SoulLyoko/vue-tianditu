@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run precommit
+yarn switch:3
 
 npx lint-staged --allow-empty $1

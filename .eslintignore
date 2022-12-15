@@ -1,0 +1,6 @@
+.history
+coverage
+lib
+node_modules
+dist
+es

@@ -1,7 +1,10 @@
+.history
+coverage
+lib
 node_modules
 .DS_Store
-.history
 dist
 dist-ssr
+es
 *.local
-lib
+/global.d.ts
