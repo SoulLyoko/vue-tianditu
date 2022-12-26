@@ -1,8 +1,6 @@
 import { nextTick } from "vue-demi";
 import { mount } from "@vue/test-utils";
-
-import { TdtMap } from "../map";
-import { TdtControl } from ".";
+import { TdtMap, TdtControl } from "vue-tianditu";
 
 describe("TdtControl", () => {
   it("mount", async () => {

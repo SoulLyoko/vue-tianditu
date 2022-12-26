@@ -1,6 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
-window.TMAP_AUTHKEY = "7f013d0186775b063d6a046977bbefc6";
+import { TOKEN } from "~/constants";
+window.TMAP_AUTHKEY = TOKEN;
 window.T = window.T || {};
 (function () {
   function each(t, i) {

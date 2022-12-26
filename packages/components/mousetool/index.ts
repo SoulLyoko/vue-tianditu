@@ -7,7 +7,6 @@ import { mousetoolProps, mousetoolEmits, useInit, useWatch, useEvent } from "./c
 
 export { mousetoolProps, mousetoolEmits } from "./composables";
 export type { MousetoolProps, MousetoolEmits, MousetoolEmitFn } from "./composables";
-
 export type MousetoolInstance = InstanceType<typeof TdtMousetool>;
 
 export const TdtMousetool = defineComponent({

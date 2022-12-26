@@ -1,8 +1,6 @@
 // import { nextTick, ref } from "vue-demi";
 // import { mount } from "@vue/test-utils";
-
-// import { TdtMap } from "../map";
-import { TdtMousetool } from ".";
+import { TdtMap, TdtMousetool } from "vue-tianditu";
 
 describe("TdtMousetool", () => {
   it("mount", async () => {

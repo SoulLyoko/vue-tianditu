@@ -5,6 +5,7 @@ import "./index.scss";
 import components from "../components";
 import VueTianditu from "../..";
 // import "../../styles/index.scss";
+import { TOKEN } from "~/constants";
 
 export default {
   ...defaultTheme,
@@ -12,7 +13,7 @@ export default {
     app.use(components);
     app.use(VueTianditu, {
       v: "4.0",
-      tk: "7f013d0186775b063d6a046977bbefc6",
+      tk: TOKEN,
       plugins: ["CarTrack"]
     });
   }
