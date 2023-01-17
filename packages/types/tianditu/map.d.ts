@@ -142,7 +142,7 @@ declare namespace T {
     /** 清除地图上所有覆盖物 */
     clearOverLays(): void;
     /** 返回地图上的所有覆盖物 */
-    getOverlays(): Array<Overlay>;
+    getOverlays(): Array<Overlay | OverlayBase<any>>;
     /** 返回地图覆盖物容器列表 */
     getPanes(): MapPanes;
     /** 在地图上打开信息窗口 */
