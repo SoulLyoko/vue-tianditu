@@ -24,9 +24,15 @@ declare namespace T {
     /** 返回该鹰眼的地图对象 */
     getMiniMap(): Map;
     /** 添加事件监听函数 */
-    addEventListener<E extends keyof ControlOverviewMapEvents>(event: E, handler: ControlOverviewMapEvents[E]): void;
+    addEventListener<E extends keyof ControlOverviewMapEvents>(
+      event: E,
+      handler: ControlOverviewMapEvents[E],
+    ): void;
     /** 移除事件监听函数 */
-    removeEventListener<E extends keyof ControlOverviewMapEvents>(event: E, handler: ControlOverviewMapEvents[E]): void;
+    removeEventListener<E extends keyof ControlOverviewMapEvents>(
+      event: E,
+      handler: ControlOverviewMapEvents[E],
+    ): void;
   }
 
   interface ControlOverviewMapOptions {

@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+
+allowBuilds:
+  "@parcel/watcher": false
+  esbuild: true
+
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.6

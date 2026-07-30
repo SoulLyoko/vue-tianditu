@@ -30,7 +30,7 @@ declare namespace T {
     /** 设置透明度。default:1.0 */
     opacity?: number;
     /** 设置其他参数。 */
-    [index:string]: any
+    [index: string]: any;
   }
 
   interface MakerEvents extends OverlayEvents<Marker, LngLat> {

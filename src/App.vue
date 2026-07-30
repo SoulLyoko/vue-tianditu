@@ -15,10 +15,23 @@
         @click="openInfoWindow"
       ></TdtMarker>
       <TdtLabel :position="state.center" text="123"></TdtLabel>
-      <TdtPolyline :path="state.polylinePath" ext-data="polyline" @click="openInfoWindow"></TdtPolyline>
+      <TdtPolyline
+        :path="state.polylinePath"
+        ext-data="polyline"
+        @click="openInfoWindow"
+      ></TdtPolyline>
       <TdtPolygon :path="state.polygonPath" ext-data="polygon" @click="openInfoWindow"></TdtPolygon>
-      <TdtRectangle :bounds="state.bounds" ext-data="rectangle" @click="openInfoWindow"></TdtRectangle>
-      <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
+      <TdtRectangle
+        :bounds="state.bounds"
+        ext-data="rectangle"
+        @click="openInfoWindow"
+      ></TdtRectangle>
+      <TdtCircle
+        :center="state.center"
+        :radius="1000"
+        ext-data="circle"
+        @click="openInfoWindow"
+      ></TdtCircle>
       <TdtInfowindow
         v-model:target="state.infowindow.target"
         :content="state.infowindow.content"
@@ -33,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue-demi";
+import { defineComponent, reactive, ref } from "vue";
 import {
   TdtMap,
   TdtMarker,
@@ -45,8 +58,8 @@ import {
   TdtInfowindow,
   TdtMousetool,
   TdtControl,
-  TdtSearch
-} from "~/index";
+  TdtSearch,
+} from "vue-tianditu";
 
 export default defineComponent({
   components: {
@@ -60,7 +73,7 @@ export default defineComponent({
     TdtInfowindow,
     TdtMousetool,
     TdtControl,
-    TdtSearch
+    TdtSearch,
   },
   setup() {
     const state = reactive({
@@ -68,29 +81,29 @@ export default defineComponent({
       zoom: 12,
       polylinePath: [
         [113.280637, 23.125178],
-        [113.290637, 23.135178]
+        [113.290637, 23.135178],
       ],
       polygonPath: [
         [113.280637, 23.125178],
         [113.290637, 23.125178],
         [113.290637, 23.115178],
-        [113.280637, 23.115178]
+        [113.280637, 23.115178],
       ],
       bounds: [
         [113.280637, 23.125178],
-        [113.270637, 23.115178]
+        [113.270637, 23.115178],
       ],
       markers: [
         { name: "marker1", position: [113.280637, 23.125178] },
         { name: "marker2", position: [113.290637, 23.125178] },
         { name: "marker3", position: [113.290637, 23.115178] },
-        { name: "marker4", position: [113.280637, 23.115178] }
+        { name: "marker4", position: [113.280637, 23.115178] },
       ],
       infowindow: {
         target: null as any,
-        content: ""
+        content: "",
       },
-      keyword: ""
+      keyword: "",
     });
 
     function openInfoWindow(e: any) {
@@ -107,9 +120,9 @@ export default defineComponent({
       state,
       mousetoolRef,
       openInfoWindow,
-      openTool
+      openTool,
     };
-  }
+  },
 });
 </script>
 

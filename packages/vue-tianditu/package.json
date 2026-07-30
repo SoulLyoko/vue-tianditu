@@ -1,0 +1,32 @@
+{
+  "name": "vue-tianditu",
+  "version": "3.0.0",
+  "description": "Vue 3 components for Tianditu",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "vp pack"
+  },
+  "dependencies": {
+    "@vue-tianditu/components": "workspace:^",
+    "@vue-tianditu/core": "workspace:^",
+    "@vue-tianditu/types": "workspace:^"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}

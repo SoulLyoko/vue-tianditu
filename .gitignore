@@ -3,5 +3,6 @@ node_modules
 .history
 dist
 dist-ssr
+docs/.vitepress/.temp
 *.local
 lib

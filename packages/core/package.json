@@ -1,0 +1,24 @@
+{
+  "name": "@vue-tianditu/core",
+  "version": "3.0.0",
+  "description": "Core utilities and API loader for Vue Tianditu",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vp pack"
+  },
+  "dependencies": {
+    "@vue-tianditu/types": "workspace:^"
+  }
+}

@@ -39,6 +39,8 @@ declare namespace T {
     color?: string;
   }
 
-  interface CloudMarkerCollectionEvents
-    extends Pick<OverlayEvents<CloudMarkerCollection, LngLat, Overlay>, "click" | "mouseover" | "mouseout"> {}
+  interface CloudMarkerCollectionEvents extends Pick<
+    OverlayEvents<CloudMarkerCollection, LngLat, Overlay>,
+    "click" | "mouseover" | "mouseout"
+  > {}
 }

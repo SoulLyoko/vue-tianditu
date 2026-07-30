@@ -1,0 +1,28 @@
+{
+  "name": "@vue-tianditu/types",
+  "version": "3.0.0",
+  "description": "Type definitions for Vue Tianditu",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "types.d.ts",
+    "helpers",
+    "tianditu",
+    "vue-tianditu"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vp pack"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}

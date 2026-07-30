@@ -6,6 +6,8 @@ declare namespace VT {
   type PolygonEventParam<E extends keyof T.PolygonEvents> = Parameters<T.PolygonEvents[E]>[0];
   type PolylineEventParam<E extends keyof T.PolylineEvents> = Parameters<T.PolylineEvents[E]>[0];
   type RectangleEventParam<E extends keyof T.RectangleEvents> = Parameters<T.RectangleEvents[E]>[0];
-  type InfoWindowEventParam<E extends keyof T.InfoWindowEvents> = Parameters<T.InfoWindowEvents[E]>[0];
+  type InfoWindowEventParam<E extends keyof T.InfoWindowEvents> = Parameters<
+    T.InfoWindowEvents[E]
+  >[0];
   type TileLayerEventParam<E extends keyof T.TileLayerEvents> = Parameters<T.TileLayerEvents[E]>[0];
 }

@@ -1,30 +1,23 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite-plus/client"],
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["packages/*"]
+      "@/*": ["./src/*"],
+      "@vue-tianditu/types": ["./packages/types/types.d.ts"],
+      "@vue-tianditu/core": ["./packages/core/index.ts"],
+      "@vue-tianditu/components": ["./packages/components/index.ts"],
+      "vue-tianditu": ["./packages/vue-tianditu/index.ts"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-    "packages/**/*.ts",
-    "packages/**/*.d.ts",
-    "packages/**/*.vue",
-    "docs/.vitepress/**/*.ts",
-    "docs/.vitepress/**/*.d.ts",
-    "docs/.vitepress/**/*.vue"
-  ]
+  "include": ["src", "packages"]
 }
