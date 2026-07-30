@@ -5,7 +5,9 @@
 <demo-circle></demo-circle>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-circle/index.vue
+
 </code-details>
 
 ## 属性

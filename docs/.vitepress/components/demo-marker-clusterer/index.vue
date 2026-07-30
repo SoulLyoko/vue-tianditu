@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 import { withBase } from "vitepress";
 
 const state = reactive({
@@ -23,10 +23,10 @@ const state = reactive({
     return {
       icon: {
         iconUrl: withBase("/marker_blue.png"),
-        iconAnchor: [10, 41]
+        iconAnchor: [10, 41],
       },
       position: [Math.random() * 40 + 85, Math.random() * 30 + 21],
-      extData: "cluster-" + i
+      extData: "cluster-" + i,
     };
   }),
   styles: [
@@ -36,7 +36,7 @@ const state = reactive({
       offset: [0, 0], //显示图片的偏移量
       textColor: "#000000", //显示数字的颜色
       textSize: 8, //显示文字的大小
-      range: [0, 50] //显示该图标的范围
+      range: [0, 50], //显示该图标的范围
     },
     {
       url: withBase("/cluster1.png"),
@@ -44,7 +44,7 @@ const state = reactive({
       offset: [0, 0],
       textColor: "#000000",
       textSize: 10,
-      range: [50, 400]
+      range: [50, 400],
     },
     {
       url: withBase("/cluster2.png"),
@@ -52,11 +52,11 @@ const state = reactive({
       offset: [0, 0],
       textColor: "#000000",
       textSize: 12,
-      range: [400, 500]
-    }
+      range: [400, 500],
+    },
   ],
   target: null,
-  content: ""
+  content: "",
 });
 
 function onClick(e: any) {

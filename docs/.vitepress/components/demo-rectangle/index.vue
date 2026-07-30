@@ -15,17 +15,17 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
   bounds: [
     [113.22716, 23.14162],
-    [113.27316, 23.105]
+    [113.27316, 23.105],
   ],
   edit: false,
-  visible: true
+  visible: true,
 });
 </script>
 

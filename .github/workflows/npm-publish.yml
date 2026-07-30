@@ -1,21 +1,58 @@
-name: NPM Publish
+name: Publish packages
+
 on:
   push:
-    branches:
-      - master
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Install and Build
-        run: |
-          yarn 
-          yarn build
-
-      - name: Publish
-        uses: JS-DevTools/npm-publish@v1
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
         with:
-          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          node-version-file: .node-version
+          run-install: false
+          cache: true
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: vp install
+
+      - name: Verify tag version
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          VERSION="${TAG_NAME#v}"
+          test "$TAG_NAME" = "v$VERSION"
+          test "$(node -p "require('./packages/types/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./packages/core/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./packages/components/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./packages/vue-tianditu/package.json').version")" = "$VERSION"
+
+      - name: Verify sources
+        run: |
+          vp check
+          corepack pnpm exec vue-tsc --noEmit
+          vp test --run
+
+      - name: Build packages
+        run: vp run -r build --no-cache
+
+      - name: Verify package artifacts
+        run: vp test --run packages/package-imports.test.ts
+
+      - name: Publish packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+        run: |
+          corepack pnpm --dir packages/types publish --access public --no-git-checks
+          corepack pnpm --dir packages/core publish --access public --no-git-checks
+          corepack pnpm --dir packages/components publish --access public --no-git-checks
+          corepack pnpm --dir packages/vue-tianditu publish --access public --no-git-checks

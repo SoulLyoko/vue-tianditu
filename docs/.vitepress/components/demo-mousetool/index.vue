@@ -15,17 +15,21 @@
   <button @click="clearTool()">清除全部</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-mousetool ref="mousetoolRef" :markTool="{ follow: true }" @mark-mouseup="onMarkMouseup"></tdt-mousetool>
+      <tdt-mousetool
+        ref="mousetoolRef"
+        :markTool="{ follow: true }"
+        @mark-mouseup="onMarkMouseup"
+      ></tdt-mousetool>
     </tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue-demi";
+import { reactive, ref } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
-  zoom: 11
+  zoom: 11,
 });
 
 const mousetoolRef = ref();
@@ -34,7 +38,8 @@ function openTool(toolName: string) {
 }
 
 function clearTool(toolName?: string) {
-  toolName ? mousetoolRef.value?.clear(toolName) : mousetoolRef.value?.clearAll();
+  if (toolName) mousetoolRef.value?.clear(toolName);
+  else mousetoolRef.value?.clearAll();
 }
 
 function onMarkMouseup(e: T.MarkToolEvent) {

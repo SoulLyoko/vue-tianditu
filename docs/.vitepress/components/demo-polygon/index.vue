@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
@@ -24,10 +24,10 @@ const state = reactive({
     [113.22716, 23.14162],
     [113.26973, 23.14225],
     [113.27316, 23.105],
-    [113.23265, 23.11131]
+    [113.23265, 23.11131],
   ],
   edit: false,
-  visible: true
+  visible: true,
 });
 </script>
 

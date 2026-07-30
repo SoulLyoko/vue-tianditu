@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 import dataCollection from "./data";
 
 const state = reactive({
@@ -21,7 +21,7 @@ const state = reactive({
   zoom: 4,
   lnglats: dataCollection.data,
   target: null,
-  content: ""
+  content: "",
 });
 
 function onClick(e: any) {

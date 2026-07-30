@@ -15,7 +15,9 @@ topleft：表示左上。topright：表示右上。bottomleft：表示左下。b
 <demo-control></demo-control>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-control/index.vue
+
 </code-details>
 
 ## 自定义控件
@@ -70,37 +72,37 @@ OverviewMap 鹰眼地图控件，用来显示一个鹰眼地图, 继承自 Contr
 
 mapType 负责切换地图类型的控件
 
-| 属性 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| position`(v2.7.4)` | string | "topright" | 控件的停靠位置，默认右上 |
-| mapTypes | array |  | 控件展示的地图类型，默认为普通图、卫星图、卫星加路网混合图。通过此属性可配置控件展示的地图类型。<br>mapTypes：参数的数据格式如下 |
+| 属性               | 类型   | 默认值     | 说明                                                                                                                             |
+| ------------------ | ------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| position`(v2.7.4)` | string | "topright" | 控件的停靠位置，默认右上                                                                                                         |
+| mapTypes           | array  |            | 控件展示的地图类型，默认为普通图、卫星图、卫星加路网混合图。通过此属性可配置控件展示的地图类型。<br>mapTypes：参数的数据格式如下 |
 
 ```js
 [
   {
     title: "地图", //地图控件上所要显示的图层名称
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png", //地图控件上所要显示的图层图标（默认图标大小 80x80）
-    layer: "TMAP_NORMAL_MAP" //地图类型，在原天地图api中以window.TMAP_NORMAL_MAP表示，此处为字符串
+    layer: "TMAP_NORMAL_MAP", //地图类型，在原天地图api中以window.TMAP_NORMAL_MAP表示，此处为字符串
   },
   {
     title: "卫星",
     icon: " http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
-    layer: "TMAP_SATELLITE_MAP"
+    layer: "TMAP_SATELLITE_MAP",
   },
   {
     title: "卫星混合",
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png",
-    layer: "TMAP_HYBRID_MAP"
+    layer: "TMAP_HYBRID_MAP",
   },
   {
     title: "地形",
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png",
-    layer: "TMAP_TERRAIN_MAP"
+    layer: "TMAP_TERRAIN_MAP",
   },
   {
     title: "地形混合",
     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png",
-    layer: "TMAP_TERRAIN_HYBRID_MAP"
-  }
+    layer: "TMAP_TERRAIN_HYBRID_MAP",
+  },
 ];
 ```

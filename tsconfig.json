@@ -19,5 +19,5 @@
       "vue-tianditu": ["./packages/vue-tianditu/index.ts"]
     }
   },
-  "include": ["src", "packages"]
+  "include": ["src", "packages", "docs"]
 }

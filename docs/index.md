@@ -1,11 +1,7 @@
 <center>
 
-<h1>VueTianditu</h1>
-<p>天地图 vue 组件库</p>
-<p>同时支持 Vue3 和 Vue2(composition-api)</p>
-<p>
-<a href="https://soullyoko.github.io/vue-tianditu/">文档</a>
-</p>
+<h1>VueTianditu 3</h1>
+<p>面向 Vue 3.5+ 的天地图组件库</p>
 
 </center>
 
@@ -14,127 +10,118 @@
 ## 安装
 
 ```sh
-npm i vue-tianditu
-# or
-yarn add vue-tianditu
+pnpm add vue-tianditu vue
 ```
+
+项目同时发布四个职责明确的包：
+
+| 包                         | 用途                         |
+| -------------------------- | ---------------------------- |
+| `@vue-tianditu/types`      | 天地图和组件类型             |
+| `@vue-tianditu/core`       | API loader、转换器和通用函数 |
+| `@vue-tianditu/components` | Vue 3 组件和样式             |
+| `vue-tianditu`             | 统一导出和默认安装插件       |
 
 ## 全局引入
 
-全部引入，解放双手
-
 ```ts
-// main.ts
 import { createApp } from "vue";
-import App from "./App.vue";
 import VueTianditu from "vue-tianditu";
+import "vue-tianditu/style.css";
+import App from "./App.vue";
 
-const app = createApp(App);
-app.use(VueTianditu, {
-  v: "4.0", //目前只支持4.0版本
-  tk: "your map token"
-});
-app.mount("#app");
+createApp(App)
+  .use(VueTianditu, {
+    v: "4.0",
+    tk: "your map token",
+  })
+  .mount("#app");
 ```
 
-```html
-<!-- App.vue -->
+```vue
+<script setup lang="ts">
+import { reactive } from "vue";
+
+const state = reactive({
+  center: [113.280637, 23.125178] as [number, number],
+  zoom: 12,
+});
+</script>
+
 <template>
-  <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
+  <div class="map-container">
+    <TdtMap :center="state.center" :zoom="state.zoom" />
   </div>
 </template>
 
-<script lang="ts" setup>
-  import { reactive } from "vue";
-  import { TdtMap } from "vue-tianditu";
-  const state = reactive({
-    center: [113.280637, 23.125178],
-    zoom: 12
-  });
-</script>
-
-<style>
-  .mapDiv {
-    width: 100%;
-    height: 100%;
-  }
-</style>
-```
-
-### 类型提示
-
-在 tsconfig.json 中通过 compilerOptions.types 指定全局组件类型，需要使用 Volar 插件支持。
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    // ...
-    "types": ["vue-tianditu/global"]
-  }
+<style scoped>
+.map-container {
+  width: 100%;
+  height: 500px;
 }
+</style>
 ```
 
 ## 按需引入
 
-按需引入，优化包体积
+```vue
+<script setup lang="ts">
+import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
+import "vue-tianditu/style.css";
 
-`App.vue`
-
-```html
-<template>
-  <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadConfig"></tdt-map>
-  </div>
-</template>
-
-<script lang="ts" setup>
-  import { reactive } from "vue";
-  import { TdtMap } from "vue-tianditu";
-  const loadConfig = { v: "4.0", tk: "your map token" };
-  const state = reactive({
-    center: [113.280637, 23.125178],
-    zoom: 12
-  });
+const loadConfig: LoadConfig = {
+  apiUrl: "/map-api",
+  tk: "your map token",
+};
 </script>
 
-<style>
-  .mapDiv {
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<template>
+  <TdtMap :center="[113.280637, 23.125178]" :zoom="12" :load-config="loadConfig">
+    <TdtMarker :position="[113.280637, 23.125178]" />
+  </TdtMap>
+</template>
 ```
 
-## API 加载器
+也可以直接从组件包引入：
 
-甚至可以把它当作无情的 API 加载工具
+```ts
+import { TdtMap } from "@vue-tianditu/components";
+import "@vue-tianditu/components/style.css";
+```
+
+## 自定义 API 和插件地址
 
 ```ts
 import { useApiLoader } from "vue-tianditu";
 
-useApiLoader({
+await useApiLoader({
+  apiUrl: "/map-api?tenant=demo",
   v: "4.0",
   tk: "your map token",
-  plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
-}).then(() => {
-  new T.Map({...});
+  plugins: ["D3", "CarTrack"],
+  pluginUrls: {
+    D3: ["/map-plugins/d3.min.js", "/map-plugins/D3SvgOverlay.min.js"],
+    CarTrack: [
+      "/map-plugins/d3.min.js",
+      "/map-plugins/D3SvgOverlay.min.js",
+      "/map-plugins/CarTrack.min.js",
+    ],
+  },
 });
 ```
 
-## 辅助函数
+`apiUrl` 可以是绝对 URL 或相对代理路径。已有查询参数会被保留，显式传入的 `v` 和 `tk` 会覆盖同名参数。插件按声明顺序加载，并对 URL 去重。
+
+## Core 工具
 
 ```ts
-import { toLngLat, toLngLats, toBounds, toPoint, toIcon } from "vue-tianditu";
+import { toBounds, toIcon, toLngLat, toLngLats, toMarker } from "vue-tianditu";
 ```
 
-### 说明
+## 从 2.x 升级
 
-| 函数名 | 返回值 | 描述 |
-| --- | --- | --- |
-| toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
-| toLngLats(lnglats:[number,number][]) | T.LngLat[] | 转换为由经纬度对象构成数组。<br>参数说明:<br>lnglats:由经纬度数组构成的数组 |
-| toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
-| toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
-| toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:string,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |
+- 3.0 仅支持 Vue 3.5+，不再依赖 `vue-demi` 或 Vue 2 composition API。
+- 仅发布 ESM，不再提供 CJS/UMD 文件。
+- 样式入口由旧的 `lib/style.css` 改为 `vue-tianditu/style.css`。
+- `SearchBox` 使用 Vue 3 标准 `modelValue` / `update:modelValue`。
+- 类型、core 和组件可以作为独立包安装，也可以继续从 `vue-tianditu` 统一导入。

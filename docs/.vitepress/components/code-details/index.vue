@@ -1,5 +1,5 @@
 <template>
-  <details class="code-details">
+  <details>
     <summary>查看代码</summary>
     <slot></slot>
   </details>
@@ -10,9 +10,12 @@ export default { name: "code-details" };
 </script>
 
 <style scoped>
-.code-details {
-  padding: 10px 0;
+details {
+  border: 1px solid var(--vp-c-divider);
+}
+
+summary {
   text-align: center;
-  border: 1px solid #eee;
+  cursor: pointer;
 }
 </style>

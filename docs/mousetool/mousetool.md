@@ -7,7 +7,9 @@ mousetool 组件初始化时会创建六个工具对象，分别对应标注工�
 <demo-mousetool></demo-mousetool>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-mousetool/index.vue
+
 </code-details>
 
 ## 属性
@@ -38,10 +40,10 @@ markTool 标注工具，用来让用户在地图上标注一个点，可以通�
 
 ### 属性
 
-| 属性 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| icon | String/Object |  | 标注的图标。可以是网络地址或本地图片地址，也可以是对象`{iconUrl:String //地址,`<br>`iconSize:Array //大小,`<br>`iconAnchor:Array //偏移}` |
-| follow | Boolean | false | 标记图标是否跟随鼠标。 |
+| 属性   | 类型          | 默认值 | 说明                                                                                                                                      |
+| ------ | ------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| icon   | String/Object |        | 标注的图标。可以是网络地址或本地图片地址，也可以是对象`{iconUrl:String //地址,`<br>`iconSize:Array //大小,`<br>`iconAnchor:Array //偏移}` |
+| follow | Boolean       | false  | 标记图标是否跟随鼠标。                                                                                                                    |
 
 ### 事件
 
@@ -67,9 +69,9 @@ polygonTool 多边形工具，可以通过事件来获取用户绘制的多边�
 
 ### 事件
 
-| 事件 | 参数 | 描述 |
-| --- | --- | --- |
-| polygon-draw | ({type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons}) | 用户双击完成一次折线绘制时触发事件。 |
+| 事件             | 参数                                                                      | 描述                                                     |
+| ---------------- | ------------------------------------------------------------------------- | -------------------------------------------------------- |
+| polygon-draw     | ({type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons}) | 用户双击完成一次折线绘制时触发事件。                     |
 | polygon-addpoint | ({type,target,currentLnglats,currentArea,<br>currentPolygon,allPolygons}) | 用户在多边形绘制过程中，每次点击底图添加节点时触发事件。 |
 
 ## 折线工具
@@ -88,9 +90,9 @@ polylineTool 折线工具，可以通过事件来获取用户绘制的折线，�
 
 ### 事件
 
-| 事件 | 参数 | 说明 |
-| --- | --- | --- |
-| polyline-draw | ({type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines}) | 用户每次完成拉框操作时触发事件。 |
+| 事件              | 参数                                                                            | 说明                                             |
+| ----------------- | ------------------------------------------------------------------------------- | ------------------------------------------------ |
+| polyline-draw     | ({type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines}) | 用户每次完成拉框操作时触发事件。                 |
 | polyline-addpoint | ({type,target,currentLnglats,currentDistance,<br>currentPolyline,allPolylines}) | 用户测距过程中，每次点击底图添加节点时触发事件。 |
 
 ## 矩形工具

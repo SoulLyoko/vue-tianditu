@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version-file: .node-version
+          run-install: false
+          cache: true
+
+      - name: Install dependencies
+        run: vp install
+
+      - name: Check formatting and lint
+        run: vp check
+
+      - name: Type check
+        run: corepack pnpm exec vue-tsc --noEmit
+
+      - name: Test
+        run: vp test --run
+
+      - name: Build packages
+        run: vp run -r build --no-cache
+
+      - name: Verify package artifacts
+        run: vp test --run packages/package-imports.test.ts
+
+      - name: Check package contents
+        run: |
+          corepack pnpm --dir packages/types pack --dry-run
+          corepack pnpm --dir packages/core pack --dry-run
+          corepack pnpm --dir packages/components pack --dry-run
+          corepack pnpm --dir packages/vue-tianditu pack --dry-run
+
+      - name: Build demo
+        run: vp build
+
+      - name: Build documentation
+        run: vp run docs:build

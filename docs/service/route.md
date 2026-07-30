@@ -11,11 +11,13 @@
 :::
 
 ```js
-import "vue-tianditu/lib/style.css";
+import "vue-tianditu/style.css";
 ```
 
 <demo-route></demo-route>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-route/index.vue
+
 </code-details>

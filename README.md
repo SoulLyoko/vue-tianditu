@@ -1,179 +1,145 @@
 # vue-tianditu
 
-- 天地图 vue 组件库
+基于 Vue 3 的天地图组件库，提供地图、覆盖物、图层、搜索、路线和车辆轨迹组件。
 
-- vue-tianditu v2 同时支持 Vue3 和 Vue2(composition-api)
+- Vue 3.5+
+- 天地图 JavaScript API 4.0
+- ESM、TypeScript 类型声明、source map 和 CSS
+- [在线文档](https://soullyoko.github.io/vue-tianditu/)
 
-- [vue-tianditu v2 文档](https://soullyoko.github.io/vue-tianditu/)
+## 包结构
+
+| 包                         | 用途                                            |
+| -------------------------- | ----------------------------------------------- |
+| `@vue-tianditu/types`      | 全局 `T` / `VT`、地图 API 和组件公共类型        |
+| `@vue-tianditu/core`       | API loader、转换器和通用函数，不依赖 Vue 运行时 |
+| `@vue-tianditu/components` | Vue 3 组件、安装插件和组件样式                  |
+| `vue-tianditu`             | 统一导出以上三个包，默认导出组件安装插件        |
 
 ## 安装
 
+通常只需安装统一入口：
+
 ```sh
-npm i vue-tianditu
-# or
-yarn add vue-tianditu
+pnpm add vue-tianditu vue
 ```
 
-## 快速上手
+也可以按职责单独安装：
 
-### 全局引入
+```sh
+pnpm add @vue-tianditu/types
+pnpm add @vue-tianditu/core
+pnpm add @vue-tianditu/components vue
+```
 
-全部引入，解放双手
+## 全局注册
 
 ```ts
-// main.ts
 import { createApp } from "vue";
-import App from "./App.vue";
 import VueTianditu from "vue-tianditu";
+import "vue-tianditu/style.css";
+import App from "./App.vue";
 
-const app = createApp(App);
-app.use(VueTianditu, {
-  v: "4.0", //目前只支持4.0版本
-  tk: "your map token"
+createApp(App)
+  .use(VueTianditu, {
+    v: "4.0",
+    tk: "your map token",
+  })
+  .mount("#app");
+```
+
+```vue
+<script setup lang="ts">
+import { reactive } from "vue";
+
+const map = reactive({
+  center: [113.280637, 23.125178] as [number, number],
+  zoom: 12,
 });
-app.mount("#app");
-```
-
-```html
-<!-- App.vue -->
-<template>
-  <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
-  </div>
-</template>
-
-<script lang="ts" setup>
-  import { reactive } from "vue";
-  import { TdtMap } from "vue-tianditu";
-  const state = reactive({
-    center: [113.280637, 23.125178],
-    zoom: 12
-  });
 </script>
 
-<style>
-  .mapDiv {
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<template>
+  <TdtMap :center="map.center" :zoom="map.zoom" />
+</template>
 ```
 
-### 按需引入
+## 按需使用
 
-按需引入，配合 ts 获得类型提示
+```vue
+<script setup lang="ts">
+import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
+import "vue-tianditu/style.css";
 
-`App.vue`
-
-```html
-<template>
-  <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadScript"></tdt-map>
-  </div>
-</template>
-
-<script lang="ts" setup>
-  import { reactive } from "vue";
-  import { TdtMap } from "vue-tianditu";
-  const loadConfig = { v: "4.0", tk: "your map token" };
-  const state = reactive({
-    center: [113.280637, 23.125178],
-    zoom: 12
-  });
+const loadConfig: LoadConfig = {
+  tk: "your map token",
+};
 </script>
 
-<style>
-  .mapDiv {
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<template>
+  <TdtMap :center="[113.280637, 23.125178]" :zoom="12" :load-config="loadConfig">
+    <TdtMarker :position="[113.280637, 23.125178]" />
+  </TdtMap>
+</template>
 ```
 
-### API 加载器
+组件包也提供相同的按需入口：
 
-甚至可以把它当作无情的 API 加载工具
+```ts
+import { TdtMap } from "@vue-tianditu/components";
+import "@vue-tianditu/components/style.css";
+```
+
+## API Loader
+
+`useApiLoader` 支持绝对地址和相对代理路径。自定义地址中已有的查询参数会保留，显式传入的 `v`、`tk` 会覆盖同名参数。
 
 ```ts
 import { useApiLoader } from "vue-tianditu";
 
-useApiLoader({
+await useApiLoader({
+  apiUrl: "/map-api?tenant=demo",
   v: "4.0",
   tk: "your map token",
-  plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
-}).then(() => {
-  new T.Map({...});
+  plugins: ["D3", "CarTrack"],
+  pluginUrls: {
+    D3: ["/map-plugins/d3.min.js", "/map-plugins/D3SvgOverlay.min.js"],
+    CarTrack: [
+      "/map-plugins/d3.min.js",
+      "/map-plugins/D3SvgOverlay.min.js",
+      "/map-plugins/CarTrack.min.js",
+    ],
+  },
 });
+
+const map = new T.Map("map-container");
 ```
 
-## 辅助函数
+只有列在 `plugins` 中的插件才会加载。`pluginUrls` 仅覆盖对应插件的内置地址；插件按声明顺序加载，重复 URL 只加载一次。
+
+也可以只安装无 Vue 运行时依赖的 core 包：
 
 ```ts
-import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
+import { useApiLoader, toBounds, toIcon, toLngLat, toMarker } from "@vue-tianditu/core";
 ```
 
-### 说明
+## 3.0 破坏性变更
 
-| 函数名 | 返回值 | 描述 |
-| --- | --- | --- |
-| toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
-| toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
-| toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
-| toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:string,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |
+- 仅支持 Vue 3.5+，删除 Vue 2、`@vue/composition-api` 和 `vue-demi` 支持。
+- 仅发布 ESM，不再提供 CJS 或 UMD 构建。
+- 包拆分为 `types`、`core`、`components` 和统一入口四部分。
+- 样式入口改为 `vue-tianditu/style.css` 或 `@vue-tianditu/components/style.css`。
+- `SearchBox` 仅支持 `modelValue` / `update:modelValue`。
+- `toMarker` 接收独立的 `ToMarkerOptions`，不再依赖组件 props。
+- 删除旧的 `public/vue-tianditu.d.ts` 和单包 UMD 入口。
 
-## 调用原生API
+## 开发
 
-由于API是通过`useApiLoader`异步加载的，所以需要在API加载完成后才能使用天地图原生的API，有以下三种方式:
+仓库要求 Node 24、pnpm 11 和 TypeScript 6.0.x。
 
-- 不使用组件，只使用API加载器
-```html
-<template>
-  <div id="mapContainer"></div>
-</template>
-
-<script>
-import { useApiLoader } from "vue-tianditu";
-// 加载API
-useApiLoader({
-  v: "4.0",
-  tk: "your map token",
-  plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
-}).then(() => {
-  const map = new T.Map("mapContainer", {...});
-  const marker = new T.Marker({...});
-  map.addOverlay(marker);
-});
-</script>
+```sh
+corepack pnpm install
+vp check
+vp test --run
+vp run -r build
+vp run docs:build
 ```
-- 使用组件，监听组件的初始化事件
-```html
-<template>
-  <tdt-map @init="mapInit"></tdt-map>
-</template>
-
-<script>
-function mapInit(map){
-  // 此时原生API中的T已存在window中
-  const marker = new T.Marker({...})
-  map.addOverlay(marker);
-}
-</script>
-```
-- 注册了组件，使用API加载器异步等待API加载完成
-```js
-// 不用传参数，异步等待之前注册组件时带参数加载的API加载完成
-useApiLoader({}).then(() => {
-  const marker = new T.Marker({...});
-});
-```
-如果项目中用到了eslint，则需要在eslintrc配置文件中加入
-```js
-{
-  ...
-  globals: {
-    ...
-    T: "readonly"
-  }
-}
-```
-

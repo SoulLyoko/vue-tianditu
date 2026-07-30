@@ -4,5 +4,6 @@ node_modules
 dist
 dist-ssr
 docs/.vitepress/.temp
+docs/.vitepress/cache
 *.local
 lib

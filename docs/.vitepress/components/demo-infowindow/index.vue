@@ -7,7 +7,11 @@
         :extData="marker"
         @click="openInfowindow"
       ></tdt-marker>
-      <tdt-infowindow v-model:target="state.currentMarker.position" :minWidth="150" :offset="[0, -30]">
+      <tdt-infowindow
+        v-model:target="state.currentMarker.position"
+        :minWidth="150"
+        :offset="[0, -30]"
+      >
         <div>
           <strong>{{ state.currentMarker.title }}</strong>
           <div>{{ state.currentMarker.position }}</div>
@@ -18,22 +22,22 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const markers = [
   { title: "这是第一个标记点", position: [113.280637, 23.125178] },
   { title: "这是第二个标记点", position: [113.300637, 23.125178] },
   { title: "这是第三个标记点", position: [113.320637, 23.125178] },
-  { title: "这是第四个标记点", position: [113.340637, 23.125178] }
+  { title: "这是第四个标记点", position: [113.340637, 23.125178] },
 ];
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
-  currentMarker: {} as typeof markers[0]
+  currentMarker: {} as (typeof markers)[0],
 });
 
-function openInfowindow({ extData }: { extData: typeof markers[0] }) {
+function openInfowindow({ extData }: { extData: (typeof markers)[0] }) {
   state.currentMarker = { ...extData };
 }
 </script>

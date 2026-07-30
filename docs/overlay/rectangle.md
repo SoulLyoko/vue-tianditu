@@ -5,7 +5,9 @@
 <demo-rectangle></demo-rectangle>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-rectangle/index.vue
+
 </code-details>
 
 ## 属性

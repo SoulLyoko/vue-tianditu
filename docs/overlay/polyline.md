@@ -5,7 +5,9 @@
 <demo-polyline></demo-polyline>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-polyline/index.vue
+
 </code-details>
 
 ## 属性

@@ -3,15 +3,23 @@
   <button @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-marker :position="state.marker1" :draggable="state.draggable" :visible="state.visible"></tdt-marker>
-      <tdt-marker :position="state.marker2" :draggable="state.draggable" :icon="state.icon"></tdt-marker>
+      <tdt-marker
+        :position="state.marker1"
+        :draggable="state.draggable"
+        :visible="state.visible"
+      ></tdt-marker>
+      <tdt-marker
+        :position="state.marker2"
+        :draggable="state.draggable"
+        :icon="state.icon"
+      ></tdt-marker>
     </tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { withBase } from "vitepress";
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
@@ -23,8 +31,8 @@ const state = reactive({
   icon: {
     iconUrl: withBase("/marker_red.png"),
     iconSize: [18, 26],
-    iconAnchor: [9, 26]
-  }
+    iconAnchor: [9, 26],
+  },
 });
 </script>
 

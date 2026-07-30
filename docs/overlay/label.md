@@ -5,7 +5,9 @@
 <demo-label></demo-label>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-label/index.vue
+
 </code-details>
 
 ## 属性

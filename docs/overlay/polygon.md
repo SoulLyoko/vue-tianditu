@@ -5,7 +5,9 @@
 <demo-polygon></demo-polygon>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-polygon/index.vue
+
 </code-details>
 
 ## 属性

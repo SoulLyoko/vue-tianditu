@@ -3,7 +3,7 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   pack: {
-    entry: ["index.ts"],
+    entry: ["index.ts", "style.scss"],
     format: ["esm"],
     dts: { vue: true },
     sourcemap: true,

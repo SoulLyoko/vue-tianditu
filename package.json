@@ -19,9 +19,9 @@
     "build": "vp run -r build",
     "check": "vp check",
     "test": "vp test",
-    "docs:dev": "vp exec vitepress dev docs",
-    "docs:build": "vp exec vitepress build docs",
-    "docs:serve": "vp exec vitepress serve docs",
+    "dev:docs": "vp run --filter docs dev",
+    "build:docs": "vp run --filter docs build",
+    "preview:docs": "vp run --filter docs preview",
     "prepare": "vp config --hooks-dir .vite-hooks --no-agent"
   },
   "devDependencies": {
@@ -34,7 +34,6 @@
     "typescript": "6.0.x",
     "unplugin-vue": "latest",
     "vite-plus": "0.2.6",
-    "vitepress": "^1.6.4",
     "vue": "^3.5.40",
     "vue-tsc": "^3.3.8"
   },

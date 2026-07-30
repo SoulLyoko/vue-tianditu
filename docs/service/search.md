@@ -11,13 +11,15 @@
 :::
 
 ```js
-import "vue-tianditu/lib/style.css";
+import "vue-tianditu/style.css";
 ```
 
 <demo-search></demo-search>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-search/index.vue
+
 </code-details>
 
 ## 属性

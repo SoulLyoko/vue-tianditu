@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const state = reactive({
   center: [116.40769, 39.89945],
@@ -18,8 +18,8 @@ const state = reactive({
     layers: "demo_city,demo_road,demo_anno",
     transparent: true,
     styles: "",
-    format: "image/png"
-  }
+    format: "image/png",
+  },
 });
 </script>
 

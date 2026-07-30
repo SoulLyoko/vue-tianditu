@@ -7,7 +7,9 @@
 <demo-tilelayer-wms></demo-tilelayer-wms>
 
 <code-details>
+
 <<< @/.vitepress/components/demo-tilelayer-wms/index.vue
+
 </code-details>
 
 ## 属性

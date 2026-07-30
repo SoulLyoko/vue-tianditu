@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
 const state = reactive({
   center: [113.280637, 23.125178],
-  zoom: 11
+  zoom: 11,
 });
 </script>
 
