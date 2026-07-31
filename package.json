@@ -25,17 +25,18 @@
     "prepare": "vp config --hooks-dir .vite-hooks --no-agent"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
-    "@vitejs/plugin-vue": "^6.0.8",
-    "@vue/compiler-sfc": "^3.5.40",
-    "esbuild": "^0.28.1",
-    "jsdom": "^30.0.1",
-    "sass": "^1.102.0",
-    "typescript": "6.0.x",
-    "unplugin-vue": "latest",
-    "vite-plus": "0.2.6",
-    "vue": "^3.5.40",
-    "vue-tsc": "^3.3.8"
+    "@types/node": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vue/compiler-sfc": "catalog:",
+    "jsdom": "catalog:",
+    "sass": "catalog:",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  },
+  "engines": {
+    "node": "24"
   },
   "packageManager": "pnpm@11.18.0"
 }

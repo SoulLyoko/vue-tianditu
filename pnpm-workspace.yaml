@@ -3,8 +3,24 @@ packages:
   - packages/*
 
 allowBuilds:
-  "@parcel/watcher": false
-  esbuild: true
+  esbuild: false
+
+catalog:
+  "@types/node": ^24.0.0
+  "@vitejs/plugin-vue": ^6.0.8
+  "@vue/compiler-sfc": ^3.5.40
+  jsdom: ^30.0.1
+  mitt: ^3.0.1
+  sass: ^1.102.0
+  typescript: ^6.0.3
+  vite-plus: ^0.2.6
+  vitepress: ^2.0.0-alpha.18
+  vue: ^3.5.40
+  vue-tsc: ^3.3.8
+
+catalogs:
+  peer:
+    vue: ^3.5.0
 
 overrides:
   vite: npm:@voidzero-dev/vite-plus-core@0.2.6

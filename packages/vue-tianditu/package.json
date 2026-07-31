@@ -27,6 +27,6 @@
     "@vue-tianditu/types": "workspace:^"
   },
   "peerDependencies": {
-    "vue": "^3.5.0"
+    "vue": "catalog:peer"
   }
 }

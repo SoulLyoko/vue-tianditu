@@ -24,9 +24,9 @@
   "dependencies": {
     "@vue-tianditu/core": "workspace:^",
     "@vue-tianditu/types": "workspace:^",
-    "mitt": "^3.0.1"
+    "mitt": "catalog:"
   },
   "peerDependencies": {
-    "vue": "^3.5.0"
+    "vue": "catalog:peer"
   }
 }
