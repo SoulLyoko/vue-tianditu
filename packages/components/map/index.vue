@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import mitt from "mitt";
-import { onMounted, provide, ref, useTemplateRef } from "vue";
+import { onMounted, provide, shallowReadonly, shallowRef, useTemplateRef } from "vue";
 import { useApiLoader } from "@vue-tianditu/core";
-import type { MapEmitEvents } from "@vue-tianditu/types";
-import { useEvent } from "../use";
+import { mapRootKey, useEvent } from "../use";
 import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
 
 defineOptions({ name: "TdtMap" });
 const props = defineProps(PROPS);
 const emit = defineEmits(EVENTS);
 const mapElement = useTemplateRef<HTMLDivElement>("mapElement");
-const map = ref<T.Map>();
-const mapEmitter = mitt<MapEmitEvents>();
+const map = shallowRef<T.Map>();
 
-provide("mapRoot", map);
-provide("mapEmitter", mapEmitter);
+provide(mapRootKey, shallowReadonly(map));
 
 onMounted(async () => {
   await useApiLoader(props.loadConfig);
@@ -24,7 +20,6 @@ onMounted(async () => {
   useWatch({ props, instance: map.value });
   useControls(props, map.value, emit);
   emit("init", map.value);
-  mapEmitter.emit("mapInit", map.value);
 });
 </script>
 

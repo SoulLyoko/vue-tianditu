@@ -18,9 +18,6 @@ catalogs:
     jsdom:
       specifier: ^30.0.1
       version: 30.0.1
-    mitt:
-      specifier: ^3.0.1
-      version: 3.0.1
     sass:
       specifier: ^1.102.0
       version: 1.102.0
@@ -93,9 +90,6 @@ importers:
       '@vue-tianditu/types':
         specifier: workspace:^
         version: link:../types
-      mitt:
-        specifier: 'catalog:'
-        version: 3.0.1
       vue:
         specifier: catalog:peer
         version: 3.5.40(typescript@6.0.3)
@@ -1541,9 +1535,6 @@ packages:
   minisearch@7.2.0:
     resolution: {integrity: sha512-dqT2XBYUOZOiC5t2HRnwADjhNS2cecp9u+TJRiJ1Qp/f5qjkeT5APcGPjHw+bz89Ms8Jp+cG4AlE+QZ/QnDglg==}
 
-  mitt@3.0.1:
-    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
-
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
     engines: {node: '>=10'}
@@ -2982,8 +2973,6 @@ snapshots:
   micromark-util-types@2.0.0: {}
 
   minisearch@7.2.0: {}
-
-  mitt@3.0.1: {}
 
   mrmime@2.0.1: {}
 

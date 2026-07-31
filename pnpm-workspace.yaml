@@ -10,7 +10,6 @@ catalog:
   "@vitejs/plugin-vue": ^6.0.8
   "@vue/compiler-sfc": ^3.5.40
   jsdom: ^30.0.1
-  mitt: ^3.0.1
   sass: ^1.102.0
   typescript: ^6.0.3
   vite-plus: ^0.2.6

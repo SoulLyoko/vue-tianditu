@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "@vue-tianditu/core": "workspace:^",
-    "@vue-tianditu/types": "workspace:^",
-    "mitt": "catalog:"
+    "@vue-tianditu/types": "workspace:^"
   },
   "peerDependencies": {
     "vue": "catalog:peer"

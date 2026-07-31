@@ -1,22 +1,22 @@
-import { inject, type Ref } from "vue";
-import type { MapEmitter } from "@vue-tianditu/types";
+import { inject, watch, type InjectionKey, type ShallowRef } from "vue";
+
+export const mapRootKey: InjectionKey<Readonly<ShallowRef<T.Map | undefined>>> = Symbol("mapRoot");
 
 /**
  * 获取根地图实例
  */
 export function useMapRoot(): Promise<T.Map> {
-  return new Promise((resolve) => {
-    const mapRoot = inject<Ref<T.Map>>("mapRoot");
-    const mapEmitter = inject<MapEmitter>("mapEmitter");
-    if (mapRoot?.value) {
-      resolve(mapRoot?.value);
-    } else {
-      mapEmitter?.on("mapInit", resolver);
-    }
+  const mapRoot = inject(mapRootKey, null);
 
-    function resolver(map: T.Map) {
-      mapEmitter?.off("mapInit", resolver);
-      resolve(map);
-    }
+  if (!mapRoot) {
+    return Promise.reject(new Error("useMapRoot must be used inside TdtMap"));
+  }
+
+  if (mapRoot.value) {
+    return Promise.resolve(mapRoot.value);
+  }
+
+  return new Promise((resolve) => {
+    watch(mapRoot, (map) => map && resolve(map), { once: true, flush: "sync" });
   });
 }

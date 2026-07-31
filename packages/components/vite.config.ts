@@ -9,6 +9,6 @@ export default defineConfig({
     sourcemap: true,
     platform: "neutral",
     plugins: [Vue({ isProduction: true })],
-    deps: { neverBundle: ["vue", "mitt", "@vue-tianditu/types", "@vue-tianditu/core"] },
+    deps: { neverBundle: ["vue", "@vue-tianditu/types", "@vue-tianditu/core"] },
   },
 });
