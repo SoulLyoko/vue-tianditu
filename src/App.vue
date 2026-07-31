@@ -5,7 +5,7 @@
       :center="state.center"
       :zoom="state.zoom"
       :controls="['Zoom', 'MapType']"
-      :load-config="{ tk: '7f013d0186775b063d6a046977bbefc6' }"
+      :loadConfig="{ tk }"
     >
       <TdtMarker
         v-for="marker in state.markers"
@@ -45,8 +45,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
+<script lang="ts" setup>
+import { reactive, ref } from "vue";
 import {
   TdtMap,
   TdtMarker,
@@ -61,69 +61,47 @@ import {
   TdtSearch,
 } from "vue-tianditu";
 
-export default defineComponent({
-  components: {
-    TdtMap,
-    TdtMarker,
-    TdtLabel,
-    TdtPolyline,
-    TdtPolygon,
-    TdtRectangle,
-    TdtCircle,
-    TdtInfowindow,
-    TdtMousetool,
-    TdtControl,
-    TdtSearch,
+const tk = import.meta.env.VITE_TDT_TK;
+
+const state = reactive({
+  center: [113.280637, 23.125178],
+  zoom: 12,
+  polylinePath: [
+    [113.280637, 23.125178],
+    [113.290637, 23.135178],
+  ],
+  polygonPath: [
+    [113.280637, 23.125178],
+    [113.290637, 23.125178],
+    [113.290637, 23.115178],
+    [113.280637, 23.115178],
+  ],
+  bounds: [
+    [113.280637, 23.125178],
+    [113.270637, 23.115178],
+  ],
+  markers: [
+    { name: "marker1", position: [113.280637, 23.125178] },
+    { name: "marker2", position: [113.290637, 23.125178] },
+    { name: "marker3", position: [113.290637, 23.115178] },
+    { name: "marker4", position: [113.280637, 23.115178] },
+  ],
+  infowindow: {
+    target: null as any,
+    content: "",
   },
-  setup() {
-    const state = reactive({
-      center: [113.280637, 23.125178],
-      zoom: 12,
-      polylinePath: [
-        [113.280637, 23.125178],
-        [113.290637, 23.135178],
-      ],
-      polygonPath: [
-        [113.280637, 23.125178],
-        [113.290637, 23.125178],
-        [113.290637, 23.115178],
-        [113.280637, 23.115178],
-      ],
-      bounds: [
-        [113.280637, 23.125178],
-        [113.270637, 23.115178],
-      ],
-      markers: [
-        { name: "marker1", position: [113.280637, 23.125178] },
-        { name: "marker2", position: [113.290637, 23.125178] },
-        { name: "marker3", position: [113.290637, 23.115178] },
-        { name: "marker4", position: [113.280637, 23.115178] },
-      ],
-      infowindow: {
-        target: null as any,
-        content: "",
-      },
-      keyword: "",
-    });
-
-    function openInfoWindow(e: any) {
-      state.infowindow.target = e.target;
-      state.infowindow.content = e.extData;
-    }
-
-    const mousetoolRef = ref();
-    function openTool(toolName: string) {
-      mousetoolRef.value?.open(toolName);
-    }
-
-    return {
-      state,
-      mousetoolRef,
-      openInfoWindow,
-      openTool,
-    };
-  },
+  keyword: "",
 });
+
+function openInfoWindow(e: any) {
+  state.infowindow.target = e.target;
+  state.infowindow.content = e.extData;
+}
+
+const mousetoolRef = ref();
+function openTool(toolName: string) {
+  mousetoolRef.value?.open(toolName);
+}
 </script>
 
 <style>
