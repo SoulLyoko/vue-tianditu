@@ -1,5 +1,4 @@
-import { PropType } from "vue";
-import { DefineEmits, DefineProps } from "@vue-tianditu/types";
+import { EmitFn, ExtractPropTypes, PropType } from "vue";
 import { Props as MarkerProps } from "../../marker/use/const";
 
 export const NATIVE_PROPS = {
@@ -35,5 +34,5 @@ export const EXTRA_EVENTS = {
 
 export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
 export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = DefineProps<typeof PROPS>;
-export type Emit = DefineEmits<typeof EVENTS>;
+export type Props = ExtractPropTypes<typeof PROPS>;
+export type Emit = EmitFn<typeof EVENTS>;

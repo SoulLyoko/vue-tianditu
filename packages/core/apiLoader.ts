@@ -1,6 +1,12 @@
-import type { LoadConfig, PluginName } from "@vue-tianditu/types";
+export type PluginName = keyof typeof PLUGINS_URL;
 
-export type { LoadConfig, PluginName } from "@vue-tianditu/types";
+export interface LoadConfig {
+  apiUrl?: string;
+  v?: string;
+  tk?: string;
+  plugins?: readonly PluginName[];
+  pluginUrls?: Partial<Record<PluginName, readonly string[]>>;
+}
 
 export const DEFAULT_CONFIG = {
   apiUrl: "https://api.tianditu.gov.cn/api",
