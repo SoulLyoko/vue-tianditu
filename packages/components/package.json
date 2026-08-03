@@ -10,13 +10,20 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./style.css": "./dist/style.css"
+      "import": "./index.ts"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "import": "./dist/index.mjs"
+      },
+      "./*": "./dist/*"
+    }
   },
   "scripts": {
     "build": "vp pack"
@@ -24,6 +31,10 @@
   "dependencies": {
     "@vue-tianditu/core": "workspace:^",
     "@vue-tianditu/types": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "catalog:",
+    "sass": "catalog:"
   },
   "peerDependencies": {
     "vue": "catalog:peer"

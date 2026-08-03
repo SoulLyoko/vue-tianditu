@@ -1,4 +1,4 @@
-import "./gridlineLayer";
-import "./tdt";
-import "./tileLayer";
-import "./wms";
+import "./gridlineLayer.d";
+import "./tdt.d";
+import "./tileLayer.d";
+import "./wms.d";

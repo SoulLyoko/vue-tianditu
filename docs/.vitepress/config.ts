@@ -1,4 +1,3 @@
-import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vitepress";
 import type { DefaultTheme } from "vitepress";
 
@@ -7,28 +6,6 @@ export default defineConfig<DefaultTheme.Config>({
   lang: "zh-CN",
   title: "VueTianditu",
   description: "Vue Components for TiandituApi",
-  cacheDir: fileURLToPath(new URL("./cache", import.meta.url)),
-  vite: {
-    define: {
-      HTMLElement: "Object",
-    },
-    resolve: {
-      alias: {
-        "@vue-tianditu/types": fileURLToPath(
-          new URL("../../packages/types/index.ts", import.meta.url),
-        ),
-        "@vue-tianditu/core": fileURLToPath(
-          new URL("../../packages/core/index.ts", import.meta.url),
-        ),
-        "@vue-tianditu/components": fileURLToPath(
-          new URL("../../packages/components/index.ts", import.meta.url),
-        ),
-        "vue-tianditu": fileURLToPath(
-          new URL("../../packages/vue-tianditu/index.ts", import.meta.url),
-        ),
-      },
-    },
-  },
   themeConfig: {
     socialLinks: [{ icon: "github", link: "https://github.com/SoulLyoko/vue-tianditu" }],
     nav: [

@@ -1,2 +1,2 @@
-export * from "./component";
-export * from "./loader";
+export * from "./component.d";
+export * from "./loader.d";

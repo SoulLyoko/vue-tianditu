@@ -27,7 +27,7 @@ pnpm add vue-tianditu vue
 ```ts
 import { createApp } from "vue";
 import VueTianditu from "vue-tianditu";
-import "vue-tianditu/style.css";
+import "vue-tianditu/dist/style.css";
 import App from "./App.vue";
 
 createApp(App)
@@ -67,7 +67,7 @@ const state = reactive({
 ```vue
 <script setup lang="ts">
 import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
-import "vue-tianditu/style.css";
+import "vue-tianditu/dist/style.css";
 
 const loadConfig: LoadConfig = {
   apiUrl: "/map-api",
@@ -86,7 +86,7 @@ const loadConfig: LoadConfig = {
 
 ```ts
 import { TdtMap } from "@vue-tianditu/components";
-import "@vue-tianditu/components/style.css";
+import "@vue-tianditu/components/dist/style.css";
 ```
 
 ## 自定义 API 和插件地址
@@ -122,6 +122,6 @@ import { toBounds, toIcon, toLngLat, toLngLats, toMarker } from "vue-tianditu";
 
 - 3.0 仅支持 Vue 3.5+，不再依赖 `vue-demi` 或 Vue 2 composition API。
 - 仅发布 ESM，不再提供 CJS/UMD 文件。
-- 样式入口由旧的 `lib/style.css` 改为 `vue-tianditu/style.css`。
+- 样式入口由旧的 `vue-tianditu/lib/style.css` 改为 `vue-tianditu/dist/style.css`。
 - `SearchBox` 使用 Vue 3 标准 `modelValue` / `update:modelValue`。
 - 类型、core 和组件可以作为独立包安装，也可以继续从 `vue-tianditu` 统一导入。

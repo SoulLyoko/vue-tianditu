@@ -1,1 +1,1 @@
-import "./carTrack";
+import "./carTrack.d";

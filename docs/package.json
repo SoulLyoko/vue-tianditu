@@ -6,6 +6,10 @@
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
+  "dependencies": {
+    "vue": "catalog:",
+    "vue-tianditu": "workspace:^"
+  },
   "devDependencies": {
     "vitepress": "catalog:"
   }

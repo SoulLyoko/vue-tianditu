@@ -37,7 +37,7 @@ pnpm add @vue-tianditu/components vue
 ```ts
 import { createApp } from "vue";
 import VueTianditu from "vue-tianditu";
-import "vue-tianditu/style.css";
+import "vue-tianditu/dist/style.css";
 import App from "./App.vue";
 
 createApp(App)
@@ -68,7 +68,7 @@ const map = reactive({
 ```vue
 <script setup lang="ts">
 import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
-import "vue-tianditu/style.css";
+import "vue-tianditu/dist/style.css";
 
 const loadConfig: LoadConfig = {
   tk: "your map token",
@@ -86,7 +86,7 @@ const loadConfig: LoadConfig = {
 
 ```ts
 import { TdtMap } from "@vue-tianditu/components";
-import "@vue-tianditu/components/style.css";
+import "@vue-tianditu/components/dist/style.css";
 ```
 
 ## API Loader
@@ -127,7 +127,7 @@ import { useApiLoader, toBounds, toIcon, toLngLat, toMarker } from "@vue-tiandit
 - 仅支持 Vue 3.5+，删除 Vue 2、`@vue/composition-api` 和 `vue-demi` 支持。
 - 仅发布 ESM，不再提供 CJS 或 UMD 构建。
 - 包拆分为 `types`、`core`、`components` 和统一入口四部分。
-- 样式入口改为 `vue-tianditu/style.css` 或 `@vue-tianditu/components/style.css`。
+- 样式入口改为 `vue-tianditu/dist/style.css` 或 `@vue-tianditu/components/dist/style.css`。
 - `SearchBox` 仅支持 `modelValue` / `update:modelValue`。
 - `toMarker` 接收独立的 `ToMarkerOptions`，不再依赖组件 props。
 - 删除旧的 `public/vue-tianditu.d.ts` 和单包 UMD 入口。

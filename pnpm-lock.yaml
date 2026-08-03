@@ -12,9 +12,6 @@ catalogs:
     '@vitejs/plugin-vue':
       specifier: ^6.0.8
       version: 6.0.8
-    '@vue/compiler-sfc':
-      specifier: ^3.5.40
-      version: 3.5.40
     jsdom:
       specifier: ^30.0.1
       version: 30.0.1
@@ -51,32 +48,27 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3
-      '@vitejs/plugin-vue':
-        specifier: 'catalog:'
-        version: 6.0.8(@voidzero-dev/vite-plus-core@0.2.6(@types/node@24.13.3)(esbuild@0.28.1)(sass@1.102.0)(typescript@6.0.3))(vue@3.5.40(typescript@6.0.3))
-      '@vue/compiler-sfc':
-        specifier: 'catalog:'
-        version: 3.5.40
       jsdom:
         specifier: 'catalog:'
         version: 30.0.1
-      sass:
-        specifier: 'catalog:'
-        version: 1.102.0
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
       vite-plus:
         specifier: 'catalog:'
         version: 0.2.6(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.6(@types/node@24.13.3)(esbuild@0.28.1)(sass@1.102.0)(typescript@6.0.3))(esbuild@0.28.1)(jsdom@30.0.1)(sass@1.102.0)(typescript@6.0.3)
-      vue:
-        specifier: 'catalog:'
-        version: 3.5.40(typescript@6.0.3)
       vue-tsc:
         specifier: 'catalog:'
         version: 3.3.8(typescript@6.0.3)
 
   docs:
+    dependencies:
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.40(typescript@6.0.3)
+      vue-tianditu:
+        specifier: workspace:^
+        version: link:../packages/vue-tianditu
     devDependencies:
       vitepress:
         specifier: 'catalog:'
@@ -93,6 +85,13 @@ importers:
       vue:
         specifier: catalog:peer
         version: 3.5.40(typescript@6.0.3)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: 'catalog:'
+        version: 6.0.8(@voidzero-dev/vite-plus-core@0.2.6(@types/node@24.13.3)(esbuild@0.28.1)(sass@1.102.0)(typescript@6.0.3))(vue@3.5.40(typescript@6.0.3))
+      sass:
+        specifier: 'catalog:'
+        version: 1.102.0
 
   packages/core:
     dependencies:
@@ -120,6 +119,19 @@ importers:
       vue:
         specifier: catalog:peer
         version: 3.5.40(typescript@6.0.3)
+
+  playground:
+    dependencies:
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.40(typescript@6.0.3)
+      vue-tianditu:
+        specifier: workspace:^
+        version: link:../packages/vue-tianditu
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: 'catalog:'
+        version: 6.0.8(@voidzero-dev/vite-plus-core@0.2.6(@types/node@24.13.3)(esbuild@0.28.1)(sass@1.102.0)(typescript@6.0.3))(vue@3.5.40(typescript@6.0.3))
 
 packages:
 

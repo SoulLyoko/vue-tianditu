@@ -1,7 +1,7 @@
-import "./circleTool";
-import "./markTool";
-import "./mousetool";
-import "./paintBrushTool";
-import "./polygonTool";
-import "./polylineTool";
-import "./rectangleTool";
+import "./circleTool.d";
+import "./markTool.d";
+import "./mousetool.d";
+import "./paintBrushTool.d";
+import "./polygonTool.d";
+import "./polylineTool.d";
+import "./rectangleTool.d";

@@ -10,14 +10,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vite-plus/client"],
-    "paths": {
-      "@/*": ["./src/*"],
-      "@vue-tianditu/types": ["./packages/types/types.d.ts"],
-      "@vue-tianditu/core": ["./packages/core/index.ts"],
-      "@vue-tianditu/components": ["./packages/components/index.ts"],
-      "vue-tianditu": ["./packages/vue-tianditu/index.ts"]
-    }
+    "types": ["vite-plus/client"]
   },
-  "include": ["src", "packages", "docs"]
+  "include": ["playground", "packages", "docs"]
 }

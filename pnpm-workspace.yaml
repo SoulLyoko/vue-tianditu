@@ -1,6 +1,7 @@
 packages:
-  - docs
   - packages/*
+  - docs
+  - playground
 
 allowBuilds:
   esbuild: false
@@ -8,7 +9,6 @@ allowBuilds:
 catalog:
   "@types/node": ^24.0.0
   "@vitejs/plugin-vue": ^6.0.8
-  "@vue/compiler-sfc": ^3.5.40
   jsdom: ^30.0.1
   sass: ^1.102.0
   typescript: ^6.0.3

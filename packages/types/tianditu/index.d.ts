@@ -1,11 +1,11 @@
-import "./base";
-import "./control";
-import "./extra";
-import "./map";
-import "./mousetool";
-import "./overlay";
-import "./service";
-import "./layer";
+import "./base.d";
+import "./control/index.d";
+import "./extra/index.d";
+import "./map.d";
+import "./mousetool/index.d";
+import "./overlay/index.d";
+import "./service/index.d";
+import "./layer/index.d";
 
 declare global {
   interface Window {

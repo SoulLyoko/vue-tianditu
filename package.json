@@ -15,8 +15,8 @@
   "author": "SoulLyoko <519052532@qq.com>",
   "repository": "https://github.com/SoulLyoko/vue-tianditu.git",
   "scripts": {
-    "dev": "vp dev",
-    "build": "vp run -r build",
+    "dev": "vp run --filter playground dev",
+    "build": "vp run --filter ./packages/* build",
     "check": "vp check",
     "test": "vp test",
     "dev:docs": "vp run --filter docs dev",
@@ -26,17 +26,10 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vitejs/plugin-vue": "catalog:",
-    "@vue/compiler-sfc": "catalog:",
     "jsdom": "catalog:",
-    "sass": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vue": "catalog:",
     "vue-tsc": "catalog:"
-  },
-  "engines": {
-    "node": "24"
   },
   "packageManager": "pnpm@11.18.0"
 }
