@@ -1,0 +1,15 @@
+{
+  "name": "@vue-tianditu/playground",
+  "private": true,
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build"
+  },
+  "dependencies": {
+    "vue": "catalog:",
+    "vue-tianditu": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "catalog:"
+  }
+}
