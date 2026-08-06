@@ -1,8 +1,9 @@
-import { toLngLats } from "@vue-tianditu/core";
-import { Props, Emit } from ".";
+import { toLngLats } from '@vue-tianditu/core'
+
+import type { Props, Emit } from '.'
 
 export function useInit(props: Props, emit: Emit, map: T.Map) {
-  const { interval, speed, dynamicLine, Datas, carstyle, polylinestyle } = props;
+  const { interval, speed, dynamicLine, Datas, carstyle, polylinestyle } = props
   const instance = new T.CarTrack(map, {
     interval,
     speed,
@@ -11,8 +12,8 @@ export function useInit(props: Props, emit: Emit, map: T.Map) {
     carstyle,
     polylinestyle,
     passOneNode: (lnglat, index, length) => {
-      emit("passOneNode", [lnglat.lng, lnglat.lat], index, length);
+      emit('passOneNode', [lnglat.lng, lnglat.lat], index, length)
     },
-  });
-  return instance;
+  })
+  return instance
 }

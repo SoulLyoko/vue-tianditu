@@ -1,13 +1,14 @@
-import { toMarker } from "@vue-tianditu/core";
-import { Props } from "./";
+import { toMarker } from '@vue-tianditu/core'
+
+import type { Props } from './'
 
 export function useInit(props: Props, map: T.Map) {
-  const { markers, girdSize, maxZoom } = props;
-  const marker = markers?.map((item) => toMarker(item));
+  const { markers, girdSize, maxZoom } = props
+  const marker = markers?.map((item) => toMarker(item))
   const instance = new T.MarkerClusterer(map, {
     markers: marker,
     girdSize,
     maxZoom,
-  });
-  return instance;
+  })
+  return instance
 }

@@ -1,13 +1,13 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 文本标注的内容 */
-  text: { type: String, default: "" },
+  text: { type: String, default: '' },
   /** 文本标注的位置偏移值 */
   offset: { type: Array as unknown as PropType<VT.Point>, default: () => [0, 0] },
   /** 文本标注的地理位置 */
   position: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
-};
+}
 
 export const EXTRA_PROPS = {
   /** 设置文本的提示内容 */
@@ -30,7 +30,7 @@ export const EXTRA_PROPS = {
   visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> },
-};
+}
 
 export const NATIVE_EVENTS: T.LabelEvents = {
   click: () => true,
@@ -40,13 +40,13 @@ export const NATIVE_EVENTS: T.LabelEvents = {
   mouseout: () => true,
   mouseover: () => true,
   remove: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.Label) => e instanceof T.Label,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

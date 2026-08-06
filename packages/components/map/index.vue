@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import { onMounted, provide, shallowReadonly, shallowRef, useTemplateRef } from "vue";
-import { useApiLoader } from "@vue-tianditu/core";
-import { mapRootKey, useEvent } from "../use";
-import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { useApiLoader } from '@vue-tianditu/core'
+import { onMounted, provide, shallowReadonly, shallowRef, useTemplateRef } from 'vue'
 
-defineOptions({ name: "TdtMap" });
-const props = defineProps(PROPS);
-const emit = defineEmits(EVENTS);
-const mapElement = useTemplateRef<HTMLDivElement>("mapElement");
-const map = shallowRef<T.Map>();
+import { mapRootKey, useEvent } from '../use'
+import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from './use'
 
-provide(mapRootKey, shallowReadonly(map));
+defineOptions({ name: 'TdtMap' })
+const props = defineProps(PROPS)
+const emit = defineEmits(EVENTS)
+const mapElement = useTemplateRef<HTMLDivElement>('mapElement')
+const map = shallowRef<T.Map>()
+
+provide(mapRootKey, shallowReadonly(map))
 
 onMounted(async () => {
-  await useApiLoader(props.loadConfig);
-  if (!mapElement.value) throw new Error("TdtMap container is not mounted");
-  map.value = useInit(props, mapElement.value);
-  useEvent({ events: NATIVE_EVENTS, emit, instance: map.value });
-  useWatch({ props, instance: map.value });
-  useControls(props, map.value, emit);
-  emit("init", map.value);
-});
+  await useApiLoader(props.loadConfig)
+  if (!mapElement.value) throw new Error('TdtMap container is not mounted')
+  map.value = useInit(props, mapElement.value)
+  useEvent({ events: NATIVE_EVENTS, emit, instance: map.value })
+  useWatch({ props, instance: map.value })
+  useControls(props, map.value, emit)
+  emit('init', map.value)
+})
 </script>
 
 <template>

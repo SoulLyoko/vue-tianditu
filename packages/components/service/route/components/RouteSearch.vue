@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { SearchBox, SearchPois } from "../../search/components";
-import { useState, useMethods } from "../use";
+import { SearchBox, SearchPois } from '../../search/components'
+import { useState, useMethods } from '../use'
 
-defineOptions({ name: "RouteSearch" });
-const state = useState();
-const { onSearch, onPoiClick, onPageChange } = useMethods(state);
+defineOptions({ name: 'RouteSearch' })
+const state = useState()
+const { onSearch, onPoiClick, onPageChange } = useMethods(state)
 </script>
 
 <template>

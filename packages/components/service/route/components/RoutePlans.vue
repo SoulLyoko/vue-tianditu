@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { useState } from "../use";
-import "../styles/route-plans.scss";
+import { useState } from '../use'
 
-defineOptions({ name: "RoutePlans" });
-const state = useState();
+import '../styles/route-plans.scss'
+
+defineOptions({ name: 'RoutePlans' })
+const state = useState()
 
 function transitDescription(plan: (typeof state.transitPlans)[number]) {
   const descriptions = plan.segments.map((segment) => {
-    const line = segment.segmentLine[0];
-    const stationCount = line.segmentStationCount ? `，经过${line.segmentStationCount}站` : "";
+    const line = segment.segmentLine[0]
+    const stationCount = line.segmentStationCount ? `，经过${line.segmentStationCount}站` : ''
     if (segment.segmentType === 1)
-      return `步行约${line.segmentDistance}米，到达${segment.stationEnd.name}`;
+      return `步行约${line.segmentDistance}米，到达${segment.stationEnd.name}`
     if (segment.segmentType === 2 || segment.segmentType === 3) {
-      return `乘坐${line.direction}${stationCount}，到达${segment.stationEnd.name}`;
+      return `乘坐${line.direction}${stationCount}，到达${segment.stationEnd.name}`
     }
-    return segment.segmentType === 4 ? "站内换乘" : "";
-  });
-  return `${descriptions.join("，")}终点`;
+    return segment.segmentType === 4 ? '站内换乘' : ''
+  })
+  return `${descriptions.join('，')}终点`
 }
 </script>
 

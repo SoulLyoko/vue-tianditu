@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { useState } from "../use";
-import "../styles/route-types.scss";
+import { useState } from '../use'
 
-defineOptions({ name: "RouteTypes" });
-const state = useState();
-const routeTypes = { 0: "驾车", 1: "公交", 2: "步行" };
+import '../styles/route-types.scss'
+
+defineOptions({ name: 'RouteTypes' })
+const state = useState()
+const routeTypes = { 0: '驾车', 1: '公交', 2: '步行' }
 </script>
 
 <template>

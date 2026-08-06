@@ -1,23 +1,24 @@
-import { watch } from "vue";
-import { toMarker, toPoint } from "@vue-tianditu/core";
-import { Props } from "./";
+import { toMarker, toPoint } from '@vue-tianditu/core'
+import { watch } from 'vue'
+
+import type { Props } from './'
 
 export function useWatch({ props, instance }: { props: Props; instance: T.MarkerClusterer }) {
   watch(
     () => props.girdSize,
     (val) => val && instance.setGridSize(val),
-  );
+  )
   watch(
     () => props.maxZoom,
     (val) => val && instance.setMaxZoom(val),
-  );
+  )
   watch(
     () => props.markers,
     (val) => {
-      instance.clearMarkers();
-      if (val?.length) instance.addMarkers(val.map(toMarker));
+      instance.clearMarkers()
+      if (val?.length) instance.addMarkers(val.map(toMarker))
     },
-  );
+  )
   watch(
     () => props.styles,
     (val) => {
@@ -26,10 +27,10 @@ export function useWatch({ props, instance }: { props: Props; instance: T.Marker
           return {
             ...item,
             offset: item.offset && toPoint(item.offset),
-          };
-        }) ?? [];
-      instance.setStyles(styles);
+          }
+        }) ?? []
+      instance.setStyles(styles)
     },
     { immediate: true },
-  );
+  )
 }

@@ -1,8 +1,9 @@
-import { toBounds } from "@vue-tianditu/core";
-import { Props } from "./";
+import { toBounds } from '@vue-tianditu/core'
+
+import type { Props } from './'
 
 export function useInit(props: Props) {
-  const { bounds, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props;
+  const { bounds, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props
   const instance = new T.Rectangle(toBounds(bounds), {
     color,
     weight,
@@ -10,6 +11,6 @@ export function useInit(props: Props) {
     lineStyle,
     fillColor,
     fillOpacity,
-  });
-  return instance;
+  })
+  return instance
 }

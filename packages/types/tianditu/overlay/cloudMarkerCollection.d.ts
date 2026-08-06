@@ -1,9 +1,9 @@
 declare namespace T {
   class CloudMarkerCollection extends OverlayBase<CloudMarkerCollectionEvents> {
-    constructor(lnglats: LngLat[], opts: CloudMarkerCollectionOptions);
-    setLnglats(lnglats: LngLat[]): void;
-    setStyles(styles: CloudMarkerCollectionOptions): void;
-    clear(): void;
+    constructor(lnglats: LngLat[], opts: CloudMarkerCollectionOptions)
+    setLnglats(lnglats: LngLat[]): void
+    setStyles(styles: CloudMarkerCollectionOptions): void
+    clear(): void
   }
 
   interface CloudMarkerCollectionOptions {
@@ -15,7 +15,7 @@ declare namespace T {
      * STAR 菱形；
      * WATERDROP 滴状
      */
-    ShapeType?: "CIRCLE" | "RHOMBUS" | "SQUARE" | "STAR" | "WATERDROP";
+    ShapeType?: 'CIRCLE' | 'RHOMBUS' | 'SQUARE' | 'STAR' | 'WATERDROP'
     /**
      * 海量点的预设尺寸。
      * TINY 超小，宽高为2px * 2px；
@@ -26,7 +26,7 @@ declare namespace T {
      * BIGGER 很大，宽高为20px * 20px；
      * BIG 超大，宽高为30px * 30px
      */
-    SizeType?: "TINY" | "SMALLER" | "SMALL" | "NORMAL" | "HUGE" | "BIGGER" | "BIG";
+    SizeType?: 'TINY' | 'SMALLER' | 'SMALL' | 'NORMAL' | 'HUGE' | 'BIGGER' | 'BIG'
     /**
      * 海量点的颜色，默认为'#fa937e'。
      * 同时支持颜色字符串，如'red'；
@@ -36,11 +36,11 @@ declare namespace T {
      * hsl字符串，如'hsl(0,100%,50%)'；
      * hsla字符串，如'hsla(0,100%,50%,0.4)'
      */
-    color?: string;
+    color?: string
   }
 
   interface CloudMarkerCollectionEvents extends Pick<
     OverlayEvents<CloudMarkerCollection, LngLat, Overlay>,
-    "click" | "mouseover" | "mouseout"
+    'click' | 'mouseover' | 'mouseout'
   > {}
 }

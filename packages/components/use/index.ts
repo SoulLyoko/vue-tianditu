@@ -1,2 +1,2 @@
-export * from "./event";
-export * from "./mapRoot";
+export * from './event'
+export * from './mapRoot'

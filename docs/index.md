@@ -25,27 +25,27 @@ pnpm add vue-tianditu vue
 ## 全局引入
 
 ```ts
-import { createApp } from "vue";
-import VueTianditu from "vue-tianditu";
-import "vue-tianditu/dist/style.css";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import VueTianditu from 'vue-tianditu'
+import 'vue-tianditu/dist/style.css'
+import App from './App.vue'
 
 createApp(App)
   .use(VueTianditu, {
-    v: "4.0",
-    tk: "your map token",
+    v: '4.0',
+    tk: 'your map token',
   })
-  .mount("#app");
+  .mount('#app')
 ```
 
 ```vue
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178] as [number, number],
   zoom: 12,
-});
+})
 </script>
 
 <template>
@@ -66,13 +66,13 @@ const state = reactive({
 
 ```vue
 <script setup lang="ts">
-import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
-import "vue-tianditu/dist/style.css";
+import { TdtMap, TdtMarker, type LoadConfig } from 'vue-tianditu'
+import 'vue-tianditu/dist/style.css'
 
 const loadConfig: LoadConfig = {
-  apiUrl: "/map-api",
-  tk: "your map token",
-};
+  apiUrl: '/map-api',
+  tk: 'your map token',
+}
 </script>
 
 <template>
@@ -85,29 +85,29 @@ const loadConfig: LoadConfig = {
 也可以直接从组件包引入：
 
 ```ts
-import { TdtMap } from "@vue-tianditu/components";
-import "@vue-tianditu/components/dist/style.css";
+import { TdtMap } from '@vue-tianditu/components'
+import '@vue-tianditu/components/dist/style.css'
 ```
 
 ## 自定义 API 和插件地址
 
 ```ts
-import { useApiLoader } from "vue-tianditu";
+import { useApiLoader } from 'vue-tianditu'
 
 await useApiLoader({
-  apiUrl: "/map-api?tenant=demo",
-  v: "4.0",
-  tk: "your map token",
-  plugins: ["D3", "CarTrack"],
+  apiUrl: '/map-api?tenant=demo',
+  v: '4.0',
+  tk: 'your map token',
+  plugins: ['D3', 'CarTrack'],
   pluginUrls: {
-    D3: ["/map-plugins/d3.min.js", "/map-plugins/D3SvgOverlay.min.js"],
+    D3: ['/map-plugins/d3.min.js', '/map-plugins/D3SvgOverlay.min.js'],
     CarTrack: [
-      "/map-plugins/d3.min.js",
-      "/map-plugins/D3SvgOverlay.min.js",
-      "/map-plugins/CarTrack.min.js",
+      '/map-plugins/d3.min.js',
+      '/map-plugins/D3SvgOverlay.min.js',
+      '/map-plugins/CarTrack.min.js',
     ],
   },
-});
+})
 ```
 
 `apiUrl` 可以是绝对 URL 或相对代理路径。已有查询参数会被保留，显式传入的 `v` 和 `tk` 会覆盖同名参数。插件按声明顺序加载，并对 URL 去重。
@@ -115,7 +115,7 @@ await useApiLoader({
 ## Core 工具
 
 ```ts
-import { toBounds, toIcon, toLngLat, toLngLats, toMarker } from "vue-tianditu";
+import { toBounds, toIcon, toLngLat, toLngLats, toMarker } from 'vue-tianditu'
 ```
 
 ## 从 2.x 升级

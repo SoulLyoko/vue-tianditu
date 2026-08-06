@@ -14,7 +14,8 @@
   "exports": {
     ".": {
       "import": "./index.ts"
-    }
+    },
+    "./*": "./*"
   },
   "publishConfig": {
     "exports": {
@@ -22,7 +23,7 @@
         "types": "./dist/index.d.mts",
         "import": "./dist/index.mjs"
       },
-      "./*": "./dist/*"
+      "./*": "./*"
     }
   },
   "scripts": {

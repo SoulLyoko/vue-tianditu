@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import TdtMarker from "../../../overlay/marker/index.vue";
-import TdtPolyline from "../../../overlay/polyline/index.vue";
-import { useState } from "../use";
+import TdtMarker from '../../../overlay/marker/index.vue'
+import TdtPolyline from '../../../overlay/polyline/index.vue'
+import { useState } from '../use'
 
-defineOptions({ name: "RouteMapView" });
-const state = useState();
+defineOptions({ name: 'RouteMapView' })
+const state = useState()
 const startIcon = {
-  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/start.png",
+  iconUrl: 'http://lbs.tianditu.gov.cn/images/bus/start.png',
   iconSize: [44, 34],
   iconAnchor: [12, 31],
-};
+}
 const endIcon = {
-  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/end.png",
+  iconUrl: 'http://lbs.tianditu.gov.cn/images/bus/end.png',
   iconSize: [44, 34],
   iconAnchor: [12, 31],
-};
+}
 const busIcon = {
-  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/map_bus.png",
+  iconUrl: 'http://lbs.tianditu.gov.cn/images/bus/map_bus.png',
   iconSize: [23, 23],
   iconAnchor: [12, 12],
-};
+}
 const metroIcon = {
-  iconUrl: "http://lbs.tianditu.gov.cn/images/bus/map_metro.png",
+  iconUrl: 'http://lbs.tianditu.gov.cn/images/bus/map_metro.png',
   iconSize: [23, 23],
   iconAnchor: [12, 12],
-};
+}
 </script>
 
 <template>

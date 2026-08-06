@@ -7,10 +7,10 @@ declare namespace T {
      * 创建地图类型控件，opts为可选参数。
      * @param mapTypes 控件展示的地图类型，默认为普通图、卫星图、卫星加路网混合图。通过此属性可配置控件展示的地图类型。
      */
-    constructor(opts?: ControlMapTypeOptions);
+    constructor(opts?: ControlMapTypeOptions)
   }
 
-  type ControlMapTypeOptions = ControlMapTypeOptionsMapType[];
+  type ControlMapTypeOptions = ControlMapTypeOptionsMapType[]
 
   /**
    * ```
@@ -45,10 +45,10 @@ declare namespace T {
    */
   interface ControlMapTypeOptionsMapType {
     /** 地图控件上所要显示的图层名称 */
-    title?: string;
+    title?: string
     /**  地图控件上所要显示的图层图标（默认图标大小80x80） */
-    icon?: string;
+    icon?: string
     /** 地图类型对象，即MapType */
-    layer?: MapType;
+    layer?: MapType
   }
 }

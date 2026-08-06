@@ -4,9 +4,9 @@ declare namespace T {
    */
   class ControlScale extends T.Control {
     /** 创建一个地图比例尺控件 */
-    constructor(opts?: ControlScaleOptions);
+    constructor(opts?: ControlScaleOptions)
     /** 设置设置比例尺控件的颜色 */
-    setColor(color: string): void;
+    setColor(color: string): void
   }
 
   interface ControlScaleOptions extends T.ControlOptions {}

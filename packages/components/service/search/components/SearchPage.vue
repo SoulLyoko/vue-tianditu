@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import "../styles/search-page.scss";
+import { computed } from 'vue'
 
-defineOptions({ name: "SearchPage" });
+import '../styles/search-page.scss'
+
+defineOptions({ name: 'SearchPage' })
 const props = withDefaults(defineProps<{ current?: number; size?: number; total?: number }>(), {
   current: 1,
   size: 10,
   total: 0,
-});
-const emit = defineEmits<{ "update:current": [current: number] }>();
-const pageCount = computed(() => Math.max(1, Math.ceil(props.total / props.size)));
+})
+const emit = defineEmits<{ 'update:current': [current: number] }>()
+const pageCount = computed(() => Math.max(1, Math.ceil(props.total / props.size)))
 const pageCurrent = computed({
   get: () => props.current,
-  set: (value) => emit("update:current", Math.min(pageCount.value, Math.max(1, value))),
-});
+  set: (value) => emit('update:current', Math.min(pageCount.value, Math.max(1, value))),
+})
 </script>
 
 <template>

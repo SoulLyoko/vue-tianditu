@@ -1,14 +1,15 @@
-import { reactive } from "vue";
-import { SearchLocalState, SearchResultState, SearchViewState } from "../types";
+import { reactive } from 'vue'
+
+import type { SearchLocalState, SearchResultState, SearchViewState } from '../types'
 
 export function useState() {
   const searchLocalState: SearchLocalState = {
     tdtMap: null,
     localSearch: null,
-    keyword: "",
+    keyword: '',
     queryType: 1,
     showRoute: false,
-  };
+  }
   const searchResultState: SearchResultState = {
     pois: false,
     statistics: false,
@@ -16,14 +17,14 @@ export function useState() {
     suggests: false,
     prompt: false,
     lineData: false,
-  };
+  }
   const searchViewState: SearchViewState = {
     target: null,
-    content: "",
+    content: '',
     current: 1,
     total: 0,
-  };
-  const state = reactive({ ...searchLocalState, ...searchResultState, ...searchViewState });
+  }
+  const state = reactive({ ...searchLocalState, ...searchResultState, ...searchViewState })
 
-  return state;
+  return state
 }

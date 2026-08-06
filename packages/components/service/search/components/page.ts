@@ -1,5 +1,5 @@
 export interface PageProps {
-  current?: number;
-  size?: number;
-  total?: number;
+  current?: number
+  size?: number
+  total?: number
 }

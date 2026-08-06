@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-export default { name: "code-details" };
+export default { name: 'code-details' }
 </script>
 
 <style scoped>

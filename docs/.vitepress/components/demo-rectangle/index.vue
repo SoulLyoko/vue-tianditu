@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178],
@@ -26,11 +26,11 @@ const state = reactive({
   ],
   edit: false,
   visible: true,
-});
+})
 </script>
 
 <script lang="ts">
-export default { name: "demo-rectangle" };
+export default { name: 'demo-rectangle' }
 </script>
 
 <style scoped>

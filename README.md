@@ -35,27 +35,27 @@ pnpm add @vue-tianditu/components vue
 ## 全局注册
 
 ```ts
-import { createApp } from "vue";
-import VueTianditu from "vue-tianditu";
-import "vue-tianditu/dist/style.css";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import VueTianditu from 'vue-tianditu'
+import 'vue-tianditu/dist/style.css'
+import App from './App.vue'
 
 createApp(App)
   .use(VueTianditu, {
-    v: "4.0",
-    tk: "your map token",
+    v: '4.0',
+    tk: 'your map token',
   })
-  .mount("#app");
+  .mount('#app')
 ```
 
 ```vue
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
 const map = reactive({
   center: [113.280637, 23.125178] as [number, number],
   zoom: 12,
-});
+})
 </script>
 
 <template>
@@ -67,12 +67,12 @@ const map = reactive({
 
 ```vue
 <script setup lang="ts">
-import { TdtMap, TdtMarker, type LoadConfig } from "vue-tianditu";
-import "vue-tianditu/dist/style.css";
+import { TdtMap, TdtMarker, type LoadConfig } from 'vue-tianditu'
+import 'vue-tianditu/dist/style.css'
 
 const loadConfig: LoadConfig = {
-  tk: "your map token",
-};
+  tk: 'your map token',
+}
 </script>
 
 <template>
@@ -85,8 +85,8 @@ const loadConfig: LoadConfig = {
 组件包也提供相同的按需入口：
 
 ```ts
-import { TdtMap } from "@vue-tianditu/components";
-import "@vue-tianditu/components/dist/style.css";
+import { TdtMap } from '@vue-tianditu/components'
+import '@vue-tianditu/components/dist/style.css'
 ```
 
 ## API Loader
@@ -94,24 +94,24 @@ import "@vue-tianditu/components/dist/style.css";
 `useApiLoader` 支持绝对地址和相对代理路径。自定义地址中已有的查询参数会保留，显式传入的 `v`、`tk` 会覆盖同名参数。
 
 ```ts
-import { useApiLoader } from "vue-tianditu";
+import { useApiLoader } from 'vue-tianditu'
 
 await useApiLoader({
-  apiUrl: "/map-api?tenant=demo",
-  v: "4.0",
-  tk: "your map token",
-  plugins: ["D3", "CarTrack"],
+  apiUrl: '/map-api?tenant=demo',
+  v: '4.0',
+  tk: 'your map token',
+  plugins: ['D3', 'CarTrack'],
   pluginUrls: {
-    D3: ["/map-plugins/d3.min.js", "/map-plugins/D3SvgOverlay.min.js"],
+    D3: ['/map-plugins/d3.min.js', '/map-plugins/D3SvgOverlay.min.js'],
     CarTrack: [
-      "/map-plugins/d3.min.js",
-      "/map-plugins/D3SvgOverlay.min.js",
-      "/map-plugins/CarTrack.min.js",
+      '/map-plugins/d3.min.js',
+      '/map-plugins/D3SvgOverlay.min.js',
+      '/map-plugins/CarTrack.min.js',
     ],
   },
-});
+})
 
-const map = new T.Map("map-container");
+const map = new T.Map('map-container')
 ```
 
 只有列在 `plugins` 中的插件才会加载。`pluginUrls` 仅覆盖对应插件的内置地址；插件按声明顺序加载，重复 URL 只加载一次。
@@ -119,7 +119,7 @@ const map = new T.Map("map-container");
 也可以只安装无 Vue 运行时依赖的 core 包：
 
 ```ts
-import { useApiLoader, toBounds, toIcon, toLngLat, toMarker } from "@vue-tianditu/core";
+import { useApiLoader, toBounds, toIcon, toLngLat, toMarker } from '@vue-tianditu/core'
 ```
 
 ## 3.0 破坏性变更

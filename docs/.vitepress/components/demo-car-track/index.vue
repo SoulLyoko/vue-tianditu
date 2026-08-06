@@ -12,27 +12,28 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
-import { data } from "./data";
+import { reactive, ref } from 'vue'
+
+import { data } from './data'
 
 const state = reactive({
   center: [116.31809, 39.92027],
   zoom: 13,
   Datas: [] as number[][],
-});
+})
 
 function getData() {
-  state.Datas = data.features.map((feature) => feature.geometry.coordinates);
+  state.Datas = data.features.map((feature) => feature.geometry.coordinates)
 }
 
-const carTrack = ref();
+const carTrack = ref()
 function onBtnClick(handle: string) {
-  carTrack.value[handle]();
+  carTrack.value[handle]()
 }
 </script>
 
 <script lang="ts">
-export default { name: "demo-car-track" };
+export default { name: 'demo-car-track' }
 </script>
 
 <style scoped>

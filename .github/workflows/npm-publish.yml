@@ -2,7 +2,7 @@ name: Publish packages
 
 on:
   push:
-    tags: ["v*"]
+    tags: ['v*']
 
 permissions:
   contents: read
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Vite+
         uses: voidzero-dev/setup-vp@v1
         with:
-          node-version: "lts"
+          node-version: 'lts'
           run-install: false
           cache: true
           registry-url: https://registry.npmjs.org

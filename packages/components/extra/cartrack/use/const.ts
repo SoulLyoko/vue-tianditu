@@ -1,4 +1,4 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 从当前节点到下一节点的时间间隔 */
@@ -11,19 +11,19 @@ export const NATIVE_PROPS = {
   Datas: { type: Array as PropType<VT.LngLats>, default: () => [] },
   /** 车辆样式 */
   carstyle: {
-    type: Object as PropType<T.CarOverlayOptions["carstyle"]>,
+    type: Object as PropType<T.CarTrackOptions['carstyle']>,
     // default: () => ({ display: true, iconUrl: "car.png", width: 52, height: 26 })
   },
   /** 车辆轨迹线样式 */
   polylinestyle: {
-    type: Object as PropType<T.CarOverlayOptions["polylinestyle"]>,
+    type: Object as PropType<T.CarTrackOptions['polylinestyle']>,
     // default: () => ({ display: true, color: "red", width: 3, opacity: 0.8 })
   },
-};
+}
 
-export const EXTRA_PROPS = {};
+export const EXTRA_PROPS = {}
 
-export const NATIVE_EVENTS = {};
+export const NATIVE_EVENTS = {}
 
 export const EXTRA_EVENTS = {
   init: (e: T.CarTrack) => e instanceof T.CarTrack,
@@ -34,9 +34,9 @@ export const EXTRA_EVENTS = {
    * @param length 总节点数量
    */
   passOneNode: (_lnglat: VT.LngLat, _index: number, _length: number) => true,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

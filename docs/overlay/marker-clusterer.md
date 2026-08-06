@@ -45,32 +45,32 @@
 - styles 配置示例
 
 ```js
-[
+;[
   {
-    url: "http://api.tianditu.gov.cn/img/map/cluster/heart30.png",
+    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart30.png',
     size: [30, 26], //图片大小
     offset: [-15, -13], //显示图片的偏移量
-    textColor: "#000000", //显示数字的颜色
+    textColor: '#000000', //显示数字的颜色
     textSize: 8, //显示文字的大小
     range: [0, 50], //显示该图标的范围
   },
   {
-    url: "http://api.tianditu.gov.cn/img/map/cluster/heart40.png",
+    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart40.png',
     size: [42, 36],
     offset: [-20, -17],
-    textColor: "#ff0000",
+    textColor: '#ff0000',
     textSize: 10,
     range: [50, 400],
   },
   {
-    url: "http://api.tianditu.gov.cn/img/map/cluster/heart50.png",
+    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart50.png',
     size: [52, 46],
     soffset: [-10, -22],
-    textColor: "white",
+    textColor: 'white',
     textSize: 12,
     range: [400, 500],
   },
-];
+]
 ```
 
 ## 事件

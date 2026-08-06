@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { onMounted, provide } from "vue";
-import { fixMapPropagation } from "@vue-tianditu/core";
-import { useInit, useState, useWatch } from "./use";
-import { RouteMapView, RoutePlans, RoutePolicies, RouteSearch, RouteTypes } from "./components";
-import "../../styles/tdt-icon.scss";
-import "./styles/tdt-route.scss";
+import { fixMapPropagation } from '@vue-tianditu/core'
+import { onMounted, provide } from 'vue'
 
-defineOptions({ name: "TdtRoute" });
-const state = useState();
-provide("routeState", state);
+import { RouteMapView, RoutePlans, RoutePolicies, RouteSearch, RouteTypes } from './components'
+import { useInit, useState, useWatch } from './use'
+
+import '../../styles/tdt-icon.scss'
+import './styles/tdt-route.scss'
+
+defineOptions({ name: 'TdtRoute' })
+const state = useState()
+provide('routeState', state)
 
 onMounted(async () => {
-  await useInit(state);
-  useWatch(state);
-});
+  await useInit(state)
+  useWatch(state)
+})
 </script>
 
 <template>

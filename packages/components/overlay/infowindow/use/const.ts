@@ -1,4 +1,4 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 弹出框的最小宽度 */
@@ -17,30 +17,30 @@ export const NATIVE_PROPS = {
   autoPanPadding: { type: Array as unknown as PropType<VT.Point>, default: () => [5, 5] },
   /** 是否开启点击地图关闭信息窗口（默认关闭） */
   closeOnClick: { type: Boolean, default: false },
-};
+}
 
 export const EXTRA_PROPS = {
   /** 信息浮窗的显示 HTML 内容 */
-  content: { type: [String, Object] as PropType<string | HTMLElement>, default: "" },
+  content: { type: [String, Object] as PropType<string | HTMLElement>, default: '' },
   /** 打开信息浮窗的覆盖物或信息浮窗所指向的地理位置坐标 */
   target: {
     type: [Object, Array] as PropType<T.OverlayBase<any> | VT.LngLat | null>,
     default: null,
   },
-};
+}
 
 export const NATIVE_EVENTS: T.InfoWindowEvents = {
   close: () => true,
   open: () => true,
   clickclose: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.InfoWindow) => e instanceof T.InfoWindow,
-  "update:target": (_target: unknown) => true,
-};
+  'update:target': (_target: unknown) => true,
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

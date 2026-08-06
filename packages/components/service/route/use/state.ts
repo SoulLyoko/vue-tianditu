@@ -1,27 +1,28 @@
-import { reactive, inject } from "vue";
-import { SearchState, DrivingState, TransitState, RouteState } from "../types";
+import { reactive, inject } from 'vue'
+
+import type { SearchState, DrivingState, TransitState, RouteState } from '../types'
 
 export function useState() {
   const searchState: SearchState = {
     tdtMap: null,
     localSearch: null,
-    startKeyword: "",
+    startKeyword: '',
     startMarker: [],
-    endKeyword: "",
+    endKeyword: '',
     endMarker: [],
     routeType: 0,
-    poiType: "start",
+    poiType: 'start',
     pois: [],
     current: 1,
     total: 0,
-  };
+  }
   const drivingState: DrivingState = {
     drivingRoute: null,
     drivingLines: [],
     drivingPolicy: 0,
     drivingPlans: [],
     drivingPlanIndex: 0,
-  };
+  }
   const transitState: TransitState = {
     transitRoute: null,
     transitPlans: [],
@@ -31,10 +32,10 @@ export function useState() {
     busLines: [],
     busMarkers: [],
     metroMarkers: [],
-  };
+  }
 
-  const injectState = inject<RouteState>("routeState");
-  const state = injectState || reactive({ ...searchState, ...drivingState, ...transitState });
+  const injectState = inject<RouteState>('routeState')
+  const state = injectState || reactive({ ...searchState, ...drivingState, ...transitState })
 
-  return state;
+  return state
 }

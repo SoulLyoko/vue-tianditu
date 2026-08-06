@@ -5,19 +5,19 @@ declare namespace T {
      * @param lng 地理经度
      * @param lat 地理纬度
      */
-    constructor(lng: number, lat: number);
+    constructor(lng: number, lat: number)
     /** 经度 */
-    lng: number;
+    lng: number
     /** 纬度 */
-    lat: number;
+    lat: number
     /** 获取地理坐标点的经度 */
-    getLng(): number;
+    getLng(): number
     /** 获取地理坐标点的经度 */
-    getLat(): number;
+    getLat(): number
     /** 计算当前地理坐标点与给定坐标点之间的距离 */
-    distanceTo(lnglat: LngLat): boolean;
+    distanceTo(lnglat: LngLat): boolean
     /** 判断坐标点是否相等，当且仅当两点的经度和纬度均相等时返回true */
-    equals(other: LngLat): boolean;
+    equals(other: LngLat): boolean
   }
 
   class LngLatBounds {
@@ -26,19 +26,19 @@ declare namespace T {
      * @param sw 矩形区域的西南角
      * @param ne 矩形区域的东北角
      */
-    constructor(sw: LngLat, ne: LngLat);
+    constructor(sw: LngLat, ne: LngLat)
     /** 返回西南点坐标 */
-    getSouthWest(): LngLat;
+    getSouthWest(): LngLat
     /** 返回东北点坐标 */
-    getNorthEast(): LngLat;
+    getNorthEast(): LngLat
     /** 返回边界的中心点 */
-    getCenter(): LngLat;
+    getCenter(): LngLat
     /** 放大此矩形，使其包含给定的点 */
-    extend(lnglat: LngLat): LngLatBounds;
+    extend(lnglat: LngLat): LngLatBounds
     /** 如果点的地理坐标位于此矩形内或者传入的矩形区域完全包含于此矩形区域中，则返回true */
-    contains(lnglat: LngLat | LngLatBounds): boolean;
+    contains(lnglat: LngLat | LngLatBounds): boolean
     /** 如果矩形与给定边界相交则返回true */
-    intersects(other: LngLatBounds): boolean;
+    intersects(other: LngLatBounds): boolean
   }
 
   class Point {
@@ -47,15 +47,15 @@ declare namespace T {
      * @param x 像素坐标中x坐标，x坐标向右增大
      * @param y 像素坐标中y坐标，y坐标向下增大
      */
-    constructor(x: number, y: number);
+    constructor(x: number, y: number)
     /** x坐标 */
-    x: number;
+    x: number
     /** y坐标 */
-    y: number;
+    y: number
     /** 判断坐标点是否相等，当且仅当两点的x坐标和y坐标均相等时返回true */
-    equals(point: Point): boolean;
+    equals(point: Point): boolean
     /**获得当前点与给定点的距离 */
-    distanceTo(point: Point): number;
+    distanceTo(point: Point): number
   }
 
   class LayerGroup {
@@ -63,31 +63,31 @@ declare namespace T {
      * 构建一个存储图层的容器。
      * @param layers 叠加层数组
      */
-    constructor(layers: Overlay[]);
+    constructor(layers: Overlay[])
     /** 从容器中增加一个图层 */
-    addLayer(layer: Overlay): void;
+    addLayer(layer: Overlay): void
     /** 从容器中移除一个图层 */
-    removeLayer(layer: Overlay): void;
+    removeLayer(layer: Overlay): void
     /** 判断图层是否在容器中 */
-    hasLayer(layer: Overlay): boolean;
+    hasLayer(layer: Overlay): boolean
     /** 得到容器中的所有图层 */
-    getLayers(): Overlay[];
+    getLayers(): Overlay[]
     /** 清除容器中的所有图层 */
-    clearLayers(): void;
+    clearLayers(): void
     /**设置容器z-index值 */
-    setZIndex(): void;
+    setZIndex(): void
     /**通过ID获取其对应的图层 */
-    getLayer(id: string): Overlay;
+    getLayer(id: string): Overlay
     /** 获取容器中存在图层的唯一ID */
-    getLayerId(layer: Overlay): string;
+    getLayerId(layer: Overlay): string
   }
 
   class MapType {
     /** 创建TMapType对象实例 */
-    constructor(layers: TileLayer[], name: string);
+    constructor(layers: TileLayer[], name: string)
     /**	返回地图类型名称 */
-    getName(): string;
+    getName(): string
     /** 返回地图类型对应的图层 */
-    getLayers(): MapType;
+    getLayers(): MapType
   }
 }

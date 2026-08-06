@@ -1,4 +1,4 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 此图层的最低缩放级别 */
@@ -14,10 +14,10 @@ export const NATIVE_PROPS = {
   /** 设置指定范围内显示瓦片 */
   bounds: { type: Array as PropType<VT.Bounds>, default: () => [] },
   /** 图层服务地址 */
-  url: { type: String, default: "" },
-};
+  url: { type: String, default: '' },
+}
 
-export const EXTRA_PROPS = {};
+export const EXTRA_PROPS = {}
 
 export const NATIVE_EVENTS: T.TileLayerEvents = {
   loading: () => true,
@@ -26,13 +26,13 @@ export const NATIVE_EVENTS: T.TileLayerEvents = {
   tileload: () => true,
   tileunload: () => true,
   tileerror: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.TileLayer.TDT) => e instanceof T.TileLayer.TDT,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

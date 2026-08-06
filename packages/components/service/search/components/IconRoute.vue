@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: "IconRoute" });
+defineOptions({ name: 'IconRoute' })
 </script>
 
 <template>

@@ -1,2 +1,2 @@
-import "./base.d";
-import "./event.d";
+import './base.d'
+import './event.d'

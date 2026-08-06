@@ -1,8 +1,8 @@
-export { default as SearchBox } from "./SearchBox.vue";
-export { default as SearchSuggests } from "./SearchSuggests.vue";
-export { default as SearchPois } from "./SearchPois.vue";
-export { default as SearchMapView } from "./SearchMapView.vue";
-export { default as IconSearch } from "./IconSearch.vue";
-export { default as IconRoute } from "./IconRoute.vue";
-export { default as IconClose } from "./IconClose.vue";
-export type { PageProps } from "./page";
+export { default as SearchBox } from './SearchBox.vue'
+export { default as SearchSuggests } from './SearchSuggests.vue'
+export { default as SearchPois } from './SearchPois.vue'
+export { default as SearchMapView } from './SearchMapView.vue'
+export { default as IconSearch } from './IconSearch.vue'
+export { default as IconRoute } from './IconRoute.vue'
+export { default as IconClose } from './IconClose.vue'
+export type { PageProps } from './page'

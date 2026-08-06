@@ -1,6 +1,6 @@
-import "./control.d";
-import "./copyright.d";
-import "./mapType.d";
-import "./overviewMap.d";
-import "./scale.d";
-import "./zoom.d";
+import './control.d'
+import './copyright.d'
+import './mapType.d'
+import './overviewMap.d'
+import './scale.d'
+import './zoom.d'

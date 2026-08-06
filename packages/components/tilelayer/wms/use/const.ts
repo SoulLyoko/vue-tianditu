@@ -1,4 +1,4 @@
-import { EmitFn, ExtractPropTypes } from "vue";
+import type { EmitFn, ExtractPropTypes } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 用","分隔的多个图层列表 */
@@ -14,15 +14,15 @@ export const NATIVE_PROPS = {
   /** 地图投影类型 */
   srs: { type: String },
   /** 图层服务地址 */
-  url: { type: String, default: "" },
-};
+  url: { type: String, default: '' },
+}
 
 export const EXTRA_PROPS = {
   /** 设置图层的透明度（0.0-1.0）。默认值为 1.0不透明 */
   opacity: { type: Number },
   /** 图层的显示顺序 */
   zIndex: { type: Number },
-};
+}
 
 export const NATIVE_EVENTS: T.TileLayerEvents = {
   loading: () => true,
@@ -31,13 +31,13 @@ export const NATIVE_EVENTS: T.TileLayerEvents = {
   tileload: () => true,
   tileunload: () => true,
   tileerror: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.TileLayer.WMS) => e instanceof T.TileLayer.WMS,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

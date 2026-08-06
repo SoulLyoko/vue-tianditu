@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import SearchPage from "./SearchPage.vue";
-import type { PageProps } from "./page";
-import "../styles/search-pois.scss";
+import type { PageProps } from './page'
+import SearchPage from './SearchPage.vue'
 
-defineOptions({ name: "SearchPois" });
-withDefaults(defineProps<{ pois?: T.LocalSearchPoi[]; page?: PageProps }>(), { pois: () => [] });
+import '../styles/search-pois.scss'
+
+defineOptions({ name: 'SearchPois' })
+withDefaults(defineProps<{ pois?: T.LocalSearchPoi[]; page?: PageProps }>(), { pois: () => [] })
 const emit = defineEmits<{
-  "poi-click": [poi: T.LocalSearchPoi];
-  "update:page": [page: PageProps];
-}>();
+  'poi-click': [poi: T.LocalSearchPoi]
+  'update:page': [page: PageProps]
+}>()
 </script>
 
 <template>

@@ -4,23 +4,23 @@ declare namespace T {
    */
   class ControlCopyright extends T.Control {
     /** 创建一个版权控件 */
-    constructor(opts?: ControlCopyrightOptions);
+    constructor(opts?: ControlCopyrightOptions)
     /** 添加一个版权信息 */
-    addCopyright(copyright: ControlCopyrightOptions): void;
+    addCopyright(copyright: ControlCopyrightOptions): void
     /** 移除版权信息 */
-    removeCopyright(copyright: ControlCopyrightOptions): void;
+    removeCopyright(copyright: ControlCopyrightOptions): void
     /** 获得单个版权信息 */
-    getCopyright(id: string): ControlCopyrightOptions;
+    getCopyright(id: string): ControlCopyrightOptions
     /** 获得版权信息列表 */
-    getCopyrightCollection(): ControlCopyright[];
+    getCopyrightCollection(): ControlCopyright[]
   }
 
   interface ControlCopyrightOptions extends T.ControlOptions {
     /** 该版权信息的唯一标识符 */
-    id?: string;
+    id?: string
     /** 该版权的文本信息，用于显示在地图上，支持HTML内容 */
-    content?: string;
+    content?: string
     /** 该版权信息所适用的地理区域 */
-    bounds?: LngLatBounds;
+    bounds?: LngLatBounds
   }
 }

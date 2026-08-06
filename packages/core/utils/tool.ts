@@ -9,20 +9,22 @@ export function debounce<F extends (...args: any[]) => void>(
   wait = 500,
   immediate = false,
 ) {
-  let timeout: ReturnType<typeof setTimeout> | undefined;
+  let timeout: ReturnType<typeof setTimeout> | undefined
   return function (this: ThisParameterType<F>, ...args: Parameters<F>) {
-    if (timeout) clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout)
     if (immediate) {
       // 如果已经执行过，不再执行
-      const callNow = !timeout;
+      const callNow = !timeout
       timeout = setTimeout(() => {
-        timeout = undefined;
-      }, wait);
-      if (callNow) func.apply(this, args);
+        timeout = undefined
+      }, wait)
+      if (callNow) func.apply(this, args)
     } else {
       timeout = setTimeout(() => {
-        func.apply(this, args);
-      }, wait);
+        func.apply(this, args)
+      }, wait)
     }
-  };
+  }
 }
+
+export function noop() {}

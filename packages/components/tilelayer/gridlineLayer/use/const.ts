@@ -1,4 +1,4 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 设置格网图层的网格大小，单位是像素。default:256 */
@@ -11,31 +11,31 @@ export const NATIVE_PROPS = {
   opacity: { type: Number, default: 1 },
   /** 设置格网图层边线的颜色、宽度、线样式。default:{width:1, style:'solid', color:'#999'} */
   outlineSize: {
-    type: Object as PropType<T.GridlineLayerOptions["outlineSize"]>,
-    default: () => ({ width: 1, style: "solid", color: "#999" }),
+    type: Object as PropType<T.GridlineLayerOptions['outlineSize']>,
+    default: () => ({ width: 1, style: 'solid', color: '#999' }),
   },
   /** 设置格网图层文字的样式，图层文字表现网格的行号、列号、层级。default:{display:false, fontSize:'14', fontWeight:true, color:'black'} */
   textSize: {
-    type: Object as PropType<T.GridlineLayerOptions["textSize"]>,
-    default: () => ({ display: false, fontSize: "14", fontWeight: true, color: "black" }),
+    type: Object as PropType<T.GridlineLayerOptions['textSize']>,
+    default: () => ({ display: false, fontSize: '14', fontWeight: true, color: 'black' }),
   },
-};
+}
 
 export const EXTRA_PROPS = {
   /** 图层的叠放顺序 */
   zIndex: { type: Number },
-};
+}
 
-export const NATIVE_EVENTS: Pick<T.TileLayerEvents, "load" | "loading"> = {
+export const NATIVE_EVENTS: Pick<T.TileLayerEvents, 'load' | 'loading'> = {
   loading: () => true,
   load: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.GridlineLayer) => e instanceof T.GridlineLayer,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

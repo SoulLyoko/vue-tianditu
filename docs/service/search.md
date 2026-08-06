@@ -11,7 +11,7 @@
 :::
 
 ```js
-import "vue-tianditu/dist/style.css";
+import 'vue-tianditu/dist/style.css'
 ```
 
 <demo-search></demo-search>

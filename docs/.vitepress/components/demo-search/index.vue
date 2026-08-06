@@ -13,26 +13,26 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
-});
+})
 
 function searchComplete(result: T.LocalSearchResult) {
-  console.log(result);
+  console.log(result)
 }
 function poiClick(poi: T.LocalSearchPoi) {
-  console.log(poi);
+  console.log(poi)
 }
 function suggestClick(suggest: T.LocalSearchSuggest) {
-  console.log(suggest);
+  console.log(suggest)
 }
 </script>
 
 <script lang="ts">
-export default { name: "demo-search" };
+export default { name: 'demo-search' }
 </script>
 
 <style scoped>

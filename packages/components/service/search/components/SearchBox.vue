@@ -1,31 +1,33 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import IconClose from "./IconClose.vue";
-import "../styles/search-box.scss";
+import { computed, ref } from 'vue'
 
-defineOptions({ name: "SearchBox" });
+import IconClose from './IconClose.vue'
+
+import '../styles/search-box.scss'
+
+defineOptions({ name: 'SearchBox' })
 const props = withDefaults(
   defineProps<{
-    modelValue?: string;
-    placeholder?: string;
-    searchBtn?: boolean;
-    routeBtn?: boolean;
+    modelValue?: string
+    placeholder?: string
+    searchBtn?: boolean
+    routeBtn?: boolean
   }>(),
-  { modelValue: "", placeholder: "输入关键字搜索", searchBtn: true, routeBtn: true },
-);
+  { modelValue: '', placeholder: '输入关键字搜索', searchBtn: true, routeBtn: true },
+)
 const emit = defineEmits<{
-  "update:modelValue": [value: string];
-  search: [value: string];
-  focus: [event: FocusEvent];
-}>();
-const composing = ref(false);
+  'update:modelValue': [value: string]
+  search: [value: string]
+  focus: [event: FocusEvent]
+}>()
+const composing = ref(false)
 const keyword = computed({
   get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
-});
+  set: (value) => emit('update:modelValue', value),
+})
 
 function onInput(event: Event) {
-  if (!composing.value) keyword.value = (event.target as HTMLInputElement).value;
+  if (!composing.value) keyword.value = (event.target as HTMLInputElement).value
 }
 </script>
 

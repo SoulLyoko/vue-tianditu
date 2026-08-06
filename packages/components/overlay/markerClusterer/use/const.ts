@@ -1,5 +1,6 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
-import { Props as MarkerProps } from "../../marker/use/const";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
+
+import type { Props as MarkerProps } from '../../marker/use/const'
 
 export const NATIVE_PROPS = {
   /** 要聚合的标注点数组 */
@@ -10,9 +11,9 @@ export const NATIVE_PROPS = {
   maxZoom: { type: Number },
   /** 自定义聚合后的图标风格 */
   styles: { type: Array as PropType<VT.MarkerClustererStyle[]> },
-};
+}
 
-export const EXTRA_PROPS = {};
+export const EXTRA_PROPS = {}
 
 export const NATIVE_EVENTS: T.MarkerClustererEvents = {
   click: () => true,
@@ -26,13 +27,13 @@ export const NATIVE_EVENTS: T.MarkerClustererEvents = {
   drag: () => true,
   dragend: () => true,
   remove: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.MarkerClusterer) => e instanceof T.MarkerClusterer,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

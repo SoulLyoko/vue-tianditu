@@ -1,7 +1,7 @@
-import { Props } from ".";
+import type { Props } from '.'
 
 export function useInit(props: Props) {
-  const { tileSize, minZoom, maxZoom, opacity, outlineSize, textSize } = props;
+  const { tileSize, minZoom, maxZoom, opacity, outlineSize, textSize } = props
   const instance = new T.GridlineLayer({
     tileSize,
     minZoom,
@@ -9,6 +9,6 @@ export function useInit(props: Props) {
     opacity,
     outlineSize,
     textSize,
-  });
-  return instance;
+  })
+  return instance
 }

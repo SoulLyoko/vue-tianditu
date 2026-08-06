@@ -1,14 +1,15 @@
-import { toLngLat } from "@vue-tianditu/core";
-import { Props } from "./";
+import { toLngLat } from '@vue-tianditu/core'
+
+import type { Props } from './'
 
 export function useInit(props: Props) {
-  const { /**icon,*/ draggable, title, zIndexOffset, opacity, position } = props;
+  const { /**icon,*/ draggable, title, zIndexOffset, opacity, position } = props
   const instance = new T.Marker(toLngLat(position), {
     /** icon: icon ? toIcon(icon) : undefined,*/
     draggable,
     title,
     zIndexOffset,
     opacity,
-  });
-  return instance;
+  })
+  return instance
 }

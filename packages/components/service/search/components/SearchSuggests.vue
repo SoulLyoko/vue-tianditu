@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import "../styles/search-suggests.scss";
+import '../styles/search-suggests.scss'
 
-defineOptions({ name: "SearchSuggests" });
-withDefaults(defineProps<{ suggests?: T.LocalSearchSuggest[] }>(), { suggests: () => [] });
-const emit = defineEmits<{ "suggest-click": [suggest: T.LocalSearchSuggest] }>();
+defineOptions({ name: 'SearchSuggests' })
+withDefaults(defineProps<{ suggests?: T.LocalSearchSuggest[] }>(), { suggests: () => [] })
+const emit = defineEmits<{ 'suggest-click': [suggest: T.LocalSearchSuggest] }>()
 </script>
 
 <template>

@@ -1,7 +1,7 @@
-import { Props } from "./";
+import type { Props } from './'
 
 export function useInit(props: Props, attrs: Record<string, unknown>) {
-  const { url, layers, styles, format, transparent, version, srs } = props;
+  const { url, layers, styles, format, transparent, version, srs } = props
   const instance = new T.TileLayer.WMS(url, {
     layers,
     styles,
@@ -10,6 +10,6 @@ export function useInit(props: Props, attrs: Record<string, unknown>) {
     version,
     srs,
     ...attrs,
-  });
-  return instance;
+  })
+  return instance
 }

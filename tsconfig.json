@@ -1,16 +1,15 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite-plus/client"]
   },
-  "include": ["playground", "packages", "docs"]
+  "include": [
+    "packages/components",
+    "packages/core",
+    "packages/types",
+    "packages/vue-tianditu",
+    "playground/src",
+    "docs/.vitepress/components",
+    "docs/.vitepress/theme"
+  ]
 }

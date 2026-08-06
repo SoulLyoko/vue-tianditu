@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: "IconClose" });
+defineOptions({ name: 'IconClose' })
 </script>
 
 <template>

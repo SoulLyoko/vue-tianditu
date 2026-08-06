@@ -5369,6 +5369,6 @@ export default {
   total: 5365,
   rt_loc_cnt: 47764510,
   errorno: 0,
-  NearestTime: "2014-08-29 15:20:00",
-  userTime: "2014-08-29 15:32:11",
-};
+  NearestTime: '2014-08-29 15:20:00',
+  userTime: '2014-08-29 15:32:11',
+}

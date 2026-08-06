@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts" setup>
-import { withBase } from "vitepress";
-import { reactive } from "vue";
+import { withBase } from 'vitepress'
+import { reactive } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178],
@@ -29,15 +29,15 @@ const state = reactive({
   marker1: [113.280637, 23.125178],
   marker2: [113.300037, 23.125178],
   icon: {
-    iconUrl: withBase("/marker_red.png"),
+    iconUrl: withBase('/marker_red.png'),
     iconSize: [18, 26],
     iconAnchor: [9, 26],
   },
-});
+})
 </script>
 
 <script lang="ts">
-export default { name: "demo-marker" };
+export default { name: 'demo-marker' }
 </script>
 
 <style scoped>

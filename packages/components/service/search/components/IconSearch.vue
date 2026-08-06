@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: "IconSearch" });
+defineOptions({ name: 'IconSearch' })
 </script>
 
 <template>

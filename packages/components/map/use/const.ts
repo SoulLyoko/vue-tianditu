@@ -1,10 +1,10 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
-import { uuid } from "@vue-tianditu/core";
-import type { LoadConfig } from "@vue-tianditu/core";
+import { uuid } from '@vue-tianditu/core'
+import type { LoadConfig } from '@vue-tianditu/core'
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影) */
-  projection: { type: String, default: "EPSG:900913" },
+  projection: { type: String, default: 'EPSG:900913' },
   /** 地图允许展示的最小级别 */
   minZoom: { type: Number, default: 1 },
   /** 地图允许展示的最大级别 */
@@ -13,7 +13,7 @@ export const NATIVE_PROPS = {
   center: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
   /** 地图的初始化级别 */
   zoom: { type: Number, default: 1 },
-};
+}
 
 export const EXTRA_PROPS = {
   /** 启用地图拖拽，默认启用 */
@@ -37,14 +37,14 @@ export const EXTRA_PROPS = {
   /** 根据提供的坐标点数组设置地图视野，调整后的视野会保证包含提供的坐标点 */
   viewport: { type: Array as PropType<VT.LngLat[]> },
   /** 地图样式，原天地图api的style，分别为black，indigo */
-  mapStyle: { type: String as PropType<"black" | "indigo"> },
+  mapStyle: { type: String as PropType<'black' | 'indigo'> },
   /** 地图容器id */
   mid: { type: String, default: () => uuid() },
   /** 控件 */
   controls: { type: Array as PropType<(VT.ControlName | VT.ControlOptions)[]>, default: () => [] },
   /** 加载Api的配置 */
   loadConfig: { type: Object as PropType<LoadConfig> },
-};
+}
 
 export const NATIVE_EVENTS: T.MapEvents = {
   click: () => true,
@@ -75,16 +75,16 @@ export const NATIVE_EVENTS: T.MapEvents = {
   touchmove: () => true,
   touchend: () => true,
   longpress: () => true,
-};
+}
 
 export const EXTRA_EVENTS = {
   /** 地图初始化 */
   init: (e: T.Map) => e instanceof T.Map,
   /** 鹰眼视图控件的开合状态变化时触发事件 */
   viewchange: (_event: T.ControlOverviewMapEvent) => true,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

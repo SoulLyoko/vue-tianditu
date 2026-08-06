@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { fixMapPropagation } from "@vue-tianditu/core";
-import { useMapRoot } from "../../use";
-import { useState, useMethods } from "./use";
+import { fixMapPropagation } from '@vue-tianditu/core'
+import { onMounted } from 'vue'
+
+import { useMapRoot } from '../../use'
+import TdtRoute from '../route/index.vue'
 import {
   SearchBox,
   SearchSuggests,
@@ -11,36 +12,37 @@ import {
   IconSearch,
   IconRoute,
   IconClose,
-} from "./components";
-import TdtRoute from "../route/index.vue";
-import "./styles/tdt-search.scss";
-import "../../styles/tdt-icon.scss";
+} from './components'
+import { useState, useMethods } from './use'
 
-defineOptions({ name: "TdtSearch" });
+import './styles/tdt-search.scss'
+import '../../styles/tdt-icon.scss'
+
+defineOptions({ name: 'TdtSearch' })
 withDefaults(defineProps<{ placeholder?: string; searchBtn?: boolean; routeBtn?: boolean }>(), {
-  placeholder: "输入关键字搜索",
+  placeholder: '输入关键字搜索',
   searchBtn: true,
   routeBtn: true,
-});
+})
 const emit = defineEmits<{
-  "poi-click": [poi: T.LocalSearchPoi];
-  "suggest-click": [suggest: T.LocalSearchSuggest];
-  "search-complete": [result: T.LocalSearchResult];
-}>();
-const state = useState();
+  'poi-click': [poi: T.LocalSearchPoi]
+  'suggest-click': [suggest: T.LocalSearchSuggest]
+  'search-complete': [result: T.LocalSearchResult]
+}>()
+const state = useState()
 const { onSearchComplete, onPoiClick, onSuggestClick, onSearch, onPageChange } = useMethods(
   state,
   emit,
-);
+)
 
 onMounted(async () => {
-  state.tdtMap = await useMapRoot();
-  state.localSearch = new T.LocalSearch(state.tdtMap, { pageCapacity: 10, onSearchComplete });
-});
+  state.tdtMap = await useMapRoot()
+  state.localSearch = new T.LocalSearch(state.tdtMap, { pageCapacity: 10, onSearchComplete })
+})
 
 function updateKeyword(value: string) {
-  state.keyword = value;
-  onSearch(4, value);
+  state.keyword = value
+  onSearch(4, value)
 }
 </script>
 

@@ -25,30 +25,30 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
+import { reactive, ref } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
-});
+})
 
-const mousetoolRef = ref();
+const mousetoolRef = ref()
 function openTool(toolName: string) {
-  mousetoolRef.value?.open(toolName);
+  mousetoolRef.value?.open(toolName)
 }
 
 function clearTool(toolName?: string) {
-  if (toolName) mousetoolRef.value?.clear(toolName);
-  else mousetoolRef.value?.clearAll();
+  if (toolName) mousetoolRef.value?.clear(toolName)
+  else mousetoolRef.value?.clearAll()
 }
 
 function onMarkMouseup(e: T.MarkToolEvent) {
-  console.log(e);
+  console.log(e)
 }
 </script>
 
 <script lang="ts">
-export default { name: "demo-mousetool" };
+export default { name: 'demo-mousetool' }
 </script>
 
 <style scoped>

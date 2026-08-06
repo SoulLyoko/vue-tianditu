@@ -4,17 +4,17 @@ declare namespace T {
    */
   class ControlZoom extends T.Control {
     /** 创建一个地图缩放控件 */
-    constructor(opts?: ControlZoomOptions);
+    constructor(opts?: ControlZoomOptions)
   }
 
   interface ControlZoomOptions extends T.ControlOptions {
     /** 放大层级按钮的文字显示。default:"+" */
-    zoomInText?: string;
+    zoomInText?: string
     /** 缩小层级按钮的文字显示。default:"-" */
-    zoomOutText?: string;
+    zoomOutText?: string
     /** 放大层级按钮的标题显示。default:"放大" */
-    zoomInTitle?: string;
+    zoomInTitle?: string
     /** 缩小层级按钮的标题显示。default:"缩小" */
-    zoomOutTitle?: string;
+    zoomOutTitle?: string
   }
 }

@@ -1,5 +1,6 @@
-import { toPoint } from "@vue-tianditu/core";
-import { Props } from "./";
+import { toPoint } from '@vue-tianditu/core'
+
+import type { Props } from './'
 
 export function useInit(props: Props, contentRef?: HTMLElement) {
   const {
@@ -12,7 +13,7 @@ export function useInit(props: Props, contentRef?: HTMLElement) {
     autoPanPadding,
     closeOnClick,
     content,
-  } = props;
+  } = props
   const instance = new T.InfoWindow(contentRef || content, {
     minWidth,
     maxWidth,
@@ -22,6 +23,6 @@ export function useInit(props: Props, contentRef?: HTMLElement) {
     offset: toPoint(offset),
     autoPanPadding: toPoint(autoPanPadding),
     closeOnClick,
-  });
-  return instance;
+  })
+  return instance
 }

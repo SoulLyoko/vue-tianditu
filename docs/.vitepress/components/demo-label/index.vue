@@ -8,17 +8,17 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
   visible: true,
-});
+})
 </script>
 
 <script lang="ts">
-export default { name: "demo-label" };
+export default { name: 'demo-label' }
 </script>
 
 <style scoped>

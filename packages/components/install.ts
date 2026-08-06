@@ -1,12 +1,15 @@
-import type { App } from "vue";
-import { useApiLoader, type LoadConfig } from "@vue-tianditu/core";
-import * as components from "./components";
+import { useApiLoader, type LoadConfig } from '@vue-tianditu/core'
+import type { App } from 'vue'
+
+import * as components from './components'
 
 export default {
-  install: (app: App, config?: LoadConfig): void => {
-    if (typeof document !== "undefined") void useApiLoader(config);
-    Object.entries(components).forEach(([exportName, component]) => {
-      app.component(component.name ?? exportName, component);
-    });
+  install(app: App, config?: LoadConfig) {
+    if (typeof document !== 'undefined') void useApiLoader(config)
+    Object.values(components).forEach((component) => {
+      if ('name' in component && 'setup' in component) {
+        app.component(component.name!, component)
+      }
+    })
   },
-};
+}

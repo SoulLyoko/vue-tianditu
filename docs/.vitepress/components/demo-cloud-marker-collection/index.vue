@@ -13,26 +13,27 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
-import dataCollection from "./data";
+import { reactive } from 'vue'
+
+import dataCollection from './data'
 
 const state = reactive({
   center: [108.95, 34.27],
   zoom: 4,
   lnglats: dataCollection.data,
   target: null,
-  content: "",
-});
+  content: '',
+})
 
 function onClick(e: any) {
-  console.log(e);
-  state.target = e.layer;
-  state.content = `[${e.lnglat.lng}, ${e.lnglat.lat}]`;
+  console.log(e)
+  state.target = e.layer
+  state.content = `[${e.lnglat.lng}, ${e.lnglat.lat}]`
 }
 </script>
 
 <script lang="ts">
-export default { name: "demo-cloud-marker-collection" };
+export default { name: 'demo-cloud-marker-collection' }
 </script>
 
 <style scoped>

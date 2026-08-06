@@ -1,15 +1,15 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 
 export const NATIVE_PROPS = {
   /** 折线颜色 */
-  color: { type: String, default: "#0000ff" },
+  color: { type: String, default: '#0000ff' },
   /** 折线的宽度，以像素为单位 */
   weight: { type: Number, default: 3 },
   /** 折线的透明度（范围0-1 之间） */
   opacity: { type: Number, default: 0.5 },
   /** 拆线的样式（solid或dashed） */
-  lineStyle: { type: String as PropType<"solid" | "dashed">, default: "solid" },
-};
+  lineStyle: { type: String as PropType<'solid' | 'dashed'>, default: 'solid' },
+}
 
 export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
@@ -20,7 +20,7 @@ export const EXTRA_PROPS = {
   visible: { type: Boolean, default: true },
   /** 自定义属性 */
   extData: { type: undefined as unknown as PropType<any> },
-};
+}
 
 export const NATIVE_EVENTS: T.PolylineEvents = {
   click: () => true,
@@ -30,13 +30,14 @@ export const NATIVE_EVENTS: T.PolylineEvents = {
   mouseout: () => true,
   mouseover: () => true,
   remove: () => true,
-};
+  edit: () => true,
+}
 
 export const EXTRA_EVENTS = {
   init: (e: T.Polyline) => e instanceof T.Polyline,
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>

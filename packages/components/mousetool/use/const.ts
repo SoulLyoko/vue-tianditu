@@ -1,5 +1,6 @@
-import { EmitFn, ExtractPropTypes, PropType } from "vue";
-import { MarkToolOptions, PaintBrushToolOptions, ToolEvents, ToolInstances } from "../types";
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
+
+import type { MarkToolOptions, PaintBrushToolOptions, ToolEvents, ToolInstances } from '../types'
 
 export const NATIVE_PROPS = {
   /** 标点的配置项 */
@@ -14,20 +15,20 @@ export const NATIVE_PROPS = {
   circleTool: { type: Object as PropType<T.CircleToolOptions>, default: () => ({}) },
   /** 画笔的配置项 */
   paintBrushTool: { type: Object as PropType<PaintBrushToolOptions>, default: () => ({}) },
-};
+}
 
-export const OTHER_PROPS = {};
+export const OTHER_PROPS = {}
 
 export const NATIVE_EVENTS: ToolEvents = {
-  "mark-mouseup": () => true,
-  "polygon-draw": () => true,
-  "polygon-addpoint": () => true,
-  "polyline-draw": () => true,
-  "polyline-addpoint": () => true,
-  "rectangle-draw": () => true,
-  "circle-draw": () => true,
-  "circle-drawend": () => true,
-};
+  'mark-mouseup': () => true,
+  'polygon-draw': () => true,
+  'polygon-addpoint': () => true,
+  'polyline-draw': () => true,
+  'polyline-addpoint': () => true,
+  'rectangle-draw': () => true,
+  'circle-draw': () => true,
+  'circle-drawend': () => true,
+}
 
 export const OTHER_EVENTS = {
   init: (e: ToolInstances) => {
@@ -38,11 +39,11 @@ export const OTHER_EVENTS = {
       e.rectangleTool instanceof T.RectangleTool &&
       e.circleTool instanceof T.CircleTool &&
       e.paintBrushTool instanceof T.PaintBrushTool
-    );
+    )
   },
-};
+}
 
-export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS };
-export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS };
-export type Props = ExtractPropTypes<typeof PROPS>;
-export type Emit = EmitFn<typeof EVENTS>;
+export const PROPS = { ...NATIVE_PROPS, ...OTHER_PROPS }
+export const EVENTS = { ...NATIVE_EVENTS, ...OTHER_EVENTS }
+export type Props = ExtractPropTypes<typeof PROPS>
+export type Emit = EmitFn<typeof EVENTS>
