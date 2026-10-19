@@ -4,7 +4,7 @@ declare namespace T {
     constructor(map: Map, opts: LocalSearchOptions)
 
     /** 根据检索词发起检索 */
-    search(keyword: string, type: QueryType): void
+    search(keyword: string, type: LocalSearchResult['resultType']): void
     /** 根据范围和检索词发起范围检索 */
     searchInBounds(keyword: string, bounds: LngLatBounds): void
     /** 根据中心点、半径与检索词发起周边检索 */
@@ -65,7 +65,7 @@ declare namespace T {
     prompt: LocalSearchPrompt[] | false
     lineData: LocalSearchLineData[] | false
     /** 返回搜索类型 */
-    getResultType(): QueryType
+    getResultType(): LocalSearchResult['resultType']
     /** 返回检索总条数 */
     getCount(): number
     /** 返回检索关键词 */

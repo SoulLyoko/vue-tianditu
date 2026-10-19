@@ -1,19 +1,8 @@
 declare namespace T {
-  /**
-   * 自定义控件基类
-   */
+  /** 此类是所有控件类的基类，你可以通过此类来自定义控件，所有控件均包含Control类的属性、方法和事件。 */
   class Control {
-    static Zoom: typeof ControlZoom
-    static Scale: typeof ControlScale
-    static Copyright: typeof ControlCopyright
-    static OverviewMap: typeof ControlOverviewMap
-    static MapType: typeof ControlMapType
-
     constructor(opts?: ControlOptions)
-    /**
-     * 设置控件的位置。参数请参见ControlPosition常量。
-     * @param position "topleft" | "topright" | "bottomleft" | "bottomright"
-     */
+    /** 设置控件的位置。参数请参见Control常量。 */
     setPosition(position?: ControlPosition): void
     /** 返回控件的位置 */
     getPosition(): ControlPosition
@@ -40,10 +29,7 @@ declare namespace T {
   type ControlPosition = 'topleft' | 'topright' | 'bottomleft' | 'bottomright'
 
   interface ControlOptions {
-    /**
-     * 控件的位置。参数请参见ControlPosition常量。
-     * "topleft" | "topright" | "bottomleft" | "bottomright"
-     */
+    /** 控件的位置。参数请参见ControlPosition常量。 */
     position?: ControlPosition
   }
 }

@@ -1,6 +1,7 @@
 declare namespace T {
-  class PolygonTool extends Mousetool<PolygonToolEvents> {
-    /** 多边形工具，可以通过事件来获取用户绘制的多边形，包含测面积功能 */
+  /** 多边形工具，可以通过事件来获取用户绘制的多边形，包含测面积功能 */
+  class PolygonTool extends Tool<PolygonToolEvents> {
+    /** 创建一个PolygonTool 控件对象。 */
     constructor(map: Map, opts?: PolygonToolOptions)
     /**
      * 跟随鼠标移动的说明文字
@@ -15,24 +16,27 @@ declare namespace T {
     /** 获得所有绘制的多边形 */
     getPolygons(): Polygon[]
     /** 完成一个多边形的绘制，运行此方法相当于用户点击双击结束当前多边形的绘制 */
-    endDraw()
+    endDraw(): void
   }
 
   interface PolygonToolOptions extends PolygonOptions {
-    /** 是否显示面积，如果不显示面积，则可以作为画面控件使用。default:false */
+    /**
+     * 是否显示面积，如果不显示面积，则可以作为画面控件使用。
+     * @default false
+     */
     showLabel?: boolean
   }
 
   interface PolygonToolEvents {
     /** 用户双击完成一次折线绘制时触发事件 */
-    draw(e: PolygonToolEvent)
+    draw(e: PolygonToolEvent): void
     /** 用户在多边形绘制过程中，每次点击底图添加节点时触发事件 */
-    addpoint(e: PolygonToolEvent)
+    addpoint(e: PolygonToolEvent): void
   }
 
   interface PolygonToolEvent extends ToolEvent<Polygon> {
     /** 用户当前绘制的多边形的点坐标数组 */
-    currentLnglats: LngLat
+    currentLnglats: LngLat[][]
     /** 用户最后绘制的多边形的地理面积 */
     currentArea: number
     /** 当前所画多边形的对象 */

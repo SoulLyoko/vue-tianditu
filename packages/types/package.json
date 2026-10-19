@@ -4,16 +4,16 @@
   "description": "Type definitions for Vue Tianditu",
   "license": "MIT",
   "files": [
-    "index.ts",
+    "index.d.ts",
     "tianditu",
     "vue-tianditu"
   ],
   "type": "module",
   "sideEffects": false,
-  "types": "index.ts",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.ts"
+      "import": "./index.d.ts"
     }
   },
   "peerDependencies": {

@@ -1,14 +1,11 @@
 declare namespace T {
+  /** 此类以经度和纬度表示的地理位置坐标点 */
   class LngLat {
-    /**
-     * 根据给定经度和纬度创建地理位置坐标点
-     * @param lng 地理经度
-     * @param lat 地理纬度
-     */
+    /** 根据给定经度和纬度创建地理位置坐标点 */
     constructor(lng: number, lat: number)
-    /** 经度 */
+    /** 地理经度 */
     lng: number
-    /** 纬度 */
+    /** 地理纬度 */
     lat: number
     /** 获取地理坐标点的经度 */
     getLng(): number
@@ -20,6 +17,7 @@ declare namespace T {
     equals(other: LngLat): boolean
   }
 
+  /** 此类可以指定的坐标范围建立一个矩形区域 */
   class LngLatBounds {
     /**
      * 根据给定的多个地理位置坐标点创建矩形
@@ -39,18 +37,17 @@ declare namespace T {
     contains(lnglat: LngLat | LngLatBounds): boolean
     /** 如果矩形与给定边界相交则返回true */
     intersects(other: LngLatBounds): boolean
+    /** 判断矩形是否相等 */
+    equals(other: LngLatBounds): boolean
   }
 
+  /** 此类是以像素坐标表示的地图上的一个点 */
   class Point {
-    /**
-     * 根据给定x和y坐标创建地图上的一个像素坐标点
-     * @param x 像素坐标中x坐标，x坐标向右增大
-     * @param y 像素坐标中y坐标，y坐标向下增大
-     */
+    /** 根据给定x和y坐标创建地图上的一个像素坐标点 */
     constructor(x: number, y: number)
-    /** x坐标 */
+    /** 像素坐标中x坐标，x坐标向右增大 */
     x: number
-    /** y坐标 */
+    /** 像素坐标中y坐标，y坐标向下增大 */
     y: number
     /** 判断坐标点是否相等，当且仅当两点的x坐标和y坐标均相等时返回true */
     equals(point: Point): boolean
@@ -58,6 +55,8 @@ declare namespace T {
     distanceTo(point: Point): number
   }
 
+  /** TODO: extends Overlay? */
+  /** 此类是表示一个图层容器，用于存储T.Overlay的继承的图层 */
   class LayerGroup {
     /**
      * 构建一个存储图层的容器。
@@ -80,14 +79,5 @@ declare namespace T {
     getLayer(id: string): Overlay
     /** 获取容器中存在图层的唯一ID */
     getLayerId(layer: Overlay): string
-  }
-
-  class MapType {
-    /** 创建TMapType对象实例 */
-    constructor(layers: TileLayer[], name: string)
-    /**	返回地图类型名称 */
-    getName(): string
-    /** 返回地图类型对应的图层 */
-    getLayers(): MapType
   }
 }

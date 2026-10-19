@@ -3,11 +3,10 @@ declare namespace T {
    * 自定义覆盖物的构造类
    */
   class Overlay {
-    constructor(opts?: any)
-    // static extend<O extends Partial<Overlay>>(this: Overlay, opts: O): new (...args: any[]) => Overlay & O
+    constructor(opts?: OverlayOptions)
 
     /** 构造函数时传递参数，对OverlayOptions属性值进行赋值 */
-    initialize(...args: any[]): void
+    initialize(opts?: OverlayOptions): void
     /** 向地图上添加叠加物。当调用map.addOverLay时，API将调用此方法。自定义叠加物时需要实现此方法。自定义叠加物时需要将覆盖物对应的HTML元素返回 */
     onAdd(map: Map): void
     /** 移除叠加物，释放覆盖物对象所占用的内存。自定义叠加物时需要实现此方法 */
@@ -28,10 +27,25 @@ declare namespace T {
     [x: string]: any
   }
 
+  interface OverlayOptions {
+    /**
+     * 叠加层类型，已定义的类型有：
+     * Label 类型为 1;
+     * Marker 类型为 2;
+     * InfoWindow类型为 3;
+     * Polyline 类型为 4;
+     * Polygon 类型为 5;
+     * Rectangle 类型为 6;
+     * Circle 类型为 8;
+     * 对于自定义叠加层，也可以设定一个 Number 型的叠加层类型。
+     */
+    type?: number
+  }
+
   /**
    * 覆盖物公共类
    */
-  class OverlayBase<E> extends Overlay {
+  class OverlayBase<E = any> extends Overlay {
     /** 返回叠加层类型 */
     getType(): number
     /** 返回叠加层所在的map对象 */
@@ -89,4 +103,6 @@ declare namespace T {
     /** 叠加层像素坐标 */
     containerPoint: Point
   }
+
+  type LineStyle = 'solid' | 'dashed'
 }

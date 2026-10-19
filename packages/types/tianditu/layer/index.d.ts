@@ -1,4 +1,5 @@
 import './gridlineLayer.d'
+import './mapType.d'
 import './tdt.d'
 import './tileLayer.d'
 import './wms.d'

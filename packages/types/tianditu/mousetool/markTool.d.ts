@@ -1,6 +1,7 @@
 declare namespace T {
-  class MarkTool extends Mousetool<MarkToolEvents> {
-    /** 标注工具，用来让用户在地图上标注一个点，可以通过该工具获得用户标点的经纬度位置 */
+  /** 标注工具，用来让用户在地图上标注一个点，可以通过该工具获得用户标点的经纬度位置 */
+  class MarkTool extends Tool<MarkToolEvents> {
+    /** 创建一个MarkTool工具。 */
     constructor(map: Map, opts?: MarkToolOptions)
     /**
      * 设置标注工具显示的标注图标路径的路径
@@ -14,15 +15,21 @@ declare namespace T {
   }
 
   interface MarkToolOptions {
-    /** 图标类用来表达注记。default:new T.Icon.Default() */
+    /**
+     * 图标类用来表达注记。
+     * @default new T.Icon.Default()
+     */
     icon?: Icon
-    /** 标记图标是否跟随鼠标。default:false */
+    /**
+     * 标记图标是否跟随鼠标。
+     * @default false
+     */
     follow?: boolean
   }
 
   interface MarkToolEvents {
     /** 在用户每完成一次标注时触发事件 */
-    mouseup(e: MarkToolEvent)
+    mouseup(e: MarkToolEvent): void
   }
 
   interface MarkToolEvent extends ToolEvent<Marker> {

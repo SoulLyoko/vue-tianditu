@@ -1,5 +1,6 @@
 declare namespace T {
-  class Map {
+  /** 此类是地图API的核心类，用来实例化一个地图。 */
+  class Map extends EventListener<MapEvents> {
     /**
      * 在指定的容器内创建地图实例，之后需要调用Map.centerAndZoom()方法对地图进行初始化。未进行初始化的地图将不能进行任何操作。
      * @param container 用于显示地图的DIV对象。
@@ -12,7 +13,6 @@ declare namespace T {
      * 配置方法
      * --------------------
      */
-
     /** 启用地图拖拽，默认启用 */
     enableDrag(): void
     /** 禁用地图拖拽 */
@@ -65,7 +65,6 @@ declare namespace T {
      * 获取地图状态方法
      * --------------------
      */
-
     /** 返回地图投影类型信息 */
     getCode(): string
     /** 返回地图可视区域，以地理坐标表示 */
@@ -86,7 +85,6 @@ declare namespace T {
      * 修改地图状态方法
      * --------------------
      */
-
     /** 初始化定位地图 */
     centerAndZoom(lnglat: LngLat, zoom: number): void
     /** 将地图的中心点变换到指定的地理坐标，如果同时指定了缩放等级，则同时缩放到指定的等级 */
@@ -119,7 +117,6 @@ declare namespace T {
      * 坐标变换
      * --------------------
      */
-
     /** 将地图上相对于container的像素坐标转化为地理坐标 */
     containerPointToLngLat(pixel: Point): LngLat
     /** 将地理坐标转化为地图上点的像素坐标，相对于container左上角 */
@@ -134,7 +131,6 @@ declare namespace T {
      * 覆盖物方法
      * --------------------
      */
-
     /** 将覆盖物添加到地图中，一个覆盖物实例只能向地图中添加一次 */
     addOverLay(overlay: Overlay | OverlayBase<any>): void
     /** 从地图中移除覆盖物。如果覆盖物从未被添加到地图中，则该移除不起任何作用 */
@@ -155,7 +151,6 @@ declare namespace T {
      * 控件方法
      * --------------------
      */
-
     /** 将控件添加到地图，一个控件实例只能向地图中添加一次 */
     addControl(control: Control): void
     /** 从地图中移除控件。如果控件从未被添加到地图中，则该移除不起任何作用 */
@@ -168,7 +163,6 @@ declare namespace T {
      * 地图图层方法
      * --------------------
      */
-
     /** 获取所有叠加层对象，可以自己判断需要移除哪些叠加层 */
     getLayers(): Array<TileLayer>
     /** 给地图添加一个叠加层对象 */
@@ -177,21 +171,13 @@ declare namespace T {
     removeLayer(layer: TileLayer): void
     /** 移除所有叠加层对象 */
     clearLayers(): void
-
-    /**
-     * --------------------
-     * 地图事件方法
-     * --------------------
-     */
-
-    /** 添加地图事件监听 */
-    addEventListener<EE extends keyof MapEvents>(event: EE, handler: MapEvents[EE]): void
-    /** 移除地图事件监听 */
-    removeEventListener<EE extends keyof MapEvents>(event: EE, handler: MapEvents[EE]): void
   }
 
   interface MapOptions {
-    /** 指定地图的投影方式，目前支持的地图投影方式有：EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影) */
+    /**
+     * 指定地图的投影方式，目前支持的地图投影方式有：EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)
+     * @default "EPSG:900913"
+     */
     projection?: string
     /** 地图允许展示的最小级别 */
     minZoom?: number
@@ -282,6 +268,5 @@ declare namespace T {
     [x: string]: HTMLElement
   }
 
-  type LineStyle = 'solid' | 'dashed'
   type MapStyle = 'black' | 'indigo'
 }
