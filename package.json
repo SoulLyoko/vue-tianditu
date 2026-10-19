@@ -26,10 +26,11 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@vue/tsconfig": "catalog:",
     "jsdom": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vue-tsc": "catalog:"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@12.14.0"
 }
