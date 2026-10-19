@@ -11,7 +11,7 @@ describe('component package', () => {
   it('registers all public components', () => {
     const component = vi.fn()
     installer.install({ component } as never)
-    expect(component).toHaveBeenCalledTimes(19)
+    expect(component).toHaveBeenCalledTimes(24)
     expect(component.mock.calls.map((call) => call[0])).toEqual(
       expect.arrayContaining(Object.keys(components)),
     )
