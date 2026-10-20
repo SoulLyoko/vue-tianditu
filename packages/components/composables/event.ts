@@ -1,5 +1,5 @@
 export interface UseEventOptions<E extends string> {
-  events: Record<E, any>
+  events: Partial<Record<E, any>>
   instance: { addEventListener: (event: E, callback: (e: any) => void) => void }
   emit: (event: any, ...args: any[]) => any
   extData?: any

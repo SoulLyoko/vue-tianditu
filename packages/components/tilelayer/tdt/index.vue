@@ -1,30 +1,34 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, useAttrs } from 'vue'
+import { toBounds } from '@vue-tianditu/core'
+import { onMounted, useAttrs, watch } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useInitLayer } from '../../composables'
+import { tilelayerTdtEmits, tilelayerTdtNativeEvents, tilelayerTdtProps } from './props'
 
 defineOptions({ name: 'TdtTilelayerTdt', inheritAttrs: false })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
+const props = defineProps(tilelayerTdtProps)
+const emit = defineEmits(tilelayerTdtEmits)
 const attrs = useAttrs()
-let map: T.Map | undefined
-let instance: T.TileLayer.TDT | undefined
-let disposed = false
 
-onMounted(async () => {
-  map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props, attrs)
-  map.addLayer(instance)
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
-
-onUnmounted(() => {
-  disposed = true
-  if (instance) map?.removeLayer(instance)
+onMounted(() => {
+  const { url, minZoom, maxZoom, errorTileUrl, opacity, zIndex, bounds, attribution } = props
+  const layer = new T.TileLayer.TDT(url, {
+    minZoom,
+    maxZoom,
+    errorTileUrl,
+    opacity,
+    zIndex,
+    bounds: bounds?.length ? toBounds(bounds) : undefined,
+    attribution,
+    ...attrs,
+  })
+  useInitLayer(props, layer)
+  useEvent({ events: tilelayerTdtNativeEvents, instance: layer, emit })
+  watch(
+    () => props.url,
+    (val) => layer.setUrl(val),
+  )
+  emit('init', layer)
 })
 </script>
 

@@ -1,5 +1,6 @@
 export * from './control'
 export * from './event'
+export * from './layer'
 export * from './map'
 export * from './overlay'
 export * from './watch'

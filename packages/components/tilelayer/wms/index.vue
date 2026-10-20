@@ -1,30 +1,32 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, useAttrs } from 'vue'
+import { onMounted, useAttrs, watch } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useInitLayer } from '../../composables'
+import { tilelayerWmsEmits, tilelayerWmsNativeEvents, tilelayerWmsProps } from './props'
 
 defineOptions({ name: 'TdtTilelayerWms', inheritAttrs: false })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
+const props = defineProps(tilelayerWmsProps)
+const emit = defineEmits(tilelayerWmsEmits)
 const attrs = useAttrs()
-let map: T.Map | undefined
-let instance: T.TileLayer.WMS | undefined
-let disposed = false
 
-onMounted(async () => {
-  map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props, attrs)
-  map.addLayer(instance)
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
-
-onUnmounted(() => {
-  disposed = true
-  if (instance) map?.removeLayer(instance)
+onMounted(() => {
+  const { url, layers, styles, format, transparent, version, srs } = props
+  const layer = new T.TileLayer.WMS(url, {
+    layers,
+    styles,
+    format,
+    transparent,
+    version,
+    srs,
+    ...attrs,
+  })
+  useInitLayer(props, layer)
+  useEvent({ events: tilelayerWmsNativeEvents, instance: layer, emit })
+  watch(
+    () => props.url,
+    (val) => layer.setUrl(val),
+  )
+  emit('init', layer)
 })
 </script>
 

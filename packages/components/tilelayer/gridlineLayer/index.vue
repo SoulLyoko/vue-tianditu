@@ -1,29 +1,26 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useInitLayer } from '../../composables'
+import { gridlineLayerEmits, gridlineLayerNativeEvents, gridlineLayerProps } from './props'
 
 defineOptions({ name: 'TdtGridlineLayer' })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
-let map: T.Map | undefined
-let instance: T.GridlineLayer | undefined
-let disposed = false
+const props = defineProps(gridlineLayerProps)
+const emit = defineEmits(gridlineLayerEmits)
 
-onMounted(async () => {
-  map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props)
-  map.addLayer(instance)
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
-
-onUnmounted(() => {
-  disposed = true
-  if (instance) map?.removeLayer(instance)
+onMounted(() => {
+  const { tileSize, minZoom, maxZoom, opacity, outlineSize, textSize } = props
+  const layer = new T.GridlineLayer({
+    tileSize,
+    minZoom,
+    maxZoom,
+    opacity,
+    outlineSize,
+    textSize,
+  })
+  useInitLayer(props, layer)
+  useEvent({ events: gridlineLayerNativeEvents, instance: layer, emit })
+  emit('init', layer)
 })
 </script>
 

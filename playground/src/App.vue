@@ -16,6 +16,10 @@ import {
   TdtControlCopyright,
   TdtControlOverviewMap,
   TdtControlMapType,
+  TdtTilelayer,
+  TdtTilelayerTdt,
+  TdtTilelayerWms,
+  TdtGridlineLayer,
   TdtSearch,
 } from 'vue-tianditu'
 
@@ -70,7 +74,7 @@ const state = reactive({
   keyword: '',
 })
 
-function resetMap() {
+function resetCenterAndZoom() {
   state.center = [113.280637, 23.125178]
   state.zoom = 12
 }
@@ -87,6 +91,15 @@ function openTool(toolName: string) {
 }
 
 const tk = import.meta.env.VITE_TMAP_AUTHKEY
+const imageUrl = `https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=${tk}`
+const layerOptions = [
+  { value: 'none', label: '无' },
+  { value: 'TileLayer', label: '瓦片图层' },
+  { value: 'TDT', label: 'TDT图层' },
+  { value: 'WMS', label: 'WMS图层' },
+  { value: 'GridlineLayer', label: '网格图层' },
+] as const
+const activeLayer = ref<(typeof layerOptions)[number]['value']>('none')
 
 const controlVisible = ref(true)
 </script>
@@ -94,21 +107,40 @@ const controlVisible = ref(true)
 <template>
   <div class="map-container">
     <button @click="openTool('markTool')">标点</button>
-    <button @click="resetMap">重置地图</button>
+    <button @click="resetCenterAndZoom">重置中心点和缩放</button>
     <button @click="controlVisible = !controlVisible">控件显示:{{ controlVisible }}</button>
-    <div>center: {{ state.center }} zoom: <input v-model="state.zoom" /></div>
+    <div>
+      center: [<input v-model="state.center[0]" type="number" />,
+      <input v-model="state.center[1]" type="number" />]
+    </div>
+    <div>zoom:<input v-model="state.zoom" type="number" /></div>
     <div>markers:{{ state.markers }}</div>
     <div>polyline:{{ state.polylinePath }}</div>
     <div>polygon:{{ state.polygonPath }}</div>
     <div>polygonHole:{{ state.polygonHolePath }}</div>
     <div>rectangleBounds:{{ state.rectangleBounds }}</div>
     <div>circle center:{{ state.circleCenter }} radius:{{ state.circleRadius }}</div>
+    <label>layers: </label>
+    <label v-for="option in layerOptions" :key="option.value">
+      <input v-model="activeLayer" type="radio" name="tilelayer" :value="option.value" />
+      {{ option.label }}
+    </label>
     <TdtMap
       v-model:center="state.center"
       v-model:zoom="state.zoom"
-      :controls="['Zoom', 'MapType']"
       :load-config="{ tk, plugins: ['ImageOverLayer'] }"
     >
+      <TdtTilelayer v-if="activeLayer === 'TileLayer'" :url="imageUrl" />
+      <TdtTilelayerTdt v-if="activeLayer === 'TDT'" :url="imageUrl" attribution="天地图影像底图" />
+      <TdtTilelayerWms
+        v-if="activeLayer === 'WMS'"
+        url="http://gisserver.tianditu.com/tiandituService/wms"
+        version="1.1.1"
+        layers="demo_city,demo_road,demo_anno"
+        transparent
+        format="image/png"
+      />
+      <TdtGridlineLayer v-if="activeLayer === 'GridlineLayer'" />
       <TdtMarker
         v-for="marker in state.markers"
         :key="marker.name"
