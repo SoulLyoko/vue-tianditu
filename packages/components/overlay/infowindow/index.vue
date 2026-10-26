@@ -1,30 +1,60 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, useSlots, useTemplateRef } from 'vue'
+import { toLngLat, toPoint } from '@vue-tianditu/core'
+import { onMounted, onUnmounted, useSlots, useTemplateRef, watch } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useMap } from '../../composables'
+import { infowindowEmits, infowindowNativeEvents, infowindowProps } from './props'
 
 defineOptions({ name: 'TdtInfowindow' })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
+const props = defineProps(infowindowProps)
+const emit = defineEmits(infowindowEmits)
 const slots = useSlots()
 const contentElement = useTemplateRef<HTMLDivElement>('contentElement')
-let map: T.Map | undefined
+const map = useMap()
 
-onMounted(async () => {
-  map = await useMapRoot()
-  const instance = useInit(props, slots.default ? (contentElement.value ?? undefined) : undefined)
-
-  instance.addEventListener('close', () => {
-    emit('update:target', null)
+onMounted(() => {
+  const {
+    minWidth,
+    maxWidth,
+    maxHeight,
+    autoPan,
+    closeButton,
+    offset,
+    autoPanPadding,
+    closeOnClick,
+  } = props
+  const infowindow = new T.InfoWindow(slots.default ? contentElement.value! : props.content, {
+    minWidth,
+    maxWidth,
+    maxHeight,
+    autoPan,
+    closeButton,
+    offset: toPoint(offset),
+    autoPanPadding: toPoint(autoPanPadding),
+    closeOnClick,
   })
-
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance, map })
-  emit('init', instance)
+  infowindow.addEventListener('close', () => emit('update:target', null))
+  useEvent({ events: infowindowNativeEvents, instance: infowindow, emit })
+  watch(
+    () => props.offset,
+    (val) => infowindow.setOffset(toPoint(val)),
+  )
+  watch(
+    () => props.content,
+    (val) => !slots.default && infowindow.setContent(val),
+  )
+  watch(
+    () => props.target,
+    (val) => {
+      if (Array.isArray(val)) map.value.openInfoWindow(infowindow, toLngLat(val))
+      else if (val) val.openInfoWindow(infowindow)
+      else infowindow.closeInfoWindow()
+    },
+    { immediate: true },
+  )
+  onUnmounted(() => map.value?.closeInfoWindow())
+  emit('init', infowindow)
 })
-
-onUnmounted(() => map?.closeInfoWindow())
 </script>
 
 <template>

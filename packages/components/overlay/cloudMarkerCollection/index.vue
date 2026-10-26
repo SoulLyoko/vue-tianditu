@@ -1,30 +1,37 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { toLngLats } from '@vue-tianditu/core'
+import { onMounted, onUnmounted, watch } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useInitOverlay } from '../../composables'
+import {
+  cloudMarkerCollectionEmits,
+  cloudMarkerCollectionNativeEvents,
+  cloudMarkerCollectionProps,
+} from './props'
 
 defineOptions({ name: 'TdtCloudMarkerCollection' })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
-let map: T.Map | undefined
-let instance: T.CloudMarkerCollection | undefined
-let disposed = false
+const props = defineProps(cloudMarkerCollectionProps)
+const emit = defineEmits(cloudMarkerCollectionEmits)
 
-onMounted(async () => {
-  map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props)
-  map.addOverLay(instance)
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
-
-onUnmounted(() => {
-  disposed = true
-  instance?.clear()
-  if (instance) map?.removeOverLay(instance)
+onMounted(() => {
+  const { ShapeType, SizeType, color, lnglats } = props
+  const collection = new T.CloudMarkerCollection(toLngLats(lnglats), {
+    ShapeType,
+    SizeType,
+    color,
+  })
+  onUnmounted(() => collection.clear())
+  useInitOverlay(collection)
+  useEvent({ events: cloudMarkerCollectionNativeEvents, instance: collection, emit })
+  watch(
+    () => props.lnglats,
+    (val) => collection.setLnglats(toLngLats(val)),
+  )
+  watch(
+    () => [props.ShapeType, props.SizeType, props.color] as const,
+    ([ShapeType, SizeType, color]) => collection.setStyles({ ShapeType, SizeType, color }),
+  )
+  emit('init', collection)
 })
 </script>
 

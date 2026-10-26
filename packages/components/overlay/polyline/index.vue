@@ -1,29 +1,39 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { toLngLats, fromLngLats } from '@vue-tianditu/core'
+import { onMounted, nextTick } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useInitOverlay, useWatch } from '../../composables'
+import { polylineEmits, polylineNativeEvents, polylineProps } from './props'
 
 defineOptions({ name: 'TdtPolyline' })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
-let map: T.Map | undefined
-let instance: T.Polyline | undefined
-let disposed = false
+const props = defineProps(polylineProps)
+const emit = defineEmits(polylineEmits)
 
-onMounted(async () => {
-  map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props)
-  map.addOverLay(instance)
-  useEvent({ events: NATIVE_EVENTS, emit, instance, extData: props.extData })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
+onMounted(() => {
+  const { path, color, weight, opacity, lineStyle } = props
+  const polyline = new T.Polyline(toLngLats(path), { color, weight, opacity, lineStyle })
+  useInitOverlay(polyline)
 
-onUnmounted(() => {
-  disposed = true
-  if (instance) map?.removeOverLay(instance)
+  polyline.addEventListener('edit', ({ target }) => {
+    emit('update:path', fromLngLats(target.getLngLats()))
+    nextTick(() => {
+      polyline.disableEdit()
+      if (props.edit) polyline.enableEdit()
+    })
+  })
+  useEvent({ events: polylineNativeEvents, instance: polyline, emit, extData: props.extData })
+
+  useWatch(props, {
+    path: (val) => val != null && polyline.setLngLats(toLngLats(val)),
+    color: (val) => val != null && polyline.setColor(val),
+    weight: (val) => val != null && polyline.setWeight(val),
+    opacity: (val) => val != null && polyline.setOpacity(val),
+    lineStyle: (val) => val != null && polyline.setLineStyle(val),
+    edit: (val) => (val ? polyline.enableEdit() : polyline.disableEdit()),
+    visible: (val) => (val ? polyline.show() : polyline.hide()),
+  })
+
+  emit('init', polyline)
 })
 </script>
 

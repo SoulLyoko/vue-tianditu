@@ -1,27 +1,45 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { toMarker, toPoint } from '@vue-tianditu/core'
+import { onMounted, onUnmounted, watch } from 'vue'
 
-import { useMapRoot, useEvent } from '../../use'
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from './use'
+import { useEvent, useMap, useWatch } from '../../composables'
+import { markerClustererEmits, markerClustererNativeEvents, markerClustererProps } from './props'
 
 defineOptions({ name: 'TdtMarkerClusterer' })
-const props = defineProps(PROPS)
-const emit = defineEmits(EVENTS)
-let instance: T.MarkerClusterer | undefined
-let disposed = false
+const props = defineProps(markerClustererProps)
+const emit = defineEmits(markerClustererEmits)
+const map = useMap()
 
-onMounted(async () => {
-  const map = await useMapRoot()
-  if (disposed) return
-  instance = useInit(props, map)
-  useEvent({ events: NATIVE_EVENTS, emit, instance })
-  useWatch({ props, instance })
-  emit('init', instance)
-})
-
-onUnmounted(() => {
-  disposed = true
-  instance?.clearMarkers()
+onMounted(() => {
+  const { markers, girdSize, maxZoom } = props
+  console.log('markers', markers)
+  const clusterer = new T.MarkerClusterer(map.value, {
+    markers: markers?.map(toMarker),
+    girdSize,
+    maxZoom,
+  })
+  onUnmounted(() => clusterer.clearMarkers())
+  useEvent({ events: markerClustererNativeEvents, instance: clusterer, emit })
+  useWatch(props, {
+    girdSize: (val) => val != null && clusterer.setGridSize(val),
+    maxZoom: (val) => val != null && clusterer.setMaxZoom(val),
+    styles: (val) =>
+      val != null &&
+      clusterer.setStyles(
+        val?.map((item) => ({
+          ...item,
+          offset: item.offset && toPoint(item.offset),
+        })) ?? [],
+      ),
+  })
+  watch(
+    () => props.markers,
+    (val) => {
+      clusterer.clearMarkers()
+      if (val?.length) clusterer.addMarkers(val.map(toMarker))
+    },
+  )
+  emit('init', clusterer)
 })
 </script>
 

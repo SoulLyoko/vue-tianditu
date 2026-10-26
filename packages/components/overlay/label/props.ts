@@ -1,6 +1,7 @@
-import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
+import { noop } from '@vue-tianditu/core'
+import type { ExtractPropTypes, PropType } from 'vue'
 
-export const NATIVE_PROPS = {
+export const labelNativeProps = {
   /** 文本标注的内容 */
   text: { type: String, default: '' },
   /** 文本标注的位置偏移值 */
@@ -9,14 +10,14 @@ export const NATIVE_PROPS = {
   position: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
 }
 
-export const EXTRA_PROPS = {
+export const labelExtraProps = {
   /** 设置文本的提示内容 */
   title: { type: String },
   /** 设置z-index */
   zIndex: { type: Number },
-  /** 设置文本的文本内容字体大小 */
+  /** 设置文本的字体大小 */
   fontSize: { type: Number },
-  /** 设置文本的文本的字体颜色 */
+  /** 设置文本的字体颜色 */
   fontColor: { type: String },
   /** 设置文本的背景色 */
   backgroundColor: { type: String },
@@ -32,21 +33,21 @@ export const EXTRA_PROPS = {
   extData: { type: undefined as unknown as PropType<any> },
 }
 
-export const NATIVE_EVENTS: T.LabelEvents = {
-  click: () => true,
-  dblclick: () => true,
-  mousedown: () => true,
-  mouseup: () => true,
-  mouseout: () => true,
-  mouseover: () => true,
-  remove: () => true,
+export const labelNativeEvents: T.LabelEvents = {
+  click: noop,
+  dblclick: noop,
+  mousedown: noop,
+  mouseup: noop,
+  mouseout: noop,
+  mouseover: noop,
+  remove: noop,
 }
 
-export const EXTRA_EVENTS = {
+export const labelExtraEvents = {
   init: (e: T.Label) => e instanceof T.Label,
 }
 
-export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS }
-export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS }
-export type Props = ExtractPropTypes<typeof PROPS>
-export type Emit = EmitFn<typeof EVENTS>
+export const labelProps = { ...labelNativeProps, ...labelExtraProps }
+export const labelEmits = { ...labelNativeEvents, ...labelExtraEvents }
+export type LabelProps = ExtractPropTypes<typeof labelProps>
+export type LabelEmits = typeof labelEmits

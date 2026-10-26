@@ -21,6 +21,8 @@ import {
   TdtTilelayerWms,
   TdtGridlineLayer,
   TdtSearch,
+  TdtCloudMarkerCollection,
+  TdtMarkerClusterer,
 } from 'vue-tianditu'
 
 const state = reactive({
@@ -72,6 +74,16 @@ const state = reactive({
     content: '',
   },
   keyword: '',
+  markerCollection: [] as number[][],
+  markerClusterer: [] as any[],
+})
+
+fetch('/data.json')
+  .then((r) => r.json())
+  .then((r: number[][]) => (state.markerCollection = r.map((e) => [e[0], e[1]])))
+
+state.markerClusterer = Array.from({ length: 1000 }).map((_, i) => {
+  return { position: [Math.random() * 40 + 85, Math.random() * 30 + 21], title: i }
 })
 
 function resetCenterAndZoom() {
@@ -203,6 +215,11 @@ const controlVisible = ref(true)
       <TdtControlCopyright id="test" content="test" :visible="controlVisible"></TdtControlCopyright>
       <TdtControlScale :visible="controlVisible"></TdtControlScale>
       <TdtControlOverviewMap :visible="controlVisible"></TdtControlOverviewMap>
+      <TdtCloudMarkerCollection
+        :lnglats="state.markerCollection"
+        color="blue"
+      ></TdtCloudMarkerCollection>
+      <TdtMarkerClusterer :markers="state.markerClusterer"></TdtMarkerClusterer>
     </TdtMap>
   </div>
 </template>
